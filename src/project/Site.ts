@@ -1,11 +1,5 @@
 // import Settings from './Settings';
 
-declare global {
-  interface Window {
-    Drupal: any
-  }
-}
-
 let instance: Site | null = null
 export default class Site {
   constructor() {
