@@ -19,6 +19,8 @@ Then install all dependencies:
 npm install
 ```
 
+or
+
 ### Yarn
 
 ```bash
@@ -63,9 +65,9 @@ To create a production build, use `yarn build` (will lint code before) or use `y
 
 Before creating a build, you should update the following files/settings:
 
-1: Everything under `"config"` key in `package.json`.
-2: Supported browsers can be changes under `"browserslist"` key in `package.json`.
-3: Add an app icon in `src/favicon.png`. The build will create all possible icons for your app (iOS, Android, Browsers, ...). You should use a high enough resolution, minimum of 256x256px.
+- 1: Everything under `"config"` key in `package.json`.
+- 2: Supported browsers can be changes under `"browserslist"` key in `package.json`.
+- 3: Add an app icon in `src/favicon.png`. The build will create all possible icons for your app (iOS, Android, Browsers, ...). You should use a high enough resolution, minimum of 256x256px.
 
 ## Files to deploy
 
