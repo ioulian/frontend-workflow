@@ -6,7 +6,7 @@
     "module": "es6",
     "target": "es5",
     "jsx": "react",
-    "allowJs": true,
+    "allowJs": false,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "typeRoots": ["./src/js/typings"],
