@@ -8,3 +8,7 @@
 
 @import './vendor/base/styles';
 @import './../node_modules/bulma/bulma';
+
+@include setup-spacings();
+
+// Add your styles here

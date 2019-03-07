@@ -9,10 +9,10 @@ module.exports = merge(common, {
   plugins: [
     new FaviconsWebpackPlugin({
       logo: path.resolve(__dirname, 'src/favicon.png'),
-      prefix: 'icons/',
+      prefix: 'favicons/',
       emitStats: false,
       statsFilename: 'iconstats.json',
-      persistentCache: true,
+      persistentCache: false,
       inject: true,
       background: config.theme,
       title: config.name,

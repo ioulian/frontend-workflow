@@ -9,28 +9,30 @@ $spacingPositions: (('t', 'top'), ('r', 'right'), ('b', 'bottom'), ('l', 'left')
   @return if($key == 'none', 0, $value + $spacingUnit);
 }
 
-@each $size in $spacingSizes {
-  $sizeKey: nth($size, 1);
-  $sizeValue: nth($size, 2);
+@mixin setup-spacings() {
+  @each $size in $spacingSizes {
+    $sizeKey: nth($size, 1);
+    $sizeValue: nth($size, 2);
 
-  .#{$spacingMarginKey}#{$spacingSeparator}#{$sizeKey} {
-    margin: spacingsizevalue($sizeKey, $sizeValue);
-  }
-
-  .#{$spacingPaddingKey}#{$spacingSeparator}#{$sizeKey} {
-    padding: spacingsizevalue($sizeKey, $sizeValue);
-  }
-
-  @each $position in $spacingPositions {
-    $posKey: nth($position, 1);
-    $posValue: nth($position, 2);
-
-    .#{$spacingMarginKey}#{$spacingSeparator}#{$posKey}#{$spacingSeparator}#{$sizeKey} {
-      margin-#{$posValue}: spacingsizevalue($sizeKey, $sizeValue);
+    .#{$spacingMarginKey}#{$spacingSeparator}#{$sizeKey} {
+      margin: spacingsizevalue($sizeKey, $sizeValue);
     }
 
-    .#{$spacingPaddingKey}#{$spacingSeparator}#{$posKey}#{$spacingSeparator}#{$sizeKey} {
-      padding-#{$posValue}: spacingsizevalue($sizeKey, $sizeValue);
+    .#{$spacingPaddingKey}#{$spacingSeparator}#{$sizeKey} {
+      padding: spacingsizevalue($sizeKey, $sizeValue);
+    }
+
+    @each $position in $spacingPositions {
+      $posKey: nth($position, 1);
+      $posValue: nth($position, 2);
+
+      .#{$spacingMarginKey}#{$spacingSeparator}#{$posKey}#{$spacingSeparator}#{$sizeKey} {
+        margin-#{$posValue}: spacingsizevalue($sizeKey, $sizeValue);
+      }
+
+      .#{$spacingPaddingKey}#{$spacingSeparator}#{$posKey}#{$spacingSeparator}#{$sizeKey} {
+        padding-#{$posValue}: spacingsizevalue($sizeKey, $sizeValue);
+      }
     }
   }
 }

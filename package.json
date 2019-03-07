@@ -29,12 +29,12 @@
   },
   "private": false,
   "sideEffects": [
-    "*.css"
+    "*.css",
+    "*.scss"
   ],
   "dependencies": {
     "@types/throttle-debounce": "1.1.0",
     "bulma": "0.7.2",
-    "node-sass": "^4.11.0",
     "onfire.js": "2.0.0",
     "throttle-debounce": "2.1.0"
   },
@@ -42,7 +42,7 @@
     "start": "npx webpack-dev-server --open --config webpack.dev.js",
     "watch": "npx webpack --watch --config webpack.dev.js",
     "build": "yarn lint && yarn export",
-    "export": "npx webpack --config webpack.prod.js",
+    "export": "NODE_ENV=production npx webpack --config webpack.prod.js",
     "lint": "yarn lint:js && yarn lint:css",
     "lint:js": "npx typescript --noEmit --project .tsconfig.json && npx tslint 'src/**/*.ts' -t verbose -c .tslint.json",
     "lint:css": "npx stylelint 'src/**/*.scss'"
@@ -56,6 +56,7 @@
     "favicons-webpack-plugin": "0.0.9",
     "file-loader": "3.0.1",
     "html-webpack-plugin": "3.2.0",
+    "mini-css-extract-plugin": "0.5.0",
     "postcss-assets": "5.0.0",
     "postcss-css-variables": "0.11.0",
     "postcss-loader": "3.0.0",
@@ -64,12 +65,14 @@
     "postcss-utilities": "0.8.0",
     "prettier": "1.16.0",
     "prettier-webpack-plugin": "1.2.0",
-    "sass-loader": "^7.1.0",
+    "sass-loader": "7.1.0",
     "script-loader": "0.7.2",
     "style-loader": "0.23.1",
     "stylelint": "9.10.1",
     "stylelint-config-standard": "18.2.0",
     "stylelint-webpack-plugin": "0.10.5",
+    "sw-precache-webpack-plugin": "0.11.5",
+    "node-sass": "4.11.0",
     "ts-loader": "5.3.3",
     "tslint": "5.12.1",
     "tslint-config-prettier": "1.17.0",
@@ -84,6 +87,8 @@
     "webpack-stream": "5.1.1"
   },
   "config": {
+    "publicPath": "https://frontend-workflow.firstsite.be",
+    "cacheId": "frontend-workflow",
     "name": "Frontend workflow",
     "theme": "#fff"
   },

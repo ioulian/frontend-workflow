@@ -78,6 +78,11 @@ All other files you should NOT deploy to production as this can pose a security 
 
 If you encounter bugs or have some requests, please create a ticket at [Github](https://github.com/ioulian/frontend-workflow/issues)
 
+## TODO
+
+- Fix CSS not outputting when building
+- Add service worker
+
 ## Copyright and license
 
 Code copyright 2019 Yulian Alexeyev. Code released under [the MIT license](LICENSE).
