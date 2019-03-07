@@ -1,6 +1,18 @@
 # Frontend workflow
 
-This repository contains a starterkit for developing a frontend application/website. It contains code linting (with Prettier, TSLint and StyleLint), Typescript, PostCSS with SASS (that has Bulma.io framework initialized) and generation of Favicons. The build is based on Webpack 4.
+This repository contains a starterkit for developing a frontend application/website. It contains code linting (with Prettier, TSLint and StyleLint), TypeScript, PostCSS with SASS (that has Bulma.io framework initialized) and generation of Favicons. The build is based on Webpack 4.
+
+The focus of this workflow is performance:
+
+- By using a css-only framework, you are free to choose **whatever JS Framework you want**.
+- By inlining critical CSS/JS and async loading the rest, you'll get a fast **First Meaningful Paint**.
+- By using linting tools for CSS and JS, everybody follows a **consistent code style**.
+- By using TypeScript, you can check your code on type errors and more.
+- By generating Favicons automatically, you don't need to spend hours making all sizes of icons for all possible usecases.
+- By using a PWA friendly approach, your app will also work **offline by default**.
+
+If you don't like a feature, you can disable it and write another one.
+Currently only TypeScript is supported. Will add vanilla JS soon.
 
 ## Install
 
@@ -33,7 +45,7 @@ yarn
 
 Use `yarn start` to start the webpack dev server, you can now start developing, the browser will be automatically reloaded on any code/asset change. You can add the HTML in `index.html`.
 
-#### Typescript
+#### TypeScript
 
 This starter kit is initialized with TypeScript. You can change the settings in `.tsconfig.json`. Any typings that you will need, you can add in `src/typings`.
 
