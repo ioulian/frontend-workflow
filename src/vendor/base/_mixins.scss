@@ -9,6 +9,7 @@ $spacingPositions: (('t', 'top'), ('r', 'right'), ('b', 'bottom'), ('l', 'left')
   @return if($key == 'none', 0, $value + $spacingUnit);
 }
 
+// Code taken from: https://github.com/jgthms/bulma/issues/451#issuecomment-331758839 and rewritten a bit
 @mixin setup-spacings() {
   @each $size in $spacingSizes {
     $sizeKey: nth($size, 1);

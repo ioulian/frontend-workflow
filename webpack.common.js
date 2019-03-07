@@ -18,9 +18,19 @@ module.exports = {
     publicPath: devMode ? '/' : config.publicPath + '/',
   },
   plugins: [
-    // TODO: add config to sw-precache.json
     new SWPrecacheWebpackPlugin({
-      staticFileGlobs: ['dist/css/**.css', 'dist/**.html', 'dist/images/**.*', 'dist/favicons/**.*', 'dist/js/**.js'],
+      /*staticFileGlobs: [
+        'css/**.css',
+        '**.html',
+        '**.json',
+        '**.ico',
+        '**.xml',
+        '**.png',
+        '**.webapp',
+        'images/**.*',
+        'fonts/**.*',
+        'js/**.js',
+      ],*/
       cacheId: config.cacheId,
       dontCacheBustUrlsMatching: /\.\w{20}\./,
       filename: 'service-worker.js',
@@ -57,11 +67,27 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader'],
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              context: path.resolve(__dirname, 'src'),
+              name: 'images/[path][name].[ext]',
+            },
+          },
+        ],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ['file-loader'],
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              context: path.resolve(__dirname, 'src'),
+              name: 'fonts/[path][name].[ext]',
+            },
+          },
+        ],
       },
     ],
   },

@@ -49,6 +49,11 @@ There are some PostCSS plugins already preinstalled. You can change PostCSS sett
 
 There is a Prettier integration for your code style consitency. You can change its settings in `.prettierrc.json`. There is also an `.editorconfig` available to help you and your IDE to set the correct settings for code style consistency.
 
+#### Images
+
+Images are automatically optimized when creating a production build. No optimizations are done when using it in development mode.
+Favicons/manifest files are also generated on production build only.
+
 ### Linting
 
 The code will be automatically linted, but you also have some linting tasks available:
@@ -80,8 +85,7 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 
 ## TODO
 
-- Fix CSS not outputting when building
-- Add service worker
+- add config to sw-precache.json
 
 ## Copyright and license
 
