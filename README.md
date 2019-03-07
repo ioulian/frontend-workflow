@@ -73,7 +73,7 @@ To create a production build, use `yarn build` (will lint code before) or use `y
 - **SW Precache**: Will generate a service worker to cache resources of the website, thus allowing offline usage. (Depends on how you structure your app).
 - **Async JS**: Will add `async` attribute on all scripts allowing them not to block the rendering.
 
-### Lighthouse autdits
+### Lighthouse audits
 
 With default configuration, the lighthouse audit gives us this score. However, to get the full pass on the audit you must follow it's guidelines when modifying the default settings and adding new CSS and/or JS. Some things you just can't automate fully. Look at the comments below how to fix those issues.
 
