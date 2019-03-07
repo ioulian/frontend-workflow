@@ -66,13 +66,52 @@ The code will be automatically linted, but you also have some linting tasks avai
 
 To create a production build, use `yarn build` (will lint code before) or use `yarn export` to create a build without linting the code.
 
+#### Submodules
+
+- **Favicons**: Will generate all icons and manifests for a PWA ready app.
+- **CriticalCSS**: Will inline critical CSS, based on 3 viewports (Mobile, Tablet Horizontal, Desktop). You can edit the viewports.
+- **SW Precache**: Will generate a service worker to cache resources of the website, thus allowing offline usage. (Depends on how you structure your app).
+- **Async JS**: Will add `async` attribute on all scripts allowing them not to block the rendering.
+
+### Lighthouse autdits
+
+With default configuration, the lighthouse audit gives us this score. However, to get the full pass on the audit you must follow it's guidelines when modifying the default settings and adding new CSS and/or JS. Some things you just can't automate fully. Look at the comments below how to fix those issues.
+
+#### Desktop
+
+- **Performance**: 100. Keep in mind: the more JS/CSS you write, the worse it can get. When adding images, you can use lazy loading for a better score.
+- **Progressive Web App**: 92. You can get 100 by redirecting HTTP to HTTPS.
+- **Accessibility**: 90. By using default Bulma css, the color contrast is not good enough, you can change the colors based on the project.
+- **Best Practices**: 93. Use HTTP/2 on your server for a better score.
+- **SEO**: 100. Please consider reading SEO optimizations articles. Do not forget to add the correct attributes in HTML.
+
+#### Mobile
+
+Same metrics for mobile with default configuration.
+
 ### Options
 
 Before creating a build, you should update the following files/settings:
 
-- 1: Everything under `"config"` key in `package.json`.
+- 1: Everything under `"config"` key in `package.json`. See table below.
 - 2: Supported browsers can be changes under `"browserslist"` key in `package.json`.
 - 3: Add an app icon in `src/favicon.png`. The build will create all possible icons for your app (iOS, Android, Browsers, ...). You should use a high enough resolution, minimum of 256x256px.
+
+| Name                | Type      | Default           | Description                                                             |
+| ------------------- | --------- | ----------------- | ----------------------------------------------------------------------- |
+| publicPath          | `string`  | /                 | The final url where the app will be hosted. Only needed for production. |
+| cacheId             | `string`  | frontend-workflow | Cache ID for Service Worker.                                            |
+| name                | `string`  | Frontend Workflow | Name attribute to be inserted in manifest.json.                         |
+| shortName           | `string`  | Frontend          | Short name attribute to be inserted in manifest.json.                   |
+| description         | `string`  | /                 | Description attribute to be inserted in manifest.json.                  |
+| author              | `string`  | /                 | Author attribute to be inserted in manifest.json.                       |
+| authorUrl           | `string`  | /                 | Author URL attribute to be inserted in manifest.json.                   |
+| theme               | `string`  | /                 | Theme attribute to be inserted in manifest.json. (use with `#`)         |
+| background          | `string`  | /                 | Background attribute to be inserted in manifest.json. (use with `#`)    |
+| modules.favicons    | `boolean` | true              | Generate favicons on build. Only used in production build.              |
+| modules.criticalCSS | `boolean` | true              | Inline Critical CSS. Only used in production build.                     |
+| modules.swPrecache  | `boolean` | true              | Generate a Service Worker. Only used in production build.               |
+| modules.asyncJS     | `boolean` | true              | Add `async` attribute to scripts. Only used in production build.        |
 
 ## Files to deploy
 

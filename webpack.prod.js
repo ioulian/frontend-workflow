@@ -3,11 +3,17 @@ const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
 const AppManifestWebpackPlugin = require('app-manifest-webpack-plugin')
 const ImageminPlugin = require('imagemin-webpack-plugin').default
+const CriticalPlugin = require('webpack-plugin-critical').CriticalPlugin
+const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const config = require('./package.json').config
 const version = require('./package.json').version
 
 module.exports = merge(common, {
   mode: 'production',
+  optimization: {
+    runtimeChunk: 'single',
+  },
   plugins: [
     new ImageminPlugin({
       cacheFolder: path.resolve(__dirname, 'cache'),
@@ -15,41 +21,71 @@ module.exports = merge(common, {
         progressive: true,
       },
     }),
-    new AppManifestWebpackPlugin({
-      logo: path.resolve(__dirname, 'src/favicon.png'),
-      prefix: './',
-      emitStats: false,
-      statsFilename: 'iconstats.json', // can be absolute path
-      statsEncodeHtml: false,
-      persistentCache: false,
-      inject: true,
-      config: {
-        appName: config.name,
-        appShortName: config.shortName,
-        appDescription: config.description, // Your application's description. `string`
-        developerName: config.author, // Your (or your developer's) name. `string`
-        developerURL: config.authorUrl, // Your (or your developer's) URL. `string`
-        background: config.background, // Background colour for flattened icons. `string`
-        theme_color: config.theme, // Theme color for browser chrome. `string`
-        display: 'standalone', // Android display: "browser" or "standalone". `string`
-        orientation: 'any', // Android orientation: "portrait" or "landscape". `string`
-        start_url: '/?homescreen=1', // Android start application's URL. `string`
-        appleStatusBarStyle: 'black-translucent',
-        version: version, // Your application's version number. `number`
-        scope: '/',
-        lang: 'en-US',
-        logging: false, // Print logs to console? `boolean`
-        icons: {
-          android: true, // Create Android homescreen icon. `boolean` or `{ offset, background, shadow }`
-          appleIcon: true, // Create Apple touch icons. `boolean` or `{ offset, background }`
-          appleStartup: true, // Create Apple startup images. `boolean` or `{ offset, background }`
-          coast: true, // Create Opera Coast icon with offset 25%. `boolean` or `{ offset, background }`
-          favicons: true, // Create regular favicons. `boolean`
-          firefox: true, // Create Firefox OS icons. `boolean` or `{ offset, background }`
-          windows: true, // Create Windows 8 tile icons. `boolean` or `{ background }`
-          yandex: true, // Create Yandex browser icon. `boolean` or `{ background }`
-        },
-      },
-    }),
+    config.modules.favicons
+      ? new AppManifestWebpackPlugin({
+          logo: path.resolve(__dirname, 'src/favicon.png'),
+          prefix: './',
+          emitStats: false,
+          statsFilename: 'iconstats.json',
+          statsEncodeHtml: false,
+          persistentCache: false,
+          inject: true,
+          config: {
+            appName: config.name,
+            appShortName: config.shortName,
+            appDescription: config.description,
+            developerName: config.author,
+            developerURL: config.authorUrl,
+            background: config.background,
+            theme_color: config.theme,
+            display: 'standalone',
+            orientation: 'any',
+            start_url: '/?homescreen=1',
+            appleStatusBarStyle: 'black-translucent',
+            version: version,
+            scope: '/',
+            lang: 'en-US',
+            logging: false,
+            icons: {
+              android: true,
+              appleIcon: true,
+              appleStartup: true,
+              coast: true,
+              favicons: true,
+              firefox: true,
+              windows: true,
+              yandex: true,
+            },
+          },
+        })
+      : null,
+    config.modules.criticalCSS
+      ? new CriticalPlugin({
+          src: 'index.html',
+          inline: true,
+          minify: true,
+          dest: 'index.html',
+          dimensions: [
+            {
+              width: 360,
+              height: 500,
+            },
+            {
+              width: 1024,
+              height: 700,
+            },
+            {
+              width: 1300,
+              height: 900,
+            },
+          ],
+        })
+      : null,
+    new InlineManifestWebpackPlugin(),
+    config.modules.asyncJS
+      ? new ScriptExtHtmlWebpackPlugin({
+          defaultAttribute: 'async',
+        })
+      : null,
   ],
 })

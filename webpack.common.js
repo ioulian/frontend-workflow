@@ -18,26 +18,17 @@ module.exports = {
     publicPath: devMode ? '/' : config.publicPath + '/',
   },
   plugins: [
-    new SWPrecacheWebpackPlugin({
-      /*staticFileGlobs: [
-        'css/**.css',
-        '**.html',
-        '**.json',
-        '**.ico',
-        '**.xml',
-        '**.png',
-        '**.webapp',
-        'images/**.*',
-        'fonts/**.*',
-        'js/**.js',
-      ],*/
-      cacheId: config.cacheId,
-      dontCacheBustUrlsMatching: /\.\w{20}\./,
-      filename: 'service-worker.js',
-      minify: true,
-      navigateFallback: config.publicPath + '/index.html',
-      staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
-    }),
+    // Do not forget to remove the ServiceWorker bootsrap code in index.ts
+    config.modules.swPrecache
+      ? new SWPrecacheWebpackPlugin({
+          cacheId: config.cacheId,
+          dontCacheBustUrlsMatching: /\.\w{20}\./,
+          filename: 'service-worker.js',
+          minify: true,
+          navigateFallback: config.publicPath + '/index.html',
+          staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+        })
+      : null,
     new CleanWebpackPlugin(['dist']),
     new MiniCssExtractPlugin({
       filename: devMode ? 'css/[name].css' : 'css/[name].[hash].css',
