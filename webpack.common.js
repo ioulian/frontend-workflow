@@ -15,7 +15,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].[contenthash].js',
-    publicPath: devMode ? '/' : config.publicPath + '/',
+    publicPath: '/', //devMode ? '/' : config.publicPath + '/',
   },
   plugins: [
     // Do not forget to remove the ServiceWorker bootsrap code in index.ts

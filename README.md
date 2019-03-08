@@ -9,7 +9,7 @@ The focus of this workflow is performance:
 - By using linting tools for CSS and JS, everybody follows a **consistent code style**.
 - By using TypeScript, you can check your code on type errors and more.
 - By generating Favicons automatically, you don't need to spend hours making all sizes of icons for all possible usecases.
-- By using a PWA friendly approach, your app will also work **offline by default**.
+- By using a PWA friendly approach, your app will also work **offline by default** and will **cache assets**.
 
 If you don't like a feature, you can disable it and write another one.
 Currently only TypeScript is supported. Will add vanilla JS soon.
@@ -109,25 +109,25 @@ Before creating a build, you should update the following files/settings:
 - 2: Supported browsers can be changes under `"browserslist"` key in `package.json`.
 - 3: Add an app icon in `src/favicon.png`. The build will create all possible icons for your app (iOS, Android, Browsers, ...). You should use a high enough resolution, minimum of 256x256px.
 
-| Name                | Type      | Default           | Description                                                             |
-| ------------------- | --------- | ----------------- | ----------------------------------------------------------------------- |
-| publicPath          | `string`  | /                 | The final url where the app will be hosted. Only needed for production. |
-| cacheId             | `string`  | frontend-workflow | Cache ID for Service Worker.                                            |
-| name                | `string`  | Frontend Workflow | Name attribute to be inserted in manifest.json.                         |
-| shortName           | `string`  | Frontend          | Short name attribute to be inserted in manifest.json.                   |
-| description         | `string`  | /                 | Description attribute to be inserted in manifest.json.                  |
-| author              | `string`  | /                 | Author attribute to be inserted in manifest.json.                       |
-| authorUrl           | `string`  | /                 | Author URL attribute to be inserted in manifest.json.                   |
-| theme               | `string`  | /                 | Theme attribute to be inserted in manifest.json. (use with `#`)         |
-| background          | `string`  | /                 | Background attribute to be inserted in manifest.json. (use with `#`)    |
-| modules.favicons    | `boolean` | true              | Generate favicons on build. Only used in production build.              |
-| modules.criticalCSS | `boolean` | true              | Inline Critical CSS. Only used in production build.                     |
-| modules.swPrecache  | `boolean` | true              | Generate a Service Worker. Only used in production build.               |
-| modules.asyncJS     | `boolean` | true              | Add `async` attribute to scripts. Only used in production build.        |
+| Name                | Type      | Default                               | Description                                                             |
+| ------------------- | --------- | ------------------------------------- | ----------------------------------------------------------------------- |
+| publicPath          | `string`  | /                                     | The final url where the app will be hosted. Only needed for production. |
+| cacheId             | `string`  | frontend-workflow                     | Cache ID for Service Worker.                                            |
+| name                | `string`  | Frontend Workflow                     | Name attribute to be inserted in manifest.json.                         |
+| shortName           | `string`  | Frontend                              | Short name attribute to be inserted in manifest.json.                   |
+| description         | `string`  | /                                     | Description attribute to be inserted in manifest.json.                  |
+| author              | `string`  | /                                     | Author attribute to be inserted in manifest.json.                       |
+| authorUrl           | `string`  | /                                     | Author URL attribute to be inserted in manifest.json.                   |
+| theme               | `string`  | #00d1b2 (Default Bulma primary color) | Theme attribute to be inserted in manifest.json. (use with `#`)         |
+| background          | `string`  | #ffffff                               | Background attribute to be inserted in manifest.json. (use with `#`)    |
+| modules.favicons    | `boolean` | true                                  | Generate favicons on build. Only used in production build.              |
+| modules.criticalCSS | `boolean` | true                                  | Inline Critical CSS. Only used in production build.                     |
+| modules.swPrecache  | `boolean` | true                                  | Generate a Service Worker. Only used in production build.               |
+| modules.asyncJS     | `boolean` | true                                  | Add `async` attribute to scripts. Only used in production build.        |
 
 ## Files to deploy
 
-Webpack creates a bundle of your app in the forlder `dist`. Therefore you can only deploy the build folder to production.
+Webpack creates a bundle of your app in the folder `dist`. Therefore you can only deploy the build folder to production.
 All other files you should NOT deploy to production as this can pose a security threat.
 
 ## Requests and bugs
@@ -137,6 +137,7 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 ## TODO
 
 - add config to sw-precache.json
+- cleanup settings and add more
 
 ## Copyright and license
 
