@@ -40,6 +40,14 @@ module.exports = {
       meta: {
         viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
       },
+      minify: {
+        collapseWhitespace: !devMode,
+        removeComments: !devMode,
+        removeRedundantAttributes: false,
+        removeScriptTypeAttributes: false,
+        removeStyleLinkTypeAttributes: false,
+        useShortDoctype: false,
+      },
     }),
   ],
   module: {

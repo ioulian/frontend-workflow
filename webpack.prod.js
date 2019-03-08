@@ -16,7 +16,7 @@ module.exports = merge(common, {
   },
   plugins: [
     new ImageminPlugin({
-      cacheFolder: path.resolve(__dirname, 'cache'),
+      cacheFolder: path.resolve(__dirname, '.cache'),
       jpegtran: {
         progressive: true,
       },
