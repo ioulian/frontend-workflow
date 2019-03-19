@@ -64,7 +64,6 @@
     "postcss-easing-gradients": "3.0.1",
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "6.5.0",
-    "postcss-short": "5.0.0",
     "postcss-utilities": "0.8.0",
     "prettier": "1.16.0",
     "prettier-webpack-plugin": "1.2.0",

@@ -1,7 +1,6 @@
 module.exports = {
   plugins: [
     require('@csstools/postcss-sass')(),
-    require('postcss-short'),
     require('postcss-utilities'),
     require('postcss-assets'),
     require('postcss-preset-env'),
