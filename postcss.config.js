@@ -5,6 +5,7 @@ module.exports = {
     require('postcss-utilities'),
     require('postcss-assets'),
     require('postcss-preset-env'),
+    require('postcss-easing-gradients'),
     require('postcss-css-variables')({
       preserve: true,
     }),

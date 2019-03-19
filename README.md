@@ -57,6 +57,14 @@ This starterkit is preset with [Bulma css framework](https://bulma.io). You can 
 
 There are some PostCSS plugins already preinstalled. You can change PostCSS setting and add/remove plugins in `postcss.config.js`.
 
+- [postcss-short](https://github.com/jonathantneal/postcss-short)
+- [postcss-utilities](https://github.com/ismamz/postcss-utilities)
+- [postcss-easing-gradients](https://github.com/larsenwork/postcss-easing-gradients)
+- [@csstools/postcss-sass](https://github.com/jonathantneal/postcss-sass)
+- [autoprefixer](https://github.com/postcss/autoprefixer)
+- [postcss-css-variables](https://github.com/MadLittleMods/postcss-css-variables)
+- [cssnano](https://cssnano.co/)
+
 #### Prettier/Editorconfig
 
 There is a Prettier integration for your code style consitency. You can change its settings in `.prettierrc.json`. There is also an `.editorconfig` available to help you and your IDE to set the correct settings for code style consistency.

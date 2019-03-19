@@ -71,7 +71,10 @@ module.exports = {
             loader: 'file-loader',
             options: {
               context: path.resolve(__dirname, 'src'),
-              name: 'images/[path][name].[ext]',
+              name: 'images/[path][name].[hash].[ext]',
+              outputPath: './',
+              publicPath: '../',
+              useRelativePaths: true,
             },
           },
         ],
@@ -83,7 +86,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               context: path.resolve(__dirname, 'src'),
-              name: 'fonts/[path][name].[ext]',
+              name: 'fonts/[path][name].[hash].[ext]',
             },
           },
         ],

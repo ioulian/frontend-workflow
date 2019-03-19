@@ -59,6 +59,33 @@
         <div class="columns">
           <div class="column is-8-desktop is-offset-2-desktop">
             <div class="content">
+              <picture>
+                <source
+                  media="print"
+                  data-srcset="https://responsiveimages.org/demos/basic-implementation/img/test_landscape_1@monochrome.jpg"
+                />
+
+                <source
+                  media="(max-width: 480px)"
+                  data-srcset="https://responsiveimages.org/demos/basic-implementation/test_landscape_1@1x.jpg"
+                />
+
+                <source
+                  media="(max-width: 640px)"
+                  data-srcset="https://responsiveimages.org/demos/basic-implementation/test_landscape_1@2x.jpg"
+                />
+
+                <source
+                  media="(max-width: 1024px)"
+                  data-srcset="https://responsiveimages.org/demos/basic-implementation/test_landscape_1@4x.jpg"
+                />
+
+                <img
+                  data-src="https://responsiveimages.org/demos/basic-implementation/test_landscape_1@4x.jpg"
+                  alt="Nymphenburg Castle in Munich during sunset"
+                  class="lazy"
+                />
+              </picture>
               <h3>What's included</h3>
               <p>
                 The
@@ -235,6 +262,19 @@
                 If you want to
                 <strong>learn more</strong>, follow these links:
               </p>
+              <img
+                class="lazy"
+                data-src="https://responsiveimages.org/demos/on-a-grid/img/yacht_race@fallback.jpg"
+                data-srcset="
+                  https://responsiveimages.org/demos/on-a-grid/img/yacht_race@mobile.jpg       320w,
+                  https://responsiveimages.org/demos/on-a-grid/img/yacht_race@wide-mobile.jpg  480w,
+                  https://responsiveimages.org/demos/on-a-grid/img/yacht_race@tablet.jpg       768w,
+                  https://responsiveimages.org/demos/on-a-grid/img/yacht_race@desktop.jpg     1024w,
+                  https://responsiveimages.org/demos/on-a-grid/img/yacht_race@hires.jpg       1280w
+                "
+                data-sizes="90vw"
+                alt="A very exciting yacht race."
+              />
             </div>
             <div class="field is-grouped">
               <p class="control">
@@ -272,4 +312,12 @@
       </div>
     </footer>
   </body>
+  <script>
+    // Set the options to make LazyLoad self-initialize
+    window.lazyLoadOptions = {
+      elements_selector: '.lazy',
+      // ... more custom settings?
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@11.0.5/dist/lazyload.min.js" async defer></script>
 </html>

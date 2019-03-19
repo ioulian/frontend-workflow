@@ -58,7 +58,7 @@ module.exports = merge(common, {
             },
           },
         })
-      : null,
+      : () => {},
     config.modules.criticalCSS
       ? new CriticalPlugin({
           src: 'index.html',
@@ -80,7 +80,7 @@ module.exports = merge(common, {
             },
           ],
         })
-      : null,
+      : () => {},
     new InlineManifestWebpackPlugin(),
     config.modules.asyncJS
       ? new ScriptExtHtmlWebpackPlugin({
