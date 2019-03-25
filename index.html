@@ -12,7 +12,12 @@
     <nav class="navbar is-primary">
       <div class="container">
         <div class="navbar-brand">
-          <a id="logo" class="navbar-item" href="#" style="font-weight:bold;">
+          <a
+            id="logo"
+            class="navbar-item has-text-weight-bold"
+            href="https://github.com/ioulian/frontend-workflow"
+            target="_blank"
+          >
             Frontend workflow
           </a>
           <span class="navbar-burger burger" data-target="navMenu" aria-controls="navMenu">
@@ -23,11 +28,9 @@
         </div>
         <div id="navMenu" class="navbar-menu">
           <nav class="navbar-end" aria-label="Main menu" role="navigation">
-            <a href="#" class="navbar-item is-active">Home</a>
-            <a href="#" class="navbar-item">Blog</a>
-            <a href="#" class="navbar-item">Forum</a>
-            <a href="#" class="navbar-item">Shop</a>
-            <a href="#" class="navbar-item">Examples</a>
+            <a href="#" class="navbar-item is-active">Sample</a>
+            <a href="#" class="navbar-item">Menu</a>
+            <a href="#" class="navbar-item">Items</a>
           </nav>
         </div>
       </div>
@@ -38,16 +41,11 @@
           <div class="columns">
             <div class="column is-8-desktop is-offset-2-desktop">
               <h1 class="title is-2 is-spaced">
-                Hello Bulma!
+                Frontend workflow
               </h1>
               <h2 class="subtitle is-4">
-                Congratulations! You're running the
-                <strong>Bulma start</strong>
-                project.
-                <br />
-                It includes everything you need to
-                <strong>build your own website</strong>
-                with Bulma.
+                Webpack based frontend workflow that is optimized for <strong>performance</strong>,
+                <strong>ease of use</strong> and <strong>code quality</strong>.
               </h2>
             </div>
           </div>
@@ -59,233 +57,59 @@
         <div class="columns">
           <div class="column is-8-desktop is-offset-2-desktop">
             <div class="content">
-              <picture>
-                <source
-                  media="print"
-                  data-srcset="https://responsiveimages.org/demos/basic-implementation/img/test_landscape_1@monochrome.jpg"
-                />
+              <h3>Documentation</h3>
+              <p>
+                Find all documentation here:
+                <a href="" target="_blank">https://github.com/ioulian/frontend-workflow</a>. This page exists as a demo
+                and examples of specific methods of optimizations.
+              </p>
+              <h3>Lazy loaded images</h3>
+              <h4>Picture tag</h4>
+              <p>
+                <picture>
+                  <source
+                    media="print"
+                    data-srcset="https://responsiveimages.org/demos/basic-implementation/img/test_landscape_1@monochrome.jpg"
+                  />
 
-                <source
-                  media="(max-width: 480px)"
-                  data-srcset="https://responsiveimages.org/demos/basic-implementation/test_landscape_1@1x.jpg"
-                />
+                  <source
+                    media="(max-width: 480px)"
+                    data-srcset="https://responsiveimages.org/demos/basic-implementation/test_landscape_1@1x.jpg"
+                  />
 
-                <source
-                  media="(max-width: 640px)"
-                  data-srcset="https://responsiveimages.org/demos/basic-implementation/test_landscape_1@2x.jpg"
-                />
+                  <source
+                    media="(max-width: 640px)"
+                    data-srcset="https://responsiveimages.org/demos/basic-implementation/test_landscape_1@2x.jpg"
+                  />
 
-                <source
-                  media="(max-width: 1024px)"
-                  data-srcset="https://responsiveimages.org/demos/basic-implementation/test_landscape_1@4x.jpg"
-                />
+                  <source
+                    media="(max-width: 1024px)"
+                    data-srcset="https://responsiveimages.org/demos/basic-implementation/test_landscape_1@4x.jpg"
+                  />
 
+                  <img
+                    data-src="https://responsiveimages.org/demos/basic-implementation/test_landscape_1@4x.jpg"
+                    alt="Nymphenburg Castle in Munich during sunset"
+                    class="lazy"
+                  />
+                </picture>
+              </p>
+
+              <h4>Image tag</h4>
+              <p>
                 <img
-                  data-src="https://responsiveimages.org/demos/basic-implementation/test_landscape_1@4x.jpg"
-                  alt="Nymphenburg Castle in Munich during sunset"
                   class="lazy"
+                  data-src="https://responsiveimages.org/demos/on-a-grid/img/yacht_race@fallback.jpg"
+                  data-srcset="
+                                https://responsiveimages.org/demos/on-a-grid/img/yacht_race@mobile.jpg       320w,
+                                https://responsiveimages.org/demos/on-a-grid/img/yacht_race@wide-mobile.jpg  480w,
+                                https://responsiveimages.org/demos/on-a-grid/img/yacht_race@tablet.jpg       768w,
+                                https://responsiveimages.org/demos/on-a-grid/img/yacht_race@desktop.jpg     1024w,
+                                https://responsiveimages.org/demos/on-a-grid/img/yacht_race@hires.jpg       1280w
+                              "
+                  data-sizes="90vw"
+                  alt="A very exciting yacht race."
                 />
-              </picture>
-              <h3>What's included</h3>
-              <p>
-                The
-                <code>npm</code>
-                dependencies included in
-                <code>package.json</code>
-                are:
-              </p>
-              <ul>
-                <li>
-                  <code>
-                    <a href="https://github.com/jgthms/bulma">bulma</a>
-                  </code>
-                </li>
-                <li>
-                  <code>
-                    <a href="https://github.com/sass/node-sass">node-sass</a>
-                  </code>
-                  to compile your own Sass file
-                </li>
-                <li>
-                  <code>
-                    <a href="https://github.com/postcss/postcss-cli">postcss-cli</a>
-                  </code>
-                  and
-                  <code>
-                    <a href="https://github.com/postcss/autoprefixer">autoprefixer</a>
-                  </code>
-                  to add support for older browsers
-                </li>
-                <li>
-                  <code> <a href="https://babeljs.io/docs/usage/cli/">babel-cli</a> </code>,
-                  <code>
-                    <a href="https://github.com/babel/babel-preset-env">babel-preset-env</a>
-                  </code>
-                  and
-                  <code>
-                    <a href="https://github.com/jmcriffey/babel-preset-es2015-ie">babel-preset-es2015-ie</a>
-                  </code>
-                  for compiling ES6 JavaScript files
-                </li>
-              </ul>
-              <p>
-                Apart from
-                <code>package.json</code>, the following files are included:
-              </p>
-              <ul>
-                <li>
-                  <code>.babelrc</code>
-                  configuration file for
-                  <a href="https://babeljs.io/">Babel</a>
-                </li>
-                <li>
-                  <code>.gitignore</code>
-                  common
-                  <a href="https://git-scm.com/">Git</a>
-                  ignored files
-                </li>
-                <li>
-                  <code>index.html</code>
-                  this HTML5 file
-                </li>
-                <li>
-                  <code>_sass/main.scss</code>
-                  a basic SCSS file that
-                  <strong>imports Bulma</strong>
-                  and explains how to
-                  <strong>customize</strong>
-                  your styles, and compiles to
-                  <code>css/main.css</code>
-                </li>
-                <li>
-                  <code>_javascript/main.js</code>
-                  an ES6 JavaScript that compiles to
-                  <code>lib/main.js</code>
-                </li>
-              </ul>
-              <h3>Try it out!</h3>
-              <p>
-                To see if your setup works, follow these steps:
-              </p>
-              <p>
-                The page background should turn
-                <strong class="has-text-success">green</strong>!
-              </p>
-              <h3>Get started</h3>
-              <p>
-                You're
-                <strong>ready</strong>
-                to create your own designs with Bulma. Just edit or duplicate this page, or simply create a new one!
-                <br />
-                For example, this page is
-                <strong>only</strong>
-                built with the following
-                <strong>Bulma elements</strong>:
-              </p>
-            </div>
-            <table class="table is-bordered is-fullwidth">
-              <thead>
-                <tr>
-                  <th>Type</th>
-                  <th>CSS class</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>Columns</th>
-                  <td>
-                    <code>
-                      <a href="http://bulma.io/documentation/columns/basics">columns</a>
-                    </code>
-                    <code>
-                      <a href="http://bulma.io/documentation/columns/basics">column</a>
-                    </code>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Layout</th>
-                  <td>
-                    <code>
-                      <a href="http://bulma.io/documentation/layout/section">section</a>
-                    </code>
-                    <code>
-                      <a href="http://bulma.io/documentation/layout/container">container</a>
-                    </code>
-                    <code>
-                      <a href="http://bulma.io/documentation/layout/footer">footer</a>
-                    </code>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Elements</th>
-                  <td>
-                    <code>
-                      <a href="http://bulma.io/documentation/elements/button">button</a>
-                    </code>
-                    <code>
-                      <a href="http://bulma.io/documentation/elements/content">content</a>
-                    </code>
-                    <code>
-                      <a href="http://bulma.io/documentation/elements/title">title</a>
-                    </code>
-                    <code>
-                      <a href="http://bulma.io/documentation/elements/title">subtitle</a>
-                    </code>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Form</th>
-                  <td>
-                    <code>
-                      <a href="http://bulma.io/documentation/form/general">field</a>
-                    </code>
-                    <code>
-                      <a href="http://bulma.io/documentation/form/general">control</a>
-                    </code>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Helpers</th>
-                  <td>
-                    <code>
-                      <a href="http://bulma.io/documentation/modifiers/typography-helpers/">has-text-centered</a>
-                    </code>
-                    <code>
-                      <a href="http://bulma.io/documentation/modifiers/typography-helpers/">has-text-weight-semibold</a>
-                    </code>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="content">
-              <p>
-                If you want to
-                <strong>learn more</strong>, follow these links:
-              </p>
-              <img
-                class="lazy"
-                data-src="https://responsiveimages.org/demos/on-a-grid/img/yacht_race@fallback.jpg"
-                data-srcset="
-                  https://responsiveimages.org/demos/on-a-grid/img/yacht_race@mobile.jpg       320w,
-                  https://responsiveimages.org/demos/on-a-grid/img/yacht_race@wide-mobile.jpg  480w,
-                  https://responsiveimages.org/demos/on-a-grid/img/yacht_race@tablet.jpg       768w,
-                  https://responsiveimages.org/demos/on-a-grid/img/yacht_race@desktop.jpg     1024w,
-                  https://responsiveimages.org/demos/on-a-grid/img/yacht_race@hires.jpg       1280w
-                "
-                data-sizes="90vw"
-                alt="A very exciting yacht race."
-              />
-            </div>
-            <div class="field is-grouped">
-              <p class="control">
-                <a class="button is-medium is-primary" href="http://bulma.io">
-                  <strong class="has-text-weight-semibold">Bulma homepage</strong>
-                </a>
-              </p>
-              <p class="control">
-                <a class="button is-medium is-link" href="http://bulma.io/documentation/overview/start/">
-                  <strong class="has-text-weight-semibold">Documentation</strong>
-                </a>
               </p>
             </div>
           </div>
@@ -298,13 +122,12 @@
           <div class="column is-8-desktop is-offset-2-desktop">
             <p>
               <strong class="has-text-weight-semibold">
-                <a href="https://www.npmjs.com/package/bulma-start">bulma-start@0.0.1</a>
+                Code copyright 2019 <a href="https://github.com/ioulian">Yulian Alexeyev</a>.
               </strong>
             </p>
             <p>
               <small>
-                Source code licensed
-                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>
+                Code released under the <a href="http://opensource.org/licenses/mit-license.php">MIT license</a>.
               </small>
             </p>
           </div>

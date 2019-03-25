@@ -146,6 +146,13 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 
 - add config to sw-precache.json
 - cleanup settings and add more
+- Do not stop script on build error
+
+## Possible libraries/workflows
+
+To keep the performance of the app up and the workload for developers low, this is a list of useful libraries/workflows:
+
+- [js-cloudimage-responsive](https://github.com/scaleflex/js-cloudimage-responsive)
 
 ## Copyright and license
 
