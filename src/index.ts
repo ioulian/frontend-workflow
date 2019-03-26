@@ -1,5 +1,5 @@
 import Site from './project/Site'
-import FreshContentNotification from './vendor/bulma/FreshContentNotification'
+import FreshContentNotification from './vendor/bulma/fresh-content-notification/FreshContentNotification'
 
 import './index.scss'
 

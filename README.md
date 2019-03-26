@@ -45,6 +45,8 @@ yarn
 
 Use `yarn start` to start the webpack dev server, you can now start developing, the browser will be automatically reloaded on any code/asset change. You can add the HTML in `index.html`.
 
+For examples on how to use TS within this workflow, please read `TypScript usage examples`.
+
 #### TypeScript
 
 This starter kit is initialized with TypeScript. You can change the settings in `.tsconfig.json`. Any typings that you will need, you can add in `src/typings`.
@@ -137,6 +139,37 @@ Before creating a build, you should update the following files/settings:
 
 Webpack creates a bundle of your app in the folder `dist`. Therefore you can only deploy the build folder to production.
 All other files you should NOT deploy to production as this can pose a security threat.
+
+## TypScript usage examples
+
+Here are some examples on how to use TS with this workflow.
+
+### Import thirdparty library
+
+If a library in question is written in TS or has TS support, you can just import it normally.
+
+```js
+import EE from 'onfire.js'
+
+export default class Canvas extends EE {
+  constructor() {
+    super()
+  }
+}
+```
+
+If a library has no support for TS, you'll need to search for types in npm repository for this library.
+
+```bash
+yarn add @types/jszip
+```
+
+```js
+import JSZip from 'jszip'
+const zip = new JSZip()
+```
+
+If no types do not exist, you'll need to create one yourself and add it to folder `src/typings/`. Find information on how to do it here: [https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html)
 
 ## Requests and bugs
 

@@ -100,8 +100,8 @@
     "theme": "#00d1b2",
     "background": "#fff",
     "modules": {
-      "favicons": true,
-      "criticalCSS": true,
+      "favicons": false,
+      "criticalCSS": false,
       "swPrecache": true,
       "asyncJS": true
     }
