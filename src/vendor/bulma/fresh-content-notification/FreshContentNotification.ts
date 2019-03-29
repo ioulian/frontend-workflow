@@ -2,10 +2,15 @@
  * V: 0.1.0
  */
 
-import './FreshContentNotification.scss'
+import './FreshContentNotification.css'
 
+/**
+ * Shows a toaster notification when the site is cached by a service worker and a new content is available to download
+ *
+ * Clicking on the toaster just refreshes the page
+ */
 export default class FreshContentNotification {
-  public static show(content: string = 'New content available, click to refresh', timeout: number = 3000): void {
+  public static show(content: string = 'New content available, click to refresh', timeout: number = 5000): void {
     document.body.insertAdjacentHTML(
       'beforeend',
       `<div class="fresh-content-notification notification is-success m-b-sm m-r-sm"><button class="delete"></button><p>${content}</p></div>`
@@ -27,12 +32,15 @@ export default class FreshContentNotification {
       'click',
       (e: MouseEvent) => {
         e.preventDefault()
+
+        // Do not refresh the page when dismissing the toaster
         e.stopPropagation()
         el.remove()
       },
       false
     )
 
+    // Remove after a set time
     setTimeout(() => {
       el.remove()
     }, timeout)

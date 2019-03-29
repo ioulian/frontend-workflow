@@ -4,7 +4,7 @@ This repository contains a starterkit for developing a frontend application/webs
 
 The focus of this workflow is performance:
 
-- By using a css-only framework, you are free to choose **whatever JS Framework you want**.
+- By using a css-only framework, you are free to choose **whatever JS Framework you want**. [1]
 - By inlining critical CSS/JS and async loading the rest, you'll get a fast **First Meaningful Paint**.
 - By using linting tools for CSS and JS, everybody follows a **consistent code style**.
 - By using TypeScript, you can check your code on type errors and more.
@@ -13,6 +13,8 @@ The focus of this workflow is performance:
 
 If you don't like a feature, you can disable it and write another one.
 Currently only TypeScript is supported. Will add vanilla JS soon.
+
+[1] However, there are some JavaScript components included, that are written for our projects and are handy tools, but here again, you are free to not use them.
 
 ## Install
 
@@ -66,6 +68,8 @@ There are some PostCSS plugins already preinstalled. You can change PostCSS sett
 - [autoprefixer](https://github.com/postcss/autoprefixer)
 - [postcss-css-variables](https://github.com/MadLittleMods/postcss-css-variables)
 - [cssnano](https://cssnano.co/)
+
+**Build performance tip**: Do not use `.scss` if it's not needed, with PostCSS plugins you can do a lot of stuff. If you need Bulma mixins and colors, you should use `.scss` then.
 
 #### Prettier/Editorconfig
 
@@ -148,7 +152,7 @@ Here are some examples on how to use TS with this workflow.
 
 If a library in question is written in TS or has TS support, you can just import it normally.
 
-```js
+```ts
 import EE from 'onfire.js'
 
 export default class Canvas extends EE {
@@ -164,7 +168,7 @@ If a library has no support for TS, you'll need to search for types in npm repos
 yarn add @types/jszip
 ```
 
-```js
+```ts
 import JSZip from 'jszip'
 const zip = new JSZip()
 ```
@@ -180,6 +184,7 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 - add config to sw-precache.json
 - cleanup settings and add more
 - Do not stop script on build error
+- export css for entry points
 
 ## Possible libraries/workflows
 

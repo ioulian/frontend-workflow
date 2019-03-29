@@ -1,0 +1,11 @@
+.fw-expandable {
+  &__toggle {
+    cursor: pointer;
+  }
+
+  &__content-wrapper {
+    transition: height var(--duration-slow, 500ms);
+    overflow: hidden;
+    height: 0;
+  }
+}

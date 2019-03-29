@@ -2,61 +2,66 @@
 v: 0.0.1
  */
 
-export class Factory {
-  static instances: any[] = []
+type Class = {new (...args: any[]): any}
 
-  el: Element
+export const Factory = (Type: Class = class {}) =>
+  class extends Type {
+    public static instances: any[] = []
 
-  constructor(el: Element) {
-    this.el = el
-  }
+    public el: Element
 
-  detachSelf(): void {}
+    constructor(el: Element, ...restArgs: any[]) {
+      super()
 
-  static initDrupalBehaviors(selector: string) {
-    ;(window as any).Drupal.behaviors[`attach${this.constructor.name}`] = {
-      attach: (context: Element | Document): void => {
-        // 1: Context is document when run the first time
-        // 2: Sometimes, the context is not part of the DOM, ignore it then
-        if (context !== document && document.body.contains(context) === false) {
-          return
+      this.el = el
+    }
+
+    public detachSelf(): void {}
+
+    public static initDrupalBehaviors(selector: string, ...restArgs: any[]) {
+      ;(window as any).Drupal.behaviors[`attach${this.constructor.name}`] = {
+        attach: (context: Element | Document): void => {
+          // 1: Context is document when run the first time
+          // 2: Sometimes, the context is not part of the DOM, ignore it then
+          if (context !== document && document.body.contains(context) === false) {
+            return
+          }
+
+          // Update instances with new ones if there are any
+          this.attach(selector)
+        },
+        detach: (context: Element | Document): void => {
+          // Remove unneeded instances, that have been deleted from the DOM
+          this.detach(context)
+        },
+      }
+    }
+
+    public static attach(selector: string, ...restArgs: any[]): void {
+      this.instances = [
+        ...this.instances,
+        ...[...document.querySelectorAll(selector)]
+          // Filter out the processed instances
+          .filter((el: Element) => el.classList.contains('loaded') === false)
+          .map((el: Element) => {
+            // Create new instance and set it to processed
+            const newInstance = new this(el, ...restArgs)
+            newInstance.el.classList.add('loaded')
+            return newInstance
+          }),
+      ]
+    }
+
+    public static detach(context: Element | Document): void {
+      this.instances = this.instances.filter((instance: any) => {
+        // Keep the instance if it was not added or removed
+        if (context.contains(instance.el) === false) {
+          return true
         }
 
-        // Update instances with new ones if there are any
-        this.attach(selector)
-      },
-      detach: (context: Element | Document): void => {
-        // Remove unneeded instances, that have been deleted from the DOM
-        this.detach(context)
-      },
+        instance.el.classList.remove('loaded')
+        instance.detachSelf()
+        return false
+      })
     }
   }
-
-  static attach(selector: string): void {
-    this.instances = [
-      ...this.instances,
-      ...[...document.querySelectorAll(selector)]
-        // Filter out the processed instances
-        .filter((el: Element) => el.classList.contains('loaded') === false)
-        .map((el: Element) => {
-          // Create new instance and set it to processed
-          const newInstance = new this(el)
-          newInstance.el.classList.add('loaded')
-          return newInstance
-        }),
-    ]
-  }
-
-  static detach(context: Element | Document): void {
-    this.instances = this.instances.filter((instance: Factory) => {
-      // Keep the instance if it was not added or removed
-      if (context.contains(instance.el) === false) {
-        return true
-      }
-
-      instance.el.classList.remove('loaded')
-      instance.detachSelf()
-      return false
-    })
-  }
-}

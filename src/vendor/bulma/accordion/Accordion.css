@@ -1,0 +1,8 @@
+.fw-accordion {
+  &__item {
+    &__header {
+      position: relative;
+      cursor: pointer;
+    }
+  }
+}

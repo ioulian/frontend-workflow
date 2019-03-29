@@ -11,6 +11,10 @@ module.exports = {
   target: 'web',
   entry: {
     main: path.resolve(__dirname, 'src/index.ts'),
+    clickthrough: path.resolve(__dirname, 'src/vendor/bulma/clickthrough/index.ts'),
+    expandable: path.resolve(__dirname, 'src/vendor/bulma/expandable/index.ts'),
+    accordion: path.resolve(__dirname, 'src/vendor/bulma/accordion/index.ts'),
+    sameheight: path.resolve(__dirname, 'src/vendor/bulma/sameheight/index.ts'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
