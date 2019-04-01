@@ -1,0 +1,25 @@
+@import './../../base/variables';
+
+.navbar {
+  .has-dropdown {
+    .navbar-link:not(.is-arrowless) {
+      &::after {
+        transition: transform $duration-normal $swift-in;
+      }
+    }
+
+    &:not(.is-open) {
+      .navbar-dropdown {
+        display: none;
+      }
+    }
+
+    &.is-open {
+      .navbar-link:not(.is-arrowless) {
+        &::after {
+          transform: rotate(-135deg);
+        }
+      }
+    }
+  }
+}

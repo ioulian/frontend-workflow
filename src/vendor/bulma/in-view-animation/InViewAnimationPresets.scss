@@ -1,0 +1,73 @@
+@import './InViewAnimation';
+
+.js-in-view-animation {
+  $root: &;
+
+  &--fade-in-from-top {
+    @include in-view-animation-row() {
+      #{$root}__item {
+        @include in-view-animation(
+          (
+            transform: translate3d(0, -1rem, 0),
+            opacity: 0,
+          ),
+          (
+            transform: translate3d(0, 0, 0),
+            opacity: 1,
+          )
+        );
+      }
+    }
+  }
+
+  &--fade-in-from-right {
+    @include in-view-animation-row() {
+      #{$root}__item {
+        @include in-view-animation(
+          (
+            transform: translate3d(1rem, 0, 0),
+            opacity: 0,
+          ),
+          (
+            transform: translate3d(0, 0, 0),
+            opacity: 1,
+          )
+        );
+      }
+    }
+  }
+
+  &--fade-in-from-bottom {
+    @include in-view-animation-row() {
+      #{$root}__item {
+        @include in-view-animation(
+          (
+            transform: translate3d(0, 1rem, 0),
+            opacity: 0,
+          ),
+          (
+            transform: translate3d(0, 0, 0),
+            opacity: 1,
+          )
+        );
+      }
+    }
+  }
+
+  &--fade-in-from-left {
+    @include in-view-animation-row() {
+      #{$root}__item {
+        @include in-view-animation(
+          (
+            transform: translate3d(-1rem, 0, 0),
+            opacity: 0,
+          ),
+          (
+            transform: translate3d(0, 0, 0),
+            opacity: 1,
+          )
+        );
+      }
+    }
+  }
+}

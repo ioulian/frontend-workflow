@@ -29,7 +29,24 @@
         <div id="navMenu" class="navbar-menu">
           <nav class="navbar-end" aria-label="Main menu" role="navigation">
             <a href="#" class="navbar-item is-active">Sample</a>
-            <a href="#" class="navbar-item">Menu</a>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a href="#" class="navbar-link">Menu</a>
+              <div class="navbar-dropdown">
+                <a href="#" class="navbar-item">
+                  About
+                </a>
+                <a href="#" class="navbar-item">
+                  Jobs
+                </a>
+                <a href="#" class="navbar-item">
+                  Contact
+                </a>
+                <hr class="navbar-divider" />
+                <a href="#" class="navbar-item">
+                  Report an issue
+                </a>
+              </div>
+            </div>
             <a href="#" class="navbar-item">Items</a>
           </nav>
         </div>
@@ -270,6 +287,25 @@
                 <div class="same-height-example__item js-sameheight__child">
                   Fourth column Fourth lumn
                 </div>
+              </div>
+
+              <h3>In View Animation</h3>
+              <p>These animations will trigger when the element enters the viewport (or is already in the viewport)</p>
+
+              <div class="js-in-view-animation js-in-view-animation--fade-in-from-top">
+                <p class="js-in-view-animation__item">Will fade in from top</p>
+              </div>
+
+              <div class="js-in-view-animation js-in-view-animation--fade-in-from-right">
+                <p class="js-in-view-animation__item">Will fade in from right</p>
+              </div>
+
+              <div class="js-in-view-animation js-in-view-animation--fade-in-from-bottom">
+                <p class="js-in-view-animation__item">Will fade in from bottom</p>
+              </div>
+
+              <div class="js-in-view-animation js-in-view-animation--fade-in-from-left">
+                <p class="js-in-view-animation__item">Will fade in from left</p>
               </div>
             </div>
           </div>

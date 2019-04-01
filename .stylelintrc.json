@@ -15,7 +15,8 @@
           "mixin",
           "return",
           "while",
-          "util"
+          "util",
+          "at-root"
         ]
       }
     ]

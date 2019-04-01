@@ -9,7 +9,7 @@ export default class Site {
     }
 
     // Add your stuff here
-    ResponsiveNavbar.attach('.navbar-burger')
+    ResponsiveNavbar.attach()
   }
 
   public static getInstance(): Site {

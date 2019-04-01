@@ -15,6 +15,7 @@ module.exports = {
     expandable: path.resolve(__dirname, 'src/vendor/bulma/expandable/index.ts'),
     accordion: path.resolve(__dirname, 'src/vendor/bulma/accordion/index.ts'),
     sameheight: path.resolve(__dirname, 'src/vendor/bulma/sameheight/index.ts'),
+    inviewanimation: path.resolve(__dirname, 'src/vendor/bulma/in-view-animation/index.ts'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
