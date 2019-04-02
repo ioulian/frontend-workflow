@@ -10,11 +10,13 @@ The focus of this workflow is performance:
 - By using TypeScript, you can check your code on type errors and more.
 - By generating Favicons automatically, you don't need to spend hours making all sizes of icons for all possible usecases.
 - By using a PWA friendly approach, your app will also work **offline by default** and will **cache assets**.
+- **Drupal 8 ready**: included (but not loaded by default) JavaScript components automatically check if they are loaded in Drupal environment and will **attach to DrupalBehaviors** accordingly.
+- Code splitting ready, you can use **dynamic imports by default**.
 
 If you don't like a feature, you can disable it and write another one.
-Currently only TypeScript is supported. Will add vanilla JS soon.
 
 [1] However, there are some JavaScript components included, that are written for our projects and are handy tools, but here again, you are free to not use them.
+If you want to use them, you can import them into your bundle or un-comment them in webpack config to be loaded as stand-alone.
 
 ## Install
 
@@ -53,8 +55,6 @@ For examples on how to use TS within this workflow, please read `TypScript usage
 
 This starter kit is initialized with TypeScript. You can change the settings in `.tsconfig.json`. Any typings that you will need, you can add in `src/typings`.
 
-There is no normal `.js` files loader, this will be added in the future updates.
-
 #### CSS (w/ PostCSS and SCSS)
 
 This starterkit is preset with [Bulma css framework](https://bulma.io). You can use it or you can remove it in index.scss. You can also use normal `.css` files in your project, they will be bundled too.
@@ -87,6 +87,60 @@ The code will be automatically linted, but you also have some linting tasks avai
 - `yarn lint:js` will lint all TypeScript files with TSLint. You can change options of the linter in `.tslint.json`.
 - `yarn lint:css` will lint all (s)css with StyleLint. You can change options of the linter in `.stylelintrc.json`.
 - `yarn lint` will run both lint tasks
+
+### Components
+
+There are some JavaScript components available for your ease (We have included them as we reuse them a lot). There are 2 ways of using them.
+
+1. **(Easy/Not so performant)**: Un-comment them from entry points from `webpack.common.js`. This way they are automatically initialized and are separate from the main bundle. This way you can load them with Drupal dependencies on specific pages/modules. They are also added in the built `.html` file and they just work.
+2. **(More work, but most performant)**: You can import them (not the `index.ts` file) manually in `Site.ts` and attach them. This way, they will be bundled in main bundle so they will require only 1 network request.
+
+```ts
+import {ResponsiveNavbar} from './../vendor/bulma/responsive-navbar/ResponsiveNavbar'
+// ...
+
+ResponsiveNavbar.attach()
+```
+
+We suggest that you bundle them in `Site.ts` manually. If you have a big dependency that is not frequently used in the website, you can load it separately as a different entry point.
+
+### Code splitting
+
+This is a default webpack behavior, please read more information here: [https://webpack.js.org/guides/code-splitting/](https://webpack.js.org/guides/code-splitting/).
+
+This is a basic example how you can use it:
+
+```ts
+// ./components/BigComponent.ts
+
+export class BigComponent {
+  constructor(name: string) {
+    console.log(`big component initialized: ${name}`)
+  }
+}
+```
+
+```ts
+// Site.ts
+
+// ...
+export default class Site {
+  constructor() {
+    // ...
+    this.initBigBundle()
+  }
+
+  private async initBigBundle(): Promise<void> {
+    const {BigComponent} = await import(/* webpackChunkName: "bigcomponent" */ './components/BigComponent')
+    const bigComponentInstance = new BigComponent('foo')
+  }
+
+  public static getInstance(): Site {
+    // ...
+  }
+}
+
+```
 
 ### Building
 

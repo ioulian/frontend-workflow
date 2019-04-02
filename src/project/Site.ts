@@ -1,4 +1,3 @@
-import {ResponsiveNavbar} from '../vendor/bulma/responsive-navbar/ResponsiveNavbar'
 // import Settings from './Settings';
 
 let instance: Site | null = null
@@ -9,7 +8,6 @@ export default class Site {
     }
 
     // Add your stuff here
-    ResponsiveNavbar.attach()
   }
 
   public static getInstance(): Site {
