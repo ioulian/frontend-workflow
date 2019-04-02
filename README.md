@@ -146,7 +146,6 @@ export class Site {
 
   // ...
 }
-
 ```
 
 ### Building
@@ -181,8 +180,8 @@ Same metrics for mobile with default configuration.
 Before creating a build, you should update the following files/settings:
 
 - 1: Everything under `"config"` key in `package.json`. See table below.
-- 2: Supported browsers can be changes under `"browserslist"` key in `package.json`.
-- 3: Add an app icon in `src/favicon.png`. The build will create all possible icons for your app (iOS, Android, Browsers, ...). You should use a high enough resolution, minimum of 256x256px.
+- 2: Supported browsers can be changed under `"browserslist"` key in `package.json`.
+- 3: Add an app icon in `src/favicon.png`. The build will create all possible icons for your app (iOS, Android, Browsers, ...). You should use a high enough resolution, minimum of 256x256px (preferably 1024x1024px).
 
 | Name                | Type      | Default                               | Description                                                             |
 | ------------------- | --------- | ------------------------------------- | ----------------------------------------------------------------------- |
