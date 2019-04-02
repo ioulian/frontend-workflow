@@ -1,7 +1,7 @@
 // import Settings from './Settings';
 
 let instance: Site | null = null
-export default class Site {
+export class Site {
   constructor() {
     if (!instance) {
       instance = this

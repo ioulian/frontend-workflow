@@ -82,7 +82,7 @@ Favicons/manifest files are also generated on production build only.
 
 ### Linting
 
-The code will be automatically linted, but you also have some linting tasks available:
+You also have some linting tasks available:
 
 - `yarn lint:js` will lint all TypeScript files with TSLint. You can change options of the linter in `.tslint.json`.
 - `yarn lint:css` will lint all (s)css with StyleLint. You can change options of the linter in `.stylelintrc.json`.
@@ -108,7 +108,6 @@ There are some JavaScript components available for your ease (We have included t
 ```ts
 import {ResponsiveNavbar} from './../vendor/bulma/responsive-navbar/ResponsiveNavbar'
 // ...
-
 ResponsiveNavbar.attach()
 ```
 
@@ -134,7 +133,7 @@ export class BigComponent {
 // Site.ts
 
 // ...
-export default class Site {
+export class Site {
   constructor() {
     // ...
     this.initBigBundle()
@@ -145,9 +144,7 @@ export default class Site {
     const bigComponentInstance = new BigComponent('foo')
   }
 
-  public static getInstance(): Site {
-    // ...
-  }
+  // ...
 }
 
 ```
