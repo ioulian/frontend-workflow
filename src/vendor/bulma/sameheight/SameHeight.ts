@@ -24,9 +24,7 @@ const defaults: SettingsType = {
   watchSubtreeModification: true,
 }
 
-let allSameHeights: SameHeight[] = []
-
-let globalEventsAdded: boolean = false
+const allSameHeights: SameHeight[] = []
 
 const elementDocumentOffsetTop = (el: Element): number =>
   (el as HTMLElement).offsetTop +
@@ -61,7 +59,7 @@ export class SameHeight extends Factory() {
       if (this.el.getAttribute('data-height-attribute') === 'min-height') {
         settingsFromDom.heightAttribute = HeightAttribute['min-height']
       } else if (this.el.getAttribute('data-height-attribute') === 'height') {
-        settingsFromDom.heightAttribute = HeightAttribute['height']
+        settingsFromDom.heightAttribute = HeightAttribute.height
       }
     }
 
@@ -195,25 +193,6 @@ export class SameHeight extends Factory() {
       ;(elements[i] as HTMLElement).style[this.settings.heightAttribute] = `${height}px`
     })
   }
-
-  /*  public static init(selector: string, settings: SettingsType = {}, addGlobalEvents: boolean = false): void {
-    allSameHeights = [
-      ...allSameHeights,
-      ...[...document.querySelectorAll(selector)].map(el => new SameHeight(el, settings)),
-    ]
-
-    if (addGlobalEvents === true && globalEventsAdded === false) {
-      window.addEventListener(
-        'load',
-        () => {
-          SameHeight.updateAll()
-        },
-        false
-      )
-
-      globalEventsAdded = true
-    }
-  }*/
 
   public static destroyAll(): void {
     allSameHeights.forEach(el => {

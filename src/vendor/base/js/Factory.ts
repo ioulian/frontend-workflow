@@ -2,7 +2,7 @@
 v: 0.0.1
  */
 
-type Class = {new (...args: any[]): any}
+type Class = new (...args: any[]) => any
 
 export const Factory = (Type: Class = class {}) =>
   class extends Type {
@@ -15,8 +15,6 @@ export const Factory = (Type: Class = class {}) =>
 
       this.el = el
     }
-
-    public detachSelf(): void {}
 
     public static initDrupalBehaviors(selector: string, ...restArgs: any[]) {
       ;(window as any).Drupal.behaviors[`attach${this.constructor.name}`] = {
@@ -60,7 +58,6 @@ export const Factory = (Type: Class = class {}) =>
         }
 
         instance.el.classList.remove('loaded')
-        instance.detachSelf()
         return false
       })
     }

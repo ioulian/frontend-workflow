@@ -88,6 +88,16 @@ The code will be automatically linted, but you also have some linting tasks avai
 - `yarn lint:css` will lint all (s)css with StyleLint. You can change options of the linter in `.stylelintrc.json`.
 - `yarn lint` will run both lint tasks
 
+#### Linting in VSCode
+
+To help you with linting, you can install these extensions for VSCode:
+
+- EditorConfig for VS Code
+- ESLint
+- Prettier
+- stylelint
+- TSLint
+
 ### Components
 
 There are some JavaScript components available for your ease (We have included them as we reuse them a lot). There are 2 ways of using them.

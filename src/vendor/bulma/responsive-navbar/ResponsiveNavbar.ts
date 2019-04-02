@@ -5,7 +5,7 @@
 import './ResponsiveNavbar.scss'
 
 export class ResponsiveNavbar {
-  static attach() {
+  public static attach() {
     document.addEventListener('click', e => {
       if (e.target instanceof HTMLElement && e.target.matches('.navbar-burger')) {
         const elTarget = document.getElementById(e.target.dataset.target)

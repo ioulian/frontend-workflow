@@ -11,6 +11,7 @@
       "options": ["debug", "info", "log", "time", "timeEnd", "trace"]
     },
     "interface-name": false,
+    "max-classes-per-file": false,
     "member-ordering": false,
     "object-literal-sort-keys": false,
     "ordered-imports": false
