@@ -181,10 +181,7 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 
 ## TODO
 
-- add config to sw-precache.json
-- cleanup settings and add more
 - Do not stop script on build error
-- export css for entry points
 
 ## Possible libraries/workflows
 

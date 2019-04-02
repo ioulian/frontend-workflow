@@ -1,4 +1,7 @@
-@import './../../base/variables';
+@import './../../../bootstrap';
+@import './../../../../node_modules/bulma/sass/utilities/mixins.sass';
+
+$navbar-breakpoint: $desktop !default;
 
 .navbar {
   .has-dropdown {
@@ -14,10 +17,12 @@
       }
     }
 
-    &.is-open {
-      .navbar-link:not(.is-arrowless) {
-        &::after {
-          transform: rotate(-135deg);
+    @include until($navbar-breakpoint) {
+      &.is-open {
+        .navbar-link:not(.is-arrowless) {
+          &::after {
+            transform: rotate(-135deg);
+          }
         }
       }
     }

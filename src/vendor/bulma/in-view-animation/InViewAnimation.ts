@@ -18,7 +18,13 @@ export class InViewAnimation extends Factory() {
 
   public update(entries: IntersectionObserverEntry[]): void {
     entries.forEach(entry => {
-      entry.target.classList.toggle('js-in-view-animation--animate', entry.isIntersecting)
+      if (entry.target.getAttribute('data-once') === 'true') {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('js-in-view-animation--animate')
+        }
+      } else {
+        entry.target.classList.toggle('js-in-view-animation--animate', entry.isIntersecting)
+      }
     })
   }
 
