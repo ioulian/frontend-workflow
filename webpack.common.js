@@ -4,6 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const config = require('./package.json').config
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const devMode = process.env.NODE_ENV !== 'production'
 
@@ -25,6 +26,7 @@ module.exports = {
     publicPath: '/', //devMode ? '/' : config.publicPath + '/',
   },
   plugins: [
+    new FriendlyErrorsWebpackPlugin(),
     // Do not forget to remove the ServiceWorker bootsrap code in index.ts
     config.modules.swPrecache
       ? new SWPrecacheWebpackPlugin({
