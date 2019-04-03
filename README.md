@@ -2,6 +2,8 @@
 
 This repository contains a starterkit for developing a frontend application/website. It contains code linting (with Prettier, TSLint and StyleLint), TypeScript, PostCSS with SASS (that has Bulma.io framework initialized) and generation of Favicons. The build is based on Webpack 4.
 
+You can preview the output here: [https://trusting-perlman-3c2ee5.netlify.com](https://trusting-perlman-3c2ee5.netlify.com). There you'll find included JS components and you can do your own audit checks on this site to compare the performance with other projects.
+
 The focus of this workflow is performance:
 
 - By using a css-only framework, you are free to choose **whatever JS Framework you want**. [1]
@@ -168,14 +170,16 @@ With default configuration, the lighthouse audit gives us this score. However, t
 #### Desktop
 
 - **Performance**: 100. Keep in mind: the more JS/CSS you write, the worse it can get. When adding images, you can use lazy loading for a better score.
-- **Progressive Web App**: 92. You can get 100 by redirecting HTTP to HTTPS.
-- **Accessibility**: 90. By using default Bulma css, the color contrast is not good enough, you can change the colors based on the project.
-- **Best Practices**: 93. Use HTTP/2 on your server for a better score.
+- **Progressive Web App**: 100.
+- **Accessibility**: 91. By using default Bulma css, the color contrast is not good enough, you can change the colors based on the project.
+- **Best Practices**: 100.
 - **SEO**: 100. Please consider reading SEO optimizations articles. Do not forget to add the correct attributes in HTML.
 
 #### Mobile
 
-Same metrics for mobile with default configuration.
+Same metrics for mobile with default configuration except for:
+
+- **Accessibility**: 89. Same error as on desktop.
 
 ### Options
 
@@ -250,6 +254,14 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 To keep the performance of the app up and the workload for developers low, this is a list of useful libraries/workflows:
 
 - [js-cloudimage-responsive](https://github.com/scaleflex/js-cloudimage-responsive)
+
+## Idea behind
+
+This frontend framework started as a simple grunt task (a few years back) that minified CSS and JS. From there it grew into more advanced gulp tasks, that transpiled ES6, built SCSS, generated favicons and optimized images. Now this is rewritten for Webpack.
+
+We use this workflow in our websites and projects and will update it with any new stuff (JS components/performance optimizations/...) that we think will make this workflow better and faster. This is an ongoing project, but maybe in the future we will create a new one when new technologies arrive.
+
+There is no automatic upgrade path available as this is a boilerplate, however it should be possible for you to upgrade to a new version if you only keep `src/` from your project and update everything else. (Except if you change some settings in webpack config or any .json files, you'll need to update them too later).
 
 ## Copyright and license
 
