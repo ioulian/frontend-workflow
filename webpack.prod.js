@@ -6,6 +6,7 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default
 const CriticalPlugin = require('webpack-plugin-critical').CriticalPlugin
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
+const WebappWebpackPlugin = require('webapp-webpack-plugin')
 const config = require('./package.json').config
 const version = require('./package.json').version
 
@@ -22,15 +23,11 @@ module.exports = merge(common, {
       },
     }),
     config.modules.favicons
-      ? new AppManifestWebpackPlugin({
+      ? new WebappWebpackPlugin({
           logo: path.resolve(__dirname, 'src/favicon.png'),
           prefix: './',
-          emitStats: false,
-          statsFilename: 'iconstats.json',
-          statsEncodeHtml: false,
-          persistentCache: false,
           inject: true,
-          config: {
+          favicons: {
             appName: config.name,
             appShortName: config.shortName,
             appDescription: config.description,
@@ -58,6 +55,29 @@ module.exports = merge(common, {
             },
           },
         })
+      : () => {},
+    config.modules.favicons
+      ? new class {
+          // This is needed to fix a bug in favicon generation.
+          // For theme color tag in HTML it uses background property instead of theme color property...
+          apply(compiler) {
+            compiler.hooks.make.tapAsync('CustomPlugin', (compilation, callback) => {
+              compilation.hooks.webappWebpackPluginBeforeEmit.tapAsync('CustomPlugin', (result, callback) => {
+                result.tags = result.tags.map(tag => {
+                  if (tag === `<meta name="theme-color" content="${config.background}">`) {
+                    return `<meta name="theme-color" content="${config.theme}">`
+                  }
+
+                  return tag
+                })
+
+                return callback(null, result)
+              })
+
+              return callback()
+            })
+          }
+        }()
       : () => {},
     config.modules.criticalCSS
       ? new CriticalPlugin({

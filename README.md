@@ -247,7 +247,7 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 
 ## TODO
 
-- Do not stop script on build error
+- Add lazy sizes into bundle, not in CDN (this way we can also cache it and it will work offline)
 
 ## Possible libraries/workflows
 

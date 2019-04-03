@@ -80,7 +80,6 @@ export class Accordion extends Factory(EE) {
   }
 
   public closeOthers(itemNotToClose: AccordionItem): void {
-    console.log(this.items.filter((item: AccordionItem) => item !== itemNotToClose))
     this.items
       .filter((item: AccordionItem) => item !== itemNotToClose)
       .forEach((item: AccordionItem) => {
