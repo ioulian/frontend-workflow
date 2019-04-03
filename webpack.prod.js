@@ -40,7 +40,7 @@ module.exports = merge(common, {
             theme_color: config.theme,
             display: 'standalone',
             orientation: 'any',
-            start_url: '/#homescreen=1',
+            start_url: '/',
             appleStatusBarStyle: 'black-translucent',
             version: version,
             scope: '/',

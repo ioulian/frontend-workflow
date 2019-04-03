@@ -16,7 +16,9 @@ The focus of this workflow is performance:
 If you don't like a feature, you can disable it and write another one.
 
 [1] However, there are some JavaScript components included, that are written for our projects and are handy tools, but here again, you are free to not use them.
-If you want to use them, you can import them into your bundle or un-comment them in webpack config to be loaded as stand-alone.
+If you want to use them, you can import them into your bundle.
+
+By default they are loaded as separate files, you can un-comment them (in `webpack.common.js`) if you do not wish to use them.
 
 ## Install
 
