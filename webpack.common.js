@@ -22,7 +22,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].bundle.[contenthash].js',
-    chunkFilename: 'js/[name].bundle..[contenthash]js',
+    chunkFilename: 'js/[name].bundle.[contenthash]js',
     publicPath: '/', //devMode ? '/' : config.publicPath + '/',
   },
   plugins: [

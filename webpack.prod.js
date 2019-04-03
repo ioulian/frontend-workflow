@@ -1,7 +1,6 @@
 const path = require('path')
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
-const AppManifestWebpackPlugin = require('app-manifest-webpack-plugin')
 const ImageminPlugin = require('imagemin-webpack-plugin').default
 const CriticalPlugin = require('webpack-plugin-critical').CriticalPlugin
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
