@@ -248,6 +248,7 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 ## TODO
 
 - Add lazy sizes into bundle, not in CDN (this way we can also cache it and it will work offline)
+- Follow [Gimli](https://gimli.app/) to add it in the future
 
 ## Possible libraries/workflows
 

@@ -37,7 +37,8 @@
     "@types/throttle-debounce": "1.1.0",
     "bulma": "0.7.2",
     "onfire.js": "2.0.0",
-    "throttle-debounce": "2.1.0"
+    "throttle-debounce": "2.1.0",
+    "vanilla-lazyload": "^11.0.6"
   },
   "scripts": {
     "start": "npx webpack-dev-server --open --config webpack.dev.js",

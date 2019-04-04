@@ -13,7 +13,7 @@ import './ClickThrough.css'
  * The script should be initialized only once, all the dynamic content will be handled by it as
  * it uses event delegation
  */
-export default class ClickThrough {
+export class ClickThrough {
   public static attachEvents(): void {
     window.addEventListener(
       'click',

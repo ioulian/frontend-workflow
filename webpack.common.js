@@ -18,6 +18,7 @@ module.exports = {
     sameheight: path.resolve(__dirname, 'src/vendor/bulma/sameheight/index.ts'),
     inviewanimation: path.resolve(__dirname, 'src/vendor/bulma/in-view-animation/index.ts'),
     responsivenavbar: path.resolve(__dirname, 'src/vendor/bulma/responsive-navbar/index.ts'),
+    lazyloader: path.resolve(__dirname, 'src/vendor/bulma/lazyloader/index.ts'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

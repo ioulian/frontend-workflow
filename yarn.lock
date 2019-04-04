@@ -9502,6 +9502,10 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
+vanilla-lazyload@^11.0.6:
+  version "11.0.6"
+  resolved "https://registry.yarnpkg.com/vanilla-lazyload/-/vanilla-lazyload-11.0.6.tgz#76a13ece6c256d5f6451bc0687038c485441ca11"
+
 vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"

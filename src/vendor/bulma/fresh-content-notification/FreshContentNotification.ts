@@ -9,7 +9,7 @@ import './FreshContentNotification.css'
  *
  * Clicking on the toaster just refreshes the page
  */
-export default class FreshContentNotification {
+export class FreshContentNotification {
   public static show(content: string = 'New content available, click to refresh', timeout: number = 5000): void {
     document.body.insertAdjacentHTML(
       'beforeend',

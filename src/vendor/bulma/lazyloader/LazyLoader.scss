@@ -1,0 +1,15 @@
+@import './../../base/variables';
+
+.fw-lazy-load {
+  $root: &;
+
+  &--opacity {
+    opacity: 0;
+    transition: opacity $duration-normal;
+
+    &#{$root}--loaded,
+    &#{$root}--error {
+      opacity: 1;
+    }
+  }
+}

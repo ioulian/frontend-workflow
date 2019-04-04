@@ -99,7 +99,7 @@
               <h3>Lazy loaded images</h3>
               <h4>Picture tag</h4>
               <p>
-                <picture>
+                <picture width="960" height="640">
                   <source
                     media="print"
                     data-srcset="https://responsiveimages.org/demos/basic-implementation/img/test_landscape_1@monochrome.jpg"
@@ -123,7 +123,9 @@
                   <img
                     data-src="https://responsiveimages.org/demos/basic-implementation/test_landscape_1@4x.jpg"
                     alt="Nymphenburg Castle in Munich during sunset"
-                    class="lazy"
+                    class="fw-lazy-load fw-lazy-load--opacity"
+                    width="960"
+                    height="640"
                   />
                 </picture>
               </p>
@@ -131,7 +133,7 @@
               <h4>Image tag</h4>
               <p>
                 <img
-                  class="lazy"
+                  class="fw-lazy-load fw-lazy-load--opacity"
                   data-src="https://responsiveimages.org/demos/on-a-grid/img/yacht_race@fallback.jpg"
                   data-srcset="
                                 https://responsiveimages.org/demos/on-a-grid/img/yacht_race@mobile.jpg       320w,
@@ -142,6 +144,8 @@
                               "
                   data-sizes="90vw"
                   alt="A very exciting yacht race."
+                  width="1280"
+                  height="852"
                 />
               </p>
               <h3>ClickThrough</h3>
@@ -354,10 +358,4 @@
       </div>
     </footer>
   </body>
-  <script>
-    window.lazyLoadOptions = {
-      elements_selector: '.lazy',
-    }
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@11.0.5/dist/lazyload.min.js" async defer></script>
 </html>
