@@ -1,0 +1,33 @@
+@import './../variables';
+@import './../../../../../node_modules/bulma/sass/utilities/initial-variables';
+@import './../../../../../node_modules/bulma/sass/utilities/mixins';
+
+@mixin fw-set-breakpoints($properties, $values) {
+  @if nth($values, 1) != null {
+    @include fw-set-properties($properties, nth($values, 1));
+  }
+
+  @if nth($values, 2) != null {
+    @include from($tablet) {
+      @include fw-set-properties($properties, nth($values, 2));
+    }
+  }
+
+  @if nth($values, 3) != null {
+    @include from($desktop) {
+      @include fw-set-properties($properties, nth($values, 3));
+    }
+  }
+
+  @if nth($values, 4) != null {
+    @include from($widescreen) {
+      @include fw-set-properties($properties, nth($values, 4));
+    }
+  }
+
+  @if nth($values, 5) != null {
+    @include from($fullhd) {
+      @include fw-set-properties($properties, nth($values, 5));
+    }
+  }
+}

@@ -1,7 +1,7 @@
 /// Sets a specific value for multiple properties
 /// @param {Map} $properties - Properties you want to set
 /// @param {All} $value - The value for the properties
-@mixin set-properties($properties, $value) {
+@mixin fw-set-properties($properties, $value) {
   @each $item in $properties {
     #{$item}: $value;
   }

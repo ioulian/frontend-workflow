@@ -5,22 +5,22 @@ $spacingSeparator: '-';
 $spacingSizes: (('none', 0), ('xxs', 0.125), ('xs', 0.25), ('sm', 0.5), ('md', 1), ('lg', 2), ('xl', 4), ('xxl', 8));
 $spacingPositions: (('t', 'top'), ('r', 'right'), ('b', 'bottom'), ('l', 'left'));
 
-@function spacingsizevalue($key, $value) {
+@function fw-spacingsizevalue($key, $value) {
   @return if($key == 'none', 0, $value + $spacingUnit);
 }
 
 // Code taken from: https://github.com/jgthms/bulma/issues/451#issuecomment-331758839 and rewritten a bit
-@mixin setup-spacings() {
+@mixin fw-setup-spacings() {
   @each $size in $spacingSizes {
     $sizeKey: nth($size, 1);
     $sizeValue: nth($size, 2);
 
     .#{$spacingMarginKey}#{$spacingSeparator}#{$sizeKey} {
-      margin: spacingsizevalue($sizeKey, $sizeValue);
+      margin: fw-spacingsizevalue($sizeKey, $sizeValue);
     }
 
     .#{$spacingPaddingKey}#{$spacingSeparator}#{$sizeKey} {
-      padding: spacingsizevalue($sizeKey, $sizeValue);
+      padding: fw-spacingsizevalue($sizeKey, $sizeValue);
     }
 
     @each $position in $spacingPositions {
@@ -28,11 +28,11 @@ $spacingPositions: (('t', 'top'), ('r', 'right'), ('b', 'bottom'), ('l', 'left')
       $posValue: nth($position, 2);
 
       .#{$spacingMarginKey}#{$spacingSeparator}#{$posKey}#{$spacingSeparator}#{$sizeKey} {
-        margin-#{$posValue}: spacingsizevalue($sizeKey, $sizeValue);
+        margin-#{$posValue}: fw-spacingsizevalue($sizeKey, $sizeValue);
       }
 
       .#{$spacingPaddingKey}#{$spacingSeparator}#{$posKey}#{$spacingSeparator}#{$sizeKey} {
-        padding-#{$posValue}: spacingsizevalue($sizeKey, $sizeValue);
+        padding-#{$posValue}: fw-spacingsizevalue($sizeKey, $sizeValue);
       }
     }
   }

@@ -1,10 +1,12 @@
+@import './../../base/scss/variables';
+
 .fw-expandable {
   &__toggle {
     cursor: pointer;
   }
 
   &__content-wrapper {
-    transition: height var(--duration-slow, 500ms);
+    transition: height $duration-slow;
     overflow: hidden;
     height: 0;
   }

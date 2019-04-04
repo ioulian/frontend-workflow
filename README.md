@@ -247,8 +247,6 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 ## TODO
 
 - Follow [Gimli](https://gimli.app/) to add it in the future
-- Add @mixin set-breakpoints()
-- check if we can reuse mixins from bulma in our mixins (size, position)
 
 ## Possible libraries/workflows
 

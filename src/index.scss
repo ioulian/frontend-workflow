@@ -4,7 +4,10 @@
 @import './vendor/base/scss/styles';
 @import './../node_modules/bulma/bulma';
 
+// Un-comment if you want to debug basic HTML errors
+// @include fw-debug();
+
 // Custom spacings as Bulma doesn't provide any
-@include setup-spacings();
+@include fw-setup-spacings();
 
 // Add your styles here

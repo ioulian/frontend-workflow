@@ -7,7 +7,6 @@ $path-root: '/dist';
 // You can use this as a delay for ajax calls/computations if you know they are fast.
 // That way you won't get a flickering loading bar for example.
 // See: http://cogsci.stackexchange.com/questions/1664/what-is-the-threshold-where-actions-are-perceived-as-instant
-
 $duration-perceptive-instant: 85ms;
 $duration-fast: 100ms; // Use for fast hover effects
 $duration-normal: 300ms;
@@ -28,3 +27,11 @@ $swift-out: cubic-bezier(0.4, 0, 1, 1);
 // Colors.
 $color-white: #fff;
 $color-black: #000;
+
+// Presets
+$padding-vertical: padding-top padding-bottom;
+$padding-horizontal: padding-left padding-right;
+$margin-vertical: margin-top margin-bottom;
+$margin-horizontal: margin-left margin-right;
+$border-vertical: border-top border-bottom;
+$border-horizontal: border-left border-right;
