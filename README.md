@@ -65,7 +65,6 @@ This starterkit is preset with [Bulma css framework](https://bulma.io). You can 
 
 There are some PostCSS plugins already preinstalled. You can change PostCSS setting and add/remove plugins in `postcss.config.js`.
 
-- [postcss-short](https://github.com/jonathantneal/postcss-short)
 - [postcss-utilities](https://github.com/ismamz/postcss-utilities)
 - [postcss-easing-gradients](https://github.com/larsenwork/postcss-easing-gradients)
 - [@csstools/postcss-sass](https://github.com/jonathantneal/postcss-sass)
@@ -247,8 +246,9 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 
 ## TODO
 
-- Add lazy sizes into bundle, not in CDN (this way we can also cache it and it will work offline)
 - Follow [Gimli](https://gimli.app/) to add it in the future
+- Add @mixin set-breakpoints()
+- check if we can reuse mixins from bulma in our mixins (size, position)
 
 ## Possible libraries/workflows
 

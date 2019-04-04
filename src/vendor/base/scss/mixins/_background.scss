@@ -1,0 +1,9 @@
+@mixin fw-cover-background-image($img: null) {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  @if $img != null {
+    background-image: url('#{$img}');
+  }
+}

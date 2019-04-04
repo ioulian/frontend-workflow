@@ -1,0 +1,10 @@
+// This creates a new layer that is rendered directly on the GPU and has own RAM footprint.
+// That way this can be animated/transitioned without any performance hit.
+// This will sometimes fix rendering bugs where different layers overlap/break
+//
+// Keep in mind that you shouldn't overuse this as it allocates this layer into the VRAM.
+// If you have a lot of layers, you can just fill the maximum of VRAM.
+@mixin fw-create-layer($property: auto) {
+  will-change: $property;
+  backface-visibility: hidden;
+}

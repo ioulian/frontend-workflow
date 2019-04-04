@@ -70,4 +70,19 @@
       }
     }
   }
+
+  &--fade-in {
+    @include in-view-animation-row() {
+      #{$root}__item {
+        @include in-view-animation(
+          (
+            opacity: 0,
+          ),
+          (
+            opacity: 1,
+          )
+        );
+      }
+    }
+  }
 }

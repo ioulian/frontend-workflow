@@ -1,3 +1,5 @@
+@import './../../base/scss/mixins';
+
 $in-view-animation-base-duration: 750ms !default;
 
 @mixin in-view-animation-row() {
@@ -18,10 +20,10 @@ $in-view-animation-base-duration: 750ms !default;
     $transitions: append($transitions, #{$property + ' ' + $duration}, comma);
   }
 
+  @include fw-create-layer();
+
   transition: #{$transitions};
   transition-delay: #{$offset + 'ms'};
-  will-change: auto;
-  backface-visibility: hidden;
 
   $selector: nth(&, 1);
   $child: nth($selector, length($selector));
