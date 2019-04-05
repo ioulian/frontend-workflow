@@ -1,5 +1,5 @@
 // import Settings from './Settings';
-//import {AsyncModuleLoader} from './../vendor/bulma/AsyncModuleLoader'
+// import {AsyncModuleLoader} from './../vendor/bulma/AsyncModuleLoader'
 
 let instance: Site | null = null
 export class Site {
@@ -9,7 +9,7 @@ export class Site {
     }
 
     // Add your stuff here
-    //AsyncModuleLoader.loadAccordion()
+    // AsyncModuleLoader.loadAccordion()
   }
 
   public static getInstance(): Site {
