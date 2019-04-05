@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <nav class="navbar is-primary">
+    <nav id="offset-target" class="navbar is-primary">
       <div class="container">
         <div class="navbar-brand">
           <a
@@ -29,7 +29,13 @@
         </div>
         <div id="navMenu" class="navbar-menu">
           <nav class="navbar-end" aria-label="Main menu" role="navigation">
-            <a href="#" class="navbar-item is-active">Sample</a>
+            <a
+              href="#"
+              class="navbar-item is-active js-scroll-to"
+              data-target="#scroll-here"
+              data-offset="#offset-target"
+              >Sample</a
+            >
             <div class="navbar-item has-dropdown is-hoverable">
               <a href="#" class="navbar-link">Menu</a>
               <div class="navbar-dropdown">
@@ -84,7 +90,7 @@
         </div>
       </div>
     </header>
-    <section class="section">
+    <section id="scroll-here" class="section">
       <div class="container">
         <div class="columns">
           <div class="column is-8-desktop is-offset-2-desktop">

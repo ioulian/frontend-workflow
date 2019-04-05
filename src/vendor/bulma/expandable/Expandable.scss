@@ -1,13 +1,18 @@
 @import './../../base/scss/variables';
 
 .fw-expandable {
+  $root: &;
+
   &__toggle {
     cursor: pointer;
   }
 
   &__content-wrapper {
     transition: height $duration-slow;
-    overflow: hidden;
-    height: 0;
+
+    #{$root}--init & {
+      overflow: hidden;
+      height: 0;
+    }
   }
 }

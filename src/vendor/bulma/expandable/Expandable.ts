@@ -34,6 +34,8 @@ export class Expandable extends Factory(EE) {
     this.handleCloseTransitionEndBinded = this.handleCloseTransitionEnd.bind(this)
 
     this.addEventListeners()
+
+    this.el.classList.add('fw-expandable--init')
   }
 
   private addEventListeners() {
