@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/aa5f20fe-ba4c-4956-b6b5-fcb2470537e1/deploy-status)](https://app.netlify.com/sites/trusting-perlman-3c2ee5/deploys)
+
 # Frontend workflow
 
 This repository contains a starterkit for developing a frontend application/website. It contains code linting (with Prettier, TSLint and StyleLint), TypeScript, PostCSS with SASS (that has Bulma.io framework initialized) and generation of Favicons. The build is based on Webpack 4.
