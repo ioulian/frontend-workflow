@@ -23,6 +23,20 @@ export class AsyncModuleLoader {
     }
   }
 
+  public static async loadFixedHeader(): Promise<void> {
+    if (AsyncModuleLoader.checkIfElementsExist('.navbar.is-fixed-top')) {
+      await import(/* webpackChunkName: "sameheight" */ './fixed-header/index')
+    }
+  }
+
+  public static loadAll() {
+    AsyncModuleLoader.loadAccordion()
+    AsyncModuleLoader.loadExpandable()
+    AsyncModuleLoader.loadInViewAnimation()
+    AsyncModuleLoader.loadSameHeight()
+    AsyncModuleLoader.loadFixedHeader()
+  }
+
   public static checkIfElementsExist(selector: string): boolean {
     return [...document.querySelectorAll(selector)].length !== 0
   }

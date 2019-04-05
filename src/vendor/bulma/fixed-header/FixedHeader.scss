@@ -1,0 +1,21 @@
+@import './../../../bootstrap';
+
+.navbar.is-fixed-top {
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.25);
+    content: '';
+    transition: opacity $duration-normal;
+    opacity: 0;
+  }
+
+  &.js-navbar--not-top {
+    &::before {
+      opacity: 1;
+    }
+  }
+}

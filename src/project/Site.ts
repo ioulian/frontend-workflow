@@ -9,7 +9,7 @@ export class Site {
     }
 
     // Add your stuff here
-    // AsyncModuleLoader.loadAccordion()
+    // AsyncModuleLoader.loadAll()
   }
 
   public static getInstance(): Site {

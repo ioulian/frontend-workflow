@@ -11,13 +11,13 @@ $navbar-breakpoint: $desktop !default;
       }
     }
 
-    &:not(.is-open) {
-      .navbar-dropdown {
-        display: none;
-      }
-    }
-
     @include until($navbar-breakpoint) {
+      &:not(.is-open) {
+        .navbar-dropdown {
+          display: none;
+        }
+      }
+
       &.is-open {
         .navbar-link:not(.is-arrowless) {
           &::after {

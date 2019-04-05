@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en-US" class="has-navbar-fixed-top">
   <head>
     <meta charset="utf-8" />
     <title>
@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <nav id="offset-target" class="navbar is-primary">
+    <nav id="offset-target" class="navbar is-primary is-fixed-top">
       <div class="container">
         <div class="navbar-brand">
           <a
@@ -90,12 +90,20 @@
         </div>
       </div>
     </header>
+
+    <style>
+      .js-in-view-animation > h3 {
+        margin-top: 1rem;
+      }
+    </style>
     <section id="scroll-here" class="section">
       <div class="container">
         <div class="columns">
           <div class="column is-8-desktop is-offset-2-desktop">
             <div class="content">
-              <h3>Documentation</h3>
+              <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
+                <h3 class="js-in-view-animation__item">Documentation</h3>
+              </div>
               <p>
                 Find all documentation here:
                 <a href="https://github.com/ioulian/frontend-workflow" target="_blank" rel="noopener noreferrer"
@@ -103,7 +111,9 @@
                 >. This page exists as a demo and examples of specific methods of optimizations.
               </p>
 
-              <h3>Lazy loaded images</h3>
+              <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
+                <h3 class="js-in-view-animation__item">Lazy loaded images</h3>
+              </div>
               <h4>Picture tag</h4>
               <p>
                 <picture width="960" height="640">
@@ -155,7 +165,10 @@
                   height="852"
                 />
               </p>
-              <h3>ClickThrough</h3>
+
+              <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
+                <h3 class="js-in-view-animation__item">ClickThrough</h3>
+              </div>
               <div class="js-clickthrough">
                 <p>
                   This is a normal text, but if you click on the parent (or this text), you'll navigate to this
@@ -164,7 +177,10 @@
                   >.
                 </p>
               </div>
-              <h3>Expandable</h3>
+
+              <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
+                <h3 class="js-in-view-animation__item">Expandable</h3>
+              </div>
               <div class="fw-expandable">
                 <div class="fw-expandable__toggle">
                   <p><strong>Click to expand</strong></p>
@@ -193,7 +209,10 @@
                   </div>
                 </div>
               </div>
-              <h3>Accordion list</h3>
+
+              <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
+                <h3 class="js-in-view-animation__item">Accordion list</h3>
+              </div>
 
               <div class="fw-accordion" data-close-others="true">
                 <div class="fw-accordion__item">
@@ -283,7 +302,9 @@
                 </div>
               </div>
 
-              <h3>Same Height</h3>
+              <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
+                <h3 class="js-in-view-animation__item">Same Height</h3>
+              </div>
 
               <style>
                 .same-height-example::after {
@@ -319,7 +340,9 @@
                 </div>
               </div>
 
-              <h3>In View Animation</h3>
+              <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
+                <h3 class="js-in-view-animation__item">In View Animation</h3>
+              </div>
               <p>These animations will trigger when the element enters the viewport (or is already in the viewport)</p>
 
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-top">
@@ -337,6 +360,11 @@
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left">
                 <p class="js-in-view-animation__item">Will fade in from left</p>
               </div>
+
+              <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
+                <h3 class="js-in-view-animation__item">Scroll Into View</h3>
+              </div>
+              <p>Try clicking the first menu item in the navbar ;)</p>
             </div>
           </div>
         </div>

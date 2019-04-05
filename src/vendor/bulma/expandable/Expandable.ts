@@ -42,8 +42,8 @@ export class Expandable extends Factory(EE) {
    * Attaches event listeners on window to check if the window size is changed
    */
   private addEventListeners(): void {
-    window.addEventListener('resize', throttle(Settings.throttle, this.update.bind(this)), false)
-    window.addEventListener('orientationchange', throttle(Settings.throttle, this.update.bind(this)), false)
+    window.addEventListener('resize', throttle(Settings.throttle, this.update.bind(this)), {passive: true})
+    window.addEventListener('orientationchange', throttle(Settings.throttle, this.update.bind(this)), {passive: true})
 
     if (this.elToggle && this.elToggle instanceof HTMLElement) {
       this.elToggle.addEventListener('click', (e: MouseEvent) => {

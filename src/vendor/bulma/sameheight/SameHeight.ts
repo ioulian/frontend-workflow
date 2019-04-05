@@ -83,7 +83,7 @@ export class SameHeight extends Factory() {
     }
 
     this.throttledResize = throttle(Settings.throttle, this.update.bind(this))
-    window.addEventListener('resize', this.throttledResize, false)
+    window.addEventListener('resize', this.throttledResize, {passive: true})
     this.update()
 
     // Add subtree watcher

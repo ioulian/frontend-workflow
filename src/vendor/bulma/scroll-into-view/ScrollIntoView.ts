@@ -22,10 +22,7 @@ export class ScrollIntoView {
 
             if (offset === 0) {
               // If no offset is given, just scroll to the element
-              elTarget.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-              })
+              ScrollIntoView.scrollTo(elTarget)
             } else {
               // If offset is given, "reposition" target element with a given offset so that the scroll gets the position with an offset
               // Read more here: https://stackoverflow.com/questions/24665602/scrollintoview-scrolls-just-too-far
@@ -37,7 +34,7 @@ export class ScrollIntoView {
               elTarget.style.top = `-${offset}px`
 
               // Let browser scroll to it
-              elTarget.scrollIntoView({behavior: 'smooth', block: 'start'})
+              ScrollIntoView.scrollTo(elTarget)
 
               // Put it back
               elTarget.style.top = top
@@ -48,6 +45,10 @@ export class ScrollIntoView {
       },
       false
     )
+  }
+
+  public static scrollTo(elTarget: HTMLElement): void {
+    elTarget.scrollIntoView({behavior: 'smooth', block: 'start'})
   }
 
   public static getOffset(fromTarget: HTMLElement): number {

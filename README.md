@@ -247,6 +247,7 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 ## TODO
 
 - Follow [Gimli](https://gimli.app/) to add it in the future
+- scroll animation delay
 
 ## Possible libraries/workflows
 

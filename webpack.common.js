@@ -20,6 +20,7 @@ module.exports = {
     responsivenavbar: path.resolve(__dirname, 'src/vendor/bulma/responsive-navbar/index.ts'),
     lazyloader: path.resolve(__dirname, 'src/vendor/bulma/lazyloader/index.ts'),
     scrollintoview: path.resolve(__dirname, 'src/vendor/bulma/scroll-into-view/index.ts'),
+    fixedheader: path.resolve(__dirname, 'src/vendor/bulma/fixed-header/index.ts'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
