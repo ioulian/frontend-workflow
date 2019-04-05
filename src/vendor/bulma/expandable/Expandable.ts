@@ -38,12 +38,15 @@ export class Expandable extends Factory(EE) {
     this.el.classList.add('fw-expandable--init')
   }
 
-  private addEventListeners() {
+  /**
+   * Attaches event listeners on window to check if the window size is changed
+   */
+  private addEventListeners(): void {
     window.addEventListener('resize', throttle(Settings.throttle, this.update.bind(this)), false)
     window.addEventListener('orientationchange', throttle(Settings.throttle, this.update.bind(this)), false)
 
     if (this.elToggle && this.elToggle instanceof HTMLElement) {
-      this.elToggle.addEventListener('click', (e: Event) => {
+      this.elToggle.addEventListener('click', (e: MouseEvent) => {
         e.preventDefault()
         this.toggle()
       })

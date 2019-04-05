@@ -1,3 +1,5 @@
+/// Helper mixin for creating a cover background image
+/// @param {String | null} $img [null] - Image path
 @mixin fw-cover-background-image($img: null) {
   background-size: cover;
   background-position: center center;

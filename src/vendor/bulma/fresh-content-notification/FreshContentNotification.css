@@ -1,5 +1,7 @@
 .notification {
   &.fresh-content-notification {
     @util position(fixed, null 0 0 null);
+
+    cursor: pointer;
   }
 }

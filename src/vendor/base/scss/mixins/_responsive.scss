@@ -2,6 +2,12 @@
 @import './../../../../../node_modules/bulma/sass/utilities/initial-variables';
 @import './../../../../../node_modules/bulma/sass/utilities/mixins';
 
+/// Helper mixin for defining the css properties for responsive layouts
+/// Mobile first!
+/// In the example below, margin-top will be 1rem for mobile and tablet, 2rem for desktop and so on...
+/// @example @include fw-set-breakpoints(margin-top, 1rem null 2rem 3rem 5rem);
+/// @param {Map[String]} $properties - Properties to set
+/// @param {Map[Any]} $values - Values per breakpoint (use 'null' if you don't want to set a specific value for that breakpoint)
 @mixin fw-set-breakpoints($properties, $values) {
   @if nth($values, 1) != null {
     @include fw-set-properties($properties, nth($values, 1));

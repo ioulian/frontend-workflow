@@ -1,3 +1,7 @@
+/**
+ * V: 0.1.0
+ */
+
 import LazyLoad from 'vanilla-lazyload'
 
 import './LazyLoader.scss'

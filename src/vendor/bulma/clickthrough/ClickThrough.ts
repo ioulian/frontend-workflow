@@ -14,12 +14,16 @@ import './ClickThrough.css'
  * it uses event delegation
  */
 export class ClickThrough {
+  /**
+   * Will attach event listeners on 'js-clickthrough' with event delegation from body
+   */
   public static attachEvents(): void {
     window.addEventListener(
       'click',
       (e: MouseEvent) => {
         const elClickThrough = (e.target as HTMLElement).closest('.js-clickthrough')
 
+        // Check if element clicked is the needed element (or inside it)
         if (elClickThrough !== null) {
           // Check if there is href and target set
           let href = elClickThrough.getAttribute('data-href')
@@ -42,6 +46,7 @@ export class ClickThrough {
           }
 
           if (href !== null && href !== '#') {
+            // Open new window if target is _blank, current window otherwise
             if (target === '_blank') {
               window.open(href)
             } else {

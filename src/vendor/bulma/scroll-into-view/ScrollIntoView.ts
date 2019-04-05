@@ -1,3 +1,7 @@
+/**
+ * V: 0.1.0
+ */
+
 export class ScrollIntoView {
   public static attachEvents(): void {
     window.addEventListener(
@@ -5,23 +9,37 @@ export class ScrollIntoView {
       (e: MouseEvent) => {
         const elScrollTo = (e.target as HTMLElement).closest('.js-scroll-to')
 
+        // Check if element clicked is the needed element (or inside it)
         if (elScrollTo !== null) {
           const target = elScrollTo.getAttribute('data-target')
           const elTarget = document.querySelector(target)
 
+          // Only continue if target is found on the page
           if (elTarget instanceof HTMLElement) {
             const offset = ScrollIntoView.getOffset(elScrollTo as HTMLElement)
 
             e.preventDefault()
 
             if (offset === 0) {
-              elTarget.scrollIntoView({behavior: 'smooth', block: 'start'})
+              // If no offset is given, just scroll to the element
+              elTarget.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+              })
             } else {
+              // If offset is given, "reposition" target element with a given offset so that the scroll gets the position with an offset
+              // Read more here: https://stackoverflow.com/questions/24665602/scrollintoview-scrolls-just-too-far
+
+              // Reposition element
               const pos = elTarget.style.position
               const top = elTarget.style.top
               elTarget.style.position = 'relative'
               elTarget.style.top = `-${offset}px`
+
+              // Let browser scroll to it
               elTarget.scrollIntoView({behavior: 'smooth', block: 'start'})
+
+              // Put it back
               elTarget.style.top = top
               elTarget.style.position = pos
             }

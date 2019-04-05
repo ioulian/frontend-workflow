@@ -10,7 +10,14 @@ import './FreshContentNotification.css'
  * Clicking on the toaster just refreshes the page
  */
 export class FreshContentNotification {
+  /**
+   * Shows a toaster message with provided content
+   *
+   * @param {String} content Content you want to show
+   * @param {Number} timeout Timeout to automatically hide the toaster
+   */
   public static show(content: string = 'New content available, click to refresh', timeout: number = 5000): void {
+    // Add the element at the end of document
     document.body.insertAdjacentHTML(
       'beforeend',
       `<div class="fresh-content-notification notification is-success m-b-sm m-r-sm"><button class="delete"></button><p>${content}</p></div>`
@@ -19,6 +26,7 @@ export class FreshContentNotification {
     const el = document.querySelector('.fresh-content-notification')
     const elClose = el.querySelector('.delete')
 
+    // Reload page to show the new content
     el.addEventListener(
       'click',
       (e: MouseEvent) => {
@@ -28,6 +36,7 @@ export class FreshContentNotification {
       false
     )
 
+    // On close, do not reload page
     elClose.addEventListener(
       'click',
       (e: MouseEvent) => {

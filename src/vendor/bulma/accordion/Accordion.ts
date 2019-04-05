@@ -52,6 +52,9 @@ export class Accordion extends Factory(EE) {
     this.openFirstIfAny()
   }
 
+  /**
+   * Automatically open an accordion item if correct class is set
+   */
   private openFirstIfAny(): void {
     const firstOpenItem = this.items.find((item: AccordionItem) => item.hasOpenClass())
 
@@ -60,6 +63,9 @@ export class Accordion extends Factory(EE) {
     }
   }
 
+  /**
+   * Creates AccordionItems from DOM Elements and sets correct event listeners
+   */
   private initItems(): void {
     this.handleOpenedClosed = debounce(Settings.debounce, this.triggerResize.bind(this))
 
@@ -79,6 +85,10 @@ export class Accordion extends Factory(EE) {
     })
   }
 
+  /**
+   * Closes all AccordionItems except from one
+   * @param itemNotToClose Accordion item that should be open
+   */
   public closeOthers(itemNotToClose: AccordionItem): void {
     this.items
       .filter((item: AccordionItem) => item !== itemNotToClose)
@@ -87,18 +97,27 @@ export class Accordion extends Factory(EE) {
       })
   }
 
+  /**
+   * Closes all accordion items
+   */
   public closeAll(): void {
     this.items.forEach((item: AccordionItem) => {
       item.close()
     })
   }
 
+  /**
+   * Opens all accordion items
+   */
   public openAll(): void {
     this.items.forEach((item: AccordionItem) => {
       item.open()
     })
   }
 
+  /**
+   * Triggers resize event when closing or opening items inside
+   */
   public triggerResize(): void {
     this.fire('resize')
   }
