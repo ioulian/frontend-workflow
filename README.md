@@ -250,6 +250,7 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 
 - Follow [Gimli](https://gimli.app/) to add it in the future
 - scroll animation delay
+- Change lazy loading to this way: https://addyosmani.com/blog/lazy-loading/
 
 ## Possible libraries/workflows
 

@@ -6,6 +6,9 @@ import {Factory} from './../../base/js/Factory'
 
 import './InViewAnimation.scss'
 
+/**
+ * Basic animation trigger based on IntersectionObserver
+ */
 export class InViewAnimation extends Factory() {
   private observer: IntersectionObserver
 
@@ -17,12 +20,16 @@ export class InViewAnimation extends Factory() {
     })
 
     this.observer.observe(this.el)
+
+    // Add init class, this will put the animation in it's initial position
+    // This will help if user has JS disabled, the element will still be visible/correctly positioned
     this.el.classList.add('js-in-view-animation--init')
   }
 
   public update(entries: IntersectionObserverEntry[]): void {
     entries.forEach(entry => {
       if (entry.target.getAttribute('data-once') === 'true') {
+        // Don't remove the class if it should only animate once
         if (entry.isIntersecting) {
           entry.target.classList.add('js-in-view-animation--animate')
         }

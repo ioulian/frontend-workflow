@@ -2,7 +2,28 @@
  * V: 0.1.0
  */
 
+/**
+ * Helper method to scroll to a specific DOM element on click
+ *
+ * Params:
+ * - data-target="{selector}" - Selector you want to scroll to, it is passed to "querySelector" function
+ * - data-offset="{offset|selector}" - Offset of the scroll position. Positive number will stop sooner of the element
+ *   You can also pass a selector to it (if you are using a fixed header for example), this will take this height of the element
+ *
+ * Example:
+ * ```html
+ * <a href="#scroll-to-here" data-target="#scroll-to-here" data-offset="20">
+ *
+ * <div id="scroll-to-here"></div>
+ * ```
+ */
 export class ScrollIntoView {
+  /**
+   * Attaches event listener
+   *
+   * Will listen on all clicks on ".js-scroll-to" with event delegation
+   * thus no need to do extra stuff on dynamic content
+   */
   public static attachEvents(): void {
     window.addEventListener(
       'click',
@@ -47,10 +68,22 @@ export class ScrollIntoView {
     )
   }
 
+  /**
+   * Scrolls to a specific DOM element using smooth scrollIntoView
+   *
+   * @param {HTMLElement} elTarget Target to scroll to
+   */
   public static scrollTo(elTarget: HTMLElement): void {
     elTarget.scrollIntoView({behavior: 'smooth', block: 'start'})
   }
 
+  /**
+   * Calculates an offset or the element you're scrolling to
+   *
+   * @param {HTMLElement} fromTarget Clicked target to get offset from
+   *
+   * @returns {number} Offset of the element to scroll to
+   */
   public static getOffset(fromTarget: HTMLElement): number {
     const offset = fromTarget.getAttribute('data-offset')
 

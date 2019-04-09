@@ -20,10 +20,18 @@ const lazyLoaderDefaults = {
   class_error: 'fw-lazy-load--error',
 }
 
+/**
+ * Wrapper around "vanilla-lazyload"
+ *
+ * Will listen to DOM changes too with MutationObserver
+ */
 export class LazyLoader {
   public static instance?: LazyLoad = null
   public static observer?: MutationObserver = null
 
+  /**
+   * @param {SettingsType} settings Settings to pass to LazyLoad instance
+   */
   public static attach(settings: SettingsType = {}): void {
     this.instance = new LazyLoad({
       ...lazyLoaderDefaults,
@@ -41,10 +49,16 @@ export class LazyLoader {
     })
   }
 
+  /**
+   * @returns {LazyLoad} Instance of attached LazyLoad
+   */
   public static getInstance(): LazyLoad {
     return this.instance
   }
 
+  /**
+   * Force update of LazyLoad
+   */
   public static update(): void {
     if (this.instance === null) {
       return
@@ -53,11 +67,16 @@ export class LazyLoader {
     this.instance.update()
   }
 
+  /**
+   * Destroy LazyLoad instance and stop DOM observation
+   */
   public static destroy(): void {
-    if (this.instance === null) {
-      return
+    if (this.instance !== null) {
+      this.instance.destroy()
     }
 
-    this.instance.destroy()
+    if (this.observer !== null) {
+      this.instance.disconnect()
+    }
   }
 }

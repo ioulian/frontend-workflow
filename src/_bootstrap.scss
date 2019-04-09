@@ -1,6 +1,16 @@
+// When writing any SCSS code for your component, you should first include this file.
+// This will load all variables and mixins that you can use
+
+// Base variables of this workflow
 @import './vendor/base/scss/variables';
-@import './../node_modules/bulma/sass/utilities/initial-variables';
+
+// Debug SCSS mixin
 @import './vendor/base/scss/debug';
+
+// Workflow mixins
 @import './vendor/base/scss/mixins';
 
-// Change variables here
+// Add your variables here and/or override Bulma variables
+
+// Base variables of Bulma framework
+@import './../node_modules/bulma/sass/utilities/initial-variables';
