@@ -1,3 +1,4 @@
+// Allows import of images in TypeScript (they are handled by webpack)
 declare module '*.png' {
   const value: any
   export default value

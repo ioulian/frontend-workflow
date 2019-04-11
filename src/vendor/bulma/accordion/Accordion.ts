@@ -16,6 +16,8 @@ interface SettingsType {
 }
 
 const defaults: SettingsType = {
+  // TRUE: Close other accordion items if another one gets opened
+  // FALSE: Other accordion items stay open
   closeOthers: true,
 }
 
@@ -32,6 +34,7 @@ export class Accordion extends Factory(EE) {
   constructor(el: Element, settings: SettingsType) {
     super(el)
 
+    // Get settings from DOM data-attributes
     const settingsFromDom: SettingsType = {}
 
     if (this.el.getAttribute('data-close-others') !== null) {
@@ -43,9 +46,9 @@ export class Accordion extends Factory(EE) {
     }
 
     this.settings = {
-      ...defaults,
-      ...settings,
-      ...settingsFromDom,
+      ...defaults, // Use default first
+      ...settings, // Override it with passed settings
+      ...settingsFromDom, // But DOM data attributes are more important
     }
 
     this.initItems()
@@ -87,7 +90,7 @@ export class Accordion extends Factory(EE) {
 
   /**
    * Closes all AccordionItems except from one
-   * @param itemNotToClose Accordion item that should be open
+   * @param {AccordionItem} itemNotToClose Accordion item that should be open
    */
   public closeOthers(itemNotToClose: AccordionItem): void {
     this.items

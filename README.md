@@ -2,7 +2,7 @@
 
 # Frontend workflow
 
-This repository contains a starterkit for developing a frontend application/website. It contains code linting (with Prettier, TSLint and StyleLint), TypeScript, PostCSS with SASS (that has Bulma.io framework initialized) and generation of Favicons. The build is based on Webpack 4.
+This repository contains a (opinionated) starterkit for developing a frontend application/website. It contains code linting (with Prettier, TSLint and StyleLint), TypeScript, PostCSS with SASS (that has Bulma.io framework initialized) and generation of Favicons. The build is based on Webpack 4.
 
 You can preview the output here: [https://trusting-perlman-3c2ee5.netlify.com](https://trusting-perlman-3c2ee5.netlify.com). There you'll find included JS components and you can do your own audit checks on this site to compare the performance with other projects.
 
@@ -20,7 +20,7 @@ The focus of this workflow is performance:
 If you don't like a feature, you can disable it and write another one.
 
 [1] However, there are some JavaScript components included, that are written for our projects and are handy tools, but here again, you are free to not use them.
-If you want to use them, you can import them into your bundle.
+If you don't want to use them, remove them from entry points in `webpack.common.js`.
 
 By default they are loaded as separate files, you can un-comment them (in `webpack.common.js`) if you do not wish to use them.
 
@@ -56,6 +56,8 @@ yarn
 Use `yarn start` to start the webpack dev server, you can now start developing, the browser will be automatically reloaded on any code/asset change. You can add the HTML in `index.html`.
 
 For examples on how to use TS within this workflow, please read `TypScript usage examples`.
+
+You can start writing your CSS in `src/index.scss` and JS code in `src/project/Site.ts`. Alternatively, you can create your own entry points.
 
 #### TypeScript
 

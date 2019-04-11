@@ -3,6 +3,7 @@ interface SettingsInterface {
   debounce: number
 }
 
+// Add your project settings here
 const Settings: SettingsInterface = {
   throttle: 100,
   debounce: 150,

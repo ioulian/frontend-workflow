@@ -21,3 +21,13 @@ picture,
 img {
   display: block;
 }
+
+// Modify Bulma classes to optimize them
+
+// By default, fixed navbar will not sit on it's own layer, thus will cause a minor rendering slowdown.
+.navbar {
+  &.is-fixed-bottom,
+  &.is-fixed-top {
+    @include fw-create-layer();
+  }
+}

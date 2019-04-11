@@ -12,6 +12,21 @@ import './ClickThrough.css'
  *
  * The script should be initialized only once, all the dynamic content will be handled by it as
  * it uses event delegation
+ *
+ * ```html
+ * <div class="js-clickthrough">
+ *   <div>Random text here</div>
+ *   <a href="https://url.com" class="js-clickthrough__to" target="_blank">Click for more info</a>
+ * </div>
+ * ```
+ *
+ * or without a link
+ *
+ * ```html
+ * <div class="js-clickthrough" data-href="https://url.com" data-target="_blank">
+ *   <div>Random text here, click for more</div>
+ * </div>
+ * ```
  */
 export class ClickThrough {
   /**

@@ -1,8 +1,17 @@
 $spacingUnit: rem;
-$spacingMarginKey: 'm';
-$spacingPaddingKey: 'p';
-$spacingSeparator: '-';
-$spacingSizes: (('none', 0), ('xxs', 0.125), ('xs', 0.25), ('sm', 0.5), ('md', 1), ('lg', 2), ('xl', 4), ('xxl', 8));
+$spacingMarginKey: 'm' !default;
+$spacingPaddingKey: 'p' !default;
+$spacingSeparator: '-' !default;
+$spacingSizes: (
+  ('none', 0),
+  ('xxs', 0.125),
+  ('xs', 0.25),
+  ('sm', 0.5),
+  ('md', 1),
+  ('lg', 2),
+  ('xl', 4),
+  ('xxl', 8)
+) !default;
 $spacingPositions: (('t', 'top'), ('r', 'right'), ('b', 'bottom'), ('l', 'left'));
 
 @function fw-spacingsizevalue($key, $value) {
@@ -15,23 +24,52 @@ $spacingPositions: (('t', 'top'), ('r', 'right'), ('b', 'bottom'), ('l', 'left')
     $sizeKey: nth($size, 1);
     $sizeValue: nth($size, 2);
 
+    // Full margin
     .#{$spacingMarginKey}#{$spacingSeparator}#{$sizeKey} {
       margin: fw-spacingsizevalue($sizeKey, $sizeValue);
     }
 
+    // X margin
+    .#{$spacingMarginKey}#{'x'}#{$spacingSeparator}#{$sizeKey} {
+      margin-left: fw-spacingsizevalue($sizeKey, $sizeValue);
+      margin-right: fw-spacingsizevalue($sizeKey, $sizeValue);
+    }
+
+    // Y margin
+    .#{$spacingMarginKey}#{'y'}#{$spacingSeparator}#{$sizeKey} {
+      margin-top: fw-spacingsizevalue($sizeKey, $sizeValue);
+      margin-bottom: fw-spacingsizevalue($sizeKey, $sizeValue);
+    }
+
+    // Full padding
     .#{$spacingPaddingKey}#{$spacingSeparator}#{$sizeKey} {
       padding: fw-spacingsizevalue($sizeKey, $sizeValue);
     }
 
+    // X padding
+    .#{$spacingPaddingKey}#{'x'}#{$spacingSeparator}#{$sizeKey} {
+      padding-left: fw-spacingsizevalue($sizeKey, $sizeValue);
+      padding-right: fw-spacingsizevalue($sizeKey, $sizeValue);
+    }
+
+    // Y padding
+    .#{$spacingPaddingKey}#{'y'}#{$spacingSeparator}#{$sizeKey} {
+      padding-top: fw-spacingsizevalue($sizeKey, $sizeValue);
+      padding-bottom: fw-spacingsizevalue($sizeKey, $sizeValue);
+    }
+
+    // Per position
     @each $position in $spacingPositions {
       $posKey: nth($position, 1);
       $posValue: nth($position, 2);
 
-      .#{$spacingMarginKey}#{$spacingSeparator}#{$posKey}#{$spacingSeparator}#{$sizeKey} {
+      // Side margin
+      .#{$spacingMarginKey}#{$posKey}#{$spacingSeparator}#{$sizeKey} {
         margin-#{$posValue}: fw-spacingsizevalue($sizeKey, $sizeValue);
       }
 
-      .#{$spacingPaddingKey}#{$spacingSeparator}#{$posKey}#{$spacingSeparator}#{$sizeKey} {
+      // Side padding
+      .#{$spacingPaddingKey}#{$posKey}#{$spacingSeparator}#{$sizeKey} {
         padding-#{$posValue}: fw-spacingsizevalue($sizeKey, $sizeValue);
       }
     }

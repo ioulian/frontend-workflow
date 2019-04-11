@@ -44,6 +44,11 @@ export const Factory = (Type: Class = class {}) =>
 
     public el: Element
 
+    /**
+     *
+     * @param {Element} el DOM Element you want to bind this class to
+     * @param {any} restArgs Whatever extra arguments you want to have
+     */
     constructor(el: Element, ...restArgs: any[]) {
       super()
 
@@ -52,7 +57,7 @@ export const Factory = (Type: Class = class {}) =>
 
     /**
      * Helper method to automatically attach and detach instances in DrupalBehaviors
-     * (Drupal 8.0 + only)
+     * (Drupal 8.0+ only)
      *
      * @param {string} selector Selector of the DOM elements to attach a class to
      * @param {any} restArgs (Optional) Any other parameters to pass to class

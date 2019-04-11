@@ -9,7 +9,7 @@ import './index.scss'
 // We do not store this variable as it's not needed in "window" object or anywhere in this file
 Site.getInstance()
 
-// Attach serviceWorker
+// START: Attach serviceWorker
 // Comment this part if you do not wish to use serviceWorker for this project
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker
