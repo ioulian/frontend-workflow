@@ -23,10 +23,10 @@ module.exports = {
     fixedheader: path.resolve(__dirname, 'src/vendor/bulma/fixed-header/index.ts'),
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, config.outputPath),
     filename: 'js/[name].bundle.[contenthash].js',
-    chunkFilename: 'js/[name].bundle.[contenthash]js',
-    publicPath: '/', //devMode ? '/' : config.publicPath + '/',
+    chunkFilename: 'js/[name].chunk.[contenthash]js',
+    publicPath: `/${config.assetsPath}`, //devMode ? '/' : config.publicPath + '/',
   },
   plugins: [
     new FriendlyErrorsWebpackPlugin(),
@@ -41,7 +41,7 @@ module.exports = {
           staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
         })
       : null,
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin([path.resolve(__dirname, config.outputPath)]),
     new MiniCssExtractPlugin({
       filename: devMode ? 'css/[name].css' : 'css/[name].[hash].css',
       chunkFilename: devMode ? 'css/[name].css' : 'css/[name].[hash].css',

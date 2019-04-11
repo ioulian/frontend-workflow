@@ -93,6 +93,8 @@
     "webpack-stream": "5.1.1"
   },
   "config": {
+    "outputPath": "dist",
+    "assetsPath": "",
     "publicPath": "https://trusting-perlman-3c2ee5.netlify.com",
     "cacheId": "frontend-workflow",
     "name": "Frontend workflow",
