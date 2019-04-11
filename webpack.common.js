@@ -26,7 +26,7 @@ module.exports = {
     path: path.resolve(__dirname, config.outputPath),
     filename: 'js/[name].bundle.[contenthash].js',
     chunkFilename: 'js/[name].chunk.[contenthash]js',
-    publicPath: `/${config.assetsPath}`, //devMode ? '/' : config.publicPath + '/',
+    publicPath: devMode ? '/' : config.publicPath + '/',
   },
   plugins: [
     new FriendlyErrorsWebpackPlugin(),
