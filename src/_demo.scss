@@ -1,0 +1,34 @@
+.fw-full-size-in-parent {
+  @include fw-full-size-in-parent();
+}
+
+img.fw-full-size-in-parent {
+  object-fit: cover;
+}
+
+.js-in-view-animation {
+  > h3 {
+    margin-top: 1rem;
+  }
+}
+
+.same-height-example {
+  &::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+
+  &__item {
+    width: 50%;
+    float: left;
+    border: 1px dashed $grey-light;
+  }
+}
+
+.hero {
+  .title,
+  .subtitle {
+    text-shadow: 2px 2px 1px rgba(darken($primary, 50%), 0.5);
+  }
+}

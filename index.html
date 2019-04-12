@@ -19,7 +19,7 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            Frontend workflow2
+            Frontend workflow
           </a>
           <span class="navbar-burger burger" data-target="navMenu" aria-controls="navMenu">
             <span></span>
@@ -73,7 +73,11 @@
         </div>
       </div>
     </nav>
-    <header class="hero is-medium is-primary">
+    <header class="hero is-medium is-primary is-clipped is-relative">
+      <img
+        data-src="src/project/media/hero-bg.jpg"
+        class="fw-lazy-load fw-lazy-load--opacity-scale fw-full-size-in-parent"
+      />
       <div class="hero-body">
         <div class="container">
           <div class="columns">
@@ -91,11 +95,6 @@
       </div>
     </header>
 
-    <style>
-      .js-in-view-animation > h3 {
-        margin-top: 1rem;
-      }
-    </style>
     <section id="scroll-here" class="section">
       <div class="container">
         <div class="columns">
@@ -306,19 +305,6 @@
                 <h3 class="js-in-view-animation__item">Same Height</h3>
               </div>
 
-              <style>
-                .same-height-example::after {
-                  display: block;
-                  content: '';
-                  clear: both;
-                }
-
-                .same-height-example__item {
-                  max-width: 50%;
-                  float: left;
-                  border: 1px solid #000;
-                }
-              </style>
               <div
                 class="same-height-example js-sameheight"
                 data-child-selector=".js-sameheight__child"

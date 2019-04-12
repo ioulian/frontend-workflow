@@ -1,5 +1,12 @@
 @import './../../../bootstrap';
 
+// Fix Edge problems, see: https://www.andreaverlicchi.eu/lazyload/#dealing-with-microsoft-edge-problems
+img[data-src],
+img[data-srcset] {
+  display: block;
+  min-height: 1px;
+}
+
 .fw-lazy-load {
   $root: &;
 
@@ -10,6 +17,18 @@
     &#{$root}--loaded,
     &#{$root}--error {
       opacity: 1;
+    }
+  }
+
+  &--opacity-scale {
+    transform: scale(0.96);
+    opacity: 0;
+    transition: opacity $duration-normal, transform 1s $swift-in;
+
+    &#{$root}--loaded,
+    &#{$root}--error {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 }

@@ -92,6 +92,15 @@ module.exports = {
         ],
       },
       {
+        test: /\.(html)$/,
+        use: {
+          loader: 'html-loader',
+          options: {
+            attrs: ['img:src', 'img:data-src', 'link:href'],
+          },
+        },
+      },
+      {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
           {
