@@ -192,22 +192,24 @@ Before creating a build, you should update the following files/settings:
 - 2: Supported browsers can be changed under `"browserslist"` key in `package.json`.
 - 3: Add an app icon in `src/favicon.png`. The build will create all possible icons for your app (iOS, Android, Browsers, ...). You should use a high enough resolution, minimum of 256x256px (preferably 1024x1024px).
 
-| Name                | Type      | Default                               | Description                                                             |
-| ------------------- | --------- | ------------------------------------- | ----------------------------------------------------------------------- |
-| outputPath          | `string`  | dist                                  | Folder name (from the root) where to output files                       |
-| publicPath          | `string`  | /                                     | The final url where the app will be hosted. Only needed for production. |
-| cacheId             | `string`  | frontend-workflow                     | Cache ID for Service Worker.                                            |
-| name                | `string`  | Frontend Workflow                     | Name attribute to be inserted in manifest.json.                         |
-| shortName           | `string`  | Frontend                              | Short name attribute to be inserted in manifest.json.                   |
-| description         | `string`  | /                                     | Description attribute to be inserted in manifest.json.                  |
-| author              | `string`  | /                                     | Author attribute to be inserted in manifest.json.                       |
-| authorUrl           | `string`  | /                                     | Author URL attribute to be inserted in manifest.json.                   |
-| theme               | `string`  | #00d1b2 (Default Bulma primary color) | Theme attribute to be inserted in manifest.json. (use with `#`)         |
-| background          | `string`  | #ffffff                               | Background attribute to be inserted in manifest.json. (use with `#`)    |
-| modules.favicons    | `boolean` | true                                  | Generate favicons on build. Only used in production build.              |
-| modules.criticalCSS | `boolean` | true                                  | Inline Critical CSS. Only used in production build.                     |
-| modules.swPrecache  | `boolean` | true                                  | Generate a Service Worker. Only used in production build.               |
-| modules.asyncJS     | `boolean` | true                                  | Add `async` attribute to scripts. Only used in production build.        |
+| Name                | Type      | Default                               | Description                                                                                                  |
+| ------------------- | --------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| addFilenameHashes   | `boolean` | true                                  | Add contenthash to bundle files (useful for cache busting). Set to false if you use back-end to load assets. |
+| outputPath          | `string`  | dist                                  | Folder name (from the root) where to output files.                                                           |
+| fromRoot            | `string`  | '/'                                   | If this workflow is inside another folder, specify path to it.                                               |
+| publicPath          | `string`  | /                                     | The final url where the app will be hosted. Only needed for production.                                      |
+| cacheId             | `string`  | frontend-workflow                     | Cache ID for Service Worker.                                                                                 |
+| name                | `string`  | Frontend Workflow                     | Name attribute to be inserted in manifest.json.                                                              |
+| shortName           | `string`  | Frontend                              | Short name attribute to be inserted in manifest.json.                                                        |
+| description         | `string`  | /                                     | Description attribute to be inserted in manifest.json.                                                       |
+| author              | `string`  | /                                     | Author attribute to be inserted in manifest.json.                                                            |
+| authorUrl           | `string`  | /                                     | Author URL attribute to be inserted in manifest.json.                                                        |
+| theme               | `string`  | #00d1b2 (Default Bulma primary color) | Theme attribute to be inserted in manifest.json. (use with `#`)                                              |
+| background          | `string`  | #ffffff                               | Background attribute to be inserted in manifest.json. (use with `#`)                                         |
+| modules.favicons    | `boolean` | true                                  | Generate favicons on build. Only used in production build.                                                   |
+| modules.criticalCSS | `boolean` | true                                  | Inline Critical CSS. Only used in production build.                                                          |
+| modules.swPrecache  | `boolean` | true                                  | Generate a Service Worker. Only used in production build.                                                    |
+| modules.asyncJS     | `boolean` | true                                  | Add `async` attribute to scripts. Only used in production build.                                             |
 
 ## Files to deploy
 

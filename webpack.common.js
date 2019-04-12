@@ -24,9 +24,9 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, config.outputPath),
-    filename: 'js/[name].bundle.[contenthash].js',
-    chunkFilename: 'js/[name].chunk.[contenthash].js',
-    publicPath: devMode ? '/' : config.publicPath + '/',
+    filename: `js/[name].bundle${config.addFilenameHashes ? '.[contenthash]' : ''}.js`,
+    chunkFilename: `js/[name].chunk${config.addFilenameHashes ? '.[contenthash]' : ''}.js`,
+    publicPath: devMode ? `${config.fromRoot}` : `${config.publicPath}${config.fromRoot}`,
   },
   plugins: [
     new FriendlyErrorsWebpackPlugin(),
@@ -40,11 +40,11 @@ module.exports = {
           navigateFallback: config.publicPath + '/index.html',
           staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
         })
-      : null,
+      : () => {},
     new CleanWebpackPlugin([path.resolve(__dirname, config.outputPath)]),
     new MiniCssExtractPlugin({
-      filename: devMode ? 'css/[name].css' : 'css/[name].[hash].css',
-      chunkFilename: devMode ? 'css/[name].css' : 'css/[name].[hash].css',
+      filename: `css/[name].bundle${config.addFilenameHashes ? '.[contenthash]' : ''}.css`,
+      chunkFilename: `css/[name].chunk${config.addFilenameHashes ? '.[contenthash]' : ''}.css`,
     }),
     new HtmlWebpackPlugin({
       title: config.name,
@@ -83,7 +83,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               context: path.resolve(__dirname, 'src'),
-              name: 'images/[path][name].[hash].[ext]',
+              name: `images/[path][name]${config.addFilenameHashes ? '.[contenthash]' : ''}.[ext]`,
               outputPath: './',
               publicPath: '../',
               useRelativePaths: true,
@@ -115,7 +115,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               context: path.resolve(__dirname, 'src'),
-              name: 'fonts/[path][name].[hash].[ext]',
+              name: `fonts/[path][name]${config.addFilenameHashes ? '.[contenthash]' : ''}.[ext]`,
             },
           },
         ],
