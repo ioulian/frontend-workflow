@@ -11,9 +11,6 @@ const version = require('./package.json').version
 
 module.exports = merge(common, {
   mode: 'production',
-  optimization: {
-    runtimeChunk: 'single',
-  },
   plugins: [
     new ImageminPlugin({
       cacheFolder: path.resolve(__dirname, '.cache'),
@@ -108,3 +105,5 @@ module.exports = merge(common, {
       : null,
   ],
 })
+
+console.log(module.exports.mode)

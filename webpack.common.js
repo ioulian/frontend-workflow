@@ -25,7 +25,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, config.outputPath),
     filename: 'js/[name].bundle.[contenthash].js',
-    chunkFilename: 'js/[name].chunk.[contenthash]js',
+    chunkFilename: 'js/[name].chunk.[contenthash].js',
     publicPath: devMode ? '/' : config.publicPath + '/',
   },
   plugins: [
@@ -96,7 +96,15 @@ module.exports = {
         use: {
           loader: 'html-loader',
           options: {
-            attrs: ['img:src', 'img:data-src', 'link:href'],
+            attrs: [
+              'img:src',
+              'img:data-src',
+              'img:srcset',
+              'img:data-srcset',
+              'source:srcset',
+              'source:data-srcset',
+              'link:href',
+            ],
           },
         },
       },
