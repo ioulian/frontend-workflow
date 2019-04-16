@@ -206,10 +206,27 @@ Before creating a build, you should update the following files/settings:
 | authorUrl           | `string`  | /                                     | Author URL attribute to be inserted in manifest.json.                                                        |
 | theme               | `string`  | #00d1b2 (Default Bulma primary color) | Theme attribute to be inserted in manifest.json. (use with `#`)                                              |
 | background          | `string`  | #ffffff                               | Background attribute to be inserted in manifest.json. (use with `#`)                                         |
+| drupal8.active      | `boolean` | false                                 | Activates Drupal8 mode. (see documentation for more info)                                                    |
+| drupal8.subFolder   | `string`  | /                                     | Subfolder from the root (= public) where the theme is located. (e.g. '/themes/custom/mytheme/')              |
 | modules.favicons    | `boolean` | true                                  | Generate favicons on build. Only used in production build.                                                   |
 | modules.criticalCSS | `boolean` | true                                  | Inline Critical CSS. Only used in production build.                                                          |
 | modules.swPrecache  | `boolean` | true                                  | Generate a Service Worker. Only used in production build.                                                    |
 | modules.asyncJS     | `boolean` | true                                  | Add `async` attribute to scripts. Only used in production build.                                             |
+
+## Drupal 8 mode
+
+There is also support for running this workflow in a Drupal 8 theme (it should also work for other backend frameworks, but hasn't been tested). If you set `drupal8.active` to true, this will change the following build settings:
+
+- Filename hashes are turned off. Files will be loaded by php.
+- Public path will be set to `drupal8.subFolder` setting so that built assets user correct path.
+- Critical CSS will be turned off (this will change the performance score!)
+- There will be `tags.html` file created in `dist` folder containing all favicon tags that you'll need to include in HEAD.
+
+Keep in mind that the Frontend performance score that we try to achieve with this workflow will be lowered as some parts are turned off. Also there will be more work required by Backend dev that is not in scope of this project.
+
+You can use `yarn watch` to start developing. This will start watching all files and they will be generated. You can also use `yarn start` to develop in a `.html` page (the development time is faster this way as we don't need wait on php to be loaded first).
+
+**Note:** Keep in mind that no `.css` is being created when watching. Only on `yarn build`/`yarn export` will there be `.css` files created.
 
 ## Files to deploy
 

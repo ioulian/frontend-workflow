@@ -1,4 +1,5 @@
 const path = require('path')
+const write = require('write')
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
 const ImageminPlugin = require('imagemin-webpack-plugin').default
@@ -67,6 +68,12 @@ module.exports = merge(common, {
                   return tag
                 })
 
+                // Generate HTML to be loaded in Drupal 8 later
+                if (config.drupal8.active) {
+                  const fullPath = path.join(`./${config.outputPath}`, 'tags.html')
+                  write.sync(fullPath, result.tags.reduce((html, tag) => `${html}${tag}`, ''))
+                }
+
                 return callback(null, result)
               })
 
@@ -75,7 +82,7 @@ module.exports = merge(common, {
           }
         }()
       : () => {},
-    config.modules.criticalCSS
+    config.modules.criticalCSS && !config.drupal8.active
       ? new CriticalPlugin({
           src: 'index.html',
           inline: true,

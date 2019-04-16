@@ -32,3 +32,11 @@ img.fw-full-size-in-parent {
     text-shadow: 2px 2px 1px rgba(darken($primary, 50%), 0.5);
   }
 }
+
+.demo-breakpoint {
+  &::before {
+    @include fw-set-breakpoints(content, 'small' 'mobile' 'tablet' 'desktop' 'widescreen' 'fullhd');
+
+    font-weight: bold;
+  }
+}

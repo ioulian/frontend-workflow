@@ -1,76 +1,134 @@
-$spacingUnit: rem;
-$spacingMarginKey: 'm' !default;
-$spacingPaddingKey: 'p' !default;
-$spacingSeparator: '-' !default;
-$spacingSizes: (
-  ('none', 0),
-  ('xxs', 0.125),
-  ('xs', 0.25),
-  ('sm', 0.5),
-  ('md', 1),
-  ('lg', 2),
-  ('xl', 4),
-  ('xxl', 8)
-) !default;
-$spacingPositions: (('t', 'top'), ('r', 'right'), ('b', 'bottom'), ('l', 'left'));
+// See: https://github.com/jgthms/bulma/issues/451#issuecomment-433106665
+@import './../variables';
+@import './../../../../../node_modules/bulma/sass/utilities/initial-variables';
 
-@function fw-spacingsizevalue($key, $value) {
-  @return if($key == 'none', 0, $value + $spacingUnit);
+$spacer: 1rem !default;
+$spacers: () !default;
+$spacers: map-merge(
+  (
+    0: 0,
+    1: (
+      $spacer * 0.25,
+    ),
+    2: (
+      $spacer * 0.5,
+    ),
+    3: $spacer,
+    4: (
+      $spacer * 1.5,
+    ),
+    5: (
+      $spacer * 3,
+    ),
+    6: (
+      $spacer * 4,
+    ),
+    7: (
+      $spacer * 5,
+    ),
+    8: (
+      $spacer * 8,
+    ),
+    9: (
+      $spacer * 10,
+    ),
+  ),
+  $spacers
+);
+
+$grid-breakpoints: (
+  xs: 0,
+  mobile: $mobile,
+  tablet: $tablet,
+  desktop: $desktop,
+  widescreen: $widescreen,
+  hd: $fullhd,
+) !default;
+
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+
+  @return if($min != 0, $min, null);
 }
 
-// Code taken from: https://github.com/jgthms/bulma/issues/451#issuecomment-331758839 and rewritten a bit
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+  @return if(breakpoint-min($name, $breakpoints) == null, '', '-#{$name}');
+}
+
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
 @mixin fw-setup-spacings() {
-  @each $size in $spacingSizes {
-    $sizeKey: nth($size, 1);
-    $sizeValue: nth($size, 2);
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-    // Full margin
-    .#{$spacingMarginKey}#{$spacingSeparator}#{$sizeKey} {
-      margin: fw-spacingsizevalue($sizeKey, $sizeValue);
-    }
+      @each $prop, $abbrev in (margin: m, padding: p) {
+        @each $size, $length in $spacers {
+          .is-#{$abbrev}#{$infix}-#{$size} {
+            #{$prop}: $length !important;
+          }
 
-    // X margin
-    .#{$spacingMarginKey}#{'x'}#{$spacingSeparator}#{$sizeKey} {
-      margin-left: fw-spacingsizevalue($sizeKey, $sizeValue);
-      margin-right: fw-spacingsizevalue($sizeKey, $sizeValue);
-    }
+          .is-#{$abbrev}t#{$infix}-#{$size},
+          .is-#{$abbrev}y#{$infix}-#{$size} {
+            #{$prop}-top: $length !important;
+          }
 
-    // Y margin
-    .#{$spacingMarginKey}#{'y'}#{$spacingSeparator}#{$sizeKey} {
-      margin-top: fw-spacingsizevalue($sizeKey, $sizeValue);
-      margin-bottom: fw-spacingsizevalue($sizeKey, $sizeValue);
-    }
+          .is-#{$abbrev}r#{$infix}-#{$size},
+          .is-#{$abbrev}x#{$infix}-#{$size} {
+            #{$prop}-right: $length !important;
+          }
 
-    // Full padding
-    .#{$spacingPaddingKey}#{$spacingSeparator}#{$sizeKey} {
-      padding: fw-spacingsizevalue($sizeKey, $sizeValue);
-    }
+          .is-#{$abbrev}b#{$infix}-#{$size},
+          .is-#{$abbrev}y#{$infix}-#{$size} {
+            #{$prop}-bottom: $length !important;
+          }
 
-    // X padding
-    .#{$spacingPaddingKey}#{'x'}#{$spacingSeparator}#{$sizeKey} {
-      padding-left: fw-spacingsizevalue($sizeKey, $sizeValue);
-      padding-right: fw-spacingsizevalue($sizeKey, $sizeValue);
-    }
-
-    // Y padding
-    .#{$spacingPaddingKey}#{'y'}#{$spacingSeparator}#{$sizeKey} {
-      padding-top: fw-spacingsizevalue($sizeKey, $sizeValue);
-      padding-bottom: fw-spacingsizevalue($sizeKey, $sizeValue);
-    }
-
-    // Per position
-    @each $position in $spacingPositions {
-      $posKey: nth($position, 1);
-      $posValue: nth($position, 2);
-
-      // Side margin
-      .#{$spacingMarginKey}#{$posKey}#{$spacingSeparator}#{$sizeKey} {
-        margin-#{$posValue}: fw-spacingsizevalue($sizeKey, $sizeValue);
+          .is-#{$abbrev}l#{$infix}-#{$size},
+          .is-#{$abbrev}x#{$infix}-#{$size} {
+            #{$prop}-left: $length !important;
+          }
+        }
       }
 
-      // Side padding
-      .#{$spacingPaddingKey}#{$posKey}#{$spacingSeparator}#{$sizeKey} {
-        padding-#{$posValue}: fw-spacingsizevalue($sizeKey, $sizeValue);
+      // Some special margin utils
+      .is-m#{$infix}-auto {
+        margin: auto !important;
+      }
+
+      .is-mt#{$infix}-auto,
+      .is-my#{$infix}-auto {
+        margin-top: auto !important;
+      }
+
+      .is-mr#{$infix}-auto,
+      .is-mx#{$infix}-auto {
+        margin-right: auto !important;
+      }
+
+      .is-mb#{$infix}-auto,
+      .is-my#{$infix}-auto {
+        margin-bottom: auto !important;
+      }
+
+      .is-ml#{$infix}-auto,
+      .is-mx#{$infix}-auto {
+        margin-left: auto !important;
       }
     }
   }

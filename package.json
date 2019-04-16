@@ -1,6 +1,6 @@
 {
   "name": "frontend-workflow",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "description": "Frontend workflow using Webpack 4",
   "author": "Yulian Alexeyev <yulian@dev-q.be> (https://github.com/ioulian)",
   "keywords": [
@@ -17,7 +17,8 @@
     "favicons",
     "bulma",
     "es6",
-    "drupal"
+    "drupal",
+    "drupal8"
   ],
   "license": "MIT",
   "homepage": "https://github.com/ioulian/frontend-workflow",
@@ -41,7 +42,7 @@
     "vanilla-lazyload": "11.0.6"
   },
   "scripts": {
-    "start": "npx webpack-dev-server --open --config webpack.dev.js",
+    "start": "NODE_ENV=devserver npx webpack-dev-server --open --config webpack.dev.js",
     "watch": "npx webpack --watch --config webpack.dev.js",
     "build": "yarn lint && yarn export",
     "export": "NODE_ENV=production npx webpack --config webpack.prod.js",
@@ -96,7 +97,6 @@
   "config": {
     "addFilenameHashes": true,
     "outputPath": "dist",
-    "fromRoot": "/",
     "publicPath": "https://trusting-perlman-3c2ee5.netlify.com",
     "cacheId": "frontend-workflow",
     "name": "Frontend workflow",
@@ -106,6 +106,10 @@
     "authorUrl": "https://github.com/ioulian",
     "theme": "#00d1b2",
     "background": "#fff",
+    "drupal8": {
+      "active": false,
+      "subFolder": "/themes/custom/fw2019/"
+    },
     "modules": {
       "favicons": true,
       "criticalCSS": true,

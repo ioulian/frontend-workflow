@@ -20,7 +20,7 @@ export class FreshContentNotification {
     // Add the element at the end of document
     document.body.insertAdjacentHTML(
       'beforeend',
-      `<div class="fresh-content-notification notification is-success m-b-sm m-r-sm"><button class="delete"></button><p>${content}</p></div>`
+      `<div class="fresh-content-notification notification is-success is-mb-4 is-mr-4"><button class="delete"></button><p>${content}</p></div>`
     )
 
     const el = document.querySelector('.fresh-content-notification')

@@ -7,6 +7,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const devMode = process.env.NODE_ENV !== 'production'
+const devServer = process.env.NODE_ENV === 'devserver'
+
+const subFolder = config.drupal8.active ? config.drupal8.subFolder : '/'
 
 module.exports = {
   target: 'web',
@@ -24,9 +27,9 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, config.outputPath),
-    filename: `js/[name].bundle${config.addFilenameHashes ? '.[contenthash]' : ''}.js`,
-    chunkFilename: `js/[name].chunk${config.addFilenameHashes ? '.[contenthash]' : ''}.js`,
-    publicPath: devMode ? `${config.fromRoot}` : `${config.publicPath}${config.fromRoot}`,
+    filename: `js/[name].bundle${config.addFilenameHashes && !config.drupal8.active ? '.[contenthash]' : ''}.js`,
+    chunkFilename: `js/[name].chunk${config.addFilenameHashes && !config.drupal8.active ? '.[contenthash]' : ''}.js`,
+    publicPath: devServer ? '/' : devMode ? subFolder : `${config.publicPath}${subFolder}`,
   },
   plugins: [
     new FriendlyErrorsWebpackPlugin(),
@@ -43,8 +46,10 @@ module.exports = {
       : () => {},
     new CleanWebpackPlugin([path.resolve(__dirname, config.outputPath)]),
     new MiniCssExtractPlugin({
-      filename: `css/[name].bundle${config.addFilenameHashes ? '.[contenthash]' : ''}.css`,
-      chunkFilename: `css/[name].chunk${config.addFilenameHashes ? '.[contenthash]' : ''}.css`,
+      filename: `css/[name].bundle${config.addFilenameHashes && !config.drupal8.active ? '.[contenthash]' : ''}.css`,
+      chunkFilename: `css/[name].chunk${
+        config.addFilenameHashes && !config.drupal8.active ? '.[contenthash]' : ''
+      }.css`,
     }),
     new HtmlWebpackPlugin({
       title: config.name,
@@ -83,9 +88,11 @@ module.exports = {
             loader: 'file-loader',
             options: {
               context: path.resolve(__dirname, 'src'),
-              name: `images/[path][name]${config.addFilenameHashes ? '.[contenthash]' : ''}.[ext]`,
+              name: `images/[path][name]${
+                config.addFilenameHashes && !config.drupal8.active ? '.[contenthash]' : ''
+              }.[ext]`,
               outputPath: './',
-              publicPath: '../',
+              publicPath: devServer ? '../' : `${subFolder}${config.outputPath}`,
               useRelativePaths: true,
             },
           },
@@ -115,7 +122,9 @@ module.exports = {
             loader: 'file-loader',
             options: {
               context: path.resolve(__dirname, 'src'),
-              name: `fonts/[path][name]${config.addFilenameHashes ? '.[contenthash]' : ''}.[ext]`,
+              name: `fonts/[path][name]${
+                config.addFilenameHashes && !config.drupal8.active ? '.[contenthash]' : ''
+              }.[ext]`,
             },
           },
         ],
