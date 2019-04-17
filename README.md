@@ -277,9 +277,9 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 ## TODO
 
 - Follow [Gimli](https://gimli.app/) to add it in the future
-- scroll animation delay
 - Change lazy loading to this way: https://addyosmani.com/blog/lazy-loading/
 - [Check how to compress .ico on netlify](https://www.webpagetest.org/performance_optimization.php?test=190412_DE_faf7a1d50f1b2cde1032e58f2aec741c&run=2#compress_text)
+- add stagger function to "in view animation", add timing function to animation
 
 ## Possible libraries/workflows
 

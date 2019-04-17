@@ -58,7 +58,9 @@ $grid-breakpoints: (
     @media (min-width: $min) {
       @content;
     }
-  } @else {
+  }
+
+  @else {
     @content;
   }
 }
