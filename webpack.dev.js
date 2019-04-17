@@ -8,7 +8,7 @@ const fs = require('fs')
 
 module.exports = merge(common, {
   mode: 'development',
-  devtool: 'eval',
+  devtool: 'source-map',
   plugins: [new PrettierPlugin()],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),

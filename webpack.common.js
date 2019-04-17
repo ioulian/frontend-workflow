@@ -79,7 +79,12 @@ module.exports = {
       },
       {
         test: /\.(sa|sc|c)ss$/,
-        use: [devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {loader: 'css-loader', options: {sourceMap: devMode}},
+          {loader: 'postcss-loader', options: {sourceMap: devMode}},
+          {loader: 'sass-loader', options: {sourceMap: devMode}},
+        ],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,

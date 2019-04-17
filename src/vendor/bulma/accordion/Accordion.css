@@ -2,7 +2,6 @@
   &__item {
     &__header {
       position: relative;
-      cursor: pointer;
     }
   }
 }
