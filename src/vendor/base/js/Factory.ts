@@ -63,7 +63,7 @@ export const Factory = (Type: Class = class {}) =>
      * @param {any} restArgs (Optional) Any other parameters to pass to class
      */
     public static initDrupalBehaviors(selector: string, ...restArgs: any[]) {
-      ;(window as any).Drupal.behaviors[`attach${this.constructor.name}`] = {
+      ;(window as any).Drupal.behaviors[`attach${this.name}`] = {
         attach: (context: Element | Document): void => {
           // 1: Context is document when run the first time
           // 2: Sometimes, the context is not part of the DOM, ignore it then
