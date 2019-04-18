@@ -97,7 +97,7 @@ module.exports = {
                 config.addFilenameHashes && !config.drupal8.active ? '.[contenthash]' : ''
               }.[ext]`,
               outputPath: './',
-              publicPath: devServer ? '../' : `${subFolder}${config.outputPath}`,
+              publicPath: devServer ? '../' : `${subFolder}`,
               useRelativePaths: true,
             },
           },

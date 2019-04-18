@@ -227,6 +227,7 @@ Keep in mind that the Frontend performance score that we try to achieve with thi
 You can use `yarn watch` to start developing. This will start watching all files and they will be generated. You can also use `yarn start` to develop in a `.html` page (the development time is faster this way as we don't need wait on php to be loaded first).
 
 **Note:** Keep in mind that no `.css` is being created when watching. Only on `yarn build`/`yarn export` will there be `.css` files created.
+**Note 2:** Because the `.css` files are not created on dev, only in production, do not forget to include them in your `.libraries.yml` file in your theme. `runtime.bundle.js` also does not exist on build, it will be inline piece of code, you'l lneed to add it too in the HTML on production. In short, there are different files for dev and production builds, so include them accordingly based on the environment.
 
 ## Files to deploy
 
@@ -280,6 +281,7 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 - Change lazy loading to this way: https://addyosmani.com/blog/lazy-loading/
 - [Check how to compress .ico on netlify](https://www.webpagetest.org/performance_optimization.php?test=190412_DE_faf7a1d50f1b2cde1032e58f2aec741c&run=2#compress_text)
 - add stagger function to "in view animation", add timing function to animation
+- check how to remove dependency code in another .js file that is already stand alone module (see expendable and accordion => expandable is included in accordion)
 
 ## Possible libraries/workflows
 
