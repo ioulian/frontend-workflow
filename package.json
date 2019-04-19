@@ -77,6 +77,7 @@
     "style-loader": "0.23.1",
     "stylelint": "9.10.1",
     "stylelint-config-standard": "18.2.0",
+    "stylelint-scss": "3.6.0",
     "stylelint-webpack-plugin": "0.10.5",
     "sw-precache-webpack-plugin": "0.11.5",
     "ts-loader": "5.3.3",

@@ -107,6 +107,7 @@ $grid-breakpoints: (
       }
 
       // Some special margin utils
+
       .is-m#{$infix}-auto {
         margin: auto !important;
       }
