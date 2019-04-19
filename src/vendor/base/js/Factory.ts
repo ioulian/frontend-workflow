@@ -1,5 +1,5 @@
-/*!
-v: 0.0.1
+/**
+ * v: 0.0.1
  */
 
 type Class = new (...args: any[]) => any

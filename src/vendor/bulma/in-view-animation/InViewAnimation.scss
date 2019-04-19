@@ -12,7 +12,8 @@ $in-view-animation-base-duration: 750ms !default;
   $from,
   $to: (transform: translate3d(0, 0, 0), opacity: 1),
   $duration: $in-view-animation-base-duration,
-  $offset: 0
+  $offset: 0,
+  $timing-function: ease-out
 ) {
   $transitions: ();
 
@@ -24,6 +25,7 @@ $in-view-animation-base-duration: 750ms !default;
 
   transition: #{$transitions};
   transition-delay: #{$offset + 'ms'};
+  transition-timing-function: $timing-function;
 
   $selector: nth(&, 1);
   $child: nth($selector, length($selector));

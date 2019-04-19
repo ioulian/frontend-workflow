@@ -84,6 +84,10 @@ export class SameHeight extends Factory() {
 
     this.throttledResize = throttle(Settings.throttle, this.update.bind(this))
     window.addEventListener('resize', this.throttledResize, {passive: true})
+
+    // Update everything on window load as there's possibility the height will be changed (loaded images/css)
+    window.addEventListener('load', this.update.bind(this), false)
+
     this.update()
 
     // Add subtree watcher

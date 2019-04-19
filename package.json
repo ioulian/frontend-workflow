@@ -1,6 +1,6 @@
 {
   "name": "frontend-workflow",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "Frontend workflow using Webpack 4",
   "author": "Yulian Alexeyev <yulian@dev-q.be> (https://github.com/ioulian)",
   "keywords": [
@@ -35,7 +35,6 @@
     "*.scss"
   ],
   "dependencies": {
-    "@types/throttle-debounce": "1.1.0",
     "bulma": "0.7.2",
     "onfire.js": "2.0.0",
     "throttle-debounce": "2.1.0",
@@ -52,6 +51,7 @@
   },
   "devDependencies": {
     "@csstools/postcss-sass": "4.0.0",
+    "@types/throttle-debounce": "1.1.0",
     "autoprefixer": "9.4.5",
     "clean-webpack-plugin": "1.0.0",
     "css-loader": "2.1.0",

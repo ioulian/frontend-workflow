@@ -7,14 +7,15 @@
     @include in-view-animation-row() {
       #{$root}__item {
         @include in-view-animation(
-          (
+          $from: (
             transform: translate3d(0, -1rem, 0),
             opacity: 0,
           ),
-          (
+          $to: (
             transform: translate3d(0, 0, 0),
             opacity: 1,
-          )
+          ),
+          $timing-function: $swift-out
         );
       }
     }
@@ -24,14 +25,15 @@
     @include in-view-animation-row() {
       #{$root}__item {
         @include in-view-animation(
-          (
+          $from: (
             transform: translate3d(1rem, 0, 0),
             opacity: 0,
           ),
-          (
+          $to: (
             transform: translate3d(0, 0, 0),
             opacity: 1,
-          )
+          ),
+          $timing-function: $swift-out
         );
       }
     }
@@ -41,14 +43,15 @@
     @include in-view-animation-row() {
       #{$root}__item {
         @include in-view-animation(
-          (
+          $from: (
             transform: translate3d(0, 1rem, 0),
             opacity: 0,
           ),
-          (
+          $to: (
             transform: translate3d(0, 0, 0),
             opacity: 1,
-          )
+          ),
+          $timing-function: $swift-out
         );
       }
     }
@@ -58,14 +61,15 @@
     @include in-view-animation-row() {
       #{$root}__item {
         @include in-view-animation(
-          (
+          $from: (
             transform: translate3d(-1rem, 0, 0),
             opacity: 0,
           ),
-          (
+          $to: (
             transform: translate3d(0, 0, 0),
             opacity: 1,
-          )
+          ),
+          $timing-function: $swift-out
         );
       }
     }
