@@ -55,6 +55,8 @@ yarn install
 
 Use `yarn start` to start the webpack dev server, you can now start developing, the browser will be automatically reloaded on any code/asset change. You can add the HTML in `index.html`.
 
+You can also use `yarn start:d` to start the dev server with [dashboard](https://github.com/FormidableLabs/webpack-dashboard). This gives you a better overview.
+
 For examples on how to use TS within this workflow, please read `TypScript usage examples`.
 
 You can start writing your CSS in `src/index.scss` and JS code in `src/project/Site.ts`. Alternatively, you can create your own entry points.
@@ -183,6 +185,10 @@ With default configuration, the lighthouse audit gives us this score. However, t
 Same metrics for mobile with default configuration except for:
 
 - **Accessibility**: 89. Same error as on desktop.
+
+#### Server-side performance
+
+Keep in mind that servers (and their configuration) are a big part of performance. The demo site is running on [Netlify servers](https://netlify.com) and their configuration is optimized for static pages and front-end. This way we can get such high score. If you are hosting your website yourself you'll need to add cache-, gzip-, expires, ... headers yourself.
 
 ### Options
 

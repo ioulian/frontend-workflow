@@ -23,7 +23,7 @@ img[data-srcset] {
   &--opacity-scale {
     transform: scale(0.96);
     opacity: 0;
-    transition: opacity $duration-normal, transform 1s $swift-in;
+    transition: opacity $duration-normal, transform 750ms $swift-out;
 
     &#{$root}--loaded,
     &#{$root}--error {
