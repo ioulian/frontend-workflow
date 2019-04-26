@@ -271,7 +271,9 @@ const zip = new JSZip()
 
 If no types do not exist, you'll need to create one yourself and add it to folder `src/typings/`. Find information on how to do it here: [https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html)
 
-## Remove demo content
+## Demo content
+
+You can see the demo here: [https://trusting-perlman-3c2ee5.netlify.com](https://trusting-perlman-3c2ee5.netlify.com). To remove all demo content, follow these steps:
 
 - Remove `src/demo`
 - Remove `@import 'demo/demo';` from `src/index.scss`
@@ -279,7 +281,7 @@ If no types do not exist, you'll need to create one yourself and add it to folde
 
 ## Requests and bugs
 
-If you encounter bugs or have some requests, please create a ticket at [Github](https://github.com/ioulian/frontend-workflow/issues)
+If you encounter bugs or have some requests, please create a ticket at [Github](https://github.com/ioulian/frontend-workflow/issues).
 
 ## TODO
 

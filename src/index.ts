@@ -1,6 +1,6 @@
 // Import Site singleton where the site logic is located
 import {Site} from './project/Site'
-import {FreshContentNotification} from './vendor/bulma/fresh-content-notification/FreshContentNotification'
+import {FreshContentNotification} from './vendor/fw/fresh-content-notification/FreshContentNotification'
 
 // Import base styles
 import './index.scss'
