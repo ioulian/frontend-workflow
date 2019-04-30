@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <nav id="offset-target" class="navbar is-primary is-fixed-top">
+    <nav id="main-navbar" class="navbar is-primary is-fixed-top">
       <div class="container">
         <div class="navbar-brand">
           <a
@@ -29,34 +29,105 @@
         </div>
         <div id="navMenu" class="navbar-menu">
           <nav class="navbar-end" aria-label="Main menu" role="navigation">
-            <a
-              href="#"
-              class="navbar-item is-active js-scroll-to"
-              data-target="#scroll-here"
-              data-offset="#offset-target"
-              >Sample</a
+            <a href="#" class="navbar-item js-scroll-to" data-target="#section-documentation" data-offset="#main-navbar"
+              >Documentation</a
             >
             <div class="navbar-item has-dropdown is-hoverable">
-              <a href="#" class="navbar-link">Menu</a>
+              <a class="navbar-link">Components</a>
               <div class="navbar-dropdown">
-                <a href="#" class="navbar-item">
-                  About
+                <a
+                  href="#"
+                  class="navbar-item js-scroll-to"
+                  data-target="#section-breakpoint-mixin"
+                  data-offset="#main-navbar"
+                >
+                  Breakpoint mixin
                 </a>
-                <a href="#" class="navbar-item">
-                  Jobs
+                <a
+                  href="#"
+                  class="navbar-item js-scroll-to"
+                  data-target="#section-lazy-loaded-images"
+                  data-offset="#main-navbar"
+                >
+                  Lazy loaded images
                 </a>
-                <a href="#" class="navbar-item">
-                  Contact
+                <a
+                  href="#"
+                  class="navbar-item js-scroll-to"
+                  data-target="#section-clickthrough"
+                  data-offset="#main-navbar"
+                >
+                  Clickthrough
+                </a>
+                <a
+                  href="#"
+                  class="navbar-item js-scroll-to"
+                  data-target="#section-expandable"
+                  data-offset="#main-navbar"
+                >
+                  Expandable
+                </a>
+                <a
+                  href="#"
+                  class="navbar-item js-scroll-to"
+                  data-target="#section-accordion"
+                  data-offset="#main-navbar"
+                >
+                  Accordion list
+                </a>
+                <a
+                  href="#"
+                  class="navbar-item js-scroll-to"
+                  data-target="#section-same-height"
+                  data-offset="#main-navbar"
+                >
+                  Same height
+                </a>
+                <a
+                  href="#"
+                  class="navbar-item js-scroll-to"
+                  data-target="#section-in-view-animation"
+                  data-offset="#main-navbar"
+                >
+                  In View Animation
+                </a>
+                <a
+                  href="#"
+                  class="navbar-item js-scroll-to"
+                  data-target="#section-scroll-into-view"
+                  data-offset="#main-navbar"
+                >
+                  Scroll Into View
+                </a>
+                <a
+                  href="#"
+                  class="navbar-item js-scroll-to"
+                  data-target="#section-social-share"
+                  data-offset="#main-navbar"
+                >
+                  Social share
+                </a>
+                <a
+                  href="#"
+                  class="navbar-item js-scroll-to"
+                  data-target="#section-js-breakpoint"
+                  data-offset="#main-navbar"
+                >
+                  JS Breakpoint
                 </a>
                 <hr class="navbar-divider" />
-                <a href="#" class="navbar-item">
+                <a
+                  href="https://github.com/ioulian/frontend-workflow/issues"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="navbar-item"
+                >
                   Report an issue
                 </a>
               </div>
             </div>
-            <a href="#" class="navbar-item">Items</a>
             <div class="navbar-item has-dropdown is-hoverable">
-              <span class="navbar-link">NL</span>
+              <a class="navbar-link">NL</a>
               <div class="navbar-dropdown">
                 <a href="#" class="navbar-item">
                   FR
@@ -96,13 +167,13 @@
       </div>
     </header>
 
-    <section id="scroll-here" class="section">
+    <section class="section">
       <div class="container">
         <div class="columns">
           <div class="column is-8-desktop is-offset-2-desktop">
             <div class="content">
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
-                <h3 class="js-in-view-animation__item">Documentation</h3>
+                <h3 id="section-documentation" class="js-in-view-animation__item">Documentation</h3>
               </div>
               <p>
                 Find all documentation here:
@@ -111,13 +182,13 @@
                 >. This page exists as a demo and examples of specific methods of optimizations.
               </p>
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
-                <h3 class="js-in-view-animation__item">Breakpoint mixin</h3>
+                <h3 id="section-breakpoint-mixin" class="js-in-view-animation__item">Breakpoint mixin</h3>
               </div>
 
               <p>This is the current breakpoint: <span class="demo-breakpoint"></span></p>
 
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
-                <h3 class="js-in-view-animation__item">Lazy loaded images</h3>
+                <h3 id="section-lazy-loaded-images" class="js-in-view-animation__item">Lazy loaded images</h3>
               </div>
               <h4>Picture tag</h4>
               <p>
@@ -176,7 +247,7 @@
               </p>
 
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
-                <h3 class="js-in-view-animation__item">ClickThrough</h3>
+                <h3 id="section-clickthrough" class="js-in-view-animation__item">Clickthrough</h3>
               </div>
               <div class="js-clickthrough">
                 <p>
@@ -188,7 +259,7 @@
               </div>
 
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
-                <h3 class="js-in-view-animation__item">Expandable</h3>
+                <h3 id="section-expandable" class="js-in-view-animation__item">Expandable</h3>
               </div>
               <div class="fw-expandable">
                 <div class="fw-expandable__toggle">
@@ -220,7 +291,7 @@
               </div>
 
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
-                <h3 class="js-in-view-animation__item">Accordion list</h3>
+                <h3 id="section-accordion" class="js-in-view-animation__item">Accordion list</h3>
               </div>
 
               <div class="fw-accordion" data-close-others="true">
@@ -312,7 +383,7 @@
               </div>
 
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
-                <h3 class="js-in-view-animation__item">Same Height</h3>
+                <h3 id="section-same-height" class="js-in-view-animation__item">Same Height</h3>
               </div>
 
               <div
@@ -339,7 +410,7 @@
               </div>
 
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
-                <h3 class="js-in-view-animation__item">In View Animation</h3>
+                <h3 id="section-in-view-animation" class="js-in-view-animation__item">In View Animation</h3>
               </div>
               <p>These animations will trigger when the element enters the viewport (or is already in the viewport)</p>
 
@@ -360,12 +431,12 @@
               </div>
 
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
-                <h3 class="js-in-view-animation__item">Scroll Into View</h3>
+                <h3 id="section-scroll-into-view" class="js-in-view-animation__item">Scroll Into View</h3>
               </div>
-              <p>Try clicking the first menu item in the navbar ;)</p>
+              <p>Try clicking the the menu items in the navbar ;)</p>
 
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
-                <h3 class="js-in-view-animation__item">Social share</h3>
+                <h3 id="section-social-share" class="js-in-view-animation__item">Social share</h3>
               </div>
               <p>
                 By using correct social sharer links, you can modify the default behavior to show a popup with the
@@ -400,7 +471,7 @@
               </ul>
 
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
-                <h3 class="js-in-view-animation__item">JS Breakpoint</h3>
+                <h3 id="section-js-breakpoint" class="js-in-view-animation__item">JS Breakpoint</h3>
               </div>
               <p>
                 Sometimes you need to listen on breakpoint changes in JS. With this helper you can do that. It will
