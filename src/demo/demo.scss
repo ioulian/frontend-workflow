@@ -1,3 +1,7 @@
+@import './../bootstrap';
+@import './../vendor/base/scss/styles';
+@import './../../node_modules/bulma/sass/utilities/derived-variables';
+
 .fw-full-size-in-parent {
   @include fw-full-size-in-parent();
 }

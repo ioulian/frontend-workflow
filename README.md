@@ -275,9 +275,11 @@ If no types do not exist, you'll need to create one yourself and add it to folde
 
 You can see the demo here: [https://trusting-perlman-3c2ee5.netlify.com](https://trusting-perlman-3c2ee5.netlify.com). To remove all demo content, follow these steps:
 
+- Remove `demo` entry point from `webpack.common.js`
 - Remove `src/demo`
-- Remove `@import 'demo/demo';` from `src/index.scss`
 - Remove demo html from `index.html`
+
+You can now start with our own project.
 
 ## Requests and bugs
 

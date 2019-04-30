@@ -7,7 +7,7 @@ $navbar-breakpoint: $desktop !default;
   .has-dropdown {
     .navbar-link:not(.is-arrowless) {
       &::after {
-        transition: transform $duration-normal $swift-in;
+        transition: transform $duration-normal $swift-out;
       }
     }
 
