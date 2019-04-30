@@ -9,6 +9,7 @@ import './ResponsiveNavbar.scss'
  *
  * If a menu-item contains a submenu (Bulma dropdown), then it will be hidden by default on mobile
  * On first click, it will open the submenu on mobile, the next clicks will navigate to the url on the anchor
+ * If no url is found, then the submenu will close
  */
 export class ResponsiveNavbar {
   /**

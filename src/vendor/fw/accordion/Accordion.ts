@@ -9,8 +9,6 @@ import {Factory} from './../../base/js/Factory'
 import {AccordionItem} from './AccordionItem'
 import Settings from '../../../project/Settings'
 
-import './Accordion.css'
-
 interface SettingsType {
   closeOthers?: boolean
 }
