@@ -22,10 +22,4 @@ export class Slider extends Factory() {
   public getInstance(): Swiper {
     return this.swiperInstance
   }
-
-  public static updateAll(): void {
-    this.instances.forEach((slider: Slider) => {
-      slider.getInstance().update()
-    })
-  }
 }

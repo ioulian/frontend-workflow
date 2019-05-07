@@ -5,7 +5,9 @@ if (typeof Drupal === 'undefined') {
 
   // Css is loaded later when in dev mode, update the slider on load of css
   window.addEventListener('load', () => {
-    Slider.updateAll()
+    Slider.instances.forEach((slider: Slider) => {
+      slider.getInstance().update()
+    })
   })
 } else {
   Slider.initDrupalBehaviors('.swiper-container')
