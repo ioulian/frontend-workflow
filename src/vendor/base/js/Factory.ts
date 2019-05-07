@@ -2,6 +2,8 @@
  * v: 0.0.1
  */
 
+import 'core-js/features/array/from'
+
 type Class = new (...args: any[]) => any
 
 /**
