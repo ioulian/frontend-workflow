@@ -24,6 +24,17 @@ If you don't want to use them, remove them from entry points in `webpack.common.
 
 By default they are loaded as separate files, you can un-comment them (in `webpack.common.js`) if you do not wish to use them.
 
+## Browser support
+
+The default components work on these browsers:
+
+- IE11
+- Chrome
+- FireFox
+- Opera
+
+There is also Core-JS polyfill library added for your convenience if you'll need to add more polyfills in the future.
+
 ## Install
 
 Download this repository to the root of the frontend of your project.
