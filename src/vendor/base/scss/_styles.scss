@@ -35,3 +35,7 @@ img {
 .is-relative {
   position: relative;
 }
+
+.has-link-underline {
+  @include fw-link-underline();
+}

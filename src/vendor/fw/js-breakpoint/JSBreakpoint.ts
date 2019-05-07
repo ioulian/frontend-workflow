@@ -58,7 +58,9 @@ export class JSBreakpoint extends EE {
       return null
     }
 
-    return style.content.slice(1, -1)
+    return style.content.indexOf('"') === 0 || style.content.indexOf("'") === 0
+      ? style.content.slice(1, -1)
+      : style.content
   }
 
   public createElement(): void {
