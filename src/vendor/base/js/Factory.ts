@@ -95,7 +95,10 @@ export const Factory = (Type: Class = class {}) =>
         ...this.instances,
         ...[...document.querySelectorAll(selector)] // Cast to array for browser compatibility
           // Filter out the processed instances
-          .filter((el: Element) => el.classList.contains('fw-factory-loaded') === false)
+          .filter((el: Element) => {
+            console.log(el, el.classList)
+            return el.classList.contains('fw-factory-loaded') === false
+          })
           .map((el: Element) => {
             // Create new instance and set it to processed
             const newInstance = new this(el, ...restArgs)
