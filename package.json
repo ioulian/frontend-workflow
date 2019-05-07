@@ -1,6 +1,6 @@
 {
   "name": "frontend-workflow",
-  "version": "0.10.4",
+  "version": "0.10.5",
   "description": "Frontend workflow using Webpack 4",
   "author": "Yulian Alexeyev <yulian@dev-q.be> (https://github.com/ioulian)",
   "keywords": [
@@ -37,6 +37,7 @@
   "dependencies": {
     "bulma": "0.7.2",
     "onfire.js": "2.0.0",
+    "swiper": "4.5.0",
     "throttle-debounce": "2.1.0",
     "vanilla-lazyload": "11.0.6"
   },
