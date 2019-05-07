@@ -1,3 +1,5 @@
+import 'core-js/features/array/from'
+
 /**
  * Helper class to lazy load components based on DOM elements.
  *
@@ -75,6 +77,6 @@ export class AsyncModuleLoader {
    * @returns {boolean} selector TRUE if elements are found, FALSE is not elements are found
    */
   public static checkIfElementsExist(selector: string): boolean {
-    return [...document.querySelectorAll(selector)].length !== 0
+    return Array.from(document.querySelectorAll(selector)).length !== 0
   }
 }

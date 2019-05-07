@@ -2,6 +2,8 @@
  * V: 1.1.0
  */
 
+import 'core-js/features/array/from'
+
 import {throttle} from 'throttle-debounce'
 import {Factory} from './../../base/js/Factory'
 import Settings from '../../../project/Settings'
@@ -128,7 +130,7 @@ export class SameHeight extends Factory() {
     this.removeMutationObserver()
 
     this.classes.forEach(elClass => {
-      ;[...this.el.querySelectorAll(elClass)].forEach(el => {
+      Array.from(this.el.querySelectorAll(elClass)).forEach(el => {
         el.removeAttribute('style')
       })
     })
@@ -139,7 +141,7 @@ export class SameHeight extends Factory() {
    */
   public update(): void {
     this.classes.forEach(elClass => {
-      this.applyHeight([...this.el.querySelectorAll(elClass)])
+      this.applyHeight(Array.from(this.el.querySelectorAll(elClass)))
     })
   }
 

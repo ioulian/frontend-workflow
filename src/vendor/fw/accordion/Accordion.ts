@@ -2,6 +2,8 @@
  * V: 0.1.0
  */
 
+import 'core-js/features/array/from'
+
 import EE from 'onfire.js'
 import {debounce} from 'throttle-debounce'
 import {Factory} from './../../base/js/Factory'
@@ -70,7 +72,7 @@ export class Accordion extends Factory(EE) {
   private initItems(): void {
     this.handleOpenedClosed = debounce(Settings.debounce, this.triggerResize.bind(this))
 
-    this.items = [...this.el.querySelectorAll('.fw-accordion__item')].map(el => {
+    this.items = Array.from(this.el.querySelectorAll('.fw-accordion__item')).map(el => {
       const newItem = new AccordionItem(el)
 
       if (this.settings.closeOthers === true) {

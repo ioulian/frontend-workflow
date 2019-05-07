@@ -1,3 +1,6 @@
+// Include global polyfills
+import 'core-js/features/array/from'
+
 // Import Site singleton where the site logic is located
 import {Site} from './project/Site'
 import {FreshContentNotification} from './vendor/fw/fresh-content-notification/FreshContentNotification'
