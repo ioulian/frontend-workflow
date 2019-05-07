@@ -293,7 +293,6 @@ These are our own TODO's that might, or might not be included in this workflow, 
 - (LOW PRIO) Change lazy loading to this way: https://addyosmani.com/blog/lazy-loading/
 - (LOW PRIO) Check how to remove dependency code in another .js file that is already stand alone module (see expendable and accordion => expandable is included in accordion)
 - (MED PRIO) Add prefetch tags to HTML for CSS and JS
-- (MED PRIO) Carousel
 
 ## Possible libraries/workflows
 
