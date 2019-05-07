@@ -2,6 +2,8 @@
  * V: 0.1.0
  */
 
+import 'element-closest'
+
 /**
  * Helper method to scroll to a specific DOM element on click
  *

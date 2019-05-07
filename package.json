@@ -37,6 +37,8 @@
   "dependencies": {
     "bulma": "0.7.2",
     "core-js": "3.0.1",
+    "element-closest": "3.0.1",
+    "element-matches-polyfill": "1.0.0",
     "intersection-observer": "0.6.0",
     "onfire.js": "2.0.0",
     "swiper": "4.5.0",

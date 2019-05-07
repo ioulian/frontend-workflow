@@ -2,6 +2,8 @@
  * V: 0.1.0
  */
 
+import 'element-closest'
+
 export class SocialShare {
   /**
    * Attaches event listener

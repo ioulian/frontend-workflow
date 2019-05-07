@@ -2,6 +2,8 @@
  * V: 0.1.2
  */
 
+import 'element-closest'
+
 import './ClickThrough.css'
 
 /**
