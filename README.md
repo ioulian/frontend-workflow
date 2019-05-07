@@ -32,6 +32,7 @@ The default components work on these browsers:
 - Chrome
 - FireFox
 - Opera
+- Safari
 
 There is also Core-JS polyfill library added for your convenience if you'll need to add more polyfills in the future.
 

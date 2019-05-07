@@ -460,6 +460,10 @@
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@types/svgo/-/svgo-1.0.1.tgz#6095fc0119febcf5920ed9cdacdcc0a0d026e4a5"
 
+"@types/swiper@^4.4.2":
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/@types/swiper/-/swiper-4.4.2.tgz#189585204a651ceb4b5f6a5eb536f808faa00079"
+
 "@types/tapable@*":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.4.tgz#b4ffc7dc97b498c969b360a41eee247f82616370"
