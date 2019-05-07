@@ -37,6 +37,7 @@
   "dependencies": {
     "bulma": "0.7.2",
     "core-js": "3.0.1",
+    "intersection-observer": "0.6.0",
     "onfire.js": "2.0.0",
     "swiper": "4.5.0",
     "throttle-debounce": "2.1.0",
