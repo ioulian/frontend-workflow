@@ -1,28 +1,16 @@
-@mixin fw-link-underline($width: 1px, $offset: -1px, $color: currentColor) {
+// From https://codepen.io/christiancroser/pen/xqrLBm
+@mixin fw-link-underline($width: 1px, $color: currentColor) {
   position: relative;
   text-decoration: none;
-
-  &::after {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: $offset;
-    width: 100%;
-    height: $width;
-    content: '';
-    background-color: $color;
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform $duration-normal $swift-out;
-  }
+  background-image: linear-gradient(transparent calc(100% - #{$width}), $color $width);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: background-size $duration-normal $swift-in;
 
   &:hover,
   &:focus {
     text-decoration: none;
-    transition-timing-function: $swift-in;
-
-    &::after {
-      transform: scaleX(1);
-    }
+    transition-timing-function: $swift-out;
+    background-size: 100% 100%;
   }
 }

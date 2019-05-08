@@ -3,6 +3,7 @@
  */
 
 import 'element-matches-polyfill'
+import 'core-js/features/array/from'
 
 import './ResponsiveNavbar.scss'
 
@@ -39,7 +40,71 @@ export class ResponsiveNavbar {
           e.preventDefault()
           elContainer.classList.remove('is-open')
         }
+      } else {
+        ResponsiveNavbar.closeAllDropdowns()
       }
+    })
+
+    // Handle tab navigation (for accessibility)
+    document.addEventListener(
+      'keypress',
+      (e: KeyboardEvent) => {
+        const keyCode = e.keyCode ? e.keyCode : e.which
+
+        // Check if the focussed element is hamburger menu
+        if (
+          document.activeElement instanceof HTMLElement &&
+          document.activeElement.classList.contains('navbar-burger') &&
+          (keyCode === 13 || keyCode === 32)
+        ) {
+          e.preventDefault()
+
+          const elTarget = document.getElementById(document.activeElement.dataset.target)
+
+          document.activeElement.classList.toggle('is-active')
+          elTarget.classList.toggle('is-active')
+        }
+
+        // Check if the focussed element is dropdown
+        if (
+          document.activeElement instanceof HTMLElement &&
+          document.activeElement.classList.contains('has-dropdown') &&
+          (keyCode === 13 || keyCode === 32)
+        ) {
+          e.preventDefault()
+
+          if (document.activeElement.classList.contains('is-active') === false) {
+            ResponsiveNavbar.closeAllDropdowns()
+            document.activeElement.classList.add('is-active')
+            document.activeElement.classList.add('is-open')
+          } else {
+            document.activeElement.classList.remove('is-active')
+            document.activeElement.classList.remove('is-open')
+          }
+        }
+      },
+      false
+    )
+
+    // Handle close on escape
+    document.addEventListener(
+      'keyup',
+      (e: KeyboardEvent) => {
+        const keyCode = e.keyCode ? e.keyCode : e.which
+
+        // Handle escape
+        if (keyCode === 27) {
+          ResponsiveNavbar.closeAllDropdowns()
+        }
+      },
+      false
+    )
+  }
+
+  public static closeAllDropdowns(): void {
+    Array.from(document.querySelectorAll('.has-dropdown')).forEach((el: HTMLElement) => {
+      el.classList.remove('is-active')
+      el.classList.remove('is-open')
     })
   }
 }

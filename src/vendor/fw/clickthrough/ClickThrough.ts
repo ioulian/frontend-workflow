@@ -65,11 +65,28 @@ export class ClickThrough {
           if (href !== null && href !== '#') {
             // Open new window if target is _blank, current window otherwise
             if (target === '_blank') {
-              window.open(href)
+              window.open(href, target)
             } else {
               window.location.href = href
             }
           }
+        }
+      },
+      false
+    )
+
+    // Handle tab navigation (for accessibility)
+    document.addEventListener(
+      'keypress',
+      (e: KeyboardEvent) => {
+        // Check if the focussed element is js-clickthrough
+        if (
+          document.activeElement instanceof HTMLElement &&
+          document.activeElement.classList.contains('js-clickthrough') &&
+          (e.keyCode ? e.keyCode : e.which) === 13
+        ) {
+          // Let click event listener handle the rest
+          document.activeElement.click()
         }
       },
       false

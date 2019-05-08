@@ -1,5 +1,6 @@
 @import './../bootstrap';
 @import './../vendor/base/scss/styles';
+@import './../../node_modules/bulma/sass/utilities/initial-variables';
 @import './../../node_modules/bulma/sass/utilities/derived-variables';
 
 .fw-full-size-in-parent {
@@ -57,4 +58,8 @@ img.fw-full-size-in-parent {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.has-demo-link-underline {
+  @include fw-link-underline(10px, rgba($orange, 0.25));
 }

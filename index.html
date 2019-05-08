@@ -22,7 +22,7 @@
           >
             Frontend workflow
           </a>
-          <span class="navbar-burger burger" data-target="navMenu" aria-controls="navMenu">
+          <span class="navbar-burger burger" data-target="navMenu" aria-controls="navMenu" tabindex="0" role="button">
             <span></span>
             <span></span>
             <span></span>
@@ -30,25 +30,41 @@
         </div>
         <div id="navMenu" class="navbar-menu">
           <nav class="navbar-end" aria-label="Main menu" role="navigation">
-            <a href="#" class="navbar-item js-scroll-to" data-target="#section-documentation" data-offset="#main-navbar"
+            <a
+              href="#"
+              class="navbar-item js-scroll-to"
+              data-target="#section-documentation"
+              data-offset="#main-navbar"
+              role="menuitem"
               >Documentation</a
             >
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">Components</a>
-              <div class="navbar-dropdown">
+            <div class="navbar-item has-dropdown is-hoverable" aria-haspopup="true" tabindex="0">
+              <a class="navbar-link" role="menuitem">Components</a>
+              <div class="navbar-dropdown" role="menu">
                 <a
                   href="#"
                   class="navbar-item js-scroll-to"
                   data-target="#section-breakpoint-mixin"
                   data-offset="#main-navbar"
+                  role="menuitem"
                 >
                   Breakpoint mixin
                 </a>
                 <a
                   href="#"
                   class="navbar-item js-scroll-to"
+                  data-target="#section-link-underline-mixin"
+                  data-offset="#main-navbar"
+                  role="menuitem"
+                >
+                  Link underline mixin
+                </a>
+                <a
+                  href="#"
+                  class="navbar-item js-scroll-to"
                   data-target="#section-lazy-loaded-images"
                   data-offset="#main-navbar"
+                  role="menuitem"
                 >
                   Lazy loaded images
                 </a>
@@ -57,6 +73,7 @@
                   class="navbar-item js-scroll-to"
                   data-target="#section-clickthrough"
                   data-offset="#main-navbar"
+                  role="menuitem"
                 >
                   Clickthrough
                 </a>
@@ -65,6 +82,7 @@
                   class="navbar-item js-scroll-to"
                   data-target="#section-expandable"
                   data-offset="#main-navbar"
+                  role="menuitem"
                 >
                   Expandable
                 </a>
@@ -73,6 +91,7 @@
                   class="navbar-item js-scroll-to"
                   data-target="#section-accordion"
                   data-offset="#main-navbar"
+                  role="menuitem"
                 >
                   Accordion list
                 </a>
@@ -81,6 +100,7 @@
                   class="navbar-item js-scroll-to"
                   data-target="#section-same-height"
                   data-offset="#main-navbar"
+                  role="menuitem"
                 >
                   Same height
                 </a>
@@ -89,6 +109,7 @@
                   class="navbar-item js-scroll-to"
                   data-target="#section-in-view-animation"
                   data-offset="#main-navbar"
+                  role="menuitem"
                 >
                   In View Animation
                 </a>
@@ -97,6 +118,7 @@
                   class="navbar-item js-scroll-to"
                   data-target="#section-scroll-into-view"
                   data-offset="#main-navbar"
+                  role="menuitem"
                 >
                   Scroll Into View
                 </a>
@@ -105,6 +127,7 @@
                   class="navbar-item js-scroll-to"
                   data-target="#section-social-share"
                   data-offset="#main-navbar"
+                  role="menuitem"
                 >
                   Social share
                 </a>
@@ -113,6 +136,7 @@
                   class="navbar-item js-scroll-to"
                   data-target="#section-js-breakpoint"
                   data-offset="#main-navbar"
+                  role="menuitem"
                 >
                   JS Breakpoint
                 </a>
@@ -121,6 +145,7 @@
                   class="navbar-item js-scroll-to"
                   data-target="#section-js-slider"
                   data-offset="#main-navbar"
+                  role="menuitem"
                 >
                   Slider
                 </a>
@@ -130,21 +155,27 @@
                   target="_blank"
                   rel="noopener noreferrer"
                   class="navbar-item"
+                  role="menuitem"
                 >
                   Report an issue
                 </a>
               </div>
             </div>
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">NL</a>
-              <div class="navbar-dropdown">
-                <a href="#" class="navbar-item">
+            <div
+              class="navbar-item has-dropdown is-hoverable"
+              aria-haspopup="true"
+              aria-label="Language switcher"
+              tabindex="0"
+            >
+              <a class="navbar-link" role="menuitem">NL</a>
+              <div class="navbar-dropdown" role="menu">
+                <a href="#" class="navbar-item" role="menuitem">
                   FR
                 </a>
-                <a href="#" class="navbar-item">
+                <a href="#" class="navbar-item" role="menuitem">
                   EN
                 </a>
-                <a href="#" class="navbar-item">
+                <a href="#" class="navbar-item" role="menuitem">
                   DE
                 </a>
               </div>
@@ -199,6 +230,23 @@
               </div>
 
               <p>This is the current breakpoint: <span class="demo-breakpoint"></span></p>
+
+              <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
+                <h3 id="section-link-underline-mixin" class="js-in-view-animation__item">Link underline mixin</h3>
+              </div>
+
+              <p>
+                You can hover <a class="has-link-underline">this link</a> to see the animation.
+                <a class="has-link-underline"
+                  >It also works with multi-line links. Just check this out! This is a very long link and it wraps and
+                  animates perfectly!</a
+                >
+              </p>
+              <p>
+                <a class="has-demo-link-underline"
+                  >You can also apply different style of the link, by default it will use the same color of the link.</a
+                >
+              </p>
 
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
                 <h3 id="section-lazy-loaded-images" class="js-in-view-animation__item">Lazy loaded images</h3>
@@ -274,15 +322,20 @@
                   >.
                 </p>
               </div>
+              <div class="js-clickthrough" data-href="https://google.be" data-target="_blank" tabindex="0">
+                <p>
+                  This text doesn't have a link inside, but you can define it with data attributes.
+                </p>
+              </div>
 
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
                 <h3 id="section-expandable" class="js-in-view-animation__item">Expandable</h3>
               </div>
               <div class="fw-expandable">
-                <div class="fw-expandable__toggle">
+                <div id="demo-expandable-toggle" class="fw-expandable__toggle">
                   <p><strong>Click to expand</strong></p>
                 </div>
-                <div class="fw-expandable__content-wrapper">
+                <div id="demo-expandable-content" class="fw-expandable__content-wrapper">
                   <div class="fw-expandable__content">
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend venenatis viverra.
@@ -290,6 +343,9 @@
                       ornare ex, id vulputate lectus. Praesent et interdum elit, nec sagittis nisl. Aliquam vel
                       hendrerit urna.
                     </p>
+                    <p><input type="text" /></p>
+                    <p><input type="text" /></p>
+                    <p><input type="text" /></p>
                     <p>
                       Quisque scelerisque leo sit amet magna lobortis dictum. Quisque cursus, augue a interdum volutpat,
                       felis mi ullamcorper diam, nec venenatis lacus ipsum id odio. Vestibulum ante ipsum primis in
@@ -313,10 +369,10 @@
 
               <div class="fw-accordion" data-close-others="true">
                 <div class="fw-accordion__item">
-                  <div class="fw-accordion__item__header fw-expandable__toggle">
+                  <div id="demo-accordion-1-toggle" class="fw-accordion__item__header fw-expandable__toggle">
                     <p><strong>Click to expand 1</strong></p>
                   </div>
-                  <div class="fw-expandable__content-wrapper">
+                  <div id="demo-accordion-1-content" class="fw-expandable__content-wrapper">
                     <div class="fw-accordion__item__content fw-expandable__content">
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend venenatis viverra.
@@ -324,6 +380,9 @@
                         ornare ex, id vulputate lectus. Praesent et interdum elit, nec sagittis nisl. Aliquam vel
                         hendrerit urna.
                       </p>
+                      <p><input type="text" /></p>
+                      <p><input type="text" /></p>
+                      <p><input type="text" /></p>
                       <p>
                         Quisque tincidunt euismod placerat. Fusce aliquet blandit scelerisque. Donec ut ipsum a neque
                         condimentum ornare. Sed porta massa sit amet tincidunt blandit. Nullam ultricies lectus ac
@@ -334,10 +393,10 @@
                   </div>
                 </div>
                 <div class="fw-accordion__item">
-                  <div class="fw-accordion__item__header fw-expandable__toggle">
+                  <div id="demo-accordion-2-toggle" class="fw-accordion__item__header fw-expandable__toggle">
                     <p><strong>Click to expand 2</strong></p>
                   </div>
-                  <div class="fw-expandable__content-wrapper">
+                  <div id="demo-accordion-2-content" class="fw-expandable__content-wrapper">
                     <div class="fw-accordion__item__content fw-expandable__content">
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend venenatis viverra.
@@ -368,10 +427,10 @@
                   </div>
                 </div>
                 <div class="fw-accordion__item">
-                  <div class="fw-accordion__item__header fw-expandable__toggle">
+                  <div id="demo-accordion-3-toggle" class="fw-accordion__item__header fw-expandable__toggle">
                     <p><strong>Click to expand 3</strong></p>
                   </div>
-                  <div class="fw-expandable__content-wrapper">
+                  <div id="demo-accordion-3-content" class="fw-expandable__content-wrapper">
                     <div class="fw-accordion__item__content fw-expandable__content">
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend venenatis viverra.
