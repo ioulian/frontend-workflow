@@ -59,8 +59,8 @@ export class JSBreakpoint extends EE {
     }
 
     return style.content.indexOf('"') === 0 || style.content.indexOf("'") === 0
-      ? style.content.slice(1, -1)
-      : style.content
+      ? style.content.slice(1, -1) // Some browsers output quotes around the returned value
+      : style.content // Some not...
   }
 
   public createElement(): void {
