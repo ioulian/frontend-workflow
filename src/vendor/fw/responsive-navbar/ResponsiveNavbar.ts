@@ -2,8 +2,11 @@
  * V: 0.1.0
  */
 
-import 'element-matches-polyfill'
-import 'core-js/features/array/from'
+// import 'element-matches-polyfill'
+
+import {Factory} from './../../base/js/Factory'
+
+import {Dropdown} from '../dropdown/Dropdown'
 
 import './ResponsiveNavbar.scss'
 
@@ -14,97 +17,103 @@ import './ResponsiveNavbar.scss'
  * On first click, it will open the submenu on mobile, the next clicks will navigate to the url on the anchor
  * If no url is found, then the submenu will close
  */
-export class ResponsiveNavbar {
-  /**
-   * Attaches event listeners on all ".navbar-burger" elements (delegated).
-   */
-  public static attach() {
-    document.addEventListener('click', e => {
-      if (e.target instanceof HTMLElement && e.target.matches('.navbar-burger')) {
-        const elTarget = document.getElementById(e.target.dataset.target)
+export class ResponsiveNavbar extends Factory() {
+  private elBurger: HTMLElement | null = null
+  private elMenu: HTMLElement | null = null
+  private elDropdowns: HTMLElement[] = []
+  private dropdowns: Dropdown[] = []
 
-        e.target.classList.toggle('is-active')
-        elTarget.classList.toggle('is-active')
-      }
+  constructor(el: Element) {
+    super(el)
 
-      // Handle submenu's
-      if (e.target instanceof HTMLElement && e.target.closest('.has-dropdown') !== null) {
-        const elContainer = e.target.closest('.has-dropdown')
+    this.elBurger = this.el.querySelector('.navbar-burger')
+    this.elMenu = this.el.querySelector('.navbar-menu')
+    this.elDropdowns = Array.from(this.el.querySelectorAll('.has-dropdown'))
+    this.dropdowns = this.elDropdowns.map((elDropdown: HTMLElement) => new Dropdown(elDropdown, this))
 
-        if (elContainer.classList.contains('is-open') === false) {
-          e.preventDefault()
-          elContainer.classList.add('is-open')
-        } else if (e.target.parentNode === elContainer && e.target.getAttribute('href') === null) {
-          // If the item is not clickable and is direct child of parent then close the dropdown
-          // This can happen if the menu item itself is not clickable, only the children are
-          e.preventDefault()
-          elContainer.classList.remove('is-open')
-        }
-      } else {
-        ResponsiveNavbar.closeAllDropdowns()
-      }
-    })
+    this.attachBurgerEvents()
+  }
 
-    // Handle tab navigation (for accessibility)
+  private attachBurgerEvents(): void {
+    if (this.elBurger === null) {
+      return
+    }
+
+    // Handle normal click
+    this.elBurger.addEventListener(
+      'click',
+      e => {
+        this.toggle()
+      },
+      false
+    )
+
+    // Handle space and enter press on keyboard navigation
     document.addEventListener(
       'keypress',
       (e: KeyboardEvent) => {
         const keyCode = e.keyCode ? e.keyCode : e.which
 
         // Check if the focussed element is hamburger menu
-        if (
-          document.activeElement instanceof HTMLElement &&
-          document.activeElement.classList.contains('navbar-burger') &&
-          (keyCode === 13 || keyCode === 32)
-        ) {
+        if (document.activeElement === this.elBurger && (keyCode === 13 || keyCode === 32)) {
           e.preventDefault()
 
-          const elTarget = document.getElementById(document.activeElement.dataset.target)
-
-          document.activeElement.classList.toggle('is-active')
-          elTarget.classList.toggle('is-active')
-        }
-
-        // Check if the focussed element is dropdown
-        if (
-          document.activeElement instanceof HTMLElement &&
-          document.activeElement.classList.contains('has-dropdown') &&
-          (keyCode === 13 || keyCode === 32)
-        ) {
-          e.preventDefault()
-
-          if (document.activeElement.classList.contains('is-active') === false) {
-            ResponsiveNavbar.closeAllDropdowns()
-            document.activeElement.classList.add('is-active')
-            document.activeElement.classList.add('is-open')
-          } else {
-            document.activeElement.classList.remove('is-active')
-            document.activeElement.classList.remove('is-open')
-          }
+          this.toggle()
         }
       },
       false
     )
 
-    // Handle close on escape
+    // Handle escape press
     document.addEventListener(
       'keyup',
       (e: KeyboardEvent) => {
         const keyCode = e.keyCode ? e.keyCode : e.which
 
-        // Handle escape
+        // Escape
         if (keyCode === 27) {
-          ResponsiveNavbar.closeAllDropdowns()
+          if (this.areAnyDropdownsOpen()) {
+            // First close all dropdowns
+            this.closeAllDropdowns()
+          } else {
+            // Then close the navbar itself
+            this.close()
+          }
         }
       },
       false
     )
   }
 
-  public static closeAllDropdowns(): void {
-    Array.from(document.querySelectorAll('.has-dropdown')).forEach((el: HTMLElement) => {
-      el.classList.remove('is-active')
-      el.classList.remove('is-open')
+  public areAnyDropdownsOpen(): boolean {
+    return this.dropdowns.reduce((anyOpen: boolean, dropdown: Dropdown) => anyOpen || dropdown.isOpen(), false)
+  }
+
+  public isOpen(): boolean {
+    return this.elMenu.classList.contains('is-active')
+  }
+
+  public toggle(): void {
+    if (this.isOpen()) {
+      this.close()
+    } else {
+      this.open()
+    }
+  }
+
+  public close(): void {
+    this.elMenu.classList.remove('is-active')
+    this.elBurger.classList.remove('is-active')
+  }
+
+  public open(): void {
+    this.elMenu.classList.add('is-active')
+    this.elBurger.classList.add('is-active')
+  }
+
+  public closeAllDropdowns(): void {
+    this.dropdowns.forEach((dropdown: Dropdown) => {
+      dropdown.close()
     })
   }
 }
