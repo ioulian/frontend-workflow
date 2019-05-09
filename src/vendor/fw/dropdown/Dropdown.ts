@@ -2,16 +2,12 @@
  * V: 0.1.0
  */
 
-import {Factory} from './../../base/js/Factory'
+import {Factory} from '../../base/js/Factory'
 
-import {ResponsiveNavbar} from './ResponsiveNavbar'
+import {ResponsiveNavbar} from '../responsive-navbar/ResponsiveNavbar'
 
 /**
- * Allows toggle of menu inside a navbar by using a hamburger button.
- *
- * If a menu-item contains a submenu (Bulma dropdown), then it will be hidden by default on mobile
- * On first click, it will open the submenu on mobile, the next clicks will navigate to the url on the anchor
- * If no url is found, then the submenu will close
+ * Provides better accessibility for dropdown
  */
 export class Dropdown extends Factory() {
   private parent: ResponsiveNavbar | null = null
