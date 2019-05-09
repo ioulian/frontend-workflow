@@ -48,6 +48,16 @@ export class ResponsiveNavbar extends Factory() {
       false
     )
 
+    document.addEventListener(
+      'click',
+      (e: MouseEvent) => {
+        if (e.target instanceof HTMLElement && e.target.closest('.navbar') !== this.el) {
+          this.close()
+        }
+      },
+      false
+    )
+
     // Handle space and enter press on keyboard navigation
     document.addEventListener(
       'keypress',
