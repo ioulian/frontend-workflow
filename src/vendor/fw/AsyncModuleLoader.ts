@@ -60,15 +60,6 @@ export class AsyncModuleLoader {
   }
 
   /**
-   * Lazy loads "ScrollHidableNavbar" if needed on the page
-   */
-  public static async loadScrollHidableNavbar(): Promise<void> {
-    if (AsyncModuleLoader.checkIfElementsExist('.navbar.is-fixed-top.is-hidable')) {
-      await import(/* webpackChunkName: "scrollhidablenavbar" */ './scroll-hidable-navbar/index')
-    }
-  }
-
-  /**
    * Lazy loads "ResponsiveNavbar" if needed on the page
    */
   public static async loadResponsiveNavbar(): Promise<void> {
@@ -95,7 +86,6 @@ export class AsyncModuleLoader {
     AsyncModuleLoader.loadInViewAnimation()
     AsyncModuleLoader.loadSameHeight()
     AsyncModuleLoader.loadFixedHeader()
-    AsyncModuleLoader.loadScrollHidableNavbar()
     AsyncModuleLoader.loadResponsiveNavbar()
     AsyncModuleLoader.loadSlider()
   }

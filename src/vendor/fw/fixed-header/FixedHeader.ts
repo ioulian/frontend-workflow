@@ -29,6 +29,7 @@ export class FixedHeader extends Factory() {
 
   public update() {
     const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop
+
     // Check if user has scrolled and add a class to the element
     // You can also do this in one line with .toggle(..., force), but we try to support IE 10/11
     if (currentScrollTop !== 0) {
