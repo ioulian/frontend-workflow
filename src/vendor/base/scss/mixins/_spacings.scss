@@ -4,7 +4,7 @@
 
 $spacer: 1rem !default;
 $spacers: () !default;
-$spacers: map-merge(
+$spacers-all: map-merge(
   (
     0: 0,
     1: (
@@ -79,7 +79,7 @@ $grid-breakpoints: (
       $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
       @each $prop, $abbrev in (margin: m, padding: p) {
-        @each $size, $length in $spacers {
+        @each $size, $length in $spacers-all {
           .is-#{$abbrev}#{$infix}-#{$size} {
             #{$prop}: $length !important;
           }

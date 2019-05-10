@@ -1,0 +1,5 @@
+@import './../../../bootstrap';
+
+.fw-parallax {
+  @include fw-create-layer();
+}

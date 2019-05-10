@@ -87,6 +87,15 @@ export class AsyncModuleLoader {
   }
 
   /**
+   * Lazy loads "Parallax" if needed on the page
+   */
+  public static async loadParallax(): Promise<void> {
+    if (AsyncModuleLoader.checkIfElementsExist('.fw-parallax')) {
+      await import(/* webpackChunkName: "parallax" */ './parallax/index')
+    }
+  }
+
+  /**
    * Shortcut to load all components
    */
   public static loadAll() {
@@ -98,6 +107,7 @@ export class AsyncModuleLoader {
     AsyncModuleLoader.loadResponsiveNavbar()
     AsyncModuleLoader.loadSlider()
     AsyncModuleLoader.loadGallery()
+    AsyncModuleLoader.loadParallax()
   }
 
   /**
