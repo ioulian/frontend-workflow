@@ -39,3 +39,9 @@ img {
 .has-link-underline {
   @include fw-link-underline();
 }
+
+// Strange behavior going on with slider on tablet breakpoint:
+// The width gets 3mil px or more...
+.column {
+  max-width: 100%;
+}
