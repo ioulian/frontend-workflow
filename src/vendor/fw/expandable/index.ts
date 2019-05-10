@@ -2,7 +2,7 @@ declare var Drupal: any
 
 import {Expandable} from './Expandable'
 
-if (typeof Drupal === 'undefined') {
+if (typeof Drupal !== 'undefined') {
   Expandable.initDrupalBehaviors('.fw-expandable')
 }
 

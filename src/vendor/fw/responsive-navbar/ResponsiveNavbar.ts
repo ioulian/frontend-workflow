@@ -114,6 +114,7 @@ export class ResponsiveNavbar extends Factory() {
   public close(): void {
     this.elMenu.classList.remove('is-active')
     this.elBurger.classList.remove('is-active')
+    this.closeAllDropdowns()
   }
 
   public open(): void {

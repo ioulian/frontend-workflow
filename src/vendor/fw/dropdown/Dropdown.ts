@@ -40,7 +40,11 @@ export class Dropdown extends Factory() {
     document.addEventListener(
       'click',
       (e: MouseEvent) => {
-        if (e.target instanceof HTMLElement && e.target.closest('.has-dropdown') !== this.el) {
+        const isClickInsideDropdown = e.target instanceof HTMLElement && e.target.closest('.has-dropdown') === this.el
+
+        const isClickInsideParent =
+          this.parent !== null && e.target instanceof HTMLElement && e.target.closest('.navbar') === this.parent.el
+        if ((!isClickInsideDropdown && this.parent === null) || (!isClickInsideDropdown && !isClickInsideParent)) {
           this.close()
         }
       },
