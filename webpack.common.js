@@ -26,6 +26,7 @@ module.exports = {
     fixedheader: path.resolve(__dirname, 'src/vendor/fw/fixed-header/index.ts'),
     socialshare: path.resolve(__dirname, 'src/vendor/fw/social-share/index.ts'),
     slider: path.resolve(__dirname, 'src/vendor/fw/slider/index.ts'),
+    // gallery: path.resolve(__dirname, 'src/vendor/fw/gallery/index.ts'),
 
     // Remove me to disable demo code!
     demo: path.resolve(__dirname, 'src/demo/index.ts'),

@@ -78,6 +78,15 @@ export class AsyncModuleLoader {
   }
 
   /**
+   * Lazy loads "Gallery" if needed on the page
+   */
+  public static async loadGallery(): Promise<void> {
+    if (AsyncModuleLoader.checkIfElementsExist('.js-gallery')) {
+      await import(/* webpackChunkName: "gallery" */ './gallery/index')
+    }
+  }
+
+  /**
    * Shortcut to load all components
    */
   public static loadAll() {
@@ -88,6 +97,7 @@ export class AsyncModuleLoader {
     AsyncModuleLoader.loadFixedHeader()
     AsyncModuleLoader.loadResponsiveNavbar()
     AsyncModuleLoader.loadSlider()
+    AsyncModuleLoader.loadGallery()
   }
 
   /**
