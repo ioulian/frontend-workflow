@@ -1,0 +1,16 @@
+@import './../../../bootstrap';
+
+$scroll-hidable-navbar-hide-until: $desktop !default;
+
+@include until($scroll-hidable-navbar-hide-until) {
+  .navbar {
+    &.is-hidable {
+      transition: transform $duration-normal $swift-out;
+
+      &.js-is-scroll-hidden {
+        transition-timing-function: $swift-in;
+        transform: translateY(-100%);
+      }
+    }
+  }
+}

@@ -97,11 +97,11 @@ export const Factory = (Type: Class = class {}) =>
         ...this.instances,
         ...Array.from(document.querySelectorAll(selector)) // Cast to array for browser compatibility
           // Filter out the processed instances
-          .filter((el: Element) => el.classList.contains('fw-factory-loaded') === false)
+          .filter((el: Element) => el.classList.contains(`fw-factory-loaded:${this.name}`) === false)
           .map((el: Element) => {
             // Create new instance and set it to processed
             const newInstance = new this(el, ...restArgs)
-            newInstance.el.classList.add('fw-factory-loaded')
+            newInstance.el.classList.add(`fw-factory-loaded:${this.name}`)
             return newInstance
           }),
       ]
@@ -120,7 +120,7 @@ export const Factory = (Type: Class = class {}) =>
         }
 
         // Garbage collection will handle the rest
-        instance.el.classList.remove('fw-factory-loaded')
+        instance.el.classList.remove(`fw-factory-loaded:${this.name}`)
         return false
       })
     }

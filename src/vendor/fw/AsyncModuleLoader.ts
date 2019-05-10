@@ -55,7 +55,34 @@ export class AsyncModuleLoader {
    */
   public static async loadFixedHeader(): Promise<void> {
     if (AsyncModuleLoader.checkIfElementsExist('.navbar.is-fixed-top')) {
-      await import(/* webpackChunkName: "sameheight" */ './fixed-header/index')
+      await import(/* webpackChunkName: "fixedheader" */ './fixed-header/index')
+    }
+  }
+
+  /**
+   * Lazy loads "ScrollHidableNavbar" if needed on the page
+   */
+  public static async loadScrollHidableNavbar(): Promise<void> {
+    if (AsyncModuleLoader.checkIfElementsExist('.navbar.is-fixed-top.is-hidable')) {
+      await import(/* webpackChunkName: "scrollhidablenavbar" */ './scroll-hidable-navbar/index')
+    }
+  }
+
+  /**
+   * Lazy loads "ResponsiveNavbar" if needed on the page
+   */
+  public static async loadResponsiveNavbar(): Promise<void> {
+    if (AsyncModuleLoader.checkIfElementsExist('.navbar')) {
+      await import(/* webpackChunkName: "responsivenavbar" */ './responsive-navbar/index')
+    }
+  }
+
+  /**
+   * Lazy loads "Slider" if needed on the page
+   */
+  public static async loadSlider(): Promise<void> {
+    if (AsyncModuleLoader.checkIfElementsExist('.swiper-container')) {
+      await import(/* webpackChunkName: "slider" */ './slider/index')
     }
   }
 
@@ -68,6 +95,9 @@ export class AsyncModuleLoader {
     AsyncModuleLoader.loadInViewAnimation()
     AsyncModuleLoader.loadSameHeight()
     AsyncModuleLoader.loadFixedHeader()
+    AsyncModuleLoader.loadScrollHidableNavbar()
+    AsyncModuleLoader.loadResponsiveNavbar()
+    AsyncModuleLoader.loadSlider()
   }
 
   /**

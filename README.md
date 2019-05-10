@@ -303,6 +303,8 @@ These are our own TODO's that might, or might not be included in this workflow, 
 
 - (MED PRIO) Add prefetch tags to HTML for CSS and JS
 - (MED PRIO) Fix JS breakpoint on IE11 and Edge
+- (MED PRIO) Add hidable navbar (only when fixed). Hide on scroll, show on scroll up. Hide only after a specific point (so the top of the page is not blank)
+- (MED PRIO) Modify AsyncModuleLoader to load event delegated things too. And add mutationobserver to document to still load components
 - (LOW PRIO) Follow [Gimli](https://gimli.app/) to add it in the future
 - (LOW PRIO) Change lazy loading to this way: https://addyosmani.com/blog/lazy-loading/
 - (LOW PRIO) Check how to remove dependency code in another .js file that is already stand alone module (see expendable and accordion => expandable is included in accordion)
