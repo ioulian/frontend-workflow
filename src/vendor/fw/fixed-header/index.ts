@@ -1,7 +1,9 @@
+declare var Drupal: any
+
 import {FixedHeader} from './FixedHeader'
 
-if (typeof Drupal === 'undefined') {
-  FixedHeader.attach('.navbar.is-fixed-top')
-} else {
+if (typeof Drupal !== 'undefined') {
   FixedHeader.initDrupalBehaviors('.navbar.is-fixed-top')
 }
+
+FixedHeader.attach('.navbar.is-fixed-top')

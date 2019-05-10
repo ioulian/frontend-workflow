@@ -1,7 +1,9 @@
+declare var Drupal: any
+
 import {SameHeight} from './SameHeight'
 
-if (typeof (window as any).Drupal === 'undefined') {
-  SameHeight.attach('.js-sameheight')
-} else {
+if (typeof Drupal !== 'undefined') {
   SameHeight.initDrupalBehaviors('.js-sameheight')
 }
+
+SameHeight.attach('.js-sameheight')

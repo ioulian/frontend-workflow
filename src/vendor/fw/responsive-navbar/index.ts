@@ -1,7 +1,9 @@
+declare var Drupal: any
+
 import {ResponsiveNavbar} from './ResponsiveNavbar'
 
-if (typeof Drupal === 'undefined') {
-  ResponsiveNavbar.attach('.navbar')
-} else {
+if (typeof Drupal !== 'undefined') {
   ResponsiveNavbar.initDrupalBehaviors('.navbar')
 }
+
+ResponsiveNavbar.attach('.navbar')
