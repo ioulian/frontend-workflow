@@ -54,6 +54,11 @@ export class Accordion extends Factory(EE) {
 
     this.initItems()
     this.openFirstIfAny()
+
+    // Make sure it opens on dev environment when css is loaded later
+    window.addEventListener('load', () => {
+      this.openFirstIfAny()
+    })
   }
 
   /**
