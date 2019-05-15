@@ -85,10 +85,10 @@ export class Accordion extends Factory(EE) {
         newItem.on('open', (e: {target: AccordionItem}) => {
           this.closeOthers(e.target)
         })
-
-        newItem.on('opened', this.handleOpenedClosed.bind(this))
-        newItem.on('closed', this.handleOpenedClosed.bind(this))
       }
+
+      newItem.on('opened', this.handleOpenedClosed.bind(this))
+      newItem.on('closed', this.handleOpenedClosed.bind(this))
 
       return newItem
     })

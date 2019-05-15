@@ -12,7 +12,7 @@ import './Expandable.scss'
 /**
  * Expandable block
  *
- * When using, keep in min that '.fw-expandable__toggle' needs to have an id and
+ * When using, keep in mind that '.fw-expandable__toggle' needs to have an id and
  * '.fw-expandable__content-wrapper' also needs an id
  */
 export class Expandable extends Factory(EE) {
