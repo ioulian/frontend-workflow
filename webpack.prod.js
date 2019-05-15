@@ -113,5 +113,3 @@ module.exports = merge(common, {
       : null,
   ],
 })
-
-console.log(module.exports.mode)
