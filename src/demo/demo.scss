@@ -63,3 +63,11 @@ img.fw-full-size-in-parent {
 .has-demo-link-underline {
   @include fw-link-underline(10px, rgba($orange, 0.25));
 }
+
+[data-fancybox='demo-gallery'] {
+  display: inline-block;
+
+  img {
+    width: 150px;
+  }
+}

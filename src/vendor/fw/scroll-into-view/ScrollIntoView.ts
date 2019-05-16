@@ -2,7 +2,8 @@
  * V: 0.1.0
  */
 
-import 'element-closest'
+import 'element-closest/browser'
+import smoothscroll from 'smoothscroll-polyfill'
 
 /**
  * Helper method to scroll to a specific DOM element on click
@@ -27,6 +28,9 @@ export class ScrollIntoView {
    * thus no need to do extra stuff on dynamic content
    */
   public static attachEvents(): void {
+    // Polyfill other browsers
+    smoothscroll.polyfill()
+
     window.addEventListener(
       'click',
       (e: MouseEvent) => {

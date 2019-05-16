@@ -35,12 +35,16 @@
     "*.scss"
   ],
   "dependencies": {
+    "@fancyapps/fancybox": "3.5.7",
     "bulma": "0.7.2",
     "core-js": "3.0.1",
     "element-closest": "3.0.1",
     "element-matches-polyfill": "1.0.0",
     "intersection-observer": "0.6.0",
+    "jquery": "3.4.1",
     "onfire.js": "2.0.0",
+    "promise-polyfill": "8.1.0",
+    "smoothscroll-polyfill": "0.4.4",
     "swiper": "4.5.0",
     "throttle-debounce": "2.1.0",
     "vanilla-lazyload": "11.0.6"

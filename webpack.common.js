@@ -27,7 +27,7 @@ module.exports = {
     socialshare: path.resolve(__dirname, 'src/vendor/fw/social-share/index.ts'),
     slider: path.resolve(__dirname, 'src/vendor/fw/slider/index.ts'),
     parallax: path.resolve(__dirname, 'src/vendor/fw/parallax/index.ts'),
-    // gallery: path.resolve(__dirname, 'src/vendor/fw/gallery/index.ts'),
+    gallery: path.resolve(__dirname, 'src/vendor/fw/gallery/index.ts'),
 
     // Remove me to disable demo code!
     demo: path.resolve(__dirname, 'src/demo/index.ts'),
@@ -85,12 +85,20 @@ module.exports = {
         },
       },
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /\.(sa|sc)ss$/,
         use: [
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           {loader: 'css-loader', options: {sourceMap: devMode}},
           {loader: 'postcss-loader', options: {sourceMap: devMode}},
           {loader: 'sass-loader', options: {sourceMap: devMode}},
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {loader: 'css-loader', options: {sourceMap: devMode}},
+          {loader: 'postcss-loader', options: {sourceMap: devMode}},
         ],
       },
       {
@@ -104,7 +112,7 @@ module.exports = {
                 config.addFilenameHashes && !config.drupal8.active ? '.[contenthash]' : ''
               }.[ext]`,
               outputPath: './',
-              publicPath: devServer ? '../' : `${subFolder}`,
+              publicPath: devServer ? '/' : `${subFolder}`,
               useRelativePaths: true,
             },
           },
@@ -123,6 +131,7 @@ module.exports = {
               'source:srcset',
               'source:data-srcset',
               'link:href',
+              'a:href',
             ],
           },
         },

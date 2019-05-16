@@ -2,7 +2,7 @@
  * V: 0.1.0
  */
 
-import 'element-closest'
+import 'element-closest/browser'
 
 export class SocialShare {
   /**

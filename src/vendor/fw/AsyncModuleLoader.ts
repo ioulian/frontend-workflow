@@ -1,4 +1,5 @@
 import 'core-js/features/array/from'
+import 'promise-polyfill/src/polyfill'
 
 /**
  * Helper class to lazy load components based on DOM elements.
