@@ -17,6 +17,9 @@
     }
 
     @include until($desktop) {
+      // We need to reverse the order so the close button is on the same place as the open button.
+      // The users can now safely double tap and stay on the same page, without accidentally clicking on something else
+
       > .container {
         flex-wrap: wrap;
         flex-direction: column-reverse;
