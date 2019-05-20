@@ -93,7 +93,7 @@ export class AsyncModuleLoader {
    * Lazy loads "Gallery" if needed on the page
    */
   public static async loadGallery(): Promise<void> {
-    if (AsyncModuleLoader.checkIfElementsExist('.js-gallery')) {
+    if (AsyncModuleLoader.checkIfElementsExist('[data-fancybox]')) {
       await import(/* webpackChunkName: "gallery" */ './gallery/index')
     }
   }
