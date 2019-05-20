@@ -13,10 +13,10 @@ export class Site {
       instance = this
     }
 
-    // Add your stuff here
-
-    // Un-comment if you want to use the modules here. Don't forget to remove them from entry points.
+    // Remove this line if the AsyncModuleLoader doesn't work correctly.
     AsyncModuleLoader.loadAll()
+
+    // Add your stuff here
   }
 
   /**

@@ -20,7 +20,7 @@ The focus of this workflow is performance:
 If you don't like a feature, you can disable it and write another one.
 
 [1] However, there are some JavaScript components included, that are written for our projects and are handy tools, but here again, you are free to not use them.
-If you don't want to use them, remove them from entry points in `webpack.common.js`.
+If you don't want to use them, remove them from `src/project/Site.js`.
 
 By default they are loaded as separate files, you can un-comment them (in `webpack.common.js`) if you do not wish to use them.
 
@@ -122,10 +122,11 @@ To help you with linting, you can install these extensions for VSCode (or your f
 
 ### Components
 
-There are some JavaScript components available for your ease (We have included them as we reuse them a lot). There are 2 ways of using them.
+There are some JavaScript components available for your ease (We have included them as we reuse them a lot). There are 3 ways of using them.
 
-1. **(Easy/Not so performant)**: Un-comment them from entry points from `webpack.common.js`. This way they are automatically initialized and are separate from the main bundle. This way you can load them with Drupal dependencies on specific pages/modules. They are also added in the built `.html` file and they just work.
-2. **(More work, but most performant)**: You can import them (not the `index.ts` file) manually in `Site.ts` and attach them. This way, they will be bundled in main bundle so they will require only 1 network request. You can also dynamically load them when needed.
+1. **Easy/Not so performant**: Un-comment them from entry points from `webpack.common.js`. This way they are automatically initialized and are separate from the main bundle. This way you can load them with Drupal dependencies on specific pages/modules. They are also added in the built `.html` file and they just work.
+2. **More work, but most performant**: You can import them (not the `index.ts` file) manually in `Site.ts` and attach them. This way, they will be bundled in main bundle so they will require only 1 network request. You can also dynamically load them when needed.
+3. **Less work and most performant: by using AsyncModuleLoader (Default)**: All the components are automatically loaded if they are needed. By using MutationObserver, it will also check if the modules must be loaded if HTML changes.
 
 ```ts
 import {ResponsiveNavbar} from './../vendor/bulma/responsive-navbar/ResponsiveNavbar'
