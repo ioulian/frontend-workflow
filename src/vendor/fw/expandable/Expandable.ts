@@ -26,6 +26,8 @@ export class Expandable extends Factory(EE) {
 
   private handleCloseTransitionEndBinded?: any
 
+  public static className: string = 'Expandable'
+
   constructor(el: Element) {
     super(el)
 

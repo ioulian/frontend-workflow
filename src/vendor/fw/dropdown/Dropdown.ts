@@ -12,6 +12,8 @@ import {ResponsiveNavbar} from '../responsive-navbar/ResponsiveNavbar'
 export class Dropdown extends Factory() {
   private parent: ResponsiveNavbar | null = null
 
+  public static className: string = 'Dropdown'
+
   constructor(el: Element, parent: ResponsiveNavbar = null) {
     super(el)
 

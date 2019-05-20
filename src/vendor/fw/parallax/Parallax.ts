@@ -10,6 +10,8 @@ import {Factory} from './../../base/js/Factory'
 export class Parallax extends Factory() {
   public static isAnimating: boolean = false
 
+  public static className: string = 'Parallax'
+
   constructor(el: Element) {
     super(el)
   }

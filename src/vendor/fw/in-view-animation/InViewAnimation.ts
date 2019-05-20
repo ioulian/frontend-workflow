@@ -14,6 +14,8 @@ import './InViewAnimation.scss'
 export class InViewAnimation extends Factory() {
   private observer: IntersectionObserver
 
+  public static className: string = 'InViewAnimation'
+
   constructor(el: Element) {
     super(el)
 

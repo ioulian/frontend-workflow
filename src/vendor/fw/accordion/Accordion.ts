@@ -32,6 +32,8 @@ export class Accordion extends Factory(EE) {
 
   private handleOpenedClosed: any
 
+  public static className: string = 'Accordion'
+
   constructor(el: Element, settings: SettingsType) {
     super(el)
 

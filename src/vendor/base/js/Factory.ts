@@ -46,6 +46,8 @@ export const Factory = (Type: Class = class {}) =>
 
     public el: Element
 
+    public static className: string = 'AbstractClass'
+
     /**
      *
      * @param {Element} el DOM Element you want to bind this class to
@@ -65,7 +67,7 @@ export const Factory = (Type: Class = class {}) =>
      * @param {any} restArgs (Optional) Any other parameters to pass to class
      */
     public static initDrupalBehaviors(selector: string, ...restArgs: any[]) {
-      ;(window as any).Drupal.behaviors[`attach${this.name}`] = {
+      ;(window as any).Drupal.behaviors[`attach${this.className}`] = {
         attach: (context: Element | Document): void => {
           // 1: Context is document when run the first time
           // 2: Sometimes, the context is not part of the DOM, ignore it then
@@ -97,11 +99,11 @@ export const Factory = (Type: Class = class {}) =>
         ...this.instances,
         ...Array.from(document.querySelectorAll(selector)) // Cast to array for browser compatibility
           // Filter out the processed instances
-          .filter((el: Element) => el.classList.contains(`fw-factory-loaded:${this.name}`) === false)
+          .filter((el: Element) => el.classList.contains(`fw-factory-loaded:${this.className}`) === false)
           .map((el: Element) => {
             // Create new instance and set it to processed
             const newInstance = new this(el, ...restArgs)
-            newInstance.el.classList.add(`fw-factory-loaded:${this.name}`)
+            newInstance.el.classList.add(`fw-factory-loaded:${this.className}`)
             return newInstance
           }),
       ]
@@ -120,7 +122,7 @@ export const Factory = (Type: Class = class {}) =>
         }
 
         // Garbage collection will handle the rest
-        instance.el.classList.remove(`fw-factory-loaded:${this.name}`)
+        instance.el.classList.remove(`fw-factory-loaded:${this.className}`)
         return false
       })
     }

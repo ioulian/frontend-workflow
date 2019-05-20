@@ -12,6 +12,8 @@ import './FixedNavbar.scss'
  * By default, it will receive a drop shadow to show that the header is floating
  */
 export class FixedNavbar extends Factory() {
+  public static className: string = 'FixedNavbar'
+
   constructor(el: Element) {
     super(el)
 

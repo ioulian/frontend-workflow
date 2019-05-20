@@ -13,6 +13,8 @@ import 'swiper/dist/css/swiper.min.css'
 export class Slider extends Factory() {
   private swiperInstance: Swiper | null = null
 
+  public static className: string = 'Slider'
+
   constructor(el: Element, settings: any = {}) {
     super(el)
 

@@ -19,9 +19,14 @@ import './ResponsiveNavbar.scss'
  */
 export class ResponsiveNavbar extends Factory() {
   private elBurger: HTMLElement | null = null
+
   private elMenu: HTMLElement | null = null
+
   private elDropdowns: HTMLElement[] = []
+
   private dropdowns: Dropdown[] = []
+
+  public static className: string = 'ResponsiveNavbar'
 
   constructor(el: Element) {
     super(el)

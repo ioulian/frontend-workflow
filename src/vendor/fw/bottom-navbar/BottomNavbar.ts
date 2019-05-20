@@ -24,7 +24,10 @@ const defaults: SettingsType = {
  */
 export class BottomNavbar extends Factory() {
   private wasFixedTop: boolean = true
+
   private settings: SettingsType
+
+  public static className: string = 'BottomNavbar'
 
   constructor(el: Element, settings: SettingsType) {
     super(el)
