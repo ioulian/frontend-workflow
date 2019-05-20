@@ -15,6 +15,8 @@ import 'promise-polyfill/src/polyfill'
  * as some components are not bound on specific elements. These you should add manually.
  */
 export class AsyncModuleLoader {
+  public static observer?: MutationObserver = null
+
   /**
    * Lazy loads "Accordion" if needed on the page
    */
@@ -52,7 +54,7 @@ export class AsyncModuleLoader {
   }
 
   /**
-   * Lazy loads "FixedHeader" if needed on the page
+   * Lazy loads "FixedNavbar" if needed on the page
    */
   public static async loadFixedNavbar(): Promise<void> {
     if (AsyncModuleLoader.checkIfElementsExist('.navbar.is-fixed-top')) {
@@ -61,7 +63,7 @@ export class AsyncModuleLoader {
   }
 
   /**
-   * Lazy loads "FixedHeader" if needed on the page
+   * Lazy loads "BottomNavbar" if needed on the page
    */
   public static async loadBottomNavbar(): Promise<void> {
     if (AsyncModuleLoader.checkIfElementsExist('.navbar.is-bottom-mobile')) {
@@ -106,19 +108,78 @@ export class AsyncModuleLoader {
   }
 
   /**
+   * Lazy loads "Clickthrough" if needed on the page
+   */
+  public static async loadClickthrough(): Promise<void> {
+    if (AsyncModuleLoader.checkIfElementsExist('.js-clickthrough')) {
+      await import(/* webpackChunkName: "clickthrough" */ './clickthrough/index')
+    }
+  }
+
+  /**
+   * Lazy loads "LazyLoader" if needed on the page
+   */
+  public static async loadLazyLoader(): Promise<void> {
+    if (AsyncModuleLoader.checkIfElementsExist('.fw-lazy-load')) {
+      await import(/* webpackChunkName: "lazyloader" */ './lazyloader/index')
+    }
+  }
+
+  /**
+   * Lazy loads "ScrollIntoView" if needed on the page
+   */
+  public static async loadScrollIntoView(): Promise<void> {
+    if (AsyncModuleLoader.checkIfElementsExist('.js-scroll-to')) {
+      await import(/* webpackChunkName: "scrollintoview" */ './scroll-into-view/index')
+    }
+  }
+
+  /**
+   * Lazy loads "SocialShare" if needed on the page
+   */
+  public static async loadSocialShare(): Promise<void> {
+    if (AsyncModuleLoader.checkIfElementsExist('.js-social-share')) {
+      await import(/* webpackChunkName: "socialshare" */ './social-share/index')
+    }
+  }
+
+  /**
    * Shortcut to load all components
    */
-  public static loadAll() {
+  public static loadAll(withMutationObserver: boolean = true): void {
+    AsyncModuleLoader.loadInstantiableModules()
+    AsyncModuleLoader.loadEventDelegatedModules()
+
+    if (withMutationObserver === true) {
+      AsyncModuleLoader.observer = new MutationObserver(() => {
+        AsyncModuleLoader.loadInstantiableModules()
+      })
+
+      AsyncModuleLoader.observer.observe(document, {
+        childList: true,
+        subtree: true,
+      })
+    }
+  }
+
+  public static loadInstantiableModules(): void {
     AsyncModuleLoader.loadAccordion()
-    AsyncModuleLoader.loadExpandable()
-    AsyncModuleLoader.loadInViewAnimation()
-    AsyncModuleLoader.loadSameHeight()
-    AsyncModuleLoader.loadFixedNavbar()
     AsyncModuleLoader.loadBottomNavbar()
-    AsyncModuleLoader.loadResponsiveNavbar()
-    AsyncModuleLoader.loadSlider()
+    AsyncModuleLoader.loadExpandable()
+    AsyncModuleLoader.loadFixedNavbar()
     AsyncModuleLoader.loadGallery()
+    AsyncModuleLoader.loadInViewAnimation()
     AsyncModuleLoader.loadParallax()
+    AsyncModuleLoader.loadResponsiveNavbar()
+    AsyncModuleLoader.loadSameHeight()
+    AsyncModuleLoader.loadSlider()
+  }
+
+  public static loadEventDelegatedModules(): void {
+    AsyncModuleLoader.loadClickthrough()
+    AsyncModuleLoader.loadLazyLoader()
+    AsyncModuleLoader.loadScrollIntoView()
+    AsyncModuleLoader.loadSocialShare()
   }
 
   /**

@@ -15,7 +15,8 @@ import smoothscroll from 'smoothscroll-polyfill'
  *
  * Example:
  * ```html
- * <a href="#scroll-to-here" data-target="#scroll-to-here" data-offset="20">
+ * <a href="#scroll-to-here" data-target="#scroll-to-here" data-offset="20" class="js-scroll-to">
+ * <a href="#scroll-to-here" data-target="#scroll-to-here" data-offset="#fixed-header" class="js-scroll-to">
  *
  * <div id="scroll-to-here"></div>
  * ```

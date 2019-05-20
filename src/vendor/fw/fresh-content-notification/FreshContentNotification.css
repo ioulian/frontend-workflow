@@ -3,5 +3,6 @@
     @util position(fixed, null 1rem 1rem null);
 
     cursor: pointer;
+    z-index: 10000;
   }
 }

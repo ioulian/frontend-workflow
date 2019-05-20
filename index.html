@@ -567,12 +567,23 @@
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
                 <h3 id="section-js-slider" class="js-in-view-animation__item">Slider (using Swiper)</h3>
               </div>
-              <div class="swiper-container">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">Slide 1</div>
-                  <div class="swiper-slide">Slide 2</div>
-                  <div class="swiper-slide">Slide 3</div>
-                </div>
+
+              <div class="demo-load-slider">
+                <p>
+                  By clicking the button below, we inject slider specific HTML in the page. The Async module loader will
+                  automatically see the change and load the Slider module.
+                </p>
+                <p>
+                  By using <strong>MutationObserver</strong> you can forget about manually importing specific modules on
+                  specific pages. The loader will see a change in the subtree and automatically see if the module must
+                  be loaded or not.
+                  <strong>This way we can reduce requests to the server thus optimizing performance</strong>.
+                </p>
+                <p>
+                  Note: if you want to support older browsers (IE10 and below), this won't work as the MutationObserver
+                  is not supported there. You can load the modules manually by enabling them in the webpack.common.js.
+                </p>
+                <button class="button is-primary">Load slider</button>
               </div>
 
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">

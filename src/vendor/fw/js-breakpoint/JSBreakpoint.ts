@@ -52,7 +52,7 @@ export class JSBreakpoint extends EE {
   }
 
   public getBreakpoint(): string | null {
-    const style = window.getComputedStyle(this.getElement())
+    const style = window.getComputedStyle(this.getElement(), '::before')
 
     if (style.content === 'normal') {
       return null

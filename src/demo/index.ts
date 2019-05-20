@@ -25,3 +25,23 @@ window.addEventListener('load', () => {
     }`
   })
 })
+
+// Async module loader functionality test
+const elDemoSlider: HTMLElement = document.querySelector('.demo-load-slider')
+const elDemoSliderButton: HTMLElement = elDemoSlider.querySelector('button')
+
+elDemoSliderButton.addEventListener(
+  'click',
+  () => {
+    elDemoSlider.innerHTML = `
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">Slide 1</div>
+          <div class="swiper-slide">Slide 2</div>
+          <div class="swiper-slide">Slide 3</div>
+        </div>
+      </div>
+    `
+  },
+  false
+)

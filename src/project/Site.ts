@@ -1,5 +1,5 @@
 // import Settings from './Settings';
-// import {AsyncModuleLoader} from './../vendor/bulma/AsyncModuleLoader'
+import {AsyncModuleLoader} from './../vendor/fw/AsyncModuleLoader'
 
 let instance: Site | null = null
 
@@ -16,7 +16,7 @@ export class Site {
     // Add your stuff here
 
     // Un-comment if you want to use the modules here. Don't forget to remove them from entry points.
-    // AsyncModuleLoader.loadAll()
+    AsyncModuleLoader.loadAll()
   }
 
   /**
