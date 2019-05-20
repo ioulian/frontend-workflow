@@ -1,5 +1,9 @@
 @import './../../../bootstrap';
 
 .fw-js-breakpoint {
-  @include fw-set-breakpoints(content, 'small' 'mobile' 'tablet' 'desktop' 'widescreen' 'fullhd');
+  &::before {
+    @include fw-set-breakpoints(content, 'small' 'mobile' 'tablet' 'desktop' 'widescreen' 'fullhd');
+
+    display: none;
+  }
 }

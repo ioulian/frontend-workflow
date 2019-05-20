@@ -1,0 +1,31 @@
+@import './../../../bootstrap';
+
+// We create an extra element so we can animate the shadow without performance penalty
+// If we try to animate shadow directly, it will not animate smoothly
+.navbar {
+  &.is-fixed-bottom {
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      box-shadow: 0 0 2rem rgba(0, 0, 0, 0.25);
+      content: '';
+      transition: opacity $duration-normal;
+      opacity: 1;
+    }
+
+    @include until($desktop) {
+      > .container {
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+        display: flex;
+
+        > * {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

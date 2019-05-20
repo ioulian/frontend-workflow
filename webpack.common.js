@@ -23,11 +23,12 @@ module.exports = {
     responsivenavbar: path.resolve(__dirname, 'src/vendor/fw/responsive-navbar/index.ts'),
     lazyloader: path.resolve(__dirname, 'src/vendor/fw/lazyloader/index.ts'),
     scrollintoview: path.resolve(__dirname, 'src/vendor/fw/scroll-into-view/index.ts'),
-    fixedheader: path.resolve(__dirname, 'src/vendor/fw/fixed-header/index.ts'),
+    fixednavbar: path.resolve(__dirname, 'src/vendor/fw/fixed-navbar/index.ts'),
     socialshare: path.resolve(__dirname, 'src/vendor/fw/social-share/index.ts'),
     slider: path.resolve(__dirname, 'src/vendor/fw/slider/index.ts'),
     parallax: path.resolve(__dirname, 'src/vendor/fw/parallax/index.ts'),
     gallery: path.resolve(__dirname, 'src/vendor/fw/gallery/index.ts'),
+    bottomnavbar: path.resolve(__dirname, 'src/vendor/fw/bottom-navbar/index.ts'),
 
     // Remove me to disable demo code!
     demo: path.resolve(__dirname, 'src/demo/index.ts'),

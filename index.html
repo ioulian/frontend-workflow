@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <nav id="main-navbar" class="navbar is-primary is-fixed-top">
+    <nav id="main-navbar" class="navbar is-primary is-fixed-top is-bottom-mobile" data-bottom-on="small,mobile">
       <div class="container">
         <div class="navbar-brand">
           <a
@@ -594,6 +594,17 @@
                   width="1280"
                   height="852"
               /></a>
+
+              <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
+                <h3 id="section-bottom-navbar" class="js-in-view-animation__item">Bottom navbar on mobile</h3>
+              </div>
+              <p>
+                As most smartphone users use their devices with one hand, with the bottom navbar they can navigate your
+                site more easily as their thumb can navigate the menu faster. This module (be default) puts the navbar
+                at the bottom of the page until desktop. You can also pass a parameter to change the breakpoints where
+                the bottom bar should be used.
+              </p>
+              <p>If you don't use a fixed navbar, this module will not initialize.</p>
             </div>
           </div>
         </div>

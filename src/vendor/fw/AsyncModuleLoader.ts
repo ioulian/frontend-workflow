@@ -54,9 +54,18 @@ export class AsyncModuleLoader {
   /**
    * Lazy loads "FixedHeader" if needed on the page
    */
-  public static async loadFixedHeader(): Promise<void> {
+  public static async loadFixedNavbar(): Promise<void> {
     if (AsyncModuleLoader.checkIfElementsExist('.navbar.is-fixed-top')) {
-      await import(/* webpackChunkName: "fixedheader" */ './fixed-header/index')
+      await import(/* webpackChunkName: "fixedheader" */ './fixed-navbar/index')
+    }
+  }
+
+  /**
+   * Lazy loads "FixedHeader" if needed on the page
+   */
+  public static async loadBottomNavbar(): Promise<void> {
+    if (AsyncModuleLoader.checkIfElementsExist('.navbar.is-bottom-mobile')) {
+      await import(/* webpackChunkName: "bottomnavbar" */ './bottom-navbar/index')
     }
   }
 
@@ -104,7 +113,8 @@ export class AsyncModuleLoader {
     AsyncModuleLoader.loadExpandable()
     AsyncModuleLoader.loadInViewAnimation()
     AsyncModuleLoader.loadSameHeight()
-    AsyncModuleLoader.loadFixedHeader()
+    AsyncModuleLoader.loadFixedNavbar()
+    AsyncModuleLoader.loadBottomNavbar()
     AsyncModuleLoader.loadResponsiveNavbar()
     AsyncModuleLoader.loadSlider()
     AsyncModuleLoader.loadGallery()

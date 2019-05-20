@@ -2,16 +2,16 @@
  * V: 0.1.0
  */
 
-import {Factory} from './../../base/js/Factory'
+import {Factory} from '../../base/js/Factory'
 
-import './FixedHeader.scss'
+import './FixedNavbar.scss'
 
 /**
  * Allowes you to apply styles on the fixed header when the header is floating
  *
  * By default, it will receive a drop shadow to show that the header is floating
  */
-export class FixedHeader extends Factory() {
+export class FixedNavbar extends Factory() {
   constructor(el: Element) {
     super(el)
 
