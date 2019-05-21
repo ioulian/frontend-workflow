@@ -52,6 +52,7 @@ module.exports = {
           minify: true,
           navigateFallback: config.publicPath + '/index.html',
           staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+          staticFileGlobs: ['/manifest.json'],
         })
       : () => {},
     new CleanWebpackPlugin([path.resolve(__dirname, config.outputPath)]),
