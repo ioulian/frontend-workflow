@@ -119,8 +119,8 @@
     "authorUrl": "https://github.com/ioulian",
     "theme": "#00d1b2",
     "background": "#fff",
-    "drupal8": {
-      "active": false,
+    "cms": {
+      "active": true,
       "subFolder": "/themes/custom/fw2019/"
     },
     "modules": {

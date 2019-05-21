@@ -69,8 +69,8 @@ module.exports = merge(common, {
                   return tag
                 })
 
-                // Generate HTML to be loaded in Drupal 8 later
-                if (config.drupal8.active) {
+                // Generate HTML to be loaded in theme later
+                if (config.cms.active) {
                   const fullPath = path.join(`./${config.outputPath}`, 'tags.html')
                   write.sync(fullPath, result.tags.reduce((html, tag) => `${html}${tag}`, ''))
                 }
@@ -83,7 +83,7 @@ module.exports = merge(common, {
           }
         }()
       : () => {},
-    config.modules.criticalCSS && !config.drupal8.active
+    config.modules.criticalCSS && !config.cms.active
       ? new CriticalPlugin({
           src: 'index.html',
           inline: true,

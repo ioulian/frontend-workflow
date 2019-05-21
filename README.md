@@ -122,7 +122,7 @@ To help you with linting, you can install these extensions for VSCode (or your f
 
 There are some JavaScript components available for your ease (We have included them as we reuse them a lot). There are 3 ways of using them.
 
-1. **Easy/Not so performant**: Un-comment them from entry points from `webpack.common.js`. This way they are automatically initialized and are separate from the main bundle. This way you can load them with Drupal dependencies on specific pages/modules. They are also added in the built `.html` file and they just work.
+1. **Easy/Not so performant**: Un-comment them from entry points from `webpack.common.js`. This way they are automatically initialized and are separate from the main bundle. This way you can load them with Drupal (or other Backend CMSs) dependencies on specific pages/modules. They are also added in the built `.html` file and they just work.
 2. **More work, but most performant**: You can import them (not the `index.ts` file) manually in `Site.ts` and attach them. This way, they will be bundled in main bundle so they will require only 1 network request. You can also dynamically load them when needed.
 3. **Less work and most performant: by using AsyncModuleLoader (Default)**: All the components are automatically loaded if they are needed. By using MutationObserver, it will also check if the modules must be loaded if HTML changes.
 
@@ -216,19 +216,19 @@ Before creating a build, you should update the following files/settings:
 | authorUrl           | `string`  | /                                     | Author URL attribute to be inserted in manifest.json.                                                        |
 | theme               | `string`  | #00d1b2 (Default Bulma primary color) | Theme attribute to be inserted in manifest.json. (use with `#`)                                              |
 | background          | `string`  | #ffffff                               | Background attribute to be inserted in manifest.json. (use with `#`)                                         |
-| drupal8.active      | `boolean` | false                                 | Activates Drupal8 mode. (see documentation for more info)                                                    |
-| drupal8.subFolder   | `string`  | /                                     | Subfolder from the root (= public) where the theme is located. (e.g. '/themes/custom/mytheme/')              |
+| cms.active          | `boolean` | false                                 | Activates CMS mode. (see documentation for more info)                                                        |
+| cms.subFolder       | `string`  | /                                     | Subfolder from the root (= public) where the theme is located. (e.g. '/themes/custom/mytheme/')              |
 | modules.favicons    | `boolean` | true                                  | Generate favicons on build. Only used in production build.                                                   |
 | modules.criticalCSS | `boolean` | true                                  | Inline Critical CSS. Only used in production build.                                                          |
 | modules.swPrecache  | `boolean` | true                                  | Generate a Service Worker. Only used in production build.                                                    |
 | modules.asyncJS     | `boolean` | true                                  | Add `async` attribute to scripts. Only used in production build.                                             |
 
-## Drupal 8 mode
+## CMS Mode
 
-There is also support for running this workflow in a Drupal 8 theme (it should also work for other backend frameworks, but hasn't been tested). If you set `drupal8.active` to true, this will change the following build settings:
+There is also support for running this workflow in a Backend CMS theme (Drupal 8, Symfony, CakePHP, ...), where the assets are in a subfolder. If you set `cms.active` to true, this will change the following build settings:
 
 - Filename hashes are turned off. Files will be loaded by php.
-- Public path will be set to `drupal8.subFolder` setting so that built assets user correct path.
+- Public path will be set to `cms.subFolder` setting so that built assets user correct path.
 - Critical CSS will be turned off (this will change the performance score!)
 - There will be `tags.html` file created in `dist` folder containing all favicon tags that you'll need to include in HEAD.
 
@@ -295,7 +295,6 @@ These are our own TODO's that might, or might not be included in this workflow, 
 
 - (MED PRIO) Add prefetch tags to HTML for CSS and JS
 - (MED PRIO) Change factory to https://github.com/fasttime/polytype, it's a better module
-- (MED PRIO) Change Drupal 8 logic to something in line of "cms build", as the things that we do can be used for other CMSses
 - (LOW PRIO) Follow [Gimli](https://gimli.app/) to add it in the future
 - (LOW PRIO) Change lazy loading to this way: https://addyosmani.com/blog/lazy-loading/
 - (LOW PRIO) Change fixed header implementation to https://pqina.nl/blog/applying-styles-based-on-the-user-scroll-position-with-smart-css/ maybe?
