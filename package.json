@@ -120,7 +120,7 @@
     "theme": "#00d1b2",
     "background": "#fff",
     "cms": {
-      "active": true,
+      "active": false,
       "subFolder": "/themes/custom/fw2019/"
     },
     "modules": {
