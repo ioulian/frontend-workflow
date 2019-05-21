@@ -162,7 +162,7 @@ module.exports = {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
-          chunks: 'initial',
+          chunks: 'all',
         },
       },
     },
