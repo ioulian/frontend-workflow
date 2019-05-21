@@ -22,14 +22,19 @@ if ('serviceWorker' in navigator) {
           switch (installingWorker.state) {
             case 'installed':
               if (navigator.serviceWorker.controller) {
-                FreshContentNotification.show()
-                console.log('New or updated content is available.')
+                // New or updated content is available
+                const notificationContent =
+                  document.documentElement.getAttribute('data-fresh-content-notification-text') !== null
+                    ? document.documentElement.getAttribute('data-fresh-content-notification-text')
+                    : undefined
+
+                FreshContentNotification.show(notificationContent)
               } else {
-                console.log('Content is now available offline!')
+                // Content is now available offline!
               }
               break
             case 'redundant':
-              console.error('The installing service worker became redundant.')
+              // The installing service worker became redundant.
               break
           }
         }

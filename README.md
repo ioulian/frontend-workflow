@@ -22,8 +22,6 @@ If you don't like a feature, you can disable it and write another one.
 [1] However, there are some JavaScript components included, that are written for our projects and are handy tools, but here again, you are free to not use them.
 If you don't want to use them, remove them from `src/project/Site.js`.
 
-By default they are loaded as separate files, you can un-comment them (in `webpack.common.js`) if you do not wish to use them.
-
 ## Browser support
 
 The default components work on these browsers:
@@ -127,14 +125,6 @@ There are some JavaScript components available for your ease (We have included t
 1. **Easy/Not so performant**: Un-comment them from entry points from `webpack.common.js`. This way they are automatically initialized and are separate from the main bundle. This way you can load them with Drupal dependencies on specific pages/modules. They are also added in the built `.html` file and they just work.
 2. **More work, but most performant**: You can import them (not the `index.ts` file) manually in `Site.ts` and attach them. This way, they will be bundled in main bundle so they will require only 1 network request. You can also dynamically load them when needed.
 3. **Less work and most performant: by using AsyncModuleLoader (Default)**: All the components are automatically loaded if they are needed. By using MutationObserver, it will also check if the modules must be loaded if HTML changes.
-
-```ts
-import {ResponsiveNavbar} from './../vendor/bulma/responsive-navbar/ResponsiveNavbar'
-// ...
-ResponsiveNavbar.attach()
-```
-
-We suggest that you bundle them in `Site.ts` manually. If you have a big dependency that is not frequently used in the website, you can load it separately as a different entry point.
 
 ### Code splitting
 
@@ -305,9 +295,9 @@ These are our own TODO's that might, or might not be included in this workflow, 
 
 - (MED PRIO) Add prefetch tags to HTML for CSS and JS
 - (MED PRIO) Change factory to https://github.com/fasttime/polytype, it's a better module
+- (MED PRIO) Change Drupal 8 logic to something in line of "cms build", as the things that we do can be used for other CMSses
 - (LOW PRIO) Follow [Gimli](https://gimli.app/) to add it in the future
 - (LOW PRIO) Change lazy loading to this way: https://addyosmani.com/blog/lazy-loading/
-- (LOW PRIO) Check how to remove dependency code in another .js file that is already stand alone module (see expendable and accordion => expandable is included in accordion)
 - (LOW PRIO) Change fixed header implementation to https://pqina.nl/blog/applying-styles-based-on-the-user-scroll-position-with-smart-css/ maybe?
 
 ## Possible libraries/workflows
