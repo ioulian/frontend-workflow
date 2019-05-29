@@ -295,6 +295,7 @@ These are our own TODO's that might, or might not be included in this workflow, 
 
 - (MED PRIO) Add prefetch tags to HTML for CSS and JS
 - (MED PRIO) Change factory to https://github.com/fasttime/polytype, it's a better module
+- (MED PRIO) Remove temp files from build
 - (LOW PRIO) Follow [Gimli](https://gimli.app/) to add it in the future
 - (LOW PRIO) Change lazy loading to this way: https://addyosmani.com/blog/lazy-loading/
 - (LOW PRIO) Change fixed header implementation to https://pqina.nl/blog/applying-styles-based-on-the-user-scroll-position-with-smart-css/ maybe?
