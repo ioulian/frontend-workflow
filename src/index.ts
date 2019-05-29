@@ -1,6 +1,7 @@
 // Import Site singleton where the site logic is located
 import {Site} from './project/Site'
 import {FreshContentNotification} from './vendor/fw/fresh-content-notification/FreshContentNotification'
+import {Workbox} from 'workbox-window/build/workbox-window.prod.umd'
 
 // Import base styles
 import './index.scss'
@@ -12,36 +13,23 @@ Site.getInstance()
 // START: Attach serviceWorker
 // Comment this part if you do not wish to use serviceWorker for this project
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker
-    .register('service-worker.js')
-    .then(reg => {
-      reg.onupdatefound = () => {
-        const installingWorker = reg.installing
+  const wb = new Workbox('/sw.js')
 
-        installingWorker.onstatechange = () => {
-          switch (installingWorker.state) {
-            case 'installed':
-              if (navigator.serviceWorker.controller) {
-                // New or updated content is available
-                const notificationContent =
-                  document.documentElement.getAttribute('data-fresh-content-notification-text') !== null
-                    ? document.documentElement.getAttribute('data-fresh-content-notification-text')
-                    : undefined
+  wb.addEventListener('waiting', event => {
+    const notificationContent =
+      document.documentElement.getAttribute('data-fresh-content-notification-text') !== null
+        ? document.documentElement.getAttribute('data-fresh-content-notification-text')
+        : undefined
 
-                FreshContentNotification.show(notificationContent)
-              } else {
-                // Content is now available offline!
-              }
-              break
-            case 'redundant':
-              // The installing service worker became redundant.
-              break
-          }
-        }
-      }
+    FreshContentNotification.show(notificationContent, 5000, () => {
+      wb.addEventListener('controlling', () => {
+        window.location.reload()
+      })
+
+      wb.messageSW({type: 'SKIP_WAITING'})
     })
-    .catch(e => {
-      console.error('Error during service worker registration:', e)
-    })
+  })
+
+  wb.register()
 }
 // END: Attach serviceWorker, comment the code till here

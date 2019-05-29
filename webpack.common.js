@@ -1,10 +1,10 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const config = require('./package.json').config
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const {InjectManifest} = require('workbox-webpack-plugin')
 
 const devMode = process.env.NODE_ENV !== 'production'
 const devServer = process.env.NODE_ENV === 'devserver'
@@ -43,19 +43,14 @@ module.exports = {
   },
   plugins: [
     new FriendlyErrorsWebpackPlugin(),
-    // Do not forget to remove the ServiceWorker bootsrap code in index.ts
-    config.modules.swPrecache
-      ? new SWPrecacheWebpackPlugin({
-          cacheId: config.cacheId,
-          dontCacheBustUrlsMatching: /\.\w{20}\./,
-          filename: 'service-worker.js',
-          minify: true,
-          navigateFallback: config.publicPath + '/index.html',
-          staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
-          staticFileGlobs: ['/manifest.json'],
+    new CleanWebpackPlugin(),
+    config.modules.serviceWorker
+      ? new InjectManifest({
+          swSrc: './src/sw.js',
+          importWorkboxFrom: 'local',
+          //include: ['/manifest.json'],
         })
       : () => {},
-    new CleanWebpackPlugin([path.resolve(__dirname, config.outputPath)]),
     new MiniCssExtractPlugin({
       filename: `css/[name].bundle${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.css`,
       chunkFilename: `css/[name].chunk${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.css`,

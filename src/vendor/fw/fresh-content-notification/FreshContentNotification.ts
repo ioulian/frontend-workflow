@@ -16,7 +16,11 @@ export class FreshContentNotification {
    * @param {String} content Content you want to show
    * @param {Number} timeout Timeout to automatically hide the toaster
    */
-  public static show(content: string = 'New content available, click to refresh', timeout: number = 5000): void {
+  public static show(
+    content: string = 'New content available, click to refresh',
+    timeout: number = 5000,
+    onAccept: () => void | null = null
+  ): void {
     // Add the element at the end of document
     document.body.insertAdjacentHTML(
       'beforeend',
@@ -31,7 +35,10 @@ export class FreshContentNotification {
       'click',
       (e: MouseEvent) => {
         e.preventDefault()
-        window.location.reload()
+
+        if (onAccept !== null) {
+          onAccept.apply(null)
+        }
       },
       false
     )
