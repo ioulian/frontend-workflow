@@ -124,8 +124,8 @@
       "subFolder": "/themes/custom/fw2019/"
     },
     "modules": {
-      "favicons": false,
-      "criticalCSS": false,
+      "favicons": true,
+      "criticalCSS": true,
       "serviceWorker": true,
       "asyncJS": true
     }
