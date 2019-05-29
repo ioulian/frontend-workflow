@@ -55,7 +55,7 @@ module.exports = {
           staticFileGlobs: ['/manifest.json'],
         })
       : () => {},
-    new CleanWebpackPlugin([path.resolve(__dirname, config.outputPath)]),
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: `css/[name].bundle${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.css`,
       chunkFilename: `css/[name].chunk${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.css`,
