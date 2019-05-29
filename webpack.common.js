@@ -48,7 +48,6 @@ module.exports = {
       ? new InjectManifest({
           swSrc: './src/sw.js',
           importWorkboxFrom: 'local',
-          //include: ['/manifest.json'],
         })
       : () => {},
     new MiniCssExtractPlugin({
