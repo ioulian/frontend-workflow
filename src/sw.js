@@ -1,10 +1,8 @@
-console.log('hello')
-
 workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
 
 // HTML
 workbox.routing.registerRoute(
-  /\.(?:js|css)$/,
+  /\/$/,
   new workbox.strategies.NetworkFirst({
     cacheName: 'html',
   })

@@ -42,6 +42,7 @@ elDemoSliderButton.addEventListener(
         </div>
       </div>
     `
+    console.log('HTML Added')
   },
   false
 )
