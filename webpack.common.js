@@ -44,7 +44,7 @@ module.exports = {
   plugins: [
     new FriendlyErrorsWebpackPlugin(),
     new CleanWebpackPlugin(),
-    config.modules.serviceWorker
+    config.modules.serviceWorker && config.serviceWorkerOnLocalHost
       ? new InjectManifest({
           swSrc: './src/sw.js',
           importWorkboxFrom: 'local',

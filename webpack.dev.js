@@ -5,6 +5,7 @@ const PrettierPlugin = require('prettier-webpack-plugin')
 const TSLintPlugin = require('tslint-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
+const config = require('./package.json').config
 const fs = require('fs')
 
 module.exports = merge(common, {
@@ -14,6 +15,6 @@ module.exports = merge(common, {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    https: true,
+    https: config.devServerHTTPS,
   },
 })

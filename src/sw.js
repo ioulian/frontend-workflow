@@ -2,7 +2,7 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
 
 // HTML
 workbox.routing.registerRoute(
-  /\/$/,
+  new RegExp('/$'),
   new workbox.strategies.NetworkFirst({
     cacheName: 'html',
   })
@@ -10,7 +10,7 @@ workbox.routing.registerRoute(
 
 // JS/CSS
 workbox.routing.registerRoute(
-  /\.(?:js|css)$/,
+  new RegExp('.(?:js|css)$'),
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: 'static-resources',
   })
@@ -18,7 +18,7 @@ workbox.routing.registerRoute(
 
 // Images
 workbox.routing.registerRoute(
-  /\.(png|jpg|jpeg|svg|webp|gif)$/,
+  new RegExp('.(png|jpg|jpeg|svg|webp|gif)$'),
   new workbox.strategies.CacheFirst({
     cacheName: 'image-cache',
     plugins: [
@@ -33,7 +33,7 @@ workbox.routing.registerRoute(
 
 // Other
 workbox.routing.registerRoute(
-  /\.(json|xml)$/,
+  new RegExp('.(json|xml)$'),
   new workbox.strategies.CacheFirst({
     cacheName: 'other-cache',
     plugins: [
@@ -48,7 +48,7 @@ workbox.routing.registerRoute(
 
 // Fonts
 workbox.routing.registerRoute(
-  /^https:\/\/fonts\.gstatic\.com/,
+  new RegExp('^https://fonts.gstatic.com'),
   new workbox.strategies.CacheFirst({
     cacheName: 'google-fonts-webfonts',
     plugins: [

@@ -169,7 +169,7 @@ To create a production build, use `yarn build` (will lint code before) or use `y
 
 - **Favicons**: Will generate all icons and manifests for a PWA ready app.
 - **CriticalCSS**: Will inline critical CSS, based on 3 viewports (Mobile, Tablet Horizontal, Desktop). You can edit the viewports.
-- **SW Precache**: Will generate a service worker to cache resources of the website, thus allowing offline usage. (Depends on how you structure your app).
+- **ServiceWorker**: Will generate a service worker to cache resources of the website, thus allowing offline usage. (Depends on how you structure your app).
 - **Async JS**: Will add `async` attribute on all scripts allowing them not to block the rendering.
 
 ### Lighthouse audits
@@ -202,26 +202,27 @@ Before creating a build, you should update the following files/settings:
 - 2: Supported browsers can be changed under `"browserslist"` key in `package.json`.
 - 3: Add an app icon in `src/favicon.png`. The build will create all possible icons for your app (iOS, Android, Browsers, ...). You should use a high enough resolution, minimum of 256x256px (preferably 1024x1024px).
 
-| Name                | Type      | Default                               | Description                                                                                                  |
-| ------------------- | --------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| addFilenameHashes   | `boolean` | true                                  | Add contenthash to bundle files (useful for cache busting). Set to false if you use back-end to load assets. |
-| outputPath          | `string`  | dist                                  | Folder name (from the root) where to output files.                                                           |
-| fromRoot            | `string`  | '/'                                   | If this workflow is inside another folder, specify path to it.                                               |
-| publicPath          | `string`  | /                                     | The final url where the app will be hosted. Only needed for production.                                      |
-| cacheId             | `string`  | frontend-workflow                     | Cache ID for Service Worker.                                                                                 |
-| name                | `string`  | Frontend Workflow                     | Name attribute to be inserted in manifest.json.                                                              |
-| shortName           | `string`  | Frontend                              | Short name attribute to be inserted in manifest.json.                                                        |
-| description         | `string`  | /                                     | Description attribute to be inserted in manifest.json.                                                       |
-| author              | `string`  | /                                     | Author attribute to be inserted in manifest.json.                                                            |
-| authorUrl           | `string`  | /                                     | Author URL attribute to be inserted in manifest.json.                                                        |
-| theme               | `string`  | #00d1b2 (Default Bulma primary color) | Theme attribute to be inserted in manifest.json. (use with `#`)                                              |
-| background          | `string`  | #ffffff                               | Background attribute to be inserted in manifest.json. (use with `#`)                                         |
-| cms.active          | `boolean` | false                                 | Activates CMS mode. (see documentation for more info)                                                        |
-| cms.subFolder       | `string`  | /                                     | Subfolder from the root (= public) where the theme is located. (e.g. '/themes/custom/mytheme/')              |
-| modules.favicons    | `boolean` | true                                  | Generate favicons on build. Only used in production build.                                                   |
-| modules.criticalCSS | `boolean` | true                                  | Inline Critical CSS. Only used in production build.                                                          |
-| modules.swPrecache  | `boolean` | true                                  | Generate a Service Worker. Only used in production build.                                                    |
-| modules.asyncJS     | `boolean` | true                                  | Add `async` attribute to scripts. Only used in production build.                                             |
+| Name                     | Type      | Default                               | Description                                                                                                    |
+| ------------------------ | --------- | ------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| devServerHTTPS           | `boolean` | false                                 | Run development server in HTTPS mode                                                                           |
+| addFilenameHashes        | `boolean` | true                                  | Add contenthash to bundle files (useful for cache busting). Set to false if you use back-end to load assets.   |
+| outputPath               | `string`  | dist                                  | Folder name (from the root) where to output files.                                                             |
+| publicPath               | `string`  | /                                     | The final url where the app will be hosted. Only needed for production.                                        |
+| cacheId                  | `string`  | frontend-workflow                     | Cache ID for Service Worker.                                                                                   |
+| name                     | `string`  | Frontend Workflow                     | Name attribute to be inserted in manifest.json.                                                                |
+| shortName                | `string`  | Frontend                              | Short name attribute to be inserted in manifest.json.                                                          |
+| description              | `string`  | /                                     | Description attribute to be inserted in manifest.json.                                                         |
+| author                   | `string`  | /                                     | Author attribute to be inserted in manifest.json.                                                              |
+| authorUrl                | `string`  | /                                     | Author URL attribute to be inserted in manifest.json.                                                          |
+| theme                    | `string`  | #00d1b2 (Default Bulma primary color) | Theme attribute to be inserted in manifest.json. (use with `#`)                                                |
+| background               | `string`  | #ffffff                               | Background attribute to be inserted in manifest.json. (use with `#`)                                           |
+| serviceWorkerOnLocalHost | `boolean` | false                                 | Activate service-worker on localhost (allows you to test it, don't enable it when developing your application) |
+| cms.active               | `boolean` | false                                 | Activates CMS mode. (see documentation for more info)                                                          |
+| cms.subFolder            | `string`  | /                                     | Subfolder from the root (= public) where the theme is located. (e.g. '/themes/custom/mytheme/')                |
+| modules.favicons         | `boolean` | true                                  | Generate favicons on build. Only used in production build.                                                     |
+| modules.criticalCSS      | `boolean` | true                                  | Inline Critical CSS. Only used in production build.                                                            |
+| modules.serviceWorker    | `boolean` | true                                  | Generate a Service Worker using WorkBox. Only used in production build.                                        |
+| modules.asyncJS          | `boolean` | true                                  | Add `async` attribute to scripts. Only used in production build.                                               |
 
 ## CMS Mode
 
@@ -293,9 +294,9 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 
 These are our own TODO's that might, or might not be included in this workflow, based on priority, ease of use/configuration and performance gain/penalty. If you want to implement them or help us out, you can always let us know!
 
+- (HIGH PRIO) Add offline.html for pages user hasn't visited yet.
 - (MED PRIO) Add prefetch tags to HTML for CSS and JS
 - (MED PRIO) Change factory to https://github.com/fasttime/polytype, it's a better module
-- (MED PRIO) Remove temp files from build
 - (LOW PRIO) Follow [Gimli](https://gimli.app/) to add it in the future
 - (LOW PRIO) Change lazy loading to this way: https://addyosmani.com/blog/lazy-loading/
 - (LOW PRIO) Change fixed header implementation to https://pqina.nl/blog/applying-styles-based-on-the-user-scroll-position-with-smart-css/ maybe?

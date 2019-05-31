@@ -10,12 +10,14 @@ import './index.scss'
 // We do not store this variable as it's not needed in "window" object or anywhere in this file
 Site.getInstance()
 
+document.body.style.backgroundColor = 'red'
+
 // START: Attach serviceWorker
 // Comment this part if you do not wish to use serviceWorker for this project
 if ('serviceWorker' in navigator) {
   const wb = new Workbox('/sw.js')
 
-  wb.addEventListener('waiting', event => {
+  wb.addEventListener('waiting', () => {
     const notificationContent =
       document.documentElement.getAttribute('data-fresh-content-notification-text') !== null
         ? document.documentElement.getAttribute('data-fresh-content-notification-text')
@@ -28,6 +30,8 @@ if ('serviceWorker' in navigator) {
 
       wb.messageSW({type: 'SKIP_WAITING'})
     })
+
+    wb.messageSW({type: 'SKIP_WAITING'})
   })
 
   wb.register()
