@@ -1,6 +1,6 @@
 {
   "name": "frontend-workflow",
-  "version": "0.16.0",
+  "version": "0.16.1",
   "description": "Frontend workflow using Webpack 4",
   "author": "Yulian Alexeyev <yulian@dev-q.be> (https://github.com/ioulian)",
   "keywords": [
@@ -108,7 +108,7 @@
     "webpack-stream": "5.2.1"
   },
   "config": {
-    "devServerHTTPS": false,
+    "devServerHTTPS": true,
     "addFilenameHashes": true,
     "outputPath": "dist",
     "publicPath": "https://trusting-perlman-3c2ee5.netlify.com",
@@ -120,7 +120,7 @@
     "authorUrl": "https://github.com/ioulian",
     "theme": "#00d1b2",
     "background": "#fff",
-    "serviceWorkerOnLocalHost": true,
+    "serviceWorkerOnLocalHost": false,
     "cms": {
       "active": false,
       "subFolder": "/themes/custom/fw2019/"

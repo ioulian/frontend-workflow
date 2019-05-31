@@ -2,9 +2,9 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
 
 // HTML
 workbox.routing.registerRoute(
-  new RegExp('/$'),
+  new RegExp('(/?|.html)$'),
   new workbox.strategies.NetworkFirst({
-    cacheName: 'html',
+    cacheName: 'cache-pages',
   })
 )
 
@@ -12,7 +12,7 @@ workbox.routing.registerRoute(
 workbox.routing.registerRoute(
   new RegExp('.(?:js|css)$'),
   new workbox.strategies.StaleWhileRevalidate({
-    cacheName: 'static-resources',
+    cacheName: 'cahce-static-resources',
   })
 )
 
@@ -20,7 +20,7 @@ workbox.routing.registerRoute(
 workbox.routing.registerRoute(
   new RegExp('.(png|jpg|jpeg|svg|webp|gif)$'),
   new workbox.strategies.CacheFirst({
-    cacheName: 'image-cache',
+    cacheName: 'cache-images',
     plugins: [
       new workbox.expiration.Plugin({
         maxEntries: 60,
@@ -35,7 +35,7 @@ workbox.routing.registerRoute(
 workbox.routing.registerRoute(
   new RegExp('.(json|xml)$'),
   new workbox.strategies.CacheFirst({
-    cacheName: 'other-cache',
+    cacheName: 'cache-others',
     plugins: [
       new workbox.expiration.Plugin({
         maxEntries: 20,
@@ -50,7 +50,7 @@ workbox.routing.registerRoute(
 workbox.routing.registerRoute(
   new RegExp('^https://fonts.gstatic.com'),
   new workbox.strategies.CacheFirst({
-    cacheName: 'google-fonts-webfonts',
+    cacheName: 'cache-google-fonts-webfonts',
     plugins: [
       new workbox.cacheableResponse.Plugin({
         statuses: [0, 200],

@@ -57,7 +57,24 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: config.name,
+      filename: 'index.html',
       template: 'index.html',
+      meta: {
+        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+      },
+      minify: {
+        collapseWhitespace: !devMode,
+        removeComments: !devMode,
+        removeRedundantAttributes: false,
+        removeScriptTypeAttributes: false,
+        removeStyleLinkTypeAttributes: false,
+        useShortDoctype: false,
+      },
+    }),
+    new HtmlWebpackPlugin({
+      title: config.name,
+      filename: 'offline.html',
+      template: 'offline.html',
       meta: {
         viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
       },
