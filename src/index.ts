@@ -16,7 +16,7 @@ if ('serviceWorker' in navigator) {
   const wb = new Workbox('/sw.js')
 
   wb.addEventListener('waiting', () => {
-    /*const notificationContent =
+    const notificationContent =
       document.documentElement.getAttribute('data-fresh-content-notification-text') !== null
         ? document.documentElement.getAttribute('data-fresh-content-notification-text')
         : undefined
@@ -27,7 +27,7 @@ if ('serviceWorker' in navigator) {
       })
 
       wb.messageSW({type: 'SKIP_WAITING'})
-    })*/
+    })
 
     wb.messageSW({type: 'SKIP_WAITING'})
   })
