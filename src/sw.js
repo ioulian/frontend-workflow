@@ -64,10 +64,11 @@ workbox.routing.registerRoute(
     ],
   })
 )
+
 workbox.routing.setCatchHandler(({event}) => {
   switch (event.request.destination) {
     case 'document':
-      return caches.match(FALLBACK_HTML_URL)
+      return caches.match(workbox.precaching.getCacheKeyForURL(FALLBACK_HTML_URL))
       break
 
     default:
