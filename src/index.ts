@@ -8,6 +8,7 @@ import './index.scss'
 
 // Initialize Site
 // We do not store this variable as it's not needed in "window" object or anywhere in this file
+// This is a singleton and if you need this, just run getInstance again.
 Site.getInstance()
 
 // START: Attach serviceWorker

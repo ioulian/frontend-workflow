@@ -111,7 +111,6 @@
     "devServerHTTPS": true,
     "addFilenameHashes": true,
     "outputPath": "dist",
-    "cacheId": "frontend-workflow",
     "name": "Frontend workflow",
     "shortName": "Frontend",
     "description": "Frontend workflow description",
