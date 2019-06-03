@@ -44,13 +44,6 @@ module.exports = {
   plugins: [
     new FriendlyErrorsWebpackPlugin(),
     new CleanWebpackPlugin(),
-    config.modules.serviceWorker && config.serviceWorkerOnLocalHost
-      ? new InjectManifest({
-          swSrc: './src/sw.js',
-          importWorkboxFrom: 'local',
-          exclude: [/runtime\.bundle\./],
-        })
-      : () => {},
     new MiniCssExtractPlugin({
       filename: `css/[name].bundle${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.css`,
       chunkFilename: `css/[name].chunk${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.css`,
@@ -87,6 +80,13 @@ module.exports = {
         useShortDoctype: false,
       },
     }),
+    config.modules.serviceWorker && (!devMode || config.serviceWorkerOnLocalHost)
+      ? new InjectManifest({
+          swSrc: './src/sw.js',
+          importWorkboxFrom: 'local',
+          exclude: [/runtime\.bundle\./],
+        })
+      : () => {},
   ],
   module: {
     rules: [

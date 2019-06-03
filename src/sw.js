@@ -1,6 +1,6 @@
 const FALLBACK_HTML_URL = '/offline.html'
 
-workbox.precaching.precacheAndRoute((self.__precacheManifest || []).concat(FALLBACK_HTML_URL))
+workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
 
 // HTML
 workbox.routing.registerRoute(
