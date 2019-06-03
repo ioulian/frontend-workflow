@@ -207,7 +207,6 @@ Before creating a build, you should update the following files/settings:
 | devServerHTTPS           | `boolean` | false                                 | Run development server in HTTPS mode                                                                           |
 | addFilenameHashes        | `boolean` | true                                  | Add contenthash to bundle files (useful for cache busting). Set to false if you use back-end to load assets.   |
 | outputPath               | `string`  | dist                                  | Folder name (from the root) where to output files.                                                             |
-| publicPath               | `string`  | /                                     | The final url where the app will be hosted. Only needed for production.                                        |
 | cacheId                  | `string`  | frontend-workflow                     | Cache ID for Service Worker.                                                                                   |
 | name                     | `string`  | Frontend Workflow                     | Name attribute to be inserted in manifest.json.                                                                |
 | shortName                | `string`  | Frontend                              | Short name attribute to be inserted in manifest.json.                                                          |

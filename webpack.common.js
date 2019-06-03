@@ -39,7 +39,7 @@ module.exports = {
     path: path.resolve(__dirname, config.outputPath),
     filename: `js/[name].bundle${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.js`,
     chunkFilename: `js/[name].chunk${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.js`,
-    publicPath: devServer ? '/' : devMode ? subFolder : `${config.publicPath}${subFolder}`,
+    publicPath: devServer ? '/' : subFolder,
   },
   plugins: [
     new FriendlyErrorsWebpackPlugin(),
@@ -124,7 +124,7 @@ module.exports = {
               context: path.resolve(__dirname, 'src'),
               name: `img/[path][name]${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.[ext]`,
               outputPath: './',
-              publicPath: devServer ? '/' : `${subFolder}`,
+              publicPath: devServer ? '/' : subFolder,
               useRelativePaths: true,
             },
           },
