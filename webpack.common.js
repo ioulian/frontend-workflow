@@ -122,9 +122,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               context: path.resolve(__dirname, 'src'),
-              name: `images/[path][name]${
-                config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''
-              }.[ext]`,
+              name: `img/[path][name]${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.[ext]`,
               outputPath: './',
               publicPath: devServer ? '/' : `${subFolder}`,
               useRelativePaths: true,

@@ -1,4 +1,6 @@
-workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
+const OFFLINE_PAGE = '/offline.html'
+
+workbox.precaching.precacheAndRoute((self.__precacheManifest || []).concat(OFFLINE_PAGE))
 
 // HTML
 workbox.routing.registerRoute(
@@ -62,6 +64,18 @@ workbox.routing.registerRoute(
     ],
   })
 )
+
+const catchHandler = ({event}) => {
+  if (event.request.mode === 'navigate') {
+    return caches.match(OFFLINE_PAGE)
+  }
+
+  return Response.error()
+}
+
+workbox.router.setCatchHandler({
+  handler: catchHandler,
+})
 
 addEventListener('message', event => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
