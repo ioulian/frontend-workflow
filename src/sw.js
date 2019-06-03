@@ -1,4 +1,4 @@
-const FALLBACK_HTML_URL = '/offline.html'
+const FALLBACK_HTML_URL = 'https://trusting-perlman-3c2ee5.netlify.com/offline.html'
 
 workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
 
