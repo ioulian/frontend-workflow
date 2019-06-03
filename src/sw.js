@@ -1,6 +1,6 @@
-const OFFLINE_PAGE = '/offline.html'
+const FALLBACK_HTML_URL = '/offline.html'
 
-workbox.precaching.precacheAndRoute((self.__precacheManifest || []).concat(OFFLINE_PAGE))
+workbox.precaching.precacheAndRoute((self.__precacheManifest || []).concat(FALLBACK_HTML_URL))
 
 // HTML
 workbox.routing.registerRoute(
@@ -64,17 +64,15 @@ workbox.routing.registerRoute(
     ],
   })
 )
+workbox.routing.setCatchHandler(({event}) => {
+  switch (event.request.destination) {
+    case 'document':
+      return caches.match(FALLBACK_HTML_URL)
+      break
 
-const catchHandler = ({event}) => {
-  if (event.request.mode === 'navigate') {
-    return caches.match(OFFLINE_PAGE)
+    default:
+      return Response.error()
   }
-
-  return Response.error()
-}
-
-workbox.router.setCatchHandler({
-  handler: catchHandler,
 })
 
 addEventListener('message', event => {
