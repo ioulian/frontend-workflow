@@ -22,9 +22,7 @@ if ('serviceWorker' in navigator) {
         ? document.documentElement.getAttribute('data-fresh-content-notification-text')
         : undefined
 
-    FreshContentNotification.show(notificationContent, 5000, () => {
-      window.location.reload()
-    })
+    FreshContentNotification.show(notificationContent, 5000)
 
     wb.messageSW({type: 'SKIP_WAITING'})
   })
