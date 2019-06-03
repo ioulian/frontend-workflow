@@ -11,8 +11,7 @@ import './index.scss'
 // This is a singleton and if you need this, just run getInstance again.
 Site.getInstance()
 
-// START: Attach serviceWorker
-// Comment this part if you do not wish to use serviceWorker for this project
+// Service worker init. This will be removed from code on build if you turn off the service worker in package.json
 if (__SERVICE_WORKER_ACTIVE__) {
   if ('serviceWorker' in navigator) {
     const wb = new Workbox('/sw.js')
@@ -31,5 +30,3 @@ if (__SERVICE_WORKER_ACTIVE__) {
     wb.register()
   }
 }
-
-// END: Attach serviceWorker, comment the code till here

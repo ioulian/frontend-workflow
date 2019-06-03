@@ -36,7 +36,7 @@ If you don't want to use them, remove them from `src/project/Site.js`.
       - [CSS (w/ PostCSS and SCSS)](#css-w-postcss-and-scss)
       - [Prettier/Editorconfig](#prettiereditorconfig)
       - [Images](#images)
-      - [Service Worker](#service-worker)
+      - [Service Worker and offline page](#service-worker-and-offline-page)
     - [Linting](#linting)
       - [Linting in VSCode](#linting-in-vscode)
     - [Components](#components)
@@ -137,7 +137,7 @@ There is a Prettier integration for your code style consitency. You can change i
 Images are automatically optimized when creating a production build. No optimizations are done when using it in development mode.
 Favicons/manifest files are also generated on production build only.
 
-#### Service Worker
+#### Service Worker and offline page
 
 The Service Worker is based on [Workbox](https://developers.google.com/web/tools/workbox/). The default implementation is pre-caching all assets used by the workflow and the pages an user has visited, will be cached for offline view. When the user is offline and tries to navigate to a page he/she hasn't visited yet, an offline page is shown. You can find the code in `offline.html`. Modify this page to match the output of the website.
 
