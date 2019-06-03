@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const config = require('./package.json').config
@@ -8,6 +9,8 @@ const {InjectManifest} = require('workbox-webpack-plugin')
 
 const devMode = process.env.NODE_ENV !== 'production'
 const devServer = process.env.NODE_ENV === 'devserver'
+
+const serviceWorkerActive = config.modules.serviceWorker && (!devMode || config.serviceWorkerOnLocalHost)
 
 const subFolder = config.cms.active ? config.cms.subFolder : '/'
 
@@ -80,13 +83,16 @@ module.exports = {
         useShortDoctype: false,
       },
     }),
-    config.modules.serviceWorker && (!devMode || config.serviceWorkerOnLocalHost)
+    serviceWorkerActive
       ? new InjectManifest({
           swSrc: './src/sw.js',
           importWorkboxFrom: 'local',
           exclude: [/runtime\.bundle\./],
         })
       : () => {},
+    new webpack.DefinePlugin({
+      __SERVICE_WORKER_ACTIVE__: serviceWorkerActive,
+    }),
   ],
   module: {
     rules: [

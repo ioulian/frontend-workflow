@@ -13,20 +13,23 @@ Site.getInstance()
 
 // START: Attach serviceWorker
 // Comment this part if you do not wish to use serviceWorker for this project
-if ('serviceWorker' in navigator) {
-  const wb = new Workbox('/sw.js')
+if (__SERVICE_WORKER_ACTIVE__) {
+  if ('serviceWorker' in navigator) {
+    const wb = new Workbox('/sw.js')
 
-  wb.addEventListener('waiting', () => {
-    const notificationContent =
-      document.documentElement.getAttribute('data-fresh-content-notification-text') !== null
-        ? document.documentElement.getAttribute('data-fresh-content-notification-text')
-        : undefined
+    wb.addEventListener('waiting', () => {
+      const notificationContent =
+        document.documentElement.getAttribute('data-fresh-content-notification-text') !== null
+          ? document.documentElement.getAttribute('data-fresh-content-notification-text')
+          : undefined
 
-    FreshContentNotification.show(notificationContent, 5000)
+      FreshContentNotification.show(notificationContent, 5000)
 
-    wb.messageSW({type: 'SKIP_WAITING'})
-  })
+      wb.messageSW({type: 'SKIP_WAITING'})
+    })
 
-  wb.register()
+    wb.register()
+  }
 }
+
 // END: Attach serviceWorker, comment the code till here
