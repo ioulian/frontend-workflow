@@ -22,11 +22,7 @@ if ('serviceWorker' in navigator) {
         : undefined
 
     FreshContentNotification.show(notificationContent, 5000, () => {
-      wb.addEventListener('controlling', () => {
-        window.location.reload()
-      })
-
-      wb.messageSW({type: 'SKIP_WAITING'})
+      window.location.reload()
     })
 
     wb.messageSW({type: 'SKIP_WAITING'})
