@@ -4,7 +4,7 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
 
 // HTML
 workbox.routing.registerRoute(
-  new RegExp('(/?|.html)$'),
+  ({event}) => event.request.destination === 'document',
   new workbox.strategies.NetworkFirst({
     cacheName: 'cache-pages',
   })

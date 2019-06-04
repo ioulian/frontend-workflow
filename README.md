@@ -70,7 +70,7 @@ The default components work on these browsers:
 - Opera
 - Safari
 
-There is also Core-JS polyfill library added for your convenience if you'll need to add more polyfills in the future.
+There is also [Core-JS](https://github.com/zloirock/core-js) polyfill library added for your convenience if you'll need to add more polyfills in the future.
 
 ## Install
 
@@ -103,7 +103,7 @@ yarn install
 
 Use `yarn start` to start the webpack dev server, you can now start developing, the browser will be automatically reloaded on any code/asset change. You can add the HTML in `index.html`.
 
-You can also use `yarn start:d` to start the dev server with [dashboard](https://github.com/FormidableLabs/webpack-dashboard). This gives you a better overview.
+You can also use `yarn start:d` to start the dev server with [dashboard](https://github.com/FormidableLabs/webpack-dashboard). This gives you a better overview of what's happening.
 
 For examples on how to use TS within this workflow, please read `TypScript usage examples`.
 
@@ -130,7 +130,7 @@ There are some PostCSS plugins already preinstalled. You can change PostCSS sett
 
 #### Prettier/Editorconfig
 
-There is a Prettier integration for your code style consitency. You can change its settings in `.prettierrc.json`. There is also an `.editorconfig` available to help you and your IDE to set the correct settings for code style consistency.
+There is a Prettier integration for your code style consistency. You can change its settings in `.prettierrc.json`. There is also an `.editorconfig` available to help you and your IDE to set the correct settings for code style consistency.
 
 #### Images
 
@@ -166,14 +166,14 @@ To help you with linting, you can install these extensions for VSCode (or your f
 There are some JavaScript components available for your ease (We have included them as we reuse them a lot). There are 3 ways of using them.
 
 1. **Easy/Not so performant**: Un-comment them from entry points from `webpack.common.js`. This way they are automatically initialized and are separate from the main bundle. This way you can load them with Drupal (or other Backend CMSs) dependencies on specific pages/modules. They are also added in the built `.html` file and they just work.
-2. **More work, but most performant**: You can import them (not the `index.ts` file) manually in `Site.ts` and attach them. This way, they will be bundled in main bundle so they will require only 1 network request. You can also dynamically load them when needed.
+2. **More work, more performant**: You can import them (not the `index.ts` file) manually in `Site.ts` and attach them. This way, they will be bundled in main bundle so they will require only 1 network request. You can also dynamically load them when needed.
 3. **Less work and most performant: by using AsyncModuleLoader (Default)**: All the components are automatically loaded if they are needed. By using MutationObserver, it will also check if the modules must be loaded if HTML changes.
 
 ### Code splitting
 
 This is a default webpack behavior, please read more information here: [https://webpack.js.org/guides/code-splitting/](https://webpack.js.org/guides/code-splitting/).
 
-This is a basic example how you can use it:
+This is a basic example on how you can use it:
 
 ```ts
 // ./components/BigComponent.ts

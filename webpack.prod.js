@@ -55,7 +55,7 @@ module.exports = merge(common, {
         })
       : () => {},
     config.modules.favicons
-      ? new class {
+      ? new (class {
           // This is needed to fix a bug in favicon generation.
           // For theme color tag in HTML it uses background property instead of theme color property...
           apply(compiler) {
@@ -81,7 +81,7 @@ module.exports = merge(common, {
               return callback()
             })
           }
-        }()
+        })()
       : () => {},
     config.modules.criticalCSS && !config.cms.active
       ? new CriticalPlugin({
