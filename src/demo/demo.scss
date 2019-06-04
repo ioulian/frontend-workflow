@@ -71,3 +71,28 @@ img.fw-full-size-in-parent {
     width: 150px;
   }
 }
+
+.fw-expandable {
+  &__toggle {
+    background-color: $primary;
+    padding: 0.75rem 1rem;
+
+    &,
+    strong {
+      color: $color-white;
+    }
+  }
+
+  &__content {
+    padding: 0.75rem 1rem;
+    border: 1px solid $white-ter;
+  }
+}
+
+.fw-accordion {
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
+}
