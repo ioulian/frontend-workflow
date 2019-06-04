@@ -73,13 +73,27 @@ img.fw-full-size-in-parent {
 }
 
 .fw-expandable {
+  $root: &;
+
   &__toggle {
     background-color: $primary;
     padding: 0.75rem 1rem;
+    position: relative;
 
     &,
     strong {
       color: $color-white;
+    }
+
+    &::after {
+      @include arrow($color-white);
+
+      right: 1rem;
+      transition: transform $duration-slow $swift-alt;
+
+      #{$root}--open & {
+        transform: translateY(25%) rotate(-225deg);
+      }
     }
   }
 

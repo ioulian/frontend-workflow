@@ -8,7 +8,7 @@
   }
 
   &__content-wrapper {
-    transition: height $duration-slow;
+    transition: height $duration-slow $swift-alt;
 
     #{$root}--init & {
       overflow: hidden;
