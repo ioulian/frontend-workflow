@@ -13,6 +13,11 @@ const version = require('./package.json').version
 module.exports = merge(common, {
   mode: 'production',
   devtool: false,
+  performance: {
+    hints: false, //'warning',
+    maxEntrypointSize: 250000, // in bytes, default 250k
+    maxAssetSize: 450000, // in bytes
+  },
   plugins: [
     new ImageminPlugin({
       cacheFolder: path.resolve(__dirname, '.cache'),

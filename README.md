@@ -47,6 +47,7 @@ If you don't want to use them, remove them from `src/project/Site.js`.
       - [Desktop](#desktop)
       - [Mobile](#mobile)
       - [Server-side performance](#server-side-performance)
+    - [Analyze](#analyze)
     - [Options](#options)
   - [CMS Mode](#cms-mode)
   - [Files to deploy](#files-to-deploy)
@@ -223,19 +224,23 @@ With default configuration, the lighthouse audit gives us this score. However, t
 
 - **Performance**: 100. Keep in mind: the more JS/CSS you write, the worse it can get. When adding images, you can use lazy loading for a better score.
 - **Progressive Web App**: 100.
-- **Accessibility**: 91. By using default Bulma css, the color contrast is not good enough, you can change the colors based on the project.
+- **Accessibility**: 93. By using default Bulma css, the color contrast is not good enough, you can change the colors based on the project.
 - **Best Practices**: 100.
 - **SEO**: 100. Please consider reading SEO optimizations articles. Do not forget to add the correct attributes in HTML.
 
 #### Mobile
 
-Same metrics for mobile with default configuration except for:
-
-- **Accessibility**: 89. Same error as on desktop.
+Same metrics for mobile.
 
 #### Server-side performance
 
 Keep in mind that servers (and their configuration) are a big part of performance. The demo site is running on [Netlify servers](https://netlify.com) and their configuration is optimized for static pages and front-end. This way we can get such high score. If you are hosting your website yourself you'll need to add cache-, gzip-, expires, ... headers yourself.
+
+### Analyze
+
+This workflow has [Bundle Analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) included if you want to see how to optimize your bundle. You can run it with `yarn analyze` and it will make a production build (can take a while) and open up a browser window with the analysis of the bundle.
+
+When running this command, a `stats.json` will be generated. You can also upload it [here](http://webpack.github.io/analyse/) and it will show you more info on how to optimize your build.
 
 ### Options
 
@@ -336,6 +341,7 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 
 These are our own TODO's that might, or might not be included in this workflow, based on priority, ease of use/configuration and performance gain/penalty. If you want to implement them or help us out, you can always let us know!
 
+- (HIGH PRIO) Write analyze documentation
 - (MED PRIO) Change factory to https://github.com/fasttime/polytype, it's a better module
 - (LOW PRIO) Add fallbacks for images/fonts if offline
 - (LOW PRIO) Follow [Gimli](https://gimli.app/) to add it in the future

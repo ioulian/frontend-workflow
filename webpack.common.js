@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const config = require('./package.json').config
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const {InjectManifest} = require('workbox-webpack-plugin')
 
 const devMode = process.env.NODE_ENV !== 'production'
@@ -45,7 +44,6 @@ module.exports = {
     publicPath: devServer ? '/' : subFolder,
   },
   plugins: [
-    new FriendlyErrorsWebpackPlugin(),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: `css/[name].bundle${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.css`,
@@ -179,6 +177,11 @@ module.exports = {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
+          chunks: 'all',
+        },
+        common: {
+          test: /Factory\.ts|Settings\.ts|Expandable\.ts/,
+          name: 'common',
           chunks: 'all',
         },
       },

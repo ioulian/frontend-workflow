@@ -4,6 +4,5 @@ dist/
 node_modules/
 .sass-cache/
 .cache/
-cache/
-manifest.json
 yarn-error.log
+stats.json
