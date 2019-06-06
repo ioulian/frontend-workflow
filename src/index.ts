@@ -11,6 +11,10 @@ import './index.scss'
 // This is a singleton and if you need this, just run getInstance again.
 Site.getInstance()
 
+// Update HTML class to show user has JS enabled
+document.documentElement.classList.remove('no-js')
+document.documentElement.classList.add('js')
+
 // Service worker init. This will be removed from code on build if you turn off the service worker in package.json
 if (__SERVICE_WORKER_ACTIVE__) {
   if ('serviceWorker' in navigator) {

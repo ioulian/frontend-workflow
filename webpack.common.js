@@ -49,13 +49,21 @@ module.exports = {
       filename: `css/[name].bundle${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.css`,
       chunkFilename: `css/[name].chunk${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.css`,
     }),
+    // TODO: remove duplicate code
     new HtmlWebpackPlugin({
       title: config.name,
       filename: 'index.html',
       template: 'index.html',
-      meta: {
-        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
-      },
+      siteTitle: config.html.title,
+      siteDescription: config.html.description,
+      siteLanguage: config.language,
+      siteAuthor: config.html.author,
+      siteUrl: config.html.url,
+      siteName: config.html.siteName,
+      siteSummary: config.html.siteSummary,
+      siteTwitterSite: config.html.twitterSite,
+      siteTwitterAuthor: config.html.twitterAuthor,
+      googleSiteVerification: config.googleSiteVerification,
       minify: {
         collapseWhitespace: !devMode,
         removeComments: !devMode,
@@ -69,9 +77,16 @@ module.exports = {
       title: config.name,
       filename: 'offline.html',
       template: 'offline.html',
-      meta: {
-        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
-      },
+      siteTitle: config.html.title,
+      siteDescription: config.html.description,
+      siteLanguage: config.language,
+      siteAuthor: config.html.author,
+      siteUrl: config.html.url,
+      siteName: config.html.siteName,
+      siteSummary: config.html.siteSummary,
+      siteTwitterSite: config.html.twitterSite,
+      siteTwitterAuthor: config.html.twitterAuthor,
+      googleSiteVerification: config.googleSiteVerification,
       minify: {
         collapseWhitespace: !devMode,
         removeComments: !devMode,
@@ -90,6 +105,9 @@ module.exports = {
       : () => {},
     new webpack.DefinePlugin({
       __SERVICE_WORKER_ACTIVE__: serviceWorkerActive,
+      __IS_DEV__: devMode,
+      __IS_PROD__: !devMode,
+      __LANG__: config.language,
     }),
   ],
   module: {
@@ -120,7 +138,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|svg|jpg|jpeg|gif)$/,
         use: [
           {
             loader: 'file-loader',
@@ -136,6 +154,7 @@ module.exports = {
       },
       {
         test: /\.(html)$/,
+        exclude: /(index|offline)\.html$/,
         use: {
           loader: 'html-loader',
           options: {

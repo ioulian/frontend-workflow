@@ -1,6 +1,6 @@
 {
   "name": "frontend-workflow",
-  "version": "0.17.1",
+  "version": "0.18.0",
   "description": "Frontend workflow using Webpack 4",
   "author": "Yulian Alexeyev <yulian@dev-q.be> (https://github.com/ioulian)",
   "keywords": [
@@ -108,16 +108,30 @@
     "webpack-stream": "5.2.1"
   },
   "config": {
+    "theme": "#00d1b2",
+    "background": "#fff",
+    "language": "en-US",
+    "googleSiteVerification": "vD8KnNo72dzall0Oh4GH0Nz_FY_Sz38bat_f59dXN-M",
+    "manifest": {
+      "name": "Frontend workflow",
+      "shortName": "Frontend",
+      "description": "Frontend workflow description",
+      "author": "Yulian Alexeyev",
+      "authorUrl": "https://github.com/ioulian"
+    },
+    "html": {
+      "title": "Frontend Workflow demo page",
+      "description": "Demo website for Frontend Workflow that you can test and see the usage of included components",
+      "url": "https://trusting-perlman-3c2ee5.netlify.com",
+      "siteName": "Frontend Workflow",
+      "siteSummary": "Frontend starter kit",
+      "author": "Yulian Alexeyev",
+      "twitterSite": null,
+      "twitterAuthor": null
+    },
     "devServerHTTPS": true,
     "addFilenameHashes": true,
     "outputPath": "dist",
-    "name": "Frontend workflow",
-    "shortName": "Frontend",
-    "description": "Frontend workflow description",
-    "author": "Yulian Alexeyev",
-    "authorUrl": "https://github.com/ioulian",
-    "theme": "#00d1b2",
-    "background": "#fff",
     "serviceWorkerOnLocalHost": false,
     "cms": {
       "active": false,

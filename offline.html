@@ -1,15 +1,37 @@
 <!DOCTYPE html>
-<html lang="en-US" class="has-navbar-fixed-top">
+<html lang="<%= htmlWebpackPlugin.options.siteLanguage %>" class="has-navbar-fixed-top no-js">
   <head>
-    <meta name="google-site-verification" content="vD8KnNo72dzall0Oh4GH0Nz_FY_Sz38bat_f59dXN-M" />
+    <!-- 📣 Mandatory for Good SEO -->
+    <title><%= htmlWebpackPlugin.options.siteTitle %></title>
+
+    <!-- 🎫 Site Icons -->
+    <!-- Will be injected by Webpack -->
+
+    <!-- ⚙ Device Meta-->
     <meta charset="utf-8" />
-    <title>
-      Frontend workflow demo
-    </title>
-    <meta name="Description" content="Frontent workflow boilerplate. Change this" />
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+
+    <!-- 📋 SEO -->
+    <meta content="<%= htmlWebpackPlugin.options.siteDescription %>" name="description" />
+    <meta content="<%= htmlWebpackPlugin.options.siteAuthor %>" name="author" />
+    <meta content="noindex, nofollow" name="robots" />
+
+    <!-- 📱 PWA, updates colour of app bar on devices, generally brand primary colour -->
+    <!-- Will be injected by Webpack -->
+
+    <!-- 😌 Scripts added to the head should get async or defer -->
+    <!-- Will be injected by Webpack before the end of body -->
+
+    <!-- 😌 CSS from external sites like CDN - we tell the browser to resolve DNS quickly with rel="dns-prefetch" -->
+    <!-- Is only needed if you include third party plugins, uncomment if needed -->
+    <!-- <link rel="dns-prefetch" href="css/path-to-css" /> -->
+
+    <!-- 😌 Grab asset and cache it, can be <img /> or <script> too -->
+    <!-- The CSS is handled by webpack, preload if using third party plugins -->
+    <!-- <link as="style" rel="preload" href="https://unpkg.com/sanitize.css" /> -->
   </head>
 
-  <body>
+  <body class="sitename" itemscope itemtype="http://schema.org/WebPage">
     <nav id="main-navbar" class="navbar is-primary is-fixed-top is-bottom-mobile" data-bottom-on="small,mobile">
       <div class="container">
         <div class="navbar-brand">
@@ -57,5 +79,38 @@
         </div>
       </div>
     </section>
+
+    <footer class="footer has-text-centered" itemscope itemtype="http://schema.org/WPFooter" role="contentinfo">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-8-desktop is-offset-2-desktop">
+            <p>
+              <strong class="has-text-weight-semibold">
+                Code copyright 2019
+                <a
+                  href="https://github.com/ioulian"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="has-link-underline"
+                  >Yulian Alexeyev</a
+                >.
+              </strong>
+            </p>
+            <p>
+              <small>
+                Code released under the
+                <a
+                  href="http://opensource.org/licenses/mit-license.php"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="has-link-underline"
+                  >MIT license</a
+                >.
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

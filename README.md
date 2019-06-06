@@ -16,6 +16,7 @@ The focus of this workflow is performance:
 - By using a PWA friendly approach, your app will also work **offline by default** and will **cache assets**.
 - **Drupal 8 ready**: included (but not loaded by default) JavaScript components automatically check if they are loaded in Drupal environment and will **attach to DrupalBehaviors** accordingly.
 - Code splitting ready, you can use **dynamic imports by default**.
+- HTML is based on [HTML5 Starterkit](https://github.com/dainemawer/html5-starterkit). It has a lot of good defaults for ARIA, OpenGraph and Schema.org.
 
 If you don't like a feature, you can disable it and write another one.
 
@@ -251,25 +252,35 @@ Before creating a build, you should update the following files/settings:
 - 3: Add an app icon in `src/favicon.png`. The build will create all possible icons for your app (iOS, Android, Browsers, ...). You should use a high enough resolution, minimum of 256x256px (preferably 1024x1024px).
 - 4: Modify `offline.html` with the branding and content of the website.
 
-| Name                     | Type      | Default                                    | Description                                                                                                         |
-| ------------------------ | --------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
-| devServerHTTPS           | `boolean` | true                                       | Run development server in HTTPS mode                                                                                |
-| addFilenameHashes        | `boolean` | true                                       | Add contenthash to bundle files (useful for cache busting). (Will be automatically turned off when using CMS mode). |
-| outputPath               | `string`  | dist                                       | Folder name (from the root) where to output files.                                                                  |
-| name                     | `string`  | "Frontend Workflow"                        | Name attribute to be inserted in manifest.json.                                                                     |
-| shortName                | `string`  | "Frontend"                                 | Short name attribute to be inserted in manifest.json.                                                               |
-| description              | `string`  | ""                                         | Description attribute to be inserted in manifest.json.                                                              |
-| author                   | `string`  | ""                                         | Author attribute to be inserted in manifest.json.                                                                   |
-| authorUrl                | `string`  | ""                                         | Author URL attribute to be inserted in manifest.json.                                                               |
-| theme                    | `string`  | "#00d1b2" (Default Bulma primary color)    | Theme attribute to be inserted in manifest.json. (use with `#`)                                                     |
-| background               | `string`  | "#ffffff" (Default Bulma background color) | Background attribute to be inserted in manifest.json. (use with `#`)                                                |
-| serviceWorkerOnLocalHost | `boolean` | false                                      | Activate service-worker on localhost (allows you to test it, don't enable it when developing your application)      |
-| cms.active               | `boolean` | false                                      | Activates CMS mode. (see documentation for more info)                                                               |
-| cms.subFolder            | `string`  | ""                                         | Subfolder from the root (= public) where the theme is located. (e.g. '/themes/custom/mytheme/')                     |
-| modules.favicons         | `boolean` | true                                       | Generate favicons on build. Only used in production build.                                                          |
-| modules.criticalCSS      | `boolean` | true                                       | Inline Critical CSS. Only used in production build.                                                                 |
-| modules.serviceWorker    | `boolean` | true                                       | Generate a Service Worker using WorkBox. Only used in production build.                                             |
-| modules.asyncJS          | `boolean` | true                                       | Add `async` attribute to scripts. Only used in production build.                                                    |
+| Name                              | Type            | Default                                    | Description                                                                                                         |
+| --------------------------------- | --------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| theme                             | `string`        | "#00d1b2" (Default Bulma primary color)    | Theme attribute to be inserted in manifest.json and HTML tags. (use with `#`)                                       |
+| background                        | `string`        | "#ffffff" (Default Bulma background color) | Background attribute to be inserted in manifest.json. (use with `#`)                                                |
+| language                          | `string`        | "en-US"                                    | Will be injected in HTML and JS                                                                                     |
+| googleSiteVerification (Optional) | `string`/`null` | null                                       | Will be injected in HTML                                                                                            |
+| manifest.name                     | `string`        | "Frontend Workflow"                        | Name attribute to be inserted in manifest.json.                                                                     |
+| manifest.shortName                | `string`        | "Frontend"                                 | Short name attribute to be inserted in manifest.json.                                                               |
+| manifest.description              | `string`        | ""                                         | Description attribute to be inserted in manifest.json.                                                              |
+| manifest.author                   | `string`        | ""                                         | Author attribute to be inserted in manifest.json.                                                                   |
+| manifest.authorUrl                | `string`        | ""                                         | Author URL attribute to be inserted in manifest.json.                                                               |
+| html.title                        | `string`        | ""                                         | Title of the page. Will be injected in HTML for various tags.                                                       |
+| html.description                  | `string`        | ""                                         | Description of the page. Will be injected in HTML for various tags.                                                 |
+| html.url                          | `string`        | ""                                         | The live url where the project will be located. Will be injected in HTML for various tags.                          |
+| html.siteName                     | `string`        | ""                                         | Name of the project/site. Will be injected in HTML for various tags.                                                |
+| html.siteSummary                  | `string`        | ""                                         | Summary of the project/site. Will be injected in HTML for various tags.                                             |
+| html.author                       | `string`        | ""                                         | Name of the company/person of the project/site. Will be injected in HTML for various tags.                          |
+| html.twitterSite (Optional)       | `string`/`null` | null                                       | Twitter tag for the project/site. Will be injected in HTML for various tags.                                        |
+| html.twitterAuthor (Optional)     | `string`/`null` | null                                       | Twitter tag for the company/person. Will be injected in HTML for various tags.                                      |
+| devServerHTTPS                    | `boolean`       | true                                       | Run development server in HTTPS mode                                                                                |
+| addFilenameHashes                 | `boolean`       | true                                       | Add contenthash to bundle files (useful for cache busting). (Will be automatically turned off when using CMS mode). |
+| outputPath                        | `string`        | dist                                       | Folder name (from the root) where to output files.                                                                  |
+| serviceWorkerOnLocalHost          | `boolean`       | false                                      | Activate service-worker on localhost (allows you to test it, don't enable it when developing your application)      |
+| cms.active                        | `boolean`       | false                                      | Activates CMS mode. (see documentation for more info)                                                               |
+| cms.subFolder                     | `string`        | ""                                         | Subfolder from the root (= public) where the theme is located. (e.g. '/themes/custom/mytheme/')                     |
+| modules.favicons                  | `boolean`       | true                                       | Generate favicons on build. Only used in production build.                                                          |
+| modules.criticalCSS               | `boolean`       | true                                       | Inline Critical CSS. Only used in production build.                                                                 |
+| modules.serviceWorker             | `boolean`       | true                                       | Generate a Service Worker using WorkBox. Only used in production build.                                             |
+| modules.asyncJS                   | `boolean`       | true                                       | Add `async` attribute to scripts. Only used in production build.                                                    |
 
 ## CMS Mode
 

@@ -1,15 +1,86 @@
 <!DOCTYPE html>
-<html lang="en-US" class="has-navbar-fixed-top">
+<html lang="<%= htmlWebpackPlugin.options.siteLanguage %>" class="has-navbar-fixed-top no-js">
   <head>
-    <meta name="google-site-verification" content="vD8KnNo72dzall0Oh4GH0Nz_FY_Sz38bat_f59dXN-M" />
+    <% if (htmlWebpackPlugin.options.googleSiteVerification) { %>
+    <meta name="google-site-verification" content="<%= htmlWebpackPlugin.options.siteDescription %>" />
+    <% } %>
+
+    <!-- 📣 Mandatory for Good SEO -->
+    <title><%= htmlWebpackPlugin.options.siteTitle %></title>
+
+    <!-- 🎫 Site Icons -->
+    <!-- Will be injected by Webpack -->
+
+    <!-- ⚙ Device Meta-->
     <meta charset="utf-8" />
-    <title>
-      Frontend workflow demo
-    </title>
-    <meta name="Description" content="Frontent workflow boilerplate. Change this" />
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+
+    <!-- 📋 SEO -->
+    <meta content="<%= htmlWebpackPlugin.options.siteDescription %>" name="description" />
+    <meta content="<%= htmlWebpackPlugin.options.siteAuthor %>" name="author" />
+    <meta content="index, follow" name="robots" />
+
+    <!-- 📱 PWA, updates colour of app bar on devices, generally brand primary colour -->
+    <!-- Will be injected by Webpack -->
+
+    <!-- 👨‍💻👩‍💻 A plain text file that tells other humans about the humans that built your website -->
+    <!-- <link href="static/humans.txt" rel="author" type="text/plain" /> -->
+
+    <!-- Language - helps Google with determine which localized content to serve a user from a different region -->
+    <!-- <link rel="”alternate”" hreflang="" /> -->
+
+    <!-- 🐦 Twitter -->
+    <meta
+      content="<%= htmlWebpackPlugin.options.siteTitle %>"
+      itemprop="name"
+      name="twitter:title"
+      property="og:title"
+    />
+    <meta content="<%= htmlWebpackPlugin.options.siteSummary %>" name="twitter:card" />
+    <meta content="<%= htmlWebpackPlugin.options.siteUrl %>" name="twitter:domain" />
+    <meta
+      content="<%= htmlWebpackPlugin.options.siteDescription %>"
+      itemprop="description"
+      name="twitter:description"
+      property="og:description"
+    />
+    <% if (htmlWebpackPlugin.options.siteTwitterSite) { %>
+    <meta content="<%= htmlWebpackPlugin.options.siteTwitterSite %>" name="twitter:site" />
+    <% } %> <% if (htmlWebpackPlugin.options.siteTwitterAuthor) { %>
+    <meta content="<%= htmlWebpackPlugin.options.siteTwitterAuthor %>" name="twitter:creator" />
+    <% } %>
+
+    <!-- 📰 Opengraph: Facebook, LinkedIn, Pinterest -->
+    <meta content="<%= htmlWebpackPlugin.options.siteTitle %>" property="og:title" />
+    <meta content="<%= htmlWebpackPlugin.options.siteName %>" property="og:site_name" />
+    <meta content="website" property="og:type" />
+    <meta content="<%= htmlWebpackPlugin.options.siteUrl %>" property="og:url" />
+    <meta
+      content="<%= htmlWebpackPlugin.options.siteUrl %><%= require('./src/og-image.jpg') %>"
+      itemprop="image primaryImageOfPage"
+      property="og:image"
+    />
+
+    <!-- Suggested image size for og:image -->
+    <meta content="1200" property="og:image:width" />
+    <meta content="1200" property="og:image:height" />
+
+    <meta content="<%= htmlWebpackPlugin.options.siteLanguage %>" property="og:locale" />
+    <meta content="<%= htmlWebpackPlugin.options.siteDescription %>" property="og:description" />
+
+    <!-- 😌 Scripts added to the head should get async or defer -->
+    <!-- Will be injected by Webpack before the end of body -->
+
+    <!-- 😌 CSS from external sites like CDN - we tell the browser to resolve DNS quickly with rel="dns-prefetch" -->
+    <!-- Is only needed if you include third party plugins, uncomment if needed -->
+    <!-- <link rel="dns-prefetch" href="css/path-to-css" /> -->
+
+    <!-- 😌 Grab asset and cache it, can be <img /> or <script> too -->
+    <!-- The CSS is handled by webpack, preload if using third party plugins -->
+    <!-- <link as="style" rel="preload" href="https://unpkg.com/sanitize.css" /> -->
   </head>
 
-  <body>
+  <body class="sitename" itemscope itemtype="http://schema.org/WebPage">
     <nav id="main-navbar" class="navbar is-primary is-fixed-top is-bottom-mobile" data-bottom-on="small,mobile">
       <div class="container">
         <div class="navbar-brand">
@@ -196,7 +267,7 @@
     </nav>
     <header class="hero is-medium is-primary is-clipped is-relative">
       <img
-        data-src="src/demo/media/hero-bg.jpg"
+        data-src="<%= require('./src/demo/media/hero-bg.jpg') %>"
         class="fw-lazy-load fw-lazy-load--opacity-scale fw-full-size-in-parent"
         alt="Header image with sand"
       />
@@ -266,26 +337,26 @@
                 <picture width="960" height="640">
                   <source
                     media="print"
-                    data-srcset="src/demo/media/responsive-images/picture/test_landscape_1@1x.jpg"
+                    data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1@1x.jpg') %>"
                   />
 
                   <source
                     media="(max-width: 480px)"
-                    data-srcset="src/demo/media/responsive-images/picture/test_landscape_1@1x.jpg"
+                    data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1@1x.jpg') %>"
                   />
 
                   <source
                     media="(max-width: 640px)"
-                    data-srcset="src/demo/media/responsive-images/picture/test_landscape_1@2x.jpg"
+                    data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1@2x.jpg') %>"
                   />
 
                   <source
                     media="(max-width: 1024px)"
-                    data-srcset="src/demo/media/responsive-images/picture/test_landscape_1@4x.jpg"
+                    data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1@4x.jpg') %>"
                   />
 
                   <img
-                    data-src="src/demo/media/responsive-images/picture/test_landscape_1@4x.jpg"
+                    data-src="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1@4x.jpg') %>"
                     alt="Nymphenburg Castle in Munich during sunset"
                     class="fw-lazy-load fw-lazy-load--opacity"
                     width="960"
@@ -304,7 +375,7 @@
               <p>
                 <img
                   class="fw-lazy-load fw-lazy-load--opacity"
-                  data-src="src/demo/media/responsive-images/img/yacht_race@desktop.jpg"
+                  data-src="<%= require('./src/demo/media/responsive-images/img/yacht_race@desktop.jpg') %>"
                   alt="A very exciting yacht race."
                   width="1280"
                   height="852"
@@ -592,17 +663,23 @@
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
                 <h3 id="section-gallery" class="js-in-view-animation__item">Gallery</h3>
               </div>
-              <a href="src/demo/media/responsive-images/picture/test_landscape_1@4x.jpg" data-fancybox="demo-gallery">
+              <a
+                href="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1@4x.jpg') %>"
+                data-fancybox="demo-gallery"
+              >
                 <img
-                  data-src="src/demo/media/responsive-images/picture/test_landscape_1@4x.jpg"
+                  data-src="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1@4x.jpg') %>"
                   alt="Nymphenburg Castle in Munich during sunset"
                   class="fw-lazy-load fw-lazy-load--opacity"
                   width="960"
                   height="640"
               /></a>
-              <a href="src/demo/media/responsive-images/img/yacht_race@desktop.jpg" data-fancybox="demo-gallery">
+              <a
+                href="<%= require('./src/demo/media/responsive-images/img/yacht_race@desktop.jpg') %>"
+                data-fancybox="demo-gallery"
+              >
                 <img
-                  data-src="src/demo/media/responsive-images/img/yacht_race@desktop.jpg"
+                  data-src="<%= require('./src/demo/media/responsive-images/img/yacht_race@desktop.jpg') %>"
                   class="fw-lazy-load fw-lazy-load--opacity"
                   alt="A very exciting yacht race."
                   width="1280"
@@ -624,7 +701,7 @@
         </div>
       </div>
     </section>
-    <footer class="footer has-text-centered">
+    <footer class="footer has-text-centered" itemscope itemtype="http://schema.org/WPFooter" role="contentinfo">
       <div class="container">
         <div class="columns">
           <div class="column is-8-desktop is-offset-2-desktop">
