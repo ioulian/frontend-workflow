@@ -113,7 +113,7 @@ module.exports = merge(common, {
     new InlineManifestWebpackPlugin(),
     config.modules.asyncJS
       ? new ScriptExtHtmlWebpackPlugin({
-          defaultAttribute: 'async',
+          defaultAttribute: 'defer',
         })
       : null,
   ],

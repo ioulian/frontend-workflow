@@ -250,7 +250,9 @@ Before creating a build, you should update the following files/settings:
 - 1: Everything under `"config"` key in `package.json`. See table below.
 - 2: Supported browsers can be changed under `"browserslist"` key in `package.json`.
 - 3: Add an app icon in `src/favicon.png`. The build will create all possible icons for your app (iOS, Android, Browsers, ...). You should use a high enough resolution, minimum of 256x256px (preferably 1024x1024px).
-- 4: Modify `offline.html` with the branding and content of the website.
+- 4: Add an app share image in `src/og-image.png`. This will be the image preview when you share this website/project on social media.
+- 5: Modify `<head>` in `index.html` with the your preferences.
+- 6: Modify `offline.html` with the branding and content of the website.
 
 | Name                              | Type            | Default                                    | Description                                                                                                         |
 | --------------------------------- | --------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
@@ -352,7 +354,7 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 
 These are our own TODO's that might, or might not be included in this workflow, based on priority, ease of use/configuration and performance gain/penalty. If you want to implement them or help us out, you can always let us know!
 
-- (HIGH PRIO) Write analyze documentation
+- (MED PRIO) Move CleanWebpackPlugin to production only
 - (MED PRIO) Change factory to https://github.com/fasttime/polytype, it's a better module
 - (LOW PRIO) Add fallbacks for images/fonts if offline
 - (LOW PRIO) Follow [Gimli](https://gimli.app/) to add it in the future
