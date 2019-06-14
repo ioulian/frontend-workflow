@@ -44,7 +44,7 @@ module.exports = {
     publicPath: devServer ? '/' : subFolder,
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    devMode === false ? new CleanWebpackPlugin() : () => {},
     new MiniCssExtractPlugin({
       filename: `css/[name].bundle${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.css`,
       chunkFilename: `css/[name].chunk${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.css`,
