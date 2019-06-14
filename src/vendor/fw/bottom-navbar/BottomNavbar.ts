@@ -16,7 +16,7 @@ interface SettingsType {
 
 // Default values
 const defaults: SettingsType = {
-  breakpoints: ['small', 'mobile', 'tablet'],
+  breakpoints: ['small', 'mobile'],
 }
 
 /**
