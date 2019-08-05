@@ -11,7 +11,7 @@ const devServer = process.env.NODE_ENV === 'devserver'
 
 const serviceWorkerActive = config.modules.serviceWorker && (!devMode || config.serviceWorkerOnLocalHost)
 
-const subFolder = config.cms.active ? config.cms.subFolder : '/'
+const subFolder = config.cms.active ? `${config.cms.subFolder}dist/` : '/'
 
 module.exports = {
   target: 'web',
