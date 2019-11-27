@@ -58,7 +58,7 @@ export class JSBreakpoint extends EE {
       return null
     }
 
-    return style.content.indexOf('"') === 0 || style.content.indexOf("'") === 0
+    return style.content.startsWith('"') || style.content.startsWith("'")
       ? style.content.slice(1, -1) // Some browsers output quotes around the returned value
       : style.content // Some not...
   }

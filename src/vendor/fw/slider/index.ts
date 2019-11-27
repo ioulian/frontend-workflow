@@ -1,4 +1,4 @@
-declare var Drupal: any
+declare const Drupal: any
 
 import {Slider} from './Slider'
 

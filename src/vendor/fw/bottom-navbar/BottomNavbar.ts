@@ -24,7 +24,7 @@ const defaults: SettingsType = {
  * As most smartphone users use their devices with one hand, this is the best UX
  */
 export class BottomNavbar extends Factory() {
-  private wasFixedTop: boolean = true
+  private wasFixedTop = true
 
   private settings: SettingsType
 

@@ -1,3 +1,5 @@
+declare const __SERVICE_WORKER_ACTIVE__: boolean
+
 // Import Site singleton where the site logic is located
 import {Site} from './project/Site'
 import {FreshContentNotification} from './vendor/fw/fresh-content-notification/FreshContentNotification'

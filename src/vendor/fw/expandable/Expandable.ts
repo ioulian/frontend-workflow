@@ -116,7 +116,7 @@ export class Expandable extends Factory(EE) {
     }
   }
 
-  public open(force: boolean = false): void {
+  public open(force = false): void {
     if (this.isOpen === true && force === false) {
       return
     }

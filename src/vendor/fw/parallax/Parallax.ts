@@ -8,11 +8,11 @@ import {Factory} from './../../base/js/Factory'
  * Basic parallax functionality based on window scroll position
  */
 export class Parallax extends Factory() {
-  public static attached: boolean = false
-  public static shouldAnimate: boolean = false
+  public static attached = false
+  public static shouldAnimate = false
   public static timeout: number | null = null
 
-  public static className: string = 'Parallax'
+  public static className = 'Parallax'
 
   constructor(el: Element) {
     super(el)
@@ -20,7 +20,7 @@ export class Parallax extends Factory() {
 
   public update(offset: number): void {
     const depth: number = parseFloat(this.el.getAttribute('data-depth') || '0.5')
-    const translate3d: string = `translate3d(0, ${(offset * depth).toFixed(5)}px, 0)`
+    const translate3d = `translate3d(0, ${(offset * depth).toFixed(5)}px, 0)`
 
     if (this.el instanceof HTMLElement) {
       this.el.style.transform = translate3d

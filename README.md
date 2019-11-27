@@ -1,8 +1,8 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/aa5f20fe-ba4c-4956-b6b5-fcb2470537e1/deploy-status)](https://app.netlify.com/sites/trusting-perlman-3c2ee5/deploys)
-
 # Frontend workflow
 
-This repository contains a (opinionated) starterkit for developing a frontend application/website. It contains code linting (with Prettier, TSLint and StyleLint), TypeScript, PostCSS with SASS (that has Bulma.io framework initialized) and generation of Favicons. The build is based on Webpack 4.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/aa5f20fe-ba4c-4956-b6b5-fcb2470537e1/deploy-status)](https://app.netlify.com/sites/trusting-perlman-3c2ee5/deploys)
+
+This repository contains a (opinionated) starterkit for developing a frontend application/website. It contains code linting (with Prettier, ESLint and StyleLint), TypeScript, PostCSS with SASS (that has Bulma.io framework initialized) and generation of Favicons. The build is based on Webpack 4.
 
 You can preview the output here: [https://trusting-perlman-3c2ee5.netlify.com](https://trusting-perlman-3c2ee5.netlify.com). There you'll find included JS components and you can do your own audit checks on this site to compare the performance with other projects.
 
@@ -149,7 +149,7 @@ You should add contact information on this page, as well as an address (if appli
 
 You also have some linting tasks available:
 
-- `yarn lint:js` will lint all TypeScript files with TSLint. You can change options of the linter in `.tslint.json`.
+- `yarn lint:js` will lint all TypeScript files with ESLint. You can change options of the linter in `.eslintrc.json`.
 - `yarn lint:css` will lint all (s)css with StyleLint. You can change options of the linter in `.stylelintrc.json`.
 - `yarn lint` will run both lint tasks
 
@@ -161,7 +161,6 @@ To help you with linting, you can install these extensions for VSCode (or your f
 - ESLint
 - Prettier
 - stylelint
-- TSLint
 
 ### Components
 
@@ -198,7 +197,9 @@ export class Site {
   }
 
   private async initBigBundle(): Promise<void> {
-    const {BigComponent} = await import(/* webpackChunkName: "bigcomponent" */ './components/BigComponent')
+    const {BigComponent} = await import(
+      /* webpackChunkName: "bigcomponent" */ './components/BigComponent'
+    )
     const bigComponentInstance = new BigComponent('foo')
   }
 
@@ -354,12 +355,11 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 
 These are our own TODO's that might, or might not be included in this workflow, based on priority, ease of use/configuration and performance gain/penalty. If you want to implement them or help us out, you can always let us know!
 
-- (HIGH PRIO) Use https://github.com/jantimon/favicons-webpack-plugin
-- (MED PRIO) Change factory to https://github.com/fasttime/polytype, it's a better module
+- (MED PRIO) Change factory to [https://github.com/fasttime/polytype](https://github.com/fasttime/polytype), it's a better module
 - (LOW PRIO) Add fallbacks for images/fonts if offline
 - (LOW PRIO) Follow [Gimli](https://gimli.app/) to add it in the future
-- (LOW PRIO) Change lazy loading to this way: https://addyosmani.com/blog/lazy-loading/
-- (LOW PRIO) Change fixed header implementation to https://pqina.nl/blog/applying-styles-based-on-the-user-scroll-position-with-smart-css/ maybe?
+- (LOW PRIO) Change lazy loading to this way: [https://addyosmani.com/blog/lazy-loading/](https://addyosmani.com/blog/lazy-loading/)
+- (LOW PRIO) Change fixed header implementation to [https://pqina.nl/blog/applying-styles-based-on-the-user-scroll-position-with-smart-css/](https://pqina.nl/blog/applying-styles-based-on-the-user-scroll-position-with-smart-css/) maybe?
 
 ## Possible libraries/workflows
 

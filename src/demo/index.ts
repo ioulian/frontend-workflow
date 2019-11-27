@@ -1,3 +1,5 @@
+declare const __IS_DEV__: boolean
+
 import {JSBreakpoint} from './../vendor/fw/js-breakpoint/JSBreakpoint'
 
 import './demo.scss'

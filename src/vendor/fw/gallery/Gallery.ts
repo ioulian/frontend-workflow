@@ -2,7 +2,7 @@
  * V: 0.1.0
  */
 
-declare var window: any
+declare const window: any
 
 import 'promise-polyfill/src/polyfill'
 import $ from 'jquery/dist/jquery.slim'

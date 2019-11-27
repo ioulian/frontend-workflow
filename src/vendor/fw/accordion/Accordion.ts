@@ -81,7 +81,7 @@ export class Accordion extends Factory(EE) {
     this.handleOpenedClosed = debounce(Settings.debounce, this.triggerResize.bind(this))
 
     this.items = Array.from(this.el.querySelectorAll('.fw-accordion__item')).map(el => {
-      const newItem = new AccordionItem(el)
+      const newItem = new AccordionItem(el as Element)
 
       if (this.settings.closeOthers === true) {
         newItem.on('open', (e: {target: AccordionItem}) => {

@@ -40,7 +40,7 @@ type Class = new (...args: any[]) => any
  *
  * @param {Class} Type Class to extend
  */
-export const Factory = (Type: Class = class {}) =>
+export const Factory = (Type: Class = class {}): any =>
   class extends Type {
     public static instances: any[] = []
 
@@ -48,6 +48,7 @@ export const Factory = (Type: Class = class {}) =>
 
     public static className: string = 'AbstractClass'
 
+    /* eslint-disable @typescript-eslint/no-unused-vars */
     /**
      *
      * @param {Element} el DOM Element you want to bind this class to
@@ -58,6 +59,7 @@ export const Factory = (Type: Class = class {}) =>
 
       this.el = el
     }
+    /* eslint-enable @typescript-eslint/no-unused-vars */
 
     /**
      * Helper method to automatically attach and detach instances in DrupalBehaviors
@@ -66,7 +68,7 @@ export const Factory = (Type: Class = class {}) =>
      * @param {string} selector Selector of the DOM elements to attach a class to
      * @param {any} restArgs (Optional) Any other parameters to pass to class
      */
-    public static initDrupalBehaviors(selector: string, ...restArgs: any[]) {
+    public static initDrupalBehaviors(selector: string, ...restArgs: any[]): void {
       ;(window as any).Drupal.behaviors[`attach${this.className}`] = {
         attach: (context: Element | Document): void => {
           // 1: Context is document when run the first time

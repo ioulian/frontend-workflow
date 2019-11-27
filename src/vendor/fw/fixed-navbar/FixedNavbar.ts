@@ -29,7 +29,7 @@ export class FixedNavbar extends Factory() {
     this.update()
   }
 
-  public update() {
+  public update(): void {
     const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop
 
     // Check if user has scrolled and add a class to the element

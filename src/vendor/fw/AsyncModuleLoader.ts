@@ -146,7 +146,7 @@ export class AsyncModuleLoader {
   /**
    * Shortcut to load all components
    */
-  public static loadAll(withMutationObserver: boolean = true): void {
+  public static loadAll(withMutationObserver = true): void {
     AsyncModuleLoader.loadInstantiableModules()
     AsyncModuleLoader.loadEventDelegatedModules()
 

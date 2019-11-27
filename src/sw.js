@@ -1,3 +1,5 @@
+/*global workbox, self, addEventListener, skipWaiting, caches, Response*/
+
 const FALLBACK_HTML_URL = '/offline.html'
 
 workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
@@ -69,7 +71,6 @@ workbox.routing.setCatchHandler(({event}) => {
   switch (event.request.destination) {
     case 'document':
       return caches.match(workbox.precaching.getCacheKeyForURL(FALLBACK_HTML_URL))
-      break
 
     default:
       return Response.error()

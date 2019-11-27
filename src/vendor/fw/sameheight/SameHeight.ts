@@ -131,7 +131,7 @@ export class SameHeight extends Factory() {
 
     this.classes.forEach(elClass => {
       Array.from(this.el.querySelectorAll(elClass)).forEach(el => {
-        el.removeAttribute('style')
+        ;(el as Element).removeAttribute('style')
       })
     })
   }
@@ -152,7 +152,7 @@ export class SameHeight extends Factory() {
    */
   private applyHeight(elements: Element[]): void {
     let rowIndexes: number[] = []
-    let maxHeight: number = 0
+    let maxHeight = 0
     let prevTop: number = null
 
     elements.forEach((el: Element, i: number) => {

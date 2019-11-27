@@ -13,12 +13,14 @@ interface SettingsType {
   class_error?: string
 }
 
+/* eslint-disable @typescript-eslint/camelcase */
 const lazyLoaderDefaults = {
   elements_selector: '.fw-lazy-load',
   class_loading: 'fw-lazy-load--loading',
   class_loaded: 'fw-lazy-load--loaded',
   class_error: 'fw-lazy-load--error',
 }
+/* eslint-enable @typescript-eslint/camelcase */
 
 /**
  * Wrapper around "vanilla-lazyload"

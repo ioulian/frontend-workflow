@@ -47,7 +47,7 @@ export class ResponsiveNavbar extends Factory() {
     // Handle normal click
     this.elBurger.addEventListener(
       'click',
-      e => {
+      () => {
         this.toggle()
       },
       false
