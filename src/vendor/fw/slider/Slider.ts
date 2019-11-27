@@ -2,10 +2,10 @@
  * V: 0.1.0
  */
 
-import Swiper from 'swiper/dist/js/swiper.min'
+import Swiper from 'swiper/js/swiper.min'
 import {Factory} from './../../base/js/Factory'
 
-import 'swiper/dist/css/swiper.min.css'
+import 'swiper/css/swiper.min.css'
 
 /**
  * Slider

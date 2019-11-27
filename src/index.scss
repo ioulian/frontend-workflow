@@ -3,9 +3,6 @@
 // Import bootstrap that handles variables and mixins loading
 @import './bootstrap';
 
-// Improt base styles from this framework
-@import './vendor/base/scss/styles';
-
 // Import whole Bulma framework
 @import './../node_modules/bulma/bulma';
 

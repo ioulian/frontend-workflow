@@ -6,7 +6,7 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default
 const CriticalPlugin = require('webpack-plugin-critical').CriticalPlugin
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
-const WebappWebpackPlugin = require('webapp-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const config = require('./package.json').config
 const version = require('./package.json').version
 
@@ -26,7 +26,7 @@ module.exports = merge(common, {
       },
     }),
     config.modules.favicons
-      ? new WebappWebpackPlugin({
+      ? new FaviconsWebpackPlugin({
           logo: path.resolve(__dirname, 'src/favicon.png'),
           prefix: './',
           inject: true,
@@ -59,7 +59,7 @@ module.exports = merge(common, {
           },
         })
       : () => {},
-    config.modules.favicons
+    /*config.modules.favicons
       ? new (class {
           // This is needed to fix a bug in favicon generation.
           // For theme color tag in HTML it uses background property instead of theme color property...
@@ -77,7 +77,10 @@ module.exports = merge(common, {
                 // Generate HTML to be loaded in theme later
                 if (config.cms.active) {
                   const fullPath = path.join(`./${config.outputPath}`, 'tags.html')
-                  write.sync(fullPath, result.tags.reduce((html, tag) => `${html}${tag}`, ''))
+                  write.sync(
+                    fullPath,
+                    result.tags.reduce((html, tag) => `${html}${tag}`, '')
+                  )
                 }
 
                 return callback(null, result)
@@ -87,7 +90,7 @@ module.exports = merge(common, {
             })
           }
         })()
-      : () => {},
+      : () => {},*/
     config.modules.criticalCSS && !config.cms.active
       ? new CriticalPlugin({
           src: 'index.html',

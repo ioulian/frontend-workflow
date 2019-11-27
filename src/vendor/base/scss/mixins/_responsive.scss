@@ -1,6 +1,6 @@
 @import './../variables';
-@import './../../../../../node_modules/bulma/sass/utilities/initial-variables';
-@import './../../../../../node_modules/bulma/sass/utilities/mixins';
+@import './../../../../../node_modules/bulma/sass/utilities/_all.sass';
+@import './../../../../../node_modules/bulma/sass/base/_all.sass';
 
 /// Helper mixin for defining the css properties for responsive layouts
 /// Mobile first!

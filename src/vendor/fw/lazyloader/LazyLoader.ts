@@ -2,7 +2,7 @@
  * V: 0.1.0
  */
 
-import LazyLoad from 'vanilla-lazyload'
+import LazyLoad from 'vanilla-lazyload/dist/lazyload.amd'
 
 import './LazyLoader.scss'
 
@@ -26,7 +26,7 @@ const lazyLoaderDefaults = {
  * Will listen to DOM changes too with MutationObserver
  */
 export class LazyLoader {
-  public static instance?: LazyLoad = null
+  public static instance?: any = null
   public static observer?: MutationObserver = null
 
   /**
@@ -50,9 +50,9 @@ export class LazyLoader {
   }
 
   /**
-   * @returns {LazyLoad} Instance of attached LazyLoad
+   * @returns {any} Instance of attached LazyLoad
    */
-  public static getInstance(): LazyLoad {
+  public static getInstance(): any {
     return this.instance
   }
 

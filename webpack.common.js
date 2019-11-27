@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const config = require('./package.json').config
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const {InjectManifest} = require('workbox-webpack-plugin')
@@ -148,6 +148,7 @@ module.exports = {
               outputPath: './',
               publicPath: devServer ? '/' : subFolder,
               useRelativePaths: true,
+              esModule: false,
             },
           },
         ],
@@ -155,21 +156,24 @@ module.exports = {
       {
         test: /\.(html)$/,
         exclude: /(index|offline)\.html$/,
-        use: {
-          loader: 'html-loader',
-          options: {
-            attrs: [
-              'img:src',
-              'img:data-src',
-              'img:srcset',
-              'img:data-srcset',
-              'source:srcset',
-              'source:data-srcset',
-              'link:href',
-              'a:href',
-            ],
+        use: [
+          {
+            loader: 'html-loader',
+            options: {
+              root: '.',
+              attrs: [
+                'img:src',
+                'img:data-src',
+                'img:srcset',
+                'img:data-srcset',
+                'source:srcset',
+                'source:data-srcset',
+                'link:href',
+                'a:href',
+              ],
+            },
           },
-        },
+        ],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
