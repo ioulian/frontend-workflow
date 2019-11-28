@@ -113,7 +113,7 @@ You can start writing your CSS in `src/index.scss` and JS code in `src/project/S
 
 #### TypeScript
 
-This starter kit is initialized with TypeScript. You can change the settings in `.tsconfig.json`. Any typings that you will need, you can add in `src/typings`.
+This starter kit is initialized with TypeScript. You can change the settings in `.tsconfig.json`. Any typings that you will need, you can add in `src/@typings`.
 
 #### CSS (w/ PostCSS and SCSS)
 
