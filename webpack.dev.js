@@ -4,7 +4,6 @@ const common = require('./webpack.common.js')
 const PrettierPlugin = require('prettier-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 const config = require('./package.json').config
-const fs = require('fs')
 
 module.exports = merge(common, {
   mode: 'development',
