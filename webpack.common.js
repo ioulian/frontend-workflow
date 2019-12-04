@@ -12,6 +12,7 @@ const devServer = process.env.NODE_ENV === 'devserver'
 const serviceWorkerActive = config.modules.serviceWorker && (!devMode || config.serviceWorkerOnLocalHost)
 
 const subFolder = config.cms.active ? `${config.cms.subFolder}dist/` : '/'
+const hash = devServer ? 'hash' : 'contenthash'
 
 module.exports = {
   target: 'web',
@@ -39,15 +40,15 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, config.outputPath),
-    filename: `js/[name].bundle${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.js`,
-    chunkFilename: `js/[name].chunk${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.js`,
+    filename: `js/[name].bundle${config.addFilenameHashes && !config.cms.active ? `.[${hash}]` : ''}.js`,
+    chunkFilename: `js/[name].chunk${config.addFilenameHashes && !config.cms.active ? `.[${hash}]` : ''}.js`,
     publicPath: devServer ? '/' : subFolder,
   },
   plugins: [
     devMode === false ? new CleanWebpackPlugin() : () => {},
     new MiniCssExtractPlugin({
-      filename: `css/[name].bundle${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.css`,
-      chunkFilename: `css/[name].chunk${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.css`,
+      filename: `css/[name].bundle${config.addFilenameHashes && !config.cms.active ? `.[${hash}]` : ''}.css`,
+      chunkFilename: `css/[name].chunk${config.addFilenameHashes && !config.cms.active ? `.[${hash}]` : ''}.css`,
     }),
     // TODO: remove duplicate code
     new HtmlWebpackPlugin({
@@ -144,7 +145,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               context: path.resolve(__dirname, 'src'),
-              name: `img/[path][name]${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.[ext]`,
+              name: `img/[path][name]${config.addFilenameHashes && !config.cms.active ? `.[${hash}]` : ''}.[ext]`,
               outputPath: './',
               publicPath: devServer ? '/' : subFolder,
               useRelativePaths: true,
@@ -182,7 +183,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               context: path.resolve(__dirname, 'src'),
-              name: `fonts/[path][name]${config.addFilenameHashes && !config.cms.active ? '.[contenthash]' : ''}.[ext]`,
+              name: `fonts/[path][name]${config.addFilenameHashes && !config.cms.active ? `.[${hash}]` : ''}.[ext]`,
             },
           },
         ],
