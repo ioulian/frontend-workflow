@@ -16,7 +16,7 @@ workbox.routing.registerRoute(
 workbox.routing.registerRoute(
   new RegExp('.(?:js|css)$'),
   new workbox.strategies.StaleWhileRevalidate({
-    cacheName: 'cahce-static-resources',
+    cacheName: 'cache-static-resources',
   })
 )
 
