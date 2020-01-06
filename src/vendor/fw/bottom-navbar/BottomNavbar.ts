@@ -55,7 +55,7 @@ export class BottomNavbar extends Factory() {
   }
 
   public update(): void {
-    const currentBreakpoint = JSBreakpoint.getBreakpoint()
+    const currentBreakpoint = JSBreakpoint.getInstance().getBreakpoint()
 
     if (this.settings.breakpoints.includes(currentBreakpoint)) {
       this.el.classList.add('is-fixed-bottom')

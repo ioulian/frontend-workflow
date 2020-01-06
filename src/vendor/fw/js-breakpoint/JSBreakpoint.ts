@@ -22,7 +22,7 @@ export class JSBreakpoint extends EE {
       instance = this
     }
 
-    JSBreakpoint.createElement()
+    this.createElement()
 
     window.addEventListener('resize', throttle(Settings.throttle, this.trigger.bind(this)), {
       passive: true,
@@ -33,7 +33,7 @@ export class JSBreakpoint extends EE {
   }
 
   private trigger(): void {
-    const currentBreakpoint = JSBreakpoint.getBreakpoint()
+    const currentBreakpoint = this.getBreakpoint()
 
     if (currentBreakpoint !== this.prevBreakpoint) {
       this.fire('changed', {
@@ -48,12 +48,12 @@ export class JSBreakpoint extends EE {
   }
 
   public updateBreakpoint(): void {
-    this.prevBreakpoint = JSBreakpoint.getBreakpoint()
+    this.prevBreakpoint = this.getBreakpoint()
     this.prevSize = document.documentElement.clientWidth
   }
 
-  public static getBreakpoint(): string | null {
-    const style = window.getComputedStyle(JSBreakpoint.getElement(), '::before')
+  public getBreakpoint(): string | null {
+    const style = window.getComputedStyle(this.getElement(), '::before')
 
     if (style.content === 'normal') {
       return null
@@ -64,15 +64,17 @@ export class JSBreakpoint extends EE {
       : style.content // Some not...
   }
 
-  public static createElement(): void {
+  /* eslint-disable class-methods-use-this */
+  public createElement(): void {
     const elMeta = document.createElement('meta')
     elMeta.classList.add('fw-js-breakpoint')
     document.head.appendChild(elMeta)
   }
 
-  public static getElement(): HTMLMetaElement | null {
+  public getElement(): HTMLMetaElement | null {
     return document.head.querySelector('.fw-js-breakpoint')
   }
+  /* eslint-enable class-methods-use-this */
 
   /**
    * @returns {JSBreakpoint} JSBreakpoint instance
