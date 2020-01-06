@@ -1,9 +1,12 @@
+/* eslint-env node */
+/* eslint-disable import/no-extraneous-dependencies */
+
 const merge = require('webpack-merge')
 const path = require('path')
-const common = require('./webpack.common.js')
 const PrettierPlugin = require('prettier-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
-const config = require('./package.json').config
+const common = require('./webpack.common.js')
+const {config} = require('./package.json')
 
 module.exports = merge(common, {
   mode: 'development',

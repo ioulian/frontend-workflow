@@ -1,6 +1,6 @@
 {
   "name": "frontend-workflow",
-  "version": "0.20.2",
+  "version": "0.21.0",
   "description": "Frontend workflow using Webpack 4",
   "author": "Yulian Alexeyev <yulian@dev-q.be> (https://github.com/ioulian)",
   "keywords": [
@@ -56,32 +56,39 @@
     "watch": "npx webpack --watch --config webpack.dev.js",
     "build": "yarn lint && yarn export",
     "export": "NODE_ENV=production npx webpack --config webpack.prod.js",
-    "lint": "yarn lint:js && yarn lint:css",
-    "lint:js": "npx tsc --noEmit --project .tsconfig.json && npx eslint 'src/**/*.{js,ts,tsx}'",
-    "lint:css": "npx stylelint 'src/**/*.scss'",
+    "lint": "yarn tslint:lint && yarn eslint:lint && yarn stylelint:lint",
+    "tslint:lint": "tsc --noEmit --project .tsconfig.json",
+    "eslint:lint": "eslint 'src/**/*.{js,ts}'",
+    "eslint:fix": "eslint --fix 'src/**/*.{js,ts}'",
+    "stylelint:lint": "stylelint 'src/**/*.{scss,css}'",
+    "stylelint:fix": "stylelint --fix 'src/**/*.{scss,css}'",
+    "prettier:lint": "prettier --check 'src/**/*.{js,scss,css,ts}'",
+    "prettier:fix": "prettier --write 'src/**/*.{js,scss,css,ts}'",
     "analyze": "NODE_ENV=production npx webpack --config webpack.prod.js --profile --json > stats.json && npx webpack-bundle-analyzer stats.json --default-sizes gzip"
   },
   "devDependencies": {
     "@csstools/postcss-sass": "4.0.0",
+    "@intracto/eslint-config-intracto": "0.1.9",
+    "@intracto/stylelint-config-intracto": "0.1.11",
     "@types/swiper": "5.2.0",
     "@types/throttle-debounce": "2.1.0",
-    "@typescript-eslint/eslint-plugin": "2.9.0",
-    "@typescript-eslint/parser": "2.9.0",
+    "@typescript-eslint/eslint-plugin": "2.7.0",
+    "@typescript-eslint/parser": "2.7.0",
     "autoprefixer": "9.7.2",
     "clean-webpack-plugin": "3.0.0",
     "css-loader": "3.2.0",
     "cssnano": "4.1.10",
-    "eslint": "6.7.1",
-    "eslint-config-prettier": "6.7.0",
+    "eslint": "6.1.0",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-config-prettier": "6.5.0",
+    "eslint-plugin-import": "2.18.2",
     "eslint-plugin-prettier": "3.1.1",
     "favicons-webpack-plugin": "1.0.2",
     "file-loader": "5.0.2",
     "html-loader": "0.5.5",
     "html-webpack-plugin": "3.2.0",
-    "husky": ">=1",
     "imagemin-webpack-plugin": "2.4.2",
     "inline-manifest-webpack-plugin": "4.0.2",
-    "lint-staged": ">=8",
     "mini-css-extract-plugin": "0.8.0",
     "node-sass": "4.13.0",
     "postcss-css-variables": "0.14.0",
@@ -95,7 +102,7 @@
     "script-ext-html-webpack-plugin": "2.1.4",
     "script-loader": "0.7.2",
     "style-loader": "1.0.0",
-    "stylelint": "12.0.0",
+    "stylelint": "11.1.1",
     "stylelint-config-prettier": "6.0.0",
     "stylelint-config-recommended-scss": "4.1.0",
     "stylelint-prettier": "1.1.1",
@@ -153,20 +160,5 @@
     "not dead",
     "ie >= 10",
     "not op_mini all"
-  ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsc --project .tsconfig.json --noEmit && lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,ts,tsx}": [
-      "eslint --fix",
-      "git add"
-    ],
-    "src/**/*..scss": [
-      "stylelint --fix",
-      "git add"
-    ]
-  }
+  ]
 }

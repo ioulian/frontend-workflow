@@ -1,7 +1,6 @@
-declare const Drupal: any
-
 import {BottomNavbar} from './BottomNavbar'
 
+declare const Drupal: {}
 if (typeof Drupal !== 'undefined') {
   BottomNavbar.initDrupalBehaviors('.navbar.is-bottom-mobile')
 }

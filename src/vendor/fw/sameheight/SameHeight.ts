@@ -5,7 +5,7 @@
 import 'core-js/features/array/from'
 
 import {throttle} from 'throttle-debounce'
-import {Factory} from './../../base/js/Factory'
+import {Factory} from '../../base/js/Factory'
 import Settings from '../../../project/Settings'
 
 enum HeightAttribute {
@@ -196,7 +196,9 @@ export class SameHeight extends Factory() {
 
   private setHeightToEls(elements: Element[], indexes: number[], height: number): void {
     indexes.forEach((i: number) => {
+      /* eslint-disable no-param-reassign */
       ;(elements[i] as HTMLElement).style[this.settings.heightAttribute] = `${height}px`
+      /* eslint-enable no-param-reassign */
     })
   }
 

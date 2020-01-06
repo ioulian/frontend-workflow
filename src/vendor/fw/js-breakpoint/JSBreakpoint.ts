@@ -12,6 +12,7 @@ let instance: JSBreakpoint | null = null
 
 export class JSBreakpoint extends EE {
   private prevBreakpoint: string | null = null
+
   private prevSize: number | null = null
 
   constructor() {
@@ -21,7 +22,7 @@ export class JSBreakpoint extends EE {
       instance = this
     }
 
-    this.createElement()
+    JSBreakpoint.createElement()
 
     window.addEventListener('resize', throttle(Settings.throttle, this.trigger.bind(this)), {
       passive: true,
@@ -32,7 +33,7 @@ export class JSBreakpoint extends EE {
   }
 
   private trigger(): void {
-    const currentBreakpoint = this.getBreakpoint()
+    const currentBreakpoint = JSBreakpoint.getBreakpoint()
 
     if (currentBreakpoint !== this.prevBreakpoint) {
       this.fire('changed', {
@@ -47,12 +48,12 @@ export class JSBreakpoint extends EE {
   }
 
   public updateBreakpoint(): void {
-    this.prevBreakpoint = this.getBreakpoint()
+    this.prevBreakpoint = JSBreakpoint.getBreakpoint()
     this.prevSize = document.documentElement.clientWidth
   }
 
-  public getBreakpoint(): string | null {
-    const style = window.getComputedStyle(this.getElement(), '::before')
+  public static getBreakpoint(): string | null {
+    const style = window.getComputedStyle(JSBreakpoint.getElement(), '::before')
 
     if (style.content === 'normal') {
       return null
@@ -63,13 +64,13 @@ export class JSBreakpoint extends EE {
       : style.content // Some not...
   }
 
-  public createElement(): void {
+  public static createElement(): void {
     const elMeta = document.createElement('meta')
     elMeta.classList.add('fw-js-breakpoint')
     document.head.appendChild(elMeta)
   }
 
-  public getElement(): HTMLMetaElement | null {
+  public static getElement(): HTMLMetaElement | null {
     return document.head.querySelector('.fw-js-breakpoint')
   }
 

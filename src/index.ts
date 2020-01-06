@@ -1,12 +1,17 @@
-declare const __SERVICE_WORKER_ACTIVE__: boolean
-
 // Import Site singleton where the site logic is located
+/* eslint-disable import/no-extraneous-dependencies, @typescript-eslint/ban-ts-ignore */
+// @ts-ignore
+import {Workbox} from 'workbox-window/build/workbox-window.prod.umd'
+/* eslint-enable import/no-extraneous-dependencies, @typescript-eslint/ban-ts-ignore */
 import {Site} from './project/Site'
 import {FreshContentNotification} from './vendor/fw/fresh-content-notification/FreshContentNotification'
-import {Workbox} from 'workbox-window/build/workbox-window.prod.umd'
 
 // Import base styles
 import './index.scss'
+
+/* eslint-disable no-underscore-dangle */
+declare const __SERVICE_WORKER_ACTIVE__: boolean
+/* eslint-enable no-underscore-dangle */
 
 // Initialize Site
 // We do not store this variable as it's not needed in "window" object or anywhere in this file

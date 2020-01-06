@@ -1,7 +1,6 @@
-declare const Drupal: any
-
 import {Accordion} from './Accordion'
 
+declare const Drupal: {}
 if (typeof Drupal !== 'undefined') {
   Accordion.initDrupalBehaviors('.fw-accordion')
 }

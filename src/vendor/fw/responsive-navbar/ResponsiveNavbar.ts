@@ -4,7 +4,7 @@
 
 // import 'element-matches-polyfill'
 
-import {Factory} from './../../base/js/Factory'
+import {Factory} from '../../base/js/Factory'
 
 import {Dropdown} from '../dropdown/Dropdown'
 

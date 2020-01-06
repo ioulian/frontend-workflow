@@ -2,12 +2,12 @@
  * V: 0.1.0
  */
 
-declare const window: any
-
 import 'promise-polyfill/src/polyfill'
 import $ from 'jquery/dist/jquery.slim'
 
 import '@fancyapps/fancybox/dist/jquery.fancybox.min.css'
+
+declare const window: any
 
 /**
  * Lightbox

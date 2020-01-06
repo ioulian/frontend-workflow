@@ -2,21 +2,19 @@
  * V: 0.1.2
  */
 
-import {Factory} from './../../base/js/Factory'
+import {Factory} from '../../base/js/Factory'
 
 /**
  * Basic parallax functionality based on window scroll position
  */
 export class Parallax extends Factory() {
   public static attached = false
+
   public static shouldAnimate = false
+
   public static timeout: number | null = null
 
   public static className = 'Parallax'
-
-  constructor(el: Element) {
-    super(el)
-  }
 
   public update(offset: number): void {
     const depth: number = parseFloat(this.el.getAttribute('data-depth') || '0.5')

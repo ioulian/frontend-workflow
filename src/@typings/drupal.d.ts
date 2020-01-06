@@ -1,2 +1,2 @@
 // If you are developing in Drupal 8
-declare const Drupal: {}
+declare const Drupal: any

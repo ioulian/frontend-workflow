@@ -4,7 +4,7 @@
 
 import 'intersection-observer'
 
-import {Factory} from './../../base/js/Factory'
+import {Factory} from '../../base/js/Factory'
 
 import './InViewAnimation.scss'
 
@@ -19,7 +19,7 @@ export class InViewAnimation extends Factory() {
   constructor(el: Element) {
     super(el)
 
-    this.observer = new IntersectionObserver(this.update.bind(this), {
+    this.observer = new IntersectionObserver(InViewAnimation.update.bind(this), {
       threshold: this.threshold,
     })
 
@@ -30,7 +30,7 @@ export class InViewAnimation extends Factory() {
     this.el.classList.add('js-in-view-animation--init')
   }
 
-  public update(entries: IntersectionObserverEntry[]): void {
+  public static update(entries: IntersectionObserverEntry[]): void {
     entries.forEach(entry => {
       if (entry.target.getAttribute('data-once') === 'true') {
         // Don't remove the class if it should only animate once

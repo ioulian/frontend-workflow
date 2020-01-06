@@ -1,6 +1,4 @@
-/**
- * v: 0.0.1
- */
+/* eslint-disable max-classes-per-file */
 
 import 'core-js/features/array/from'
 
@@ -11,8 +9,9 @@ type Class = new (...args: any[]) => any
  * This will inject some functions to help attach a component to DOM elements
  *
  * Examples:
+ *
+ * Basic inject:
  * ```ts
- * // Basic inject
  * class MyClass extends Factory() {
  *   constructor(el: Element) {
  *     super(el)
@@ -23,8 +22,9 @@ type Class = new (...args: any[]) => any
  * MyClass.attach('.my-selector')
  * ```
  *
+ * Inject functions and extend another class:
  * ```ts
- * // Inject functions and extend another class
+ *
  * class AnotherClass {
  * }
  *

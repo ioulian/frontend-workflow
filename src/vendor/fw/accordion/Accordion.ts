@@ -7,8 +7,7 @@ import 'core-js/features/array/find'
 
 import EE from 'onfire.js'
 import {debounce} from 'throttle-debounce'
-import {Factory} from './../../base/js/Factory'
-
+import {Factory} from '../../base/js/Factory'
 import {AccordionItem} from './AccordionItem'
 import Settings from '../../../project/Settings'
 

@@ -1,4 +1,6 @@
-/*global workbox, self, addEventListener, skipWaiting, caches, Response*/
+/* eslint-env serviceworker */
+/* global workbox */
+/* eslint-disable no-restricted-globals, no-underscore-dangle */
 
 const FALLBACK_HTML_URL = '/offline.html'
 

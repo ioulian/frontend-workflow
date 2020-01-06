@@ -1,7 +1,6 @@
-declare const Drupal: any
-
 import {FixedNavbar} from './FixedNavbar'
 
+declare const Drupal: {}
 if (typeof Drupal !== 'undefined') {
   FixedNavbar.initDrupalBehaviors('.navbar.is-fixed-top')
 }

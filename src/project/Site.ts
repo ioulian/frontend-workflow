@@ -1,5 +1,5 @@
 // import Settings from './Settings';
-import {AsyncModuleLoader} from './../vendor/fw/AsyncModuleLoader'
+import {AsyncModuleLoader} from '../vendor/fw/AsyncModuleLoader'
 
 let instance: Site | null = null
 

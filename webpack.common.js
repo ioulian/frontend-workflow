@@ -1,10 +1,13 @@
+/* eslint-env node */
+/* eslint-disable import/no-extraneous-dependencies */
+
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
-const config = require('./package.json').config
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const {InjectManifest} = require('workbox-webpack-plugin')
+const {config} = require('./package.json')
 
 const devMode = process.env.NODE_ENV !== 'production'
 const devServer = process.env.NODE_ENV === 'devserver'

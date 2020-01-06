@@ -56,8 +56,7 @@ export class ScrollIntoView {
               // Read more here: https://stackoverflow.com/questions/24665602/scrollintoview-scrolls-just-too-far
 
               // Reposition element
-              const pos = elTarget.style.position
-              const top = elTarget.style.top
+              const {position, top} = elTarget.style
               elTarget.style.position = 'relative'
               elTarget.style.top = `-${offset}px`
 
@@ -66,7 +65,7 @@ export class ScrollIntoView {
 
               // Put it back
               elTarget.style.top = top
-              elTarget.style.position = pos
+              elTarget.style.position = position
             }
           }
         }
@@ -96,7 +95,7 @@ export class ScrollIntoView {
 
     // If just a number
     const parsedOffset = parseInt(offset, 10)
-    if (parseInt(offset, 10) !== 0 && !isNaN(parsedOffset)) {
+    if (parseInt(offset, 10) !== 0 && !Number.isNaN(parsedOffset)) {
       return parseInt(offset, 10)
     }
 

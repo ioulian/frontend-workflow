@@ -29,6 +29,7 @@ const lazyLoaderDefaults = {
  */
 export class LazyLoader {
   public static instance?: any = null
+
   public static observer?: MutationObserver = null
 
   /**

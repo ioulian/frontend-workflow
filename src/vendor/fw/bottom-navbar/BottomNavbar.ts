@@ -4,7 +4,7 @@
 import 'core-js/features/array/from'
 import 'core-js/features/array/includes'
 
-import {JSBreakpoint} from './../js-breakpoint/JSBreakpoint'
+import {JSBreakpoint} from '../js-breakpoint/JSBreakpoint'
 
 import {Factory} from '../../base/js/Factory'
 
@@ -55,7 +55,7 @@ export class BottomNavbar extends Factory() {
   }
 
   public update(): void {
-    const currentBreakpoint = JSBreakpoint.getInstance().getBreakpoint()
+    const currentBreakpoint = JSBreakpoint.getBreakpoint()
 
     if (this.settings.breakpoints.includes(currentBreakpoint)) {
       this.el.classList.add('is-fixed-bottom')

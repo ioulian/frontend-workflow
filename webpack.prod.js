@@ -1,20 +1,22 @@
+/* eslint-env node */
+/* eslint-disable import/no-extraneous-dependencies */
+
 const path = require('path')
-const write = require('write')
 const merge = require('webpack-merge')
-const common = require('./webpack.common.js')
 const ImageminPlugin = require('imagemin-webpack-plugin').default
-const CriticalPlugin = require('webpack-plugin-critical').CriticalPlugin
+const {CriticalPlugin} = require('webpack-plugin-critical')
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
-const config = require('./package.json').config
-const version = require('./package.json').version
+const common = require('./webpack.common.js')
+const {config} = require('./package.json')
+const {version} = require('./package.json')
 
 module.exports = merge(common, {
   mode: 'production',
   devtool: false,
   performance: {
-    hints: false, //'warning',
+    hints: false, // 'warning',
     maxEntrypointSize: 250000, // in bytes, default 250k
     maxAssetSize: 450000, // in bytes
   },
@@ -42,7 +44,7 @@ module.exports = merge(common, {
             orientation: 'any',
             start_url: '/index.html',
             appleStatusBarStyle: 'black-translucent',
-            version: version,
+            version,
             scope: '/',
             lang: 'en-US',
             logging: false,
@@ -59,38 +61,6 @@ module.exports = merge(common, {
           },
         })
       : () => {},
-    /*config.modules.favicons
-      ? new (class {
-          // This is needed to fix a bug in favicon generation.
-          // For theme color tag in HTML it uses background property instead of theme color property...
-          apply(compiler) {
-            compiler.hooks.make.tapAsync('CustomPlugin', (compilation, callback) => {
-              compilation.hooks.webappWebpackPluginBeforeEmit.tapAsync('CustomPlugin', (result, callback) => {
-                result.tags = result.tags.map(tag => {
-                  if (tag === `<meta name="theme-color" content="${config.background}">`) {
-                    return `<meta name="theme-color" content="${config.theme}">`
-                  }
-
-                  return tag
-                })
-
-                // Generate HTML to be loaded in theme later
-                if (config.cms.active) {
-                  const fullPath = path.join(`./${config.outputPath}`, 'tags.html')
-                  write.sync(
-                    fullPath,
-                    result.tags.reduce((html, tag) => `${html}${tag}`, '')
-                  )
-                }
-
-                return callback(null, result)
-              })
-
-              return callback()
-            })
-          }
-        })()
-      : () => {},*/
     config.modules.criticalCSS && !config.cms.active
       ? new CriticalPlugin({
           src: 'index.html',

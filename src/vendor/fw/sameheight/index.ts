@@ -1,7 +1,6 @@
-declare const Drupal: any
-
 import {SameHeight} from './SameHeight'
 
+declare const Drupal: {}
 if (typeof Drupal !== 'undefined') {
   SameHeight.initDrupalBehaviors('.js-sameheight')
 }

@@ -1,24 +1,28 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "prettier/@typescript-eslint",
-    "plugin:prettier/recommended"
-  ],
-  "parserOptions": {
-    "project": "./.tsconfig.json"
-  },
-  "rules": {
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-inferrable-types": [
-      2,
-      {
-        "ignoreParameters": true,
-        "ignoreProperties": true
+  "overrides": [
+    {
+      "files": ["webpack.common.js", "webpack.dev.js", "webpack.prod.js", "src/sw.js"],
+      "extends": ["@intracto/eslint-config-intracto/js"]
+    },
+    {
+      "files": ["src/**/*.ts"],
+      "extends": ["@intracto/eslint-config-intracto/ts"],
+      "settings": {
+        "import/resolver": {
+          "node": {
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
+          }
+        }
+      },
+      "rules": {
+        "import/prefer-default-export": "off"
       }
-    ]
+    }
+  ],
+  "globals": {
+    "__SERVICE_WORKER_ACTIVE__": "readonly",
+    "__IS_DEV__": "readonly",
+    "__IS_PROD__": "readonly",
+    "__LANG__": "readonly"
   }
 }

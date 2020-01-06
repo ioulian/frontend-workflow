@@ -3,7 +3,7 @@
  */
 
 import Swiper from 'swiper/js/swiper.min'
-import {Factory} from './../../base/js/Factory'
+import {Factory} from '../../base/js/Factory'
 
 import 'swiper/css/swiper.min.css'
 

@@ -1,6 +1,6 @@
-declare const Drupal: any
-
 import {Parallax} from './Parallax'
+
+declare const Drupal: {}
 
 if (typeof Drupal !== 'undefined') {
   Parallax.initDrupalBehaviors('.fw-parallax')
