@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 
-import {JSBreakpoint} from '../vendor/fw/js-breakpoint/JSBreakpoint'
+import {JSBreakpoint} from '../lib/components/js-breakpoint/JSBreakpoint'
 
 import './demo.scss'
 

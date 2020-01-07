@@ -2,10 +2,10 @@
 // This will load all variables and mixins that you can use
 
 // Base variables of this workflow
-@import './vendor/base/scss/variables';
+@import './lib/base/scss/variables';
 
 // Debug SCSS mixin
-@import './vendor/base/scss/debug';
+@import './lib/base/scss/debug';
 
 // Add your variables here and/or override Bulma variables
 
@@ -13,4 +13,4 @@
 @import './../node_modules/bulma/sass/utilities/_all.sass';
 
 // Workflow mixins
-@import './vendor/base/scss/mixins';
+@import './lib/base/scss/mixins';

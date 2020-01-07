@@ -4,7 +4,7 @@
 import {Workbox} from 'workbox-window/build/workbox-window.prod.umd'
 /* eslint-enable import/no-extraneous-dependencies, @typescript-eslint/ban-ts-ignore */
 import {Site} from './project/Site'
-import {FreshContentNotification} from './vendor/fw/fresh-content-notification/FreshContentNotification'
+import {FreshContentNotification} from './lib/components/fresh-content-notification/FreshContentNotification'
 
 // Import base styles
 import './index.scss'

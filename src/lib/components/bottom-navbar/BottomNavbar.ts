@@ -1,6 +1,3 @@
-/**
- * V: 0.1.0
- */
 import 'core-js/features/array/from'
 import 'core-js/features/array/includes'
 
