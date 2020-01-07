@@ -1,6 +1,6 @@
 {
   "name": "frontend-workflow",
-  "version": "0.22.0",
+  "version": "0.22.1",
   "description": "Frontend workflow using Webpack 4",
   "author": "Yulian Alexeyev <yulian@dev-q.be> (https://github.com/ioulian)",
   "keywords": [
@@ -51,11 +51,11 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "start": "NODE_ENV=devserver npx webpack-dev-server --open --config webpack.dev.js",
-    "start:d": "NODE_ENV=devserver webpack-dashboard -- npx webpack-dev-server --open --config webpack.dev.js",
-    "watch": "npx webpack --watch --config webpack.dev.js",
+    "start": "NODE_ENV=devserver webpack-dev-server --open --config webpack.dev.js",
+    "start:d": "NODE_ENV=devserver webpack-dashboard -- webpack-dev-server --open --config webpack.dev.js",
+    "watch": "webpack --watch --config webpack.dev.js",
     "build": "yarn lint && yarn export",
-    "export": "NODE_ENV=production npx webpack --config webpack.prod.js",
+    "export": "NODE_ENV=production webpack --config webpack.prod.js",
     "lint": "yarn tslint:lint && yarn eslint:lint && yarn stylelint:lint",
     "tslint:lint": "tsc --noEmit --project .tsconfig.json",
     "eslint:lint": "eslint 'src/**/*.{js,ts}'",
@@ -64,7 +64,7 @@
     "stylelint:fix": "stylelint --fix 'src/**/*.{scss,css}'",
     "prettier:lint": "prettier --check 'src/**/*.{js,scss,css,ts}'",
     "prettier:fix": "prettier --write 'src/**/*.{js,scss,css,ts}'",
-    "analyze": "NODE_ENV=production npx webpack --config webpack.prod.js --profile --json > stats.json && npx webpack-bundle-analyzer stats.json --default-sizes gzip"
+    "analyze": "NODE_ENV=production webpack --config webpack.prod.js --profile --json > stats.json && webpack-bundle-analyzer stats.json --default-sizes gzip"
   },
   "devDependencies": {
     "@csstools/postcss-sass": "4.0.0",
