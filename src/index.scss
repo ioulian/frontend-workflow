@@ -12,6 +12,7 @@
 // Custom spacings as Bulma doesn't provide any
 @include fw-setup-spacings();
 
+// Include base styles of this framework once
 @import './lib/base/scss/styles';
 
 // Add your styles here
