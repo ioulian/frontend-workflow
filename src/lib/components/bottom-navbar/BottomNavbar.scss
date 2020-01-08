@@ -3,7 +3,7 @@
 // We create an extra element so we can animate the shadow without performance penalty
 // If we try to animate shadow directly, it will not animate smoothly
 .navbar {
-  &.is-fixed-bottom {
+  &.fixed-bottom {
     &::before {
       position: absolute;
       top: 0;
@@ -14,19 +14,24 @@
       content: '';
       transition: opacity $duration-normal;
       opacity: 1;
+      pointer-events: none;
     }
 
-    @include until($desktop) {
+    @include media-breakpoint-down(md) {
       // We need to reverse the order so the close button is on the same place as the open button.
       // The users can now safely double tap and stay on the same page, without accidentally clicking on something else
 
       > .container {
-        flex-wrap: wrap;
-        flex-direction: column-reverse;
-        display: flex;
-
         > * {
-          width: 100%;
+          order: 2;
+        }
+
+        .navbar-collapse {
+          order: 1;
+
+          > :last-child {
+            margin-bottom: 1rem;
+          }
         }
       }
     }

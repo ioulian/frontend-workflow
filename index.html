@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="<%= htmlWebpackPlugin.options.siteLanguage %>" class="has-navbar-fixed-top no-js">
+<html
+  lang="<%= htmlWebpackPlugin.options.siteLanguage %>"
+  class="no-js"
+  data-fresh-content-notification-title="Update ready!"
+  data-fresh-content-notification-text="Click me to refresh the page"
+>
   <head>
     <% if (htmlWebpackPlugin.options.googleSiteVerification) { %>
     <meta name="google-site-verification" content="<%= htmlWebpackPlugin.options.googleSiteVerification %>" />
@@ -81,217 +86,197 @@
   </head>
 
   <body itemscope itemtype="http://schema.org/WebPage">
-    <nav id="main-navbar" class="navbar is-primary is-fixed-top is-bottom-mobile" data-bottom-on="small,mobile">
+    <nav
+      id="main-navbar"
+      class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top is-bottom-mobile"
+      data-bottom-on="xs,sm"
+    >
       <div class="container">
-        <div class="navbar-brand">
-          <a
-            id="logo"
-            class="navbar-item has-text-weight-bold"
-            href="https://github.com/ioulian/frontend-workflow"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Frontend workflow
-          </a>
-          <span
-            class="navbar-burger burger"
-            aria-controls="navMenu"
-            tabindex="0"
-            role="button"
-            aria-label="Toggle Main Menu"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </div>
-        <div id="navMenu" class="navbar-menu">
-          <nav class="navbar-end" aria-label="Main menu" role="menu">
-            <a
-              href="#"
-              class="navbar-item js-scroll-to"
-              data-target="#section-documentation"
-              data-offset="#main-navbar"
-              role="menuitem"
-              >Documentation</a
-            >
-            <div class="navbar-item has-dropdown is-hoverable" aria-haspopup="true">
-              <a class="navbar-link" role="menuitem">Components</a>
-              <div class="navbar-dropdown" role="menu">
+        <a
+          id="logo"
+          class="navbar-brand"
+          href="https://github.com/ioulian/frontend-workflow"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Frontend workflow
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navMenu"
+          aria-controls="navMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navMenu" class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a href="#" class="nav-link js-scroll-to" data-target="#section-documentation" data-offset="#main-navbar"
+                >Documentation</a
+              >
+            </li>
+            <li class="nav-item active dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Components
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a
                   href="#"
-                  class="navbar-item js-scroll-to"
+                  class="dropdown-item js-scroll-to"
                   data-target="#section-breakpoint-mixin"
                   data-offset="#main-navbar"
-                  role="menuitem"
                 >
                   Breakpoint mixin
                 </a>
                 <a
                   href="#"
-                  class="navbar-item js-scroll-to"
+                  class="dropdown-item js-scroll-to"
                   data-target="#section-link-underline-mixin"
                   data-offset="#main-navbar"
-                  role="menuitem"
                 >
                   Link underline mixin
                 </a>
                 <a
                   href="#"
-                  class="navbar-item js-scroll-to"
+                  class="dropdown-item js-scroll-to"
                   data-target="#section-lazy-loaded-images"
                   data-offset="#main-navbar"
-                  role="menuitem"
                 >
                   Lazy loaded images
                 </a>
                 <a
                   href="#"
-                  class="navbar-item js-scroll-to"
+                  class="dropdown-item js-scroll-to"
                   data-target="#section-clickthrough"
                   data-offset="#main-navbar"
-                  role="menuitem"
                 >
                   Clickthrough
                 </a>
                 <a
                   href="#"
-                  class="navbar-item js-scroll-to"
+                  class="dropdown-item js-scroll-to"
                   data-target="#section-expandable"
                   data-offset="#main-navbar"
-                  role="menuitem"
                 >
                   Expandable
                 </a>
                 <a
                   href="#"
-                  class="navbar-item js-scroll-to"
+                  class="dropdown-item js-scroll-to"
                   data-target="#section-accordion"
                   data-offset="#main-navbar"
-                  role="menuitem"
                 >
                   Accordion list
                 </a>
                 <a
                   href="#"
-                  class="navbar-item js-scroll-to"
+                  class="dropdown-item js-scroll-to"
                   data-target="#section-same-height"
                   data-offset="#main-navbar"
-                  role="menuitem"
                 >
                   Same height
                 </a>
                 <a
                   href="#"
-                  class="navbar-item js-scroll-to"
+                  class="dropdown-item js-scroll-to"
                   data-target="#section-in-view-animation"
                   data-offset="#main-navbar"
-                  role="menuitem"
                 >
                   In View Animation
                 </a>
                 <a
                   href="#"
-                  class="navbar-item js-scroll-to"
+                  class="dropdown-item js-scroll-to"
                   data-target="#section-scroll-into-view"
                   data-offset="#main-navbar"
-                  role="menuitem"
                 >
                   Scroll Into View
                 </a>
                 <a
                   href="#"
-                  class="navbar-item js-scroll-to"
+                  class="dropdown-item js-scroll-to"
                   data-target="#section-social-share"
                   data-offset="#main-navbar"
-                  role="menuitem"
                 >
                   Social share
                 </a>
                 <a
                   href="#"
-                  class="navbar-item js-scroll-to"
+                  class="dropdown-item js-scroll-to"
                   data-target="#section-js-breakpoint"
                   data-offset="#main-navbar"
-                  role="menuitem"
                 >
                   JS Breakpoint
                 </a>
                 <a
                   href="#"
-                  class="navbar-item js-scroll-to"
+                  class="dropdown-item js-scroll-to"
                   data-target="#section-js-slider"
                   data-offset="#main-navbar"
-                  role="menuitem"
                 >
                   Slider
                 </a>
                 <a
                   href="#"
-                  class="navbar-item js-scroll-to"
+                  class="dropdown-item js-scroll-to"
                   data-target="#section-gallery"
                   data-offset="#main-navbar"
-                  role="menuitem"
                 >
                   Gallery
                 </a>
-                <hr class="navbar-divider" />
+                <div class="dropdown-divider"></div>
                 <a
                   href="https://github.com/ioulian/frontend-workflow/issues"
+                  class="dropdown-item"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="navbar-item"
-                  role="menuitem"
                 >
                   Report an issue
                 </a>
               </div>
-            </div>
-            <div class="navbar-item has-dropdown is-hoverable" aria-haspopup="true" aria-label="Language switcher">
-              <a href="#nl" class="navbar-link" role="menuitem">NL</a>
-              <div class="navbar-dropdown" role="menu">
-                <a href="#fr" class="navbar-item" role="menuitem">
-                  FR
-                </a>
-                <a href="#en" class="navbar-item" role="menuitem">
-                  EN
-                </a>
-                <a href="#de" class="navbar-item" role="menuitem">
-                  DE
-                </a>
-              </div>
-            </div>
-          </nav>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
-    <header class="hero is-medium is-primary is-clipped is-relative">
+    <header class="jumbotron overflow-hidden position-relative rounded-0">
       <img
         data-src="<%= require('./src/demo/media/hero-bg.jpg') %>"
         class="fw-lazy-load fw-lazy-load--opacity-scale fw-full-size-in-parent"
         alt="Header image with sand"
       />
-      <div class="hero-body">
-        <div class="container">
-          <div class="columns">
-            <div class="column is-8-desktop is-offset-2-desktop fw-parallax" data-depth="0.2">
-              <h1 class="title is-2 is-spaced">
-                Frontend workflow
-              </h1>
-              <h2 class="subtitle is-4">
-                Webpack based frontend workflow that is optimized for <strong>performance</strong>,
-                <strong>ease of use</strong> and <strong>code quality</strong>.
-              </h2>
-            </div>
+      <div class="container py-5">
+        <div class="row">
+          <div class="col col-lg-8 offset-lg-2 fw-parallax" data-depth="0.2">
+            <h1 class="my-4">
+              Frontend workflow
+            </h1>
+            <h2 class="h3 font-weight-light mb-0">
+              Webpack based frontend workflow that is optimized for <strong>performance</strong>,
+              <strong>ease of use</strong> and <strong>code quality</strong>.
+            </h2>
           </div>
         </div>
       </div>
     </header>
 
-    <section class="section">
+    <section>
       <div class="container">
-        <div class="columns">
-          <div class="column is-8-desktop is-offset-2-desktop">
+        <div class="row">
+          <div class="col col-lg-8 offset-lg-2">
             <div class="content">
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
                 <h3 id="section-documentation" class="js-in-view-animation__item">Documentation</h3>
@@ -310,21 +295,37 @@
                 <h3 id="section-breakpoint-mixin" class="js-in-view-animation__item">Breakpoint mixin</h3>
               </div>
 
-              <p>This is the current breakpoint: <span class="demo-breakpoint"></span></p>
+              <p>This is the current breakpoint: <code class="demo-breakpoint"></code></p>
 
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
                 <h3 id="section-link-underline-mixin" class="js-in-view-animation__item">Link underline mixin</h3>
               </div>
 
               <p>
-                You can hover <a class="has-link-underline">this link</a> to see the animation.
-                <a class="has-link-underline"
+                You can hover
+                <a
+                  href="https://github.com/ioulian/frontend-workflow"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="has-link-underline"
+                  >this link</a
+                >
+                to see the animation.
+                <a
+                  href="https://github.com/ioulian/frontend-workflow"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="has-link-underline"
                   >It also works with multi-line links. Just check this out! This is a very long link and it wraps and
                   animates perfectly!</a
                 >
               </p>
               <p>
-                <a class="has-demo-link-underline"
+                <a
+                  href="https://github.com/ioulian/frontend-workflow"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="has-demo-link-underline"
                   >You can also apply different style of the link, by default it will use the same color of the link.</a
                 >
               </p>
@@ -550,19 +551,19 @@
                 data-height-attribute="height"
               >
                 <div class="same-height-example__item js-sameheight__child">
-                  <div class="is-py-2 is-px-3">
+                  <div class="py-2 px-3">
                     First column First column First column First column First column First column First column First
                     column
                   </div>
                 </div>
                 <div class="same-height-example__item js-sameheight__child">
-                  <div class="is-py-2 is-px-3">Second column Second column Second column</div>
+                  <div class="py-2 px-3">Second column Second column Second column</div>
                 </div>
                 <div class="same-height-example__item js-sameheight__child">
-                  <div class="is-py-2 is-px-3">Third column Third column Third column Third column Third column</div>
+                  <div class="py-2 px-3">Third column Third column Third column Third column Third column</div>
                 </div>
                 <div class="same-height-example__item js-sameheight__child">
-                  <div class="is-py-2 is-px-3">Fourth column Fourth lumn</div>
+                  <div class="py-2 px-3">Fourth column Fourth lumn</div>
                 </div>
               </div>
 
@@ -571,20 +572,22 @@
               </div>
               <p>These animations will trigger when the element enters the viewport (or is already in the viewport)</p>
 
-              <div class="js-in-view-animation js-in-view-animation--fade-in-from-top">
-                <p class="js-in-view-animation__item">Will fade in from top</p>
-              </div>
+              <div class="overflow-hidden">
+                <div class="js-in-view-animation js-in-view-animation--fade-in-from-top">
+                  <p class="js-in-view-animation__item">Will fade in from top</p>
+                </div>
 
-              <div class="js-in-view-animation js-in-view-animation--fade-in-from-right">
-                <p class="js-in-view-animation__item">Will fade in from right</p>
-              </div>
+                <div class="js-in-view-animation js-in-view-animation--fade-in-from-right">
+                  <p class="js-in-view-animation__item">Will fade in from right</p>
+                </div>
 
-              <div class="js-in-view-animation js-in-view-animation--fade-in-from-bottom" data-once="true">
-                <p class="js-in-view-animation__item">Will fade in from bottom (and will only animate once)</p>
-              </div>
+                <div class="js-in-view-animation js-in-view-animation--fade-in-from-bottom" data-once="true">
+                  <p class="js-in-view-animation__item">Will fade in from bottom (and will only animate once)</p>
+                </div>
 
-              <div class="js-in-view-animation js-in-view-animation--fade-in-from-left">
-                <p class="js-in-view-animation__item">Will fade in from left</p>
+                <div class="js-in-view-animation js-in-view-animation--fade-in-from-left">
+                  <p class="js-in-view-animation__item">Will fade in from left</p>
+                </div>
               </div>
 
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
@@ -633,7 +636,7 @@
               </div>
               <p>
                 Sometimes you need to listen on breakpoint changes in JS. With this helper you can do that. It will
-                output Bulma breakpoints! (Try resizing your window). See how it's used in
+                output Bootstrap breakpoints! (Try resizing your window). See how it's used in
                 <code>scr/demo/index.ts</code>.
               </p>
               <p><code id="js-breakpoint-example"></code></p>
@@ -657,7 +660,7 @@
                   Note: if you want to support older browsers (IE10 and below), this won't work as the MutationObserver
                   is not supported there. You can load the modules manually by enabling them in the webpack.common.js.
                 </p>
-                <button class="button is-primary">Load slider</button>
+                <button class="btn btn-primary">Load slider</button>
               </div>
 
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
@@ -701,12 +704,12 @@
         </div>
       </div>
     </section>
-    <footer class="footer has-text-centered" itemscope itemtype="http://schema.org/WPFooter" role="contentinfo">
+    <footer class="text-center py-5 bg-light mt-4" itemscope itemtype="http://schema.org/WPFooter" role="contentinfo">
       <div class="container">
-        <div class="columns">
-          <div class="column is-8-desktop is-offset-2-desktop">
+        <div class="row">
+          <div class="col col-md-8 offset-md-2">
             <p>
-              <strong class="has-text-weight-semibold">
+              <strong>
                 Code copyright 2019
                 <a
                   href="https://github.com/ioulian"
@@ -717,7 +720,7 @@
                 >.
               </strong>
             </p>
-            <p>
+            <p class="mb-0">
               <small>
                 Code released under the
                 <a

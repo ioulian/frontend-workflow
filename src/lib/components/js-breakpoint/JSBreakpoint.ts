@@ -1,7 +1,3 @@
-/**
- * V: 0.1.0
- */
-
 import EE from 'onfire.js'
 import {throttle} from 'throttle-debounce'
 import Settings from '../../../project/Settings'

@@ -1,30 +1,41 @@
-/**
- * V: 0.1.0
- */
-
-import './FreshContentNotification.css'
+import './FreshContentNotification.scss'
 
 /**
- * Shows a toaster notification when the site is cached by a service worker and a new content is available to download
+ * Shows a toast notification when the site is cached by a service worker and a new content is available to download
  *
- * Clicking on the toaster just refreshes the page
+ * Clicking on the toast just refreshes the page
  */
 export class FreshContentNotification {
   /**
    * Shows a toaster message with provided content
    *
    * @param {String} content Content you want to show
+   * @param {String} title   Title of the toast you want to show
    * @param {Number} timeout Timeout to automatically hide the toaster
    */
-  public static show(content: string = 'New content available, click to refresh', timeout: number = 5000): void {
+  public static show(
+    content: string = 'New content available, click to refresh',
+    title: string = 'Content updated',
+    timeout: number = 5000
+  ): void {
     // Add the element at the end of document
     document.body.insertAdjacentHTML(
       'beforeend',
-      `<div class="fresh-content-notification notification is-success is-mb-4 is-mr-4"><button class="delete"></button><p>${content}</p></div>`
+      `<div class="toast fresh-content-notification fade show" role="alert" aria-live="polite" aria-atomic="true">
+  <div class="toast-header">
+    <strong class="mr-auto">${title}</strong>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    ${content}
+  </div>
+</div>`
     )
 
     const el = document.querySelector('.fresh-content-notification')
-    const elClose = el.querySelector('.delete')
+    const elClose = el.querySelector('.close')
 
     // Reload page to show the new content
     el.addEventListener(

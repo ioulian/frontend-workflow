@@ -1,6 +1,6 @@
 {
   "name": "frontend-workflow",
-  "version": "0.22.2",
+  "version": "0.23.0",
   "description": "Frontend workflow using Webpack 4",
   "author": "Yulian Alexeyev <yulian@dev-q.be> (https://github.com/ioulian)",
   "keywords": [
@@ -15,10 +15,11 @@
     "eslint",
     "editorconfig",
     "favicons",
-    "bulma",
+    "bootstrap",
     "es6",
     "drupal",
-    "drupal8"
+    "drupal8",
+    "web"
   ],
   "license": "MIT",
   "homepage": "https://github.com/ioulian/frontend-workflow",
@@ -36,13 +37,14 @@
   ],
   "dependencies": {
     "@fancyapps/fancybox": "3.5.7",
-    "bulma": "0.8.0",
+    "bootstrap": "4.4.1",
     "core-js": "3.4.2",
     "element-closest": "3.0.2",
     "element-matches-polyfill": "1.0.0",
     "intersection-observer": "0.7.0",
     "jquery": "3.4.1",
     "onfire.js": "2.0.1",
+    "popper.js": "1.16.0",
     "promise-polyfill": "8.1.3",
     "smoothscroll-polyfill": "0.4.4",
     "swiper": "5.2.1",
@@ -119,8 +121,8 @@
     "webpack-stream": "5.2.1"
   },
   "config": {
-    "theme": "#00d1b2",
-    "background": "#fff",
+    "theme": "#007bb3",
+    "background": "#ffffff",
     "language": "en-US",
     "googleSiteVerification": "vD8KnNo72dzall0Oh4GH0Nz_FY_Sz38bat_f59dXN-M",
     "manifest": {

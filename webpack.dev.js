@@ -15,7 +15,7 @@ module.exports = merge(common, {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    hot: true,
+    hot: false,
     https: config.devServerHTTPS,
   },
 })

@@ -3,7 +3,7 @@
 // We create an extra element so we can animate the shadow without performance penalty
 // If we try to animate shadow directly, it will not animate smoothly
 .navbar {
-  &.is-fixed-top {
+  &.fixed-top {
     &::before {
       position: absolute;
       top: 0;
@@ -14,6 +14,7 @@
       content: '';
       transition: opacity $duration-normal;
       opacity: 0;
+      pointer-events: none;
     }
 
     &.js-navbar--not-top {

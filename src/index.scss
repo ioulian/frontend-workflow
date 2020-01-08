@@ -3,14 +3,11 @@
 // Import bootstrap that handles variables and mixins loading
 @import './bootstrap';
 
-// Import whole Bulma framework
-@import './../node_modules/bulma/bulma';
+// Import whole Bootstrap framework
+@import './../node_modules/bootstrap/scss/bootstrap';
 
 // Un-comment if you want to debug basic HTML errors
 // @include fw-debug();
-
-// Custom spacings as Bulma doesn't provide any
-@include fw-setup-spacings();
 
 // Include base styles of this framework once
 @import './lib/base/scss/styles';

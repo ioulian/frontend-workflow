@@ -1,7 +1,3 @@
-/**
- * V: 0.1.0
- */
-
 import LazyLoad from 'vanilla-lazyload/dist/lazyload.amd'
 
 import './LazyLoader.scss'

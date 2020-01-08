@@ -1,7 +1,3 @@
-/**
- * V: 0.1.0
- */
-
 import 'promise-polyfill/src/polyfill'
 import $ from 'jquery/dist/jquery.slim'
 

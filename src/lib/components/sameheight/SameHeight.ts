@@ -1,7 +1,3 @@
-/**
- * V: 1.1.0
- */
-
 import 'core-js/features/array/from'
 
 import {throttle} from 'throttle-debounce'

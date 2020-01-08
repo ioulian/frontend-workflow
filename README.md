@@ -2,13 +2,13 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/aa5f20fe-ba4c-4956-b6b5-fcb2470537e1/deploy-status)](https://app.netlify.com/sites/trusting-perlman-3c2ee5/deploys)
 
-This repository contains a (opinionated) starterkit for developing a frontend application/website. It contains code linting (with Prettier, ESLint and StyleLint), TypeScript, PostCSS with SASS (that has Bulma.io framework initialized) and generation of Favicons. The build is based on Webpack 4.
+This repository contains a (opinionated) starterkit for developing a frontend application/website. It contains code linting (with Prettier, ESLint and StyleLint), TypeScript, PostCSS with SASS (that has Bootstrap framework initialized) and generation of Favicons. The build is based on Webpack 4.
 
 You can preview the output here: [https://trusting-perlman-3c2ee5.netlify.com](https://trusting-perlman-3c2ee5.netlify.com). There you'll find included JS components and you can do your own audit checks on this site to compare the performance with other projects.
 
 The focus of this workflow is performance:
 
-- By using a css-only framework, you are free to choose **whatever JS Framework you want**. [1]
+- By using a css-only framework, you are free to choose **whatever JS Framework you want**. [1][2]
 - By inlining critical CSS/JS and async loading the rest, you'll get a fast **First Meaningful Paint**.
 - By using linting tools for CSS and JS, everybody follows a **consistent code style**.
 - By using TypeScript, you can check your code on type errors and more.
@@ -21,7 +21,8 @@ The focus of this workflow is performance:
 If you don't like a feature, you can disable it and write another one.
 
 [1] However, there are some JavaScript components included, that are written for our projects and are handy tools, but here again, you are free to not use them.
-If you don't want to use them, remove them from `src/project/Site.js`.
+If you don't want to use them, remove them from `src/project/Site.ts`.
+[2] Bootstrap has it's own Javascript, this has been turned on by default. You can disable it in `src/index.ts`.
 
 ## Table of contents
 
@@ -29,8 +30,6 @@ If you don't want to use them, remove them from `src/project/Site.js`.
   - [Table of contents](#table-of-contents)
   - [Browser support](#browser-support)
   - [Install](#install)
-    - [NPM](#npm)
-    - [Yarn](#yarn)
   - [Usage](#usage)
     - [Developing](#developing)
       - [TypeScript](#typescript)
@@ -85,18 +84,14 @@ nvm use
 
 Then install all dependencies:
 
-### NPM
-
 ```bash
-npm install
+yarn install
 ```
 
 or
 
-### Yarn
-
 ```bash
-yarn install
+npm install
 ```
 
 ## Usage
@@ -117,7 +112,7 @@ This starter kit is initialized with TypeScript. You can change the settings in 
 
 #### CSS (w/ PostCSS and SCSS)
 
-This starterkit is preset with [Bulma css framework](https://bulma.io). You can use it or you can remove it in index.scss. You can also use normal `.css` files in your project, they will be bundled too.
+This starterkit is preset with [Bootstrap framework](https://getbootstrap.com/). You can use it or you can remove it in `src/index.scss` (Do not forget to remove the Javascript in `src/index.ts`). You can also use normal `.css` files in your project, they will be bundled too.
 
 There are some PostCSS plugins already preinstalled. You can change PostCSS setting and add/remove plugins in `postcss.config.js`.
 
@@ -128,7 +123,7 @@ There are some PostCSS plugins already preinstalled. You can change PostCSS sett
 - [postcss-css-variables](https://github.com/MadLittleMods/postcss-css-variables)
 - [cssnano](https://cssnano.co/)
 
-**Build performance tip**: Do not use `.scss` if it's not needed, with PostCSS plugins you can do a lot of stuff. If you need Bulma mixins and colors, you should use `.scss` then.
+**Build performance tip**: Do not use `.scss` if it's not needed, with PostCSS plugins you can do a lot of stuff. If you need mixins and variables, you should use `.scss` then.
 
 #### Prettier/Editorconfig
 
@@ -149,9 +144,17 @@ You should add contact information on this page, as well as an address (if appli
 
 You also have some linting tasks available:
 
-- `yarn lint:js` will lint all TypeScript files with ESLint. You can change options of the linter in `.eslintrc.json`.
-- `yarn lint:css` will lint all (s)css with StyleLint. You can change options of the linter in `.stylelintrc.json`.
-- `yarn lint` will run both lint tasks
+- `yarn tslint:lint` will type check source TypeScript files
+- `yarn eslint:lint` will lint all source TypeScript files with ESLint. You can change options of the linter in `.eslintrc.json`.
+- `yarn stylelint:lint` will lint all (s)css with StyleLint. You can change options of the linter in `.stylelintrc.json`.
+- `yarn prettier:lint` will lint all source files with Prettier.
+- `yarn lint` will run all lint tasks
+
+There are also liting tasks available that "fix" common linting errors. These tasks are not run anywhere (the default linting tasks are run on build task for example), but they are there if you need them:
+
+- `yarn eslint:fix` will lint and fix all source TypeScript files with ESLint. You can change options of the linter in `.eslintrc.json`.
+- `yarn stylelint:fix` will lint and fix all (s)css with StyleLint. You can change options of the linter in `.stylelintrc.json`.
+- `yarn prettier:fix` will lint and fix all source files with Prettier.
 
 #### Linting in VSCode
 
@@ -166,9 +169,9 @@ To help you with linting, you can install these extensions for VSCode (or your f
 
 There are some JavaScript components available for your ease (We have included them as we reuse them a lot). There are 3 ways of using them.
 
-1. **Easy/Not so performant**: Un-comment them from entry points from `webpack.common.js`. This way they are automatically initialized and are separate from the main bundle. This way you can load them with Drupal (or other Backend CMSs) dependencies on specific pages/modules. They are also added in the built `.html` file and they just work.
-2. **More work, more performant**: You can import them (not the `index.ts` file) manually in `Site.ts` and attach them. This way, they will be bundled in main bundle so they will require only 1 network request. You can also dynamically load them when needed.
-3. **Less work and most performant: by using AsyncModuleLoader (Default)**: All the components are automatically loaded if they are needed. By using MutationObserver, it will also check if the modules must be loaded if HTML changes.
+1. **using AsyncModuleLoader (Default)**: All the components are automatically loaded if they are needed. By using MutationObserver, it will also check if the modules must be loaded if HTML changes.
+2. **Stand-alone**: Un-comment them from entry points from `webpack.common.js`. This way they are automatically initialized and are separate from the main bundle. This way you can load them with Drupal (or other Backend CMSs) dependencies on specific pages/modules. They are also added in the built `.html` file and they just work.
+3. **Included in a single bundle**: You can import them (not the `index.ts` file) manually in `Site.ts` and attach them. This way, they will be bundled in main bundle so they will require only 1 network request. You can also dynamically load them when needed.
 
 ### Code splitting
 
@@ -197,9 +200,7 @@ export class Site {
   }
 
   private async initBigBundle(): Promise<void> {
-    const {BigComponent} = await import(
-      /* webpackChunkName: "bigcomponent" */ './components/BigComponent'
-    )
+    const {BigComponent} = await import(/* webpackChunkName: "bigcomponent" */ './components/BigComponent')
     const bigComponentInstance = new BigComponent('foo')
   }
 
@@ -226,7 +227,7 @@ With default configuration, the lighthouse audit gives us this score. However, t
 
 - **Performance**: 100. Keep in mind: the more JS/CSS you write, the worse it can get. When adding images, you can use lazy loading for a better score.
 - **Progressive Web App**: 100.
-- **Accessibility**: 93. By using default Bulma css, the color contrast is not good enough, you can change the colors based on the project.
+- **Accessibility**: 98. Lighthouse looks at the whole page and not only on what is visible on screen, thus the "in-view-animations" are triggering a warning. This will not happen when viewing the page normally.
 - **Best Practices**: 100.
 - **SEO**: 100. Please consider reading SEO optimizations articles. Do not forget to add the correct attributes in HTML.
 
@@ -255,35 +256,35 @@ Before creating a build, you should update the following files/settings:
 - 5: Modify `<head>` in `index.html` with the your preferences.
 - 6: Modify `offline.html` with the branding and content of the website.
 
-| Name                              | Type            | Default                                    | Description                                                                                                         |
-| --------------------------------- | --------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
-| theme                             | `string`        | "#00d1b2" (Default Bulma primary color)    | Theme attribute to be inserted in manifest.json and HTML tags. (use with `#`)                                       |
-| background                        | `string`        | "#ffffff" (Default Bulma background color) | Background attribute to be inserted in manifest.json. (use with `#`)                                                |
-| language                          | `string`        | "en-US"                                    | Will be injected in HTML and JS                                                                                     |
-| googleSiteVerification (Optional) | `string`/`null` | null                                       | Will be injected in HTML                                                                                            |
-| manifest.name                     | `string`        | "Frontend Workflow"                        | Name attribute to be inserted in manifest.json.                                                                     |
-| manifest.shortName                | `string`        | "Frontend"                                 | Short name attribute to be inserted in manifest.json.                                                               |
-| manifest.description              | `string`        | ""                                         | Description attribute to be inserted in manifest.json.                                                              |
-| manifest.author                   | `string`        | ""                                         | Author attribute to be inserted in manifest.json.                                                                   |
-| manifest.authorUrl                | `string`        | ""                                         | Author URL attribute to be inserted in manifest.json.                                                               |
-| html.title                        | `string`        | ""                                         | Title of the page. Will be injected in HTML for various tags.                                                       |
-| html.description                  | `string`        | ""                                         | Description of the page. Will be injected in HTML for various tags.                                                 |
-| html.url                          | `string`        | ""                                         | The live url where the project will be located. Will be injected in HTML for various tags.                          |
-| html.siteName                     | `string`        | ""                                         | Name of the project/site. Will be injected in HTML for various tags.                                                |
-| html.siteSummary                  | `string`        | ""                                         | Summary of the project/site. Will be injected in HTML for various tags.                                             |
-| html.author                       | `string`        | ""                                         | Name of the company/person of the project/site. Will be injected in HTML for various tags.                          |
-| html.twitterSite (Optional)       | `string`/`null` | null                                       | Twitter tag for the project/site. Will be injected in HTML for various tags.                                        |
-| html.twitterAuthor (Optional)     | `string`/`null` | null                                       | Twitter tag for the company/person. Will be injected in HTML for various tags.                                      |
-| devServerHTTPS                    | `boolean`       | true                                       | Run development server in HTTPS mode                                                                                |
-| addFilenameHashes                 | `boolean`       | true                                       | Add contenthash to bundle files (useful for cache busting). (Will be automatically turned off when using CMS mode). |
-| outputPath                        | `string`        | dist                                       | Folder name (from the root) where to output files.                                                                  |
-| serviceWorkerOnLocalHost          | `boolean`       | false                                      | Activate service-worker on localhost (allows you to test it, don't enable it when developing your application)      |
-| cms.active                        | `boolean`       | false                                      | Activates CMS mode. (see documentation for more info)                                                               |
-| cms.subFolder                     | `string`        | ""                                         | Subfolder from the root (= public) where the theme is located. (e.g. '/themes/custom/mytheme/')                     |
-| modules.favicons                  | `boolean`       | true                                       | Generate favicons on build. Only used in production build.                                                          |
-| modules.criticalCSS               | `boolean`       | true                                       | Inline Critical CSS. Only used in production build.                                                                 |
-| modules.serviceWorker             | `boolean`       | true                                       | Generate a Service Worker using WorkBox. Only used in production build.                                             |
-| modules.asyncJS                   | `boolean`       | true                                       | Add `async` attribute to scripts. Only used in production build.                                                    |
+| Name                              | Type            | Default             | Description                                                                                                         |
+| --------------------------------- | --------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| theme                             | `string`        | "#007bb3"           | Theme attribute to be inserted in manifest.json and HTML tags. (use with `#`)                                       |
+| background                        | `string`        | "#ffffff"           | Background attribute to be inserted in manifest.json. (use with `#`)                                                |
+| language                          | `string`        | "en-US"             | Will be injected in HTML and JS                                                                                     |
+| googleSiteVerification (Optional) | `string`/`null` | null                | Will be injected in HTML                                                                                            |
+| manifest.name                     | `string`        | "Frontend Workflow" | Name attribute to be inserted in manifest.json.                                                                     |
+| manifest.shortName                | `string`        | "Frontend"          | Short name attribute to be inserted in manifest.json.                                                               |
+| manifest.description              | `string`        | ""                  | Description attribute to be inserted in manifest.json.                                                              |
+| manifest.author                   | `string`        | ""                  | Author attribute to be inserted in manifest.json.                                                                   |
+| manifest.authorUrl                | `string`        | ""                  | Author URL attribute to be inserted in manifest.json.                                                               |
+| html.title                        | `string`        | ""                  | Title of the page. Will be injected in HTML for various tags.                                                       |
+| html.description                  | `string`        | ""                  | Description of the page. Will be injected in HTML for various tags.                                                 |
+| html.url                          | `string`        | ""                  | The live url where the project will be located. Will be injected in HTML for various tags.                          |
+| html.siteName                     | `string`        | ""                  | Name of the project/site. Will be injected in HTML for various tags.                                                |
+| html.siteSummary                  | `string`        | ""                  | Summary of the project/site. Will be injected in HTML for various tags.                                             |
+| html.author                       | `string`        | ""                  | Name of the company/person of the project/site. Will be injected in HTML for various tags.                          |
+| html.twitterSite (Optional)       | `string`/`null` | null                | Twitter tag for the project/site. Will be injected in HTML for various tags.                                        |
+| html.twitterAuthor (Optional)     | `string`/`null` | null                | Twitter tag for the company/person. Will be injected in HTML for various tags.                                      |
+| devServerHTTPS                    | `boolean`       | true                | Run development server in HTTPS mode                                                                                |
+| addFilenameHashes                 | `boolean`       | true                | Add contenthash to bundle files (useful for cache busting). (Will be automatically turned off when using CMS mode). |
+| outputPath                        | `string`        | dist                | Folder name (from the root) where to output files.                                                                  |
+| serviceWorkerOnLocalHost          | `boolean`       | false               | Activate service-worker on localhost (allows you to test it, don't enable it when developing your application)      |
+| cms.active                        | `boolean`       | false               | Activates CMS mode. (see documentation for more info)                                                               |
+| cms.subFolder                     | `string`        | ""                  | Subfolder from the root (= public) where the theme is located. (e.g. '/themes/custom/mytheme/')                     |
+| modules.favicons                  | `boolean`       | true                | Generate favicons on build. Only used in production build.                                                          |
+| modules.criticalCSS               | `boolean`       | true                | Inline Critical CSS. Only used in production build.                                                                 |
+| modules.serviceWorker             | `boolean`       | true                | Generate a Service Worker using WorkBox. Only used in production build.                                             |
+| modules.asyncJS                   | `boolean`       | true                | Add `async` attribute to scripts. Only used in production build.                                                    |
 
 ## CMS Mode
 
@@ -299,6 +300,7 @@ Keep in mind that the Frontend performance score that we try to achieve with thi
 You can use `yarn watch` to start developing. This will start watching all files and they will be generated. You can also use `yarn start` to develop in a `.html` page (the development time is faster this way as we don't need wait on php to be loaded first).
 
 **Note:** Keep in mind that no `.css` is being created when watching. Only on `yarn build`/`yarn export` will there be `.css` files created.
+
 **Note 2:** Because the `.css` files are not created on dev, only in production, do not forget to include them in your `.libraries.yml` file in your theme. `runtime.bundle.js` also does not exist on build, it will be inline piece of code, you'll need to add it too in the HTML on production. In short, there are different files for dev and production builds, so include them accordingly based on the environment.
 
 ## Files to deploy

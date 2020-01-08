@@ -1,10 +1,5 @@
-// Import Site singleton where the site logic is located
-/* eslint-disable import/no-extraneous-dependencies, @typescript-eslint/ban-ts-ignore */
-// @ts-ignore
-import {Workbox} from 'workbox-window/build/workbox-window.prod.umd'
-/* eslint-enable import/no-extraneous-dependencies, @typescript-eslint/ban-ts-ignore */
 import {Site} from './project/Site'
-import {FreshContentNotification} from './lib/components/fresh-content-notification/FreshContentNotification'
+import 'bootstrap/dist/js/bootstrap.bundle'
 
 // Import base styles
 import './index.scss'
@@ -24,20 +19,39 @@ document.documentElement.classList.add('js')
 
 // Service worker init. This will be removed from code on build if you turn off the service worker in package.json
 if (__SERVICE_WORKER_ACTIVE__) {
-  if ('serviceWorker' in navigator) {
-    const wb = new Workbox('/sw.js')
+  const activateServiceWorker = async (): Promise<void> => {
+    if ('serviceWorker' in navigator) {
+      const {Workbox} = await import(
+        /* eslint-disable @typescript-eslint/ban-ts-ignore */
+        // @ts-ignore
+        /* webpackChunkName: "workbox-window" */ 'workbox-window/build/workbox-window.prod.umd'
+      )
+      /* eslint-enable @typescript-eslint/ban-ts-ignore */
+      const {FreshContentNotification} = await import(
+        /* webpackChunkName: "fresh-content-notification" */ './lib/components/fresh-content-notification/FreshContentNotification'
+      )
 
-    wb.addEventListener('waiting', () => {
-      const notificationContent =
-        document.documentElement.getAttribute('data-fresh-content-notification-text') !== null
-          ? document.documentElement.getAttribute('data-fresh-content-notification-text')
-          : undefined
+      const wb = new Workbox('/sw.js')
 
-      FreshContentNotification.show(notificationContent, 5000)
+      wb.addEventListener('waiting', () => {
+        const notificationContent =
+          document.documentElement.getAttribute('data-fresh-content-notification-text') !== null
+            ? document.documentElement.getAttribute('data-fresh-content-notification-text')
+            : undefined
 
-      wb.messageSW({type: 'SKIP_WAITING'})
-    })
+        const notificationTitle =
+          document.documentElement.getAttribute('data-fresh-content-notification-title') !== null
+            ? document.documentElement.getAttribute('data-fresh-content-notification-title')
+            : undefined
 
-    wb.register()
+        FreshContentNotification.show(notificationContent, notificationTitle, 5000)
+
+        wb.messageSW({type: 'SKIP_WAITING'})
+      })
+
+      wb.register()
+    }
   }
+
+  activateServiceWorker()
 }

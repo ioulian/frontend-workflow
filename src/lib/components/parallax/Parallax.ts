@@ -1,7 +1,3 @@
-/**
- * V: 0.1.2
- */
-
 import {Factory} from '../../base/js/Factory'
 
 /**

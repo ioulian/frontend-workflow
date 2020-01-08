@@ -1,7 +1,3 @@
-/**
- * V: 0.1.0
- */
-
 import Swiper from 'swiper/js/swiper.min'
 import {Factory} from '../../base/js/Factory'
 

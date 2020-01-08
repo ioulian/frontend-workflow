@@ -32,34 +32,39 @@
   </head>
 
   <body class="sitename" itemscope itemtype="http://schema.org/WebPage">
-    <nav id="main-navbar" class="navbar is-primary is-fixed-top is-bottom-mobile" data-bottom-on="small,mobile">
+    <nav
+      id="main-navbar"
+      class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top is-bottom-mobile"
+      data-bottom-on="xs,sm"
+    >
       <div class="container">
-        <div class="navbar-brand">
-          <a
-            id="logo"
-            class="navbar-item has-text-weight-bold"
-            href="https://github.com/ioulian/frontend-workflow"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Frontend workflow
-          </a>
-        </div>
+        <a
+          id="logo"
+          class="navbar-brand"
+          href="https://github.com/ioulian/frontend-workflow"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Frontend workflow
+        </a>
       </div>
     </nav>
-    <header class="hero is-medium is-primary">
-      <div class="hero-body">
-        <div class="container">
-          <div class="columns">
-            <div class="column is-8-desktop is-offset-2-desktop">
-              <h1 class="title is-2 is-spaced">
-                You are offline
-              </h1>
-              <h2 class="subtitle is-4">
-                As you are surfing offline and this page hasn&quot;t been cached, we can't show it to you. Please wait
-                and reconnect to internet or you can normally view visited pages.
-              </h2>
-            </div>
+    <header class="jumbotron overflow-hidden position-relative rounded-0">
+      <img
+        data-src="<%= require('./src/demo/media/hero-bg.jpg') %>"
+        class="fw-lazy-load fw-lazy-load--opacity-scale fw-full-size-in-parent"
+        alt="Header image with sand"
+      />
+      <div class="container py-5">
+        <div class="row">
+          <div class="col col-lg-8 offset-lg-2 fw-parallax" data-depth="0.2">
+            <h1 class="my-4">
+              You are offline
+            </h1>
+            <h2 class="h3 font-weight-light mb-0">
+              As you are surfing offline and this page hasn&quot;t been cached, we can't show it to you. Please wait and
+              reconnect to internet or you can normally view visited pages.
+            </h2>
           </div>
         </div>
       </div>
@@ -67,25 +72,23 @@
 
     <section class="section">
       <div class="container">
-        <div class="columns">
-          <div class="column is-8-desktop is-offset-2-desktop">
-            <div class="content">
-              <p>
-                You are seeing this page because you are surfing offline. This site is optimized for offline usage but
-                this page is not yet cached. You can view already visited pages while you are waiting for network.
-              </p>
-            </div>
+        <div class="row">
+          <div class="col col-lg-8 offset-lg-2">
+            <p>
+              You are seeing this page because you are surfing offline. This site is optimized for offline usage but
+              this page is not yet cached. You can view already visited pages while you are waiting for network.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <footer class="footer has-text-centered" itemscope itemtype="http://schema.org/WPFooter" role="contentinfo">
+    <footer class="text-center py-5 bg-light mt-4" itemscope itemtype="http://schema.org/WPFooter" role="contentinfo">
       <div class="container">
-        <div class="columns">
-          <div class="column is-8-desktop is-offset-2-desktop">
+        <div class="row">
+          <div class="col col-md-8 offset-md-2">
             <p>
-              <strong class="has-text-weight-semibold">
+              <strong>
                 Code copyright 2019
                 <a
                   href="https://github.com/ioulian"
@@ -96,7 +99,7 @@
                 >.
               </strong>
             </p>
-            <p>
+            <p class="mb-0">
               <small>
                 Code released under the
                 <a

@@ -50,7 +50,6 @@ module.exports = {
     // accordion: path.resolve(__dirname, 'src/lib/components/accordion/index.ts'),
     // sameheight: path.resolve(__dirname, 'src/lib/components/sameheight/index.ts'),
     // inviewanimation: path.resolve(__dirname, 'src/lib/components/in-view-animation/index.ts'),
-    // responsivenavbar: path.resolve(__dirname, 'src/lib/components/responsive-navbar/index.ts'),
     // lazyloader: path.resolve(__dirname, 'src/lib/components/lazyloader/index.ts'),
     // scrollintoview: path.resolve(__dirname, 'src/lib/components/scroll-into-view/index.ts'),
     // fixednavbar: path.resolve(__dirname, 'src/lib/components/fixed-navbar/index.ts'),

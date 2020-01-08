@@ -15,31 +15,22 @@ input[type='submit'] {
   }
 }
 
+// Prevent overflow of images and remove spacing at the bottom
 picture,
 img {
   display: block;
+  max-width: 100%;
+  height: auto;
 }
-
-// Modify Bulma classes to optimize them
 
 // By default, fixed navbar will not sit on it's own layer, thus will cause a minor rendering slowdown.
 .navbar {
-  &.is-fixed-bottom,
-  &.is-fixed-top {
+  &.fixed-bottom,
+  &.fixed-top {
     @include fw-create-layer();
   }
 }
 
-.is-relative {
-  position: relative;
-}
-
 .has-link-underline {
   @include fw-link-underline();
-}
-
-// Strange behavior going on with slider on tablet breakpoint:
-// The width gets 3mil px or more...
-.column {
-  max-width: 100%;
 }

@@ -2,6 +2,6 @@
 
 .fw-js-breakpoint {
   &::before {
-    @include fw-set-breakpoints(content, 'small' 'mobile' 'tablet' 'desktop' 'widescreen' 'fullhd');
+    @include fw-set-breakpoints(content, 'xs' 'sm' 'md' 'lg' 'xl');
   }
 }

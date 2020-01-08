@@ -13,7 +13,7 @@ interface SettingsType {
 
 // Default values
 const defaults: SettingsType = {
-  breakpoints: ['small', 'mobile'],
+  breakpoints: ['xs', 'sm'],
 }
 
 /**
@@ -42,7 +42,7 @@ export class BottomNavbar extends Factory() {
       ...settingsFromDom,
     }
 
-    this.wasFixedTop = this.el.classList.contains('is-fixed-top')
+    this.wasFixedTop = this.el.classList.contains('fixed-top')
 
     JSBreakpoint.getInstance().on('changed', () => {
       this.update()
@@ -55,20 +55,16 @@ export class BottomNavbar extends Factory() {
     const currentBreakpoint = JSBreakpoint.getInstance().getBreakpoint()
 
     if (this.settings.breakpoints.includes(currentBreakpoint)) {
-      this.el.classList.add('is-fixed-bottom')
-      document.documentElement.classList.add('has-navbar-fixed-bottom')
+      this.el.classList.add('fixed-bottom')
 
       if (this.wasFixedTop === true) {
-        this.el.classList.remove('is-fixed-top')
-        document.documentElement.classList.remove('has-navbar-fixed-top')
+        this.el.classList.remove('fixed-top')
       }
     } else {
-      this.el.classList.remove('is-fixed-bottom')
-      document.documentElement.classList.remove('has-navbar-fixed-bottom')
+      this.el.classList.remove('fixed-bottom')
 
       if (this.wasFixedTop === true) {
-        this.el.classList.add('is-fixed-top')
-        document.documentElement.classList.add('has-navbar-fixed-top')
+        this.el.classList.add('fixed-top')
       }
     }
   }

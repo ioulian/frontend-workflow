@@ -1,13 +1,11 @@
-/**
- * V: 0.1.0
- */
-
+import {throttle} from 'throttle-debounce'
 import {Factory} from '../../base/js/Factory'
 
 import './FixedNavbar.scss'
+import Settings from '../../../project/Settings'
 
 /**
- * Allowes you to apply styles on the fixed header when the header is floating
+ * Allows you to apply styles on the fixed header when the header is floating
  *
  * By default, it will receive a drop shadow to show that the header is floating
  */
@@ -17,16 +15,17 @@ export class FixedNavbar extends Factory() {
   constructor(el: Element) {
     super(el)
 
-    // Listen on scroll
-    window.addEventListener(
-      'scroll',
-      () => {
-        this.update()
-      },
-      {passive: true}
-    )
+    window.addEventListener('scroll', throttle(Settings.throttle, this.update.bind(this)), {passive: true})
+    window.addEventListener('resize', throttle(Settings.throttle, this.update.bind(this)), {passive: true})
+    window.addEventListener('orientationchange', throttle(Settings.throttle, this.update.bind(this)), {passive: true})
+
+    window.addEventListener('resize', throttle(Settings.throttle, this.updatePadding.bind(this)), {passive: true})
+    window.addEventListener('orientationchange', throttle(Settings.throttle, this.updatePadding.bind(this)), {
+      passive: true,
+    })
 
     this.update()
+    this.updatePadding()
   }
 
   public update(): void {
@@ -39,5 +38,13 @@ export class FixedNavbar extends Factory() {
     } else {
       this.el.classList.remove('js-navbar--not-top')
     }
+  }
+
+  public updatePadding(): void {
+    const isFixedTop = this.el.classList.contains('fixed-top')
+    const isFixedBottom = this.el.classList.contains('fixed-bottom')
+
+    document.body.style.paddingTop = `${isFixedTop ? this.el.offsetHeight : 0}px`
+    document.body.style.paddingBottom = `${isFixedBottom ? this.el.offsetHeight : 0}px`
   }
 }

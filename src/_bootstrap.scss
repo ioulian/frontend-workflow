@@ -1,5 +1,6 @@
 // When writing any SCSS code for your component, you should first include this file.
 // This will load all variables and mixins that you can use
+// The name of the file does NOT represent Bootstrap framework!
 
 // Base variables of this workflow
 @import './lib/base/scss/variables';
@@ -7,10 +8,15 @@
 // Debug SCSS mixin
 @import './lib/base/scss/debug';
 
-// Add your variables here and/or override Bulma variables
+// Base functions/mixins of Bootstrap framework
+@import './../node_modules/bootstrap/scss/functions';
+@import './../node_modules/bootstrap/scss/mixins';
 
-// Base variables of Bulma framework
-@import './../node_modules/bulma/sass/utilities/_all.sass';
+// Add your variables here and/or override Bootstrap variables
+$primary: #007bb3;
+
+// Load variables from Bootstrap
+@import './../node_modules/bootstrap/scss/variables';
 
 // Workflow mixins
 @import './lib/base/scss/mixins';
