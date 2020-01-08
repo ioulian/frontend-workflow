@@ -227,7 +227,7 @@ With default configuration, the lighthouse audit gives us this score. However, t
 
 - **Performance**: 100. Keep in mind: the more JS/CSS you write, the worse it can get. When adding images, you can use lazy loading for a better score.
 - **Progressive Web App**: 100.
-- **Accessibility**: 98. Lighthouse looks at the whole page and not only on what is visible on screen, thus the "in-view-animations" are triggering a warning. This will not happen when viewing the page normally.
+- **Accessibility**: 100.
 - **Best Practices**: 100.
 - **SEO**: 100. Please consider reading SEO optimizations articles. Do not forget to add the correct attributes in HTML.
 
