@@ -40,7 +40,7 @@ export class SocialShare {
             elNativeSocialShareButton.getAttribute('href') || elNativeSocialShareButton.getAttribute('data-share-url')
 
           // Check if title and url are set
-          if (title && url && url !== '#') {
+          if (title && text && url && url !== '#') {
             // Check if navigator supports native share
             if (typeof navigator.share !== 'undefined') {
               navigator.share({
