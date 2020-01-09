@@ -630,6 +630,30 @@
                   >Share this page on twitter</a
                 >
               </p>
+              <p>
+                Some browsers have already a
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >native Share API</a
+                >
+                implemented. You can have a button (or a link) that opens a native share dialog on mobile browsers.
+              </p>
+              <p>
+                <button
+                  class="btn btn-primary"
+                  data-share-title="Frontend Workflow demo"
+                  data-share-text="This page contains demo data for the Frontend Workflow"
+                  data-share-url="https://trusting-perlman-3c2ee5.netlify.com"
+                >
+                  Open share dialog
+                </button>
+              </p>
+              <p>
+                Note: As only mobile browsers currently support that feature, you should hide the button on desktop
+                browsers.
+              </p>
 
               <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
                 <h3 id="section-js-breakpoint" class="js-in-view-animation__item">JS Breakpoint</h3>

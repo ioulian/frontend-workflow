@@ -1,5 +1,10 @@
 import 'element-closest/browser'
 
+// To let TypeScript know that 'share' can be found in 'navigator'
+declare const navigator: {
+  share?: any
+}
+
 export class SocialShare {
   /**
    * Attaches event listener
@@ -15,6 +20,36 @@ export class SocialShare {
           e.preventDefault()
 
           SocialShare.openWindow(elSocialShareButton.getAttribute('href'), 976, 600)
+        }
+      },
+      false
+    )
+
+    window.addEventListener(
+      'click',
+      (e: MouseEvent) => {
+        const elNativeSocialShareButton = (e.target as HTMLElement).closest('.js-social-share-native')
+
+        // Check if element clicked is the needed element (or inside it)
+        if (elNativeSocialShareButton !== null) {
+          e.preventDefault()
+
+          const title = elNativeSocialShareButton.getAttribute('data-share-title')
+          const text = elNativeSocialShareButton.getAttribute('data-share-text')
+          const url =
+            elNativeSocialShareButton.getAttribute('href') || elNativeSocialShareButton.getAttribute('data-share-url')
+
+          // Check if title and url are set
+          if (title && url && url !== '#') {
+            // Check if navigator supports native share
+            if (typeof navigator.share !== 'undefined') {
+              navigator.share({
+                title,
+                text,
+                url,
+              })
+            }
+          }
         }
       },
       false
