@@ -49,7 +49,14 @@ If you don't want to use them, remove them from `src/project/Site.ts`.
       - [Server-side performance](#server-side-performance)
     - [Analyze](#analyze)
     - [Options](#options)
+      - [Config Files](#config-files)
+        - [.fwrc.json](#fwrcjson)
+        - [.fwrc.yml](#fwrcyml)
   - [CMS Mode](#cms-mode)
+    - [Removing filename hashes](#removing-filename-hashes)
+    - [Setting a subfolder](#setting-a-subfolder)
+    - [Disable Critical CSS](#disable-critical-css)
+    - [Favicons](#favicons)
   - [Files to deploy](#files-to-deploy)
   - [TypScript usage examples](#typscript-usage-examples)
     - [Import thirdparty library](#import-thirdparty-library)
@@ -249,59 +256,102 @@ When running this command, a `stats.json` will be generated. You can also upload
 
 Before creating a build, you should update the following files/settings:
 
-- 1: Everything under `"config"` key in `package.json`. See table below.
+- 1: Update config. See table below and docs on [config files](#config-files).
 - 2: Supported browsers can be changed under `"browserslist"` key in `package.json`.
 - 3: Add an app icon in `src/favicon.png`. The build will create all possible icons for your app (iOS, Android, Browsers, ...). You should use a high enough resolution, minimum of 256x256px (preferably 1024x1024px).
 - 4: Add an app share image in `src/og-image.png`. This will be the image preview when you share this website/project on social media.
 - 5: Modify `<head>` in `index.html` with the your preferences.
 - 6: Modify `offline.html` with the branding and content of the website.
 
-| Name                              | Type            | Default             | Description                                                                                                         |
-| --------------------------------- | --------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| theme                             | `string`        | "#007bb3"           | Theme attribute to be inserted in manifest.json and HTML tags. (use with `#`)                                       |
-| background                        | `string`        | "#ffffff"           | Background attribute to be inserted in manifest.json. (use with `#`)                                                |
-| language                          | `string`        | "en-US"             | Will be injected in HTML and JS                                                                                     |
-| googleSiteVerification (Optional) | `string`/`null` | null                | Will be injected in HTML                                                                                            |
-| manifest.name                     | `string`        | "Frontend Workflow" | Name attribute to be inserted in manifest.json.                                                                     |
-| manifest.shortName                | `string`        | "Frontend"          | Short name attribute to be inserted in manifest.json.                                                               |
-| manifest.description              | `string`        | ""                  | Description attribute to be inserted in manifest.json.                                                              |
-| manifest.author                   | `string`        | ""                  | Author attribute to be inserted in manifest.json.                                                                   |
-| manifest.authorUrl                | `string`        | ""                  | Author URL attribute to be inserted in manifest.json.                                                               |
-| html.title                        | `string`        | ""                  | Title of the page. Will be injected in HTML for various tags.                                                       |
-| html.description                  | `string`        | ""                  | Description of the page. Will be injected in HTML for various tags.                                                 |
-| html.url                          | `string`        | ""                  | The live url where the project will be located. Will be injected in HTML for various tags.                          |
-| html.siteName                     | `string`        | ""                  | Name of the project/site. Will be injected in HTML for various tags.                                                |
-| html.siteSummary                  | `string`        | ""                  | Summary of the project/site. Will be injected in HTML for various tags.                                             |
-| html.author                       | `string`        | ""                  | Name of the company/person of the project/site. Will be injected in HTML for various tags.                          |
-| html.twitterSite (Optional)       | `string`/`null` | null                | Twitter tag for the project/site. Will be injected in HTML for various tags.                                        |
-| html.twitterAuthor (Optional)     | `string`/`null` | null                | Twitter tag for the company/person. Will be injected in HTML for various tags.                                      |
-| devServerHTTPS                    | `boolean`       | true                | Run development server in HTTPS mode                                                                                |
-| addFilenameHashes                 | `boolean`       | true                | Add contenthash to bundle files (useful for cache busting). (Will be automatically turned off when using CMS mode). |
-| outputPath                        | `string`        | dist                | Folder name (from the root) where to output files.                                                                  |
-| serviceWorkerOnLocalHost          | `boolean`       | false               | Activate service-worker on localhost (allows you to test it, don't enable it when developing your application)      |
-| cms.active                        | `boolean`       | false               | Activates CMS mode. (see documentation for more info)                                                               |
-| cms.subFolder                     | `string`        | ""                  | Subfolder from the root (= public) where the theme is located. (e.g. '/themes/custom/mytheme/')                     |
-| modules.favicons                  | `boolean`       | true                | Generate favicons on build. Only used in production build.                                                          |
-| modules.criticalCSS               | `boolean`       | true                | Inline Critical CSS. Only used in production build.                                                                 |
-| modules.serviceWorker             | `boolean`       | true                | Generate a Service Worker using WorkBox. Only used in production build.                                             |
-| modules.asyncJS                   | `boolean`       | true                | Add `async` attribute to scripts. Only used in production build.                                                    |
+| Name                              | Type            | Default             | Description                                                                                                                                                                                                                               |
+| --------------------------------- | --------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| theme                             | `string`        | "#007bb3"           | Theme attribute to be inserted in manifest.json and HTML tags. (use with `#`)                                                                                                                                                             |
+| background                        | `string`        | "#ffffff"           | Background attribute to be inserted in manifest.json. (use with `#`)                                                                                                                                                                      |
+| language                          | `string`        | "en-US"             | Will be injected in HTML and JS                                                                                                                                                                                                           |
+| googleSiteVerification (Optional) | `string`/`null` | null                | Will be injected in HTML                                                                                                                                                                                                                  |
+| manifest.name                     | `string`        | "Frontend Workflow" | Name attribute to be inserted in manifest.json.                                                                                                                                                                                           |
+| manifest.shortName                | `string`        | "Frontend"          | Short name attribute to be inserted in manifest.json.                                                                                                                                                                                     |
+| manifest.description              | `string`        | ""                  | Description attribute to be inserted in manifest.json.                                                                                                                                                                                    |
+| manifest.author                   | `string`        | ""                  | Author attribute to be inserted in manifest.json.                                                                                                                                                                                         |
+| manifest.authorUrl                | `string`        | ""                  | Author URL attribute to be inserted in manifest.json.                                                                                                                                                                                     |
+| html.title                        | `string`        | ""                  | Title of the page. Will be injected in HTML for various tags.                                                                                                                                                                             |
+| html.description                  | `string`        | ""                  | Description of the page. Will be injected in HTML for various tags.                                                                                                                                                                       |
+| html.url                          | `string`        | ""                  | The live url where the project will be located. Will be injected in HTML for various tags.                                                                                                                                                |
+| html.siteName                     | `string`        | ""                  | Name of the project/site. Will be injected in HTML for various tags.                                                                                                                                                                      |
+| html.siteSummary                  | `string`        | ""                  | Summary of the project/site. Will be injected in HTML for various tags.                                                                                                                                                                   |
+| html.author                       | `string`        | ""                  | Name of the company/person of the project/site. Will be injected in HTML for various tags.                                                                                                                                                |
+| html.twitterSite (Optional)       | `string`/`null` | null                | Twitter tag for the project/site. Will be injected in HTML for various tags.                                                                                                                                                              |
+| html.twitterAuthor (Optional)     | `string`/`null` | null                | Twitter tag for the company/person. Will be injected in HTML for various tags.                                                                                                                                                            |
+| devServerHTTPS                    | `boolean`       | true                | Run development server in HTTPS mode                                                                                                                                                                                                      |
+| addFilenameHashes                 | `boolean`       | true                | Add contenthash to bundle files (useful for cache busting). (Will be automatically turned off when using CMS mode).                                                                                                                       |
+| outputPath                        | `string`        | dist                | Folder name (from the root) where to output files.                                                                                                                                                                                        |
+| subFolder                         | `string`        | "/"                 | Folder name where the browser will look for files.                                                                                                                                                                                        |
+| serviceWorkerOnLocalHost          | `boolean`       | false               | Activate service-worker on localhost (allows you to test it, don't enable it when developing your application)                                                                                                                            |
+| createTagsFile                    | `boolean`       | false               | If set to true, an additional `tags.html` file will be created with all favicon and manifest links (Useful to include them later if you are building your html files on the server). They are however always injected into `.html` files. |
+| modules.favicons                  | `boolean`       | true                | Generate favicons on build. Only used in production build.                                                                                                                                                                                |
+| modules.criticalCSS               | `boolean`       | true                | Inline Critical CSS. Only used in production build.                                                                                                                                                                                       |
+| modules.serviceWorker             | `boolean`       | true                | Generate a Service Worker using WorkBox. Only used in production build.                                                                                                                                                                   |
+| modules.asyncJS                   | `boolean`       | true                | Add `async` attribute to scripts. Only used in production build.                                                                                                                                                                          |
+
+**Note** All options are "optional" in the sense that the build will still work if you don't pass them, but you should review and define all "Required" options for the launch of your app.
+
+#### Config Files
+
+The configuration of the build can be defined by a `fw` key in `package.json` or by using config files (like `.fwrc` or `.fwrc.json`). The config reader is based on [Cosmiconfig](https://github.com/davidtheclark/cosmiconfig), there you can find all possible methods to define the config.
+
+Here are some examples (you can define only the keys that you want to change):
+
+##### .fwrc.json
+
+```json
+{
+  "theme": "#007bb3",
+  "manifest": {
+    "name": "Frontend workflow"
+  },
+  "html": {
+    "url": "https://trusting-perlman-3c2ee5.netlify.com"
+  }
+}
+```
+
+##### .fwrc.yml
+
+```yaml
+theme: '#007bb3'
+manifest:
+  name: 'Frontend workflow'
+html:
+  url: 'https://trusting-perlman-3c2ee5.netlify.com'
+```
 
 ## CMS Mode
 
-There is also support for running this workflow in a Backend CMS theme (Drupal 8, Symfony, CakePHP, ...), where the assets are in a subfolder. If you set `cms.active` to true, this will change the following build settings:
+If you are using a backend CMS, the HTML can't be managed by Webpack (Webpack injects a lot of stuff into the HTML template). Thus when developing such an application you should use `yarn watch`, this way, all the files are created in the `dist` folder. You can then reference these files in your HTML.
 
-- Filename hashes are turned off. Files will be loaded by php.
-- Public path will be set to `cms.subFolder` setting so that built assets user correct path.
-- Critical CSS will be turned off (this will change the performance score!)
-- There will be `tags.html` file created in `dist` folder containing all favicon tags that you'll need to include in HEAD.
+You can still use `yarn start` for fast prototyping. As `yarn watch` if for DEV environment, you should always make a build before pushing the project on production. This can be done by your CI.
 
-Keep in mind that the Frontend performance score that we try to achieve with this workflow will be lowered as some parts are turned off. Also there will be more work required by Backend dev that is not in scope of this project.
+There are some settings you should change if you are building the HTML yourself. You can also look at `.fwrc-cms-example.json` for sample configuration when using Drupal 8.
 
-You can use `yarn watch` to start developing. This will start watching all files and they will be generated. You can also use `yarn start` to develop in a `.html` page (the development time is faster this way as we don't need wait on php to be loaded first).
+### Removing filename hashes
 
-**Note:** Keep in mind that no `.css` is being created when watching. Only on `yarn build`/`yarn export` will there be `.css` files created.
+By setting `addFilenameHashes` to `false`, you can remove the cache busting hash from the files. That way you can reference the files in your HTML.
 
-**Note 2:** Because the `.css` files are not created on dev, only in production, do not forget to include them in your `.libraries.yml` file in your theme. `runtime.bundle.js` also does not exist on build, it will be inline piece of code, you'll need to add it too in the HTML on production. In short, there are different files for dev and production builds, so include them accordingly based on the environment.
+**Note:** Keep in mind that `.css` files are only created on production build, so you won't have `.css` files when watching. Do not forget to include them in the HTML when you are building a bundle!
+
+### Setting a subfolder
+
+Most of the time, when using a CMS, the frontend will not be at the root of your project, but in a subfolder. You can change the `subFolder` config key to something like this: `/themes/custom/fw2020/dist/` (this workflow should be inside `/themes/custom/fw2020/`). All the links should then point to correct path.
+
+### Disable Critical CSS
+
+Critical CSS plugin uses headless browser to render the index.html and get only the visible CSS from it. This will not work if using a CMS. You should disable it, making the build faster.
+
+**Note:** You can still use it if `index.html` is up to date with your backend and then manually copy the CSS, but this is manual work and prone to errors.
+
+### Favicons
+
+As Favicon and manifest tags are injected into `index.html` file on build, you will need to set `createTagsFile` to `true` to generate a `dist/tags.html` file that you can then inject into the head of your project.
 
 ## Files to deploy
 

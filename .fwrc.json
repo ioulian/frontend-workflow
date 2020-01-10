@@ -1,0 +1,18 @@
+{
+  "googleSiteVerification": "vD8KnNo72dzall0Oh4GH0Nz_FY_Sz38bat_f59dXN-M",
+  "manifest": {
+    "name": "Frontend workflow",
+    "shortName": "Frontend",
+    "description": "Frontend workflow description",
+    "author": "Yulian Alexeyev",
+    "authorUrl": "https://github.com/ioulian"
+  },
+  "html": {
+    "title": "Frontend Workflow demo page",
+    "description": "Demo website for Frontend Workflow that you can test and see the usage of included components",
+    "url": "https://trusting-perlman-3c2ee5.netlify.com",
+    "siteName": "Frontend Workflow",
+    "siteSummary": "Frontend starter kit",
+    "author": "Yulian Alexeyev"
+  }
+}

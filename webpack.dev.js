@@ -6,9 +6,9 @@ const path = require('path')
 const PrettierPlugin = require('prettier-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 const common = require('./webpack.common.js')
-const {config} = require('./package.json')
 
-module.exports = merge(common, {
+module.exports = {}
+module.exports.default = merge(common.default, {
   mode: 'development',
   devtool: 'source-map',
   plugins: [new PrettierPlugin(), new DashboardPlugin()],
@@ -16,7 +16,7 @@ module.exports = merge(common, {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     hot: false,
-    https: config.devServerHTTPS,
+    https: common.config.devServerHTTPS,
     host: '0.0.0.0',
   },
 })

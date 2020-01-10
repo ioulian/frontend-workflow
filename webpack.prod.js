@@ -12,7 +12,8 @@ const common = require('./webpack.common.js')
 const {config} = require('./package.json')
 const {version} = require('./package.json')
 
-module.exports = merge(common, {
+module.exports = {}
+module.exports.default = merge(common.default, {
   mode: 'production',
   devtool: false,
   performance: {
@@ -61,7 +62,7 @@ module.exports = merge(common, {
           },
         })
       : () => {},
-    config.modules.criticalCSS && !config.cms.active
+    config.modules.criticalCSS
       ? new CriticalPlugin({
           src: 'index.html',
           inline: true,

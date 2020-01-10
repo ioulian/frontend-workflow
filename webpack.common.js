@@ -7,14 +7,60 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const {InjectManifest} = require('workbox-webpack-plugin')
-const {config} = require('./package.json')
+const {cosmiconfigSync} = require('cosmiconfig')
 
+const defaults = {
+  theme: '#007bb3',
+  background: '#ffffff',
+  language: 'en-US',
+  googleSiteVerification: null,
+  manifest: {
+    name: 'Frontend workflow',
+    shortName: 'Frontend',
+    description: '',
+    author: '',
+    authorUrl: '',
+  },
+  html: {
+    title: '',
+    description: '',
+    url: '',
+    siteName: '',
+    siteSummary: '',
+    author: '',
+    twitterSite: null,
+    twitterAuthor: null,
+  },
+  devServerHTTPS: true,
+  addFilenameHashes: true,
+  outputPath: 'dist',
+  subFolder: '/',
+  serviceWorkerOnLocalHost: false,
+  createTagsFile: false,
+  modules: {
+    favicons: true,
+    criticalCSS: true,
+    serviceWorker: true,
+    asyncJS: true,
+  },
+}
+
+// Set up environments
 const devMode = process.env.NODE_ENV !== 'production'
 const devServer = process.env.NODE_ENV === 'devserver'
 
-const serviceWorkerActive = config.modules.serviceWorker && (!devMode || config.serviceWorkerOnLocalHost)
+// Get config
+const explorerSync = cosmiconfigSync('fw')
+const configFile = explorerSync.search()
 
-const subFolder = config.cms.active ? `${config.cms.subFolder}dist/` : '/'
+if (configFile === null) {
+  throw new Error('No config found')
+}
+
+const config = {...defaults, ...configFile.config}
+
+// Setup some settings
+const serviceWorkerActive = config.modules.serviceWorker && (!devMode || config.serviceWorkerOnLocalHost)
 const hash = devServer ? 'hash' : 'contenthash'
 
 const htmlPluginSettings = {
@@ -39,7 +85,8 @@ const htmlPluginSettings = {
   },
 }
 
-module.exports = {
+module.exports = {}
+module.exports.default = {
   target: 'web',
   entry: {
     main: path.resolve(__dirname, 'src/index.ts'),
@@ -64,16 +111,16 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, config.outputPath),
-    filename: `js/[name].bundle${config.addFilenameHashes && !config.cms.active ? `.[${hash}]` : ''}.js`,
-    chunkFilename: `js/[name].chunk${config.addFilenameHashes && !config.cms.active ? `.[${hash}]` : ''}.js`,
-    publicPath: devServer ? '/' : subFolder,
+    filename: `js/[name].bundle${config.addFilenameHashes ? `.[${hash}]` : ''}.js`,
+    chunkFilename: `js/[name].chunk${config.addFilenameHashes ? `.[${hash}]` : ''}.js`,
+    publicPath: devServer ? '/' : config.subFolder,
   },
   plugins: [
     // Clean build folder on build
     devMode === false ? new CleanWebpackPlugin() : () => {},
     new MiniCssExtractPlugin({
-      filename: `css/[name].bundle${config.addFilenameHashes && !config.cms.active ? `.[${hash}]` : ''}.css`,
-      chunkFilename: `css/[name].chunk${config.addFilenameHashes && !config.cms.active ? `.[${hash}]` : ''}.css`,
+      filename: `css/[name].bundle${config.addFilenameHashes ? `.[${hash}]` : ''}.css`,
+      chunkFilename: `css/[name].chunk${config.addFilenameHashes ? `.[${hash}]` : ''}.css`,
     }),
     // Create pages
     new HtmlWebpackPlugin({
@@ -135,9 +182,9 @@ module.exports = {
             loader: 'file-loader',
             options: {
               context: path.resolve(__dirname, 'src'),
-              name: `img/[path][name]${config.addFilenameHashes && !config.cms.active ? `.[${hash}]` : ''}.[ext]`,
+              name: `img/[path][name]${config.addFilenameHashes ? `.[${hash}]` : ''}.[ext]`,
               outputPath: './',
-              publicPath: devServer ? '/' : subFolder,
+              publicPath: devServer ? '/' : config.subFolder,
               useRelativePaths: true,
               esModule: false,
             },
@@ -173,7 +220,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               context: path.resolve(__dirname, 'src'),
-              name: `fonts/[path][name]${config.addFilenameHashes && !config.cms.active ? `.[${hash}]` : ''}.[ext]`,
+              name: `fonts/[path][name]${config.addFilenameHashes ? `.[${hash}]` : ''}.[ext]`,
             },
           },
         ],
@@ -202,3 +249,5 @@ module.exports = {
     },
   },
 }
+
+module.exports.config = config

@@ -1,6 +1,6 @@
 {
   "name": "frontend-workflow",
-  "version": "0.23.6",
+  "version": "0.24.0",
   "description": "Frontend workflow using Webpack 4",
   "author": "Yulian Alexeyev <yulian@dev-q.be> (https://github.com/ioulian)",
   "keywords": [
@@ -39,6 +39,7 @@
     "@fancyapps/fancybox": "3.5.7",
     "bootstrap": "4.4.1",
     "core-js": "3.4.2",
+    "cosmiconfig": "6.0.0",
     "element-closest": "3.0.2",
     "element-matches-polyfill": "1.0.0",
     "intersection-observer": "0.7.0",
@@ -118,43 +119,6 @@
     "webpack-merge": "4.2.2",
     "webpack-plugin-critical": "1.0.0",
     "webpack-stream": "5.2.1"
-  },
-  "config": {
-    "theme": "#007bb3",
-    "background": "#ffffff",
-    "language": "en-US",
-    "googleSiteVerification": "vD8KnNo72dzall0Oh4GH0Nz_FY_Sz38bat_f59dXN-M",
-    "manifest": {
-      "name": "Frontend workflow",
-      "shortName": "Frontend",
-      "description": "Frontend workflow description",
-      "author": "Yulian Alexeyev",
-      "authorUrl": "https://github.com/ioulian"
-    },
-    "html": {
-      "title": "Frontend Workflow demo page",
-      "description": "Demo website for Frontend Workflow that you can test and see the usage of included components",
-      "url": "https://trusting-perlman-3c2ee5.netlify.com",
-      "siteName": "Frontend Workflow",
-      "siteSummary": "Frontend starter kit",
-      "author": "Yulian Alexeyev",
-      "twitterSite": null,
-      "twitterAuthor": null
-    },
-    "devServerHTTPS": true,
-    "addFilenameHashes": true,
-    "outputPath": "dist",
-    "serviceWorkerOnLocalHost": false,
-    "cms": {
-      "active": false,
-      "subFolder": "/themes/custom/fw2019/"
-    },
-    "modules": {
-      "favicons": true,
-      "criticalCSS": true,
-      "serviceWorker": true,
-      "asyncJS": true
-    }
   },
   "browserslist": [
     ">0.2%",
