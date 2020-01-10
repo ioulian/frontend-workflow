@@ -37,6 +37,7 @@ const defaults = {
   subFolder: '/',
   serviceWorkerOnLocalHost: false,
   createTagsFile: false,
+  inlineManifest: true,
   modules: {
     favicons: true,
     criticalCSS: true,
