@@ -9,7 +9,6 @@ const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const common = require('./webpack.common.js')
-const {config} = require('./package.json')
 const {version} = require('./package.json')
 
 module.exports = {}
@@ -28,19 +27,19 @@ module.exports.default = merge(common.default, {
         progressive: true,
       },
     }),
-    config.modules.favicons
+    common.config.modules.favicons
       ? new FaviconsWebpackPlugin({
           logo: path.resolve(__dirname, 'src/favicon.png'),
           prefix: './',
           inject: true,
           favicons: {
-            appName: config.manifest.name,
-            appShortName: config.manifest.shortName,
-            appDescription: config.manifest.description,
-            developerName: config.manifest.author,
-            developerURL: config.manifest.authorUrl,
-            background: config.background,
-            theme_color: config.theme,
+            appName: common.config.manifest.name,
+            appShortName: common.config.manifest.shortName,
+            appDescription: common.config.manifest.description,
+            developerName: common.config.manifest.author,
+            developerURL: common.config.manifest.authorUrl,
+            background: common.config.background,
+            theme_color: common.config.theme,
             display: 'standalone',
             orientation: 'any',
             start_url: '/index.html',
@@ -62,7 +61,7 @@ module.exports.default = merge(common.default, {
           },
         })
       : () => {},
-    config.modules.criticalCSS
+    common.config.modules.criticalCSS
       ? new CriticalPlugin({
           src: 'index.html',
           inline: true,
@@ -85,7 +84,7 @@ module.exports.default = merge(common.default, {
         })
       : () => {},
     new InlineManifestWebpackPlugin(),
-    config.modules.asyncJS
+    common.config.modules.asyncJS
       ? new ScriptExtHtmlWebpackPlugin({
           defaultAttribute: 'defer',
         })
