@@ -150,6 +150,8 @@ SVG's are optimized with [SVGO](https://github.com/rpominov/svgo-loader). You ca
 </svg>
 ```
 
+**Note** The sprite file is also saved to the dist/ folder. This is useful if you want to include this file in you backend build process if needed.
+
 #### Service Worker and offline page
 
 The Service Worker is based on [Workbox](https://developers.google.com/web/tools/workbox/). The default implementation is pre-caching all assets used by the workflow and the pages an user has visited, will be cached for offline view. When the user is offline and tries to navigate to a page he/she hasn't visited yet, an offline page is shown. You can find the code in `offline.html`. Modify this page to match the output of the website.
