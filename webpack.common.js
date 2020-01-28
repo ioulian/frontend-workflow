@@ -8,6 +8,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const {InjectManifest} = require('workbox-webpack-plugin')
 const {cosmiconfigSync} = require('cosmiconfig')
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
 
 const defaults = {
   theme: '#007bb3',
@@ -134,6 +135,9 @@ module.exports.default = {
       template: 'offline.html',
       ...htmlPluginSettings,
     }),
+    new SpriteLoaderPlugin({
+      plainSprite: true,
+    }),
     serviceWorkerActive
       ? new InjectManifest({
           swSrc: './src/sw.js',
@@ -177,7 +181,20 @@ module.exports.default = {
         ],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/,
+        test: /-sprite\.svg$/,
+        use: [
+          {loader: 'svg-sprite-loader', options: {extract: true}},
+          {
+            loader: 'svgo-loader',
+            options: {
+              plugins: [],
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        exclude: /-sprite\.svg$/,
         use: [
           {
             loader: 'file-loader',
@@ -188,6 +205,32 @@ module.exports.default = {
               publicPath: devServer ? '/' : config.subFolder,
               useRelativePaths: true,
               esModule: false,
+            },
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                quality: 80,
+              },
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: [0.65, 0.9],
+                speed: 4,
+                strip: true,
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              svgo: {
+                plugins: [],
+              },
+              webp: {
+                quality: 80,
+                alphaQuality: 85,
+              },
             },
           },
         ],

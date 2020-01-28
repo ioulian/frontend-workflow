@@ -3,7 +3,6 @@
 
 const path = require('path')
 const merge = require('webpack-merge')
-const ImageminPlugin = require('imagemin-webpack-plugin').default
 const {CriticalPlugin} = require('webpack-plugin-critical')
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
@@ -21,12 +20,6 @@ module.exports.default = merge(common.default, {
     maxAssetSize: 450000, // in bytes
   },
   plugins: [
-    new ImageminPlugin({
-      cacheFolder: path.resolve(__dirname, '.cache'),
-      jpegtran: {
-        progressive: true,
-      },
-    }),
     common.config.modules.favicons
       ? new FaviconsWebpackPlugin({
           logo: path.resolve(__dirname, 'src/favicon.png'),

@@ -17,16 +17,24 @@ Site.getInstance()
 document.documentElement.classList.remove('no-js')
 document.documentElement.classList.add('js')
 
+// Import all sprite svg's to be included into SVG Spritesheet
+const requireAll = (r: any): void => {
+  r.keys().forEach(r)
+}
+
+/* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+// @ts-ignore
+requireAll(require.context('./', true, /-sprite\.svg$/))
+
 // Service worker init. This will be removed from code on build if you turn off the service worker in package.json
 if (__SERVICE_WORKER_ACTIVE__) {
   const activateServiceWorker = async (): Promise<void> => {
     if ('serviceWorker' in navigator) {
       const {Workbox} = await import(
-        /* eslint-disable @typescript-eslint/ban-ts-ignore */
+        /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
         // @ts-ignore
         /* webpackChunkName: "workbox-window" */ 'workbox-window/build/workbox-window.prod.umd'
       )
-      /* eslint-enable @typescript-eslint/ban-ts-ignore */
       const {FreshContentNotification} = await import(
         /* webpackChunkName: "fresh-content-notification" */ './lib/components/fresh-content-notification/FreshContentNotification'
       )

@@ -126,3 +126,34 @@ img.fw-full-size-in-parent {
     }
   }
 }
+
+.app-demo-svg-sprites {
+  > svg {
+    transition: fill $duration-fast;
+    margin-right: 0.5rem;
+  }
+
+  > svg,
+  > img {
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+
+    &:nth-child(1) {
+      fill: $primary;
+    }
+
+    &:nth-child(2) {
+      fill: $code-color;
+    }
+
+    &:hover {
+      fill: $danger;
+    }
+  }
+}
+
+.app-demo-svg-sprites-credits {
+  font-size: 0.75rem;
+  margin-top: 1rem;
+}

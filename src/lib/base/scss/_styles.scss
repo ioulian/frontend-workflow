@@ -34,3 +34,7 @@ img {
 .has-link-underline {
   @include fw-link-underline();
 }
+
+.svg-sprite {
+  display: none;
+}

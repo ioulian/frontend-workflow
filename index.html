@@ -86,6 +86,18 @@
   </head>
 
   <body itemscope itemtype="http://schema.org/WebPage">
+    <div class="svg-sprite" aria-hidden="true">
+      <!-- prettier-ignore -->
+      <% if (htmlWebpackPlugin.files.sprites) { %>
+      <!-- prettier-ignore -->
+      <% for (var spriteFileName in htmlWebpackPlugin.files.sprites) { %>
+      <!-- prettier-ignore -->
+      <%= htmlWebpackPlugin.files.sprites[spriteFileName] %>
+      <!-- prettier-ignore -->
+      <% } %>
+      <!-- prettier-ignore -->
+      <% } %>
+    </div>
     <nav
       id="main-navbar"
       class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top is-bottom-mobile"
@@ -723,6 +735,29 @@
                 the bottom bar should be used. You can always disable this, by not using the "is-bottom-mobile" class.
               </p>
               <p>If you don't use a fixed navbar, this module will not initialize.</p>
+
+              <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
+                <h3 id="svg-sprites" class="js-in-view-animation__item">SVG Sprites</h3>
+              </div>
+              <p>
+                If you want to use svg sprites, you can create an .svg files with <code>-sprite</code> suffix. All these
+                files will be added to the spritesheet and you can reference them with
+                <code> &lt;use xlink:href=&quot;#svg-file-name&quot;&gt;&lt;/use&gt; </code>. SVG files without the
+                suffix will be handled like normal images.
+              </p>
+              <div class="app-demo-svg-sprites">
+                <svg>
+                  <use xlink:href="#search-sprite"></use>
+                </svg>
+                <svg>
+                  <use xlink:href="#biology-sprite"></use>
+                </svg>
+                <img src="<%= require('./src/demo/media/book.svg') %>" alt="book icon" />
+              </div>
+              <div class="app-demo-svg-sprites-credits">
+                Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from
+                <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+              </div>
             </div>
           </div>
         </div>
@@ -734,7 +769,7 @@
           <div class="col col-md-8 offset-md-2">
             <p>
               <strong>
-                Code copyright 2019
+                Code copyright 2020
                 <a
                   href="https://github.com/ioulian"
                   target="_blank"

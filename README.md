@@ -142,6 +142,14 @@ There is a Prettier integration for your code style consistency. You can change 
 Images are automatically optimized when creating a production build. No optimizations are done when using it in development mode.
 Favicons/manifest files are also generated on production build only.
 
+SVG's are optimized with [SVGO](https://github.com/rpominov/svgo-loader). You can also create a spritesheet of a select `.svg` files. If you want to include the svg in the spritesheet, just add this suffix: `-sprite`. E.g. `hamburger-icon-sprite.svg` and use it like this:
+
+```html
+<svg>
+  <use xlink:href="#search-sprite"></use>
+</svg>
+```
+
 #### Service Worker and offline page
 
 The Service Worker is based on [Workbox](https://developers.google.com/web/tools/workbox/). The default implementation is pre-caching all assets used by the workflow and the pages an user has visited, will be cached for offline view. When the user is offline and tries to navigate to a page he/she hasn't visited yet, an offline page is shown. You can find the code in `offline.html`. Modify this page to match the output of the website.
