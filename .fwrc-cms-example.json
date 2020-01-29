@@ -17,7 +17,6 @@
   "addFilenameHashes": false,
   "subFolder": "/themes/custom/fw2020/dist/",
   "createTagsFile": true,
-  "inlineManifest": false,
   "modules": {
     "criticalCSS": false,
     "serviceWorker": false

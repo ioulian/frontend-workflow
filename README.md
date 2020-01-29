@@ -57,7 +57,6 @@ If you don't want to use them, remove them from `src/project/Site.ts`.
     - [Setting a subfolder](#setting-a-subfolder)
     - [Disable Critical CSS](#disable-critical-css)
     - [Favicons](#favicons)
-    - [Disable manifest inlining](#disable-manifest-inlining)
   - [Files to deploy](#files-to-deploy)
   - [TypScript usage examples](#typscript-usage-examples)
     - [Import thirdparty library](#import-thirdparty-library)
@@ -299,7 +298,6 @@ Before creating a build, you should update the following files/settings:
 | subFolder                         | `string`        | "/"                 | Folder name where the browser will look for files.                                                                                                                                                                                        |
 | serviceWorkerOnLocalHost          | `boolean`       | false               | Activate service-worker on localhost (allows you to test it, don't enable it when developing your application)                                                                                                                            |
 | createTagsFile                    | `boolean`       | false               | If set to true, an additional `tags.html` file will be created with all favicon and manifest links (Useful to include them later if you are building your html files on the server). They are however always injected into `.html` files. |
-| inlineManifest                    | `boolean`       | true                | If set to true, the runtime chuck will be inlined in the HTML, saving 1 HTTP request. (Only in production)                                                                                                                                |
 | modules.favicons                  | `boolean`       | true                | Generate favicons on build. Only used in production build.                                                                                                                                                                                |
 | modules.criticalCSS               | `boolean`       | true                | Inline Critical CSS. Only used in production build.                                                                                                                                                                                       |
 | modules.serviceWorker             | `boolean`       | true                | Generate a Service Worker using WorkBox. Only used in production build.                                                                                                                                                                   |
@@ -364,10 +362,6 @@ Critical CSS plugin uses headless browser to render the index.html and get only 
 ### Favicons
 
 As Favicon and manifest tags are injected into `index.html` file on build, you will need to set `createTagsFile` to `true` to generate a `dist/tags.html` file that you can then inject into the head of your project.
-
-### Disable manifest inlining
-
-On build the runtime chunk is inlined in the HTML. You should disable it so the reference to the files are still correct in your backend
 
 ## Files to deploy
 

@@ -4,7 +4,6 @@
 const path = require('path')
 const merge = require('webpack-merge')
 const {CriticalPlugin} = require('webpack-plugin-critical')
-const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const common = require('./webpack.common.js')
@@ -76,7 +75,6 @@ module.exports.default = merge(common.default, {
           ],
         })
       : () => {},
-    common.config.inlineManifest ? new InlineManifestWebpackPlugin() : () => {},
     common.config.modules.asyncJS
       ? new ScriptExtHtmlWebpackPlugin({
           defaultAttribute: 'defer',

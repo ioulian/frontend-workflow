@@ -39,7 +39,6 @@ const defaults = {
   subFolder: '/',
   serviceWorkerOnLocalHost: false,
   createTagsFile: false,
-  inlineManifest: true,
   modules: {
     favicons: true,
     criticalCSS: true,
@@ -128,14 +127,21 @@ module.exports.default = {
     // Create pages
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'index.html',
+      template: 'index.ejs',
       ...htmlPluginSettings,
     }),
     new HtmlWebpackPlugin({
       filename: 'offline.html',
-      template: 'offline.html',
+      template: 'offline.ejs',
       ...htmlPluginSettings,
     }),
+    config.createTagsFile
+      ? new HtmlWebpackPlugin({
+          filename: 'tags.html',
+          template: 'tags.ejs',
+          inject: false,
+        })
+      : () => {},
     new SpriteLoaderPlugin({
       plainSprite: true,
     }),
