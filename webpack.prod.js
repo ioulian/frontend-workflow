@@ -39,7 +39,7 @@ module.exports.default = merge(common.default, {
             appleStatusBarStyle: 'black-translucent',
             version,
             scope: '/',
-            lang: 'en-US',
+            lang: common.config.language,
             logging: false,
             icons: {
               android: true,
