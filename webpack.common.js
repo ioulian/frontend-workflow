@@ -3,6 +3,7 @@
 
 const path = require('path')
 const webpack = require('webpack')
+const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -59,7 +60,7 @@ if (configFile === null) {
   throw new Error('No config found')
 }
 
-const config = {...defaults, ...configFile.config}
+const config = merge(defaults, configFile.config)
 
 // Setup some settings
 const serviceWorkerActive = config.modules.serviceWorker && (!devMode || config.serviceWorkerOnLocalHost)
