@@ -38,7 +38,7 @@ const defaults = {
   outputPath: 'dist',
   subFolder: '/',
   serviceWorkerOnLocalHost: false,
-  createTagsFile: false,
+  createTagsFile: true,
   modules: {
     favicons: true,
     criticalCSS: true,
@@ -139,7 +139,7 @@ module.exports.default = {
       ? new HtmlWebpackPlugin({
           filename: 'tags.html',
           template: 'tags.ejs',
-          inject: false,
+          inject: true,
         })
       : () => {},
     new SpriteLoaderPlugin({
