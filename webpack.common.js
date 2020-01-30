@@ -63,7 +63,6 @@ const config = merge(defaults, configFile.config)
 
 // Setup some settings
 const serviceWorkerActive = config.modules.serviceWorker && (!devMode || config.serviceWorkerOnLocalHost)
-const hash = devServer ? 'hash' : 'contenthash'
 
 const htmlPluginSettings = {
   title: config.name,
@@ -113,16 +112,16 @@ module.exports.default = {
   },
   output: {
     path: path.resolve(__dirname, config.outputPath),
-    filename: `js/[name].bundle${config.addFilenameHashes ? `.[${hash}]` : ''}.js`,
-    chunkFilename: `js/[name].chunk${config.addFilenameHashes ? `.[${hash}]` : ''}.js`,
+    filename: `js/[name].bundle${config.addFilenameHashes ? '.[contenthash]' : ''}.js`,
+    chunkFilename: `js/[name].chunk${config.addFilenameHashes ? '.[contenthash]' : ''}.js`,
     publicPath: devServer ? '/' : config.subFolder,
   },
   plugins: [
     // Clean build folder on build
     devMode === false ? new CleanWebpackPlugin() : () => {},
     new MiniCssExtractPlugin({
-      filename: `css/[name].bundle${config.addFilenameHashes ? `.[${hash}]` : ''}.css`,
-      chunkFilename: `css/[name].chunk${config.addFilenameHashes ? `.[${hash}]` : ''}.css`,
+      filename: `css/[name].bundle${config.addFilenameHashes ? '.[contenthash]' : ''}.css`,
+      chunkFilename: `css/[name].chunk${config.addFilenameHashes ? '.[contenthash]' : ''}.css`,
     }),
     // Create pages
     new HtmlWebpackPlugin({
@@ -207,7 +206,7 @@ module.exports.default = {
             loader: 'file-loader',
             options: {
               context: path.resolve(__dirname, 'src'),
-              name: `img/[path][name]${config.addFilenameHashes ? `.[${hash}]` : ''}.[ext]`,
+              name: `img/[path][name]${config.addFilenameHashes ? '.[contenthash]' : ''}.[ext]`,
               outputPath: './',
               publicPath: devServer ? '/' : config.subFolder,
               useRelativePaths: true,
@@ -271,7 +270,7 @@ module.exports.default = {
             loader: 'file-loader',
             options: {
               context: path.resolve(__dirname, 'src'),
-              name: `fonts/[path][name]${config.addFilenameHashes ? `.[${hash}]` : ''}.[ext]`,
+              name: `fonts/[path][name]${config.addFilenameHashes ? '.[contenthash]' : ''}.[ext]`,
             },
           },
         ],
