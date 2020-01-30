@@ -3,7 +3,7 @@
 
 const path = require('path')
 const merge = require('webpack-merge')
-const {CriticalPlugin} = require('webpack-plugin-critical')
+const Critters = require('critters-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const common = require('./webpack.common.js')
@@ -54,25 +54,9 @@ module.exports.default = merge(common.default, {
         })
       : () => {},
     common.config.modules.criticalCSS
-      ? new CriticalPlugin({
-          src: 'index.html',
-          inline: true,
-          minify: true,
-          dest: 'index.html',
-          dimensions: [
-            {
-              width: 360,
-              height: 500,
-            },
-            {
-              width: 1024,
-              height: 700,
-            },
-            {
-              width: 1300,
-              height: 900,
-            },
-          ],
+      ? new Critters({
+          preload: 'swap',
+          noscriptFallback: true,
         })
       : () => {},
     common.config.modules.asyncJS

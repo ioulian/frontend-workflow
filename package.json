@@ -1,6 +1,6 @@
 {
   "name": "frontend-workflow",
-  "version": "0.26.1",
+  "version": "0.27.0",
   "description": "Frontend workflow using Webpack 4",
   "author": "Yulian Alexeyev <yulian@dev-q.be> (https://github.com/ioulian)",
   "keywords": [
@@ -78,6 +78,7 @@
     "@typescript-eslint/parser": "2.7.0",
     "autoprefixer": "9.7.2",
     "clean-webpack-plugin": "3.0.0",
+    "critters-webpack-plugin": "2.5.0",
     "css-loader": "3.2.0",
     "cssnano": "4.1.10",
     "eslint": "6.1.0",
@@ -119,7 +120,6 @@
     "webpack-dashboard": "3.2.0",
     "webpack-dev-server": "3.9.0",
     "webpack-merge": "4.2.2",
-    "webpack-plugin-critical": "1.0.0",
     "webpack-stream": "5.2.1"
   },
   "browserslist": [
