@@ -8,10 +8,13 @@ input[type='submit'] {
 }
 
 // Remove animations and transitions on devices that are low on resources or battery
+// From: https://hankchizljaw.com/wrote/a-modern-css-reset/
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation: none !important;
-    transition: none !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
