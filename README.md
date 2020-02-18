@@ -76,7 +76,7 @@ The default components work on these browsers:
 - Chrome (+ Mobile)
 - FireFox
 - Opera
-- Safari
+- Safari (+ Mobile)
 
 There is also [Core-JS](https://github.com/zloirock/core-js) polyfill library added for your convenience if you'll need to add more polyfills in the future.
 
