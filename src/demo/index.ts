@@ -56,6 +56,8 @@ if (elDemoSlider instanceof HTMLElement) {
           <div class="swiper-slide">Slide 2</div>
           <div class="swiper-slide">Slide 3</div>
         </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
     `
     },
