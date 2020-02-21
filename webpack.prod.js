@@ -57,6 +57,7 @@ module.exports.default = merge(common.default, {
       ? new Critters({
           preload: 'swap',
           noscriptFallback: true,
+          pruneSource: false,
         })
       : () => {},
     common.config.modules.asyncJS
