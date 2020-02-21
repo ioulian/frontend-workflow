@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="<%= htmlWebpackPlugin.options.siteLanguage %>" class="has-navbar-fixed-top no-js">
+<html lang="<%= htmlWebpackPlugin.options.siteLanguage %>" class="no-js">
   <head>
+    <!-- ⚙ Device Meta-->
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+
     <!-- 📣 Mandatory for Good SEO -->
     <title><%= htmlWebpackPlugin.options.siteTitle %></title>
 
     <!-- 🎫 Site Icons -->
     <!-- Will be injected by Webpack -->
-
-    <!-- ⚙ Device Meta-->
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
 
     <!-- 📋 SEO -->
     <meta content="<%= htmlWebpackPlugin.options.siteDescription %>" name="description" />
@@ -31,8 +31,21 @@
     <!-- <link as="style" rel="preload" href="https://unpkg.com/sanitize.css" /> -->
   </head>
 
-  <body class="sitename" itemscope itemtype="http://schema.org/WebPage">
-    <nav
+  <body itemscope itemtype="http://schema.org/WebPage">
+    <div class="svg-sprite" aria-hidden="true">
+      <!-- prettier-ignore -->
+      <% if (htmlWebpackPlugin.files.sprites) { %>
+      <!-- prettier-ignore -->
+      <% for (var spriteFileName in htmlWebpackPlugin.files.sprites) { %>
+      <!-- prettier-ignore -->
+      <%= htmlWebpackPlugin.files.sprites[spriteFileName] %>
+      <!-- prettier-ignore -->
+      <% } %>
+      <!-- prettier-ignore -->
+      <% } %>
+    </div>
+
+    <header
       id="main-navbar"
       class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top is-bottom-mobile"
       data-bottom-on="xs,sm"
@@ -48,40 +61,41 @@
           Frontend workflow
         </a>
       </div>
-    </nav>
-    <header class="jumbotron overflow-hidden position-relative rounded-0">
-      <img
-        data-src="<%= require('./src/demo/media/hero-bg.jpg') %>"
-        class="fw-lazy-load fw-lazy-load--opacity-scale fw-full-size-in-parent"
-        alt="Header image with sand"
-      />
-      <div class="container py-5">
-        <div class="row">
-          <div class="col col-lg-8 offset-lg-2 fw-parallax" data-depth="0.2">
-            <h1 class="my-4">
-              You are offline
-            </h1>
-            <h2 class="h3 font-weight-light mb-0">
-              As you are surfing offline and this page hasn&quot;t been cached, we can't show it to you. Please wait and
-              reconnect to internet or you can normally view visited pages.
-            </h2>
-          </div>
-        </div>
-      </div>
     </header>
-
-    <section class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col col-lg-8 offset-lg-2">
-            <p>
-              You are seeing this page because you are surfing offline. This site is optimized for offline usage but
-              this page is not yet cached. You can view already visited pages while you are waiting for network.
-            </p>
+    <main>
+      <section class="jumbotron overflow-hidden position-relative rounded-0">
+        <img
+          data-src="<%= require('./src/demo/media/hero-bg.jpg') %>"
+          class="fw-lazy-load fw-lazy-load--opacity-scale fw-full-size-in-parent"
+          alt="Header image with sand"
+        />
+        <div class="container py-5">
+          <div class="row">
+            <div class="col col-lg-8 offset-lg-2 fw-parallax" data-depth="0.2">
+              <h1 class="my-4">
+                Offline
+              </h1>
+              <h2 class="h3 font-weight-light mb-0">
+                We can't show you this page at this moment as you are offline.
+              </h2>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section class="section">
+        <div class="container py-3">
+          <div class="row">
+            <div class="col col-lg-8 offset-lg-2">
+              <p>
+                You are seeing this page because you are surfing offline. This site is optimized for offline usage but
+                this page is not yet cached. You can view already visited pages while you are waiting for network.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <footer class="text-center py-5 bg-light mt-4" itemscope itemtype="http://schema.org/WPFooter" role="contentinfo">
       <div class="container">
