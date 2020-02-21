@@ -78,6 +78,10 @@ img.fw-full-size-in-parent {
     background-color: $primary;
     padding: 0.75rem 1rem;
     position: relative;
+    text-align: left;
+    width: 100%;
+    border: 0;
+    font-size: 1rem;
 
     p {
       margin-bottom: 0;
@@ -100,10 +104,9 @@ img.fw-full-size-in-parent {
       pointer-events: none;
       position: absolute;
       top: 50%;
-      transform: rotate(-45deg);
+      transform: translateY(-10%) rotate(-45deg);
       transform-origin: center;
       width: 0.625em;
-
       right: 1rem;
       transition: transform $duration-slow $swift-alt;
 
@@ -123,6 +126,10 @@ img.fw-full-size-in-parent {
   &__item {
     &:not(:last-child) {
       margin-bottom: 1rem;
+    }
+
+    > h4 {
+      margin-bottom: 0;
     }
   }
 }
