@@ -20,7 +20,8 @@ input[type='submit'] {
 
 // Prevent overflow of images and remove spacing at the bottom
 picture,
-img {
+img,
+video {
   display: block;
   max-width: 100%;
   height: auto;
