@@ -418,6 +418,7 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 These are our own TODO's that might, or might not be included in this workflow, based on priority, ease of use/configuration and performance gain/penalty. If you want to implement them or help us out, you can always let us know!
 
 - (MED PRIO) Change factory to [https://github.com/fasttime/polytype](https://github.com/fasttime/polytype), it's a better module
+- (MED PRIO) Update html webpack plugin and favicons plugin
 - (LOW PRIO) Add fallbacks for images/fonts if offline
 - (LOW PRIO) Follow [Gimli](https://gimli.app/) to add it in the future
 - (LOW PRIO) Change lazy loading to this way: [https://addyosmani.com/blog/lazy-loading/](https://addyosmani.com/blog/lazy-loading/)
