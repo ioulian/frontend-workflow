@@ -1,22 +1,26 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import LazyLoad from 'vanilla-lazyload/dist/lazyload.amd'
 
 import './LazyLoader.scss'
 
+/* eslint-disable camelcase */
 interface SettingsType {
   elements_selector?: string
   class_loading?: string
   class_loaded?: string
   class_error?: string
 }
+/* eslint-enable camelcase */
 
-/* eslint-disable @typescript-eslint/camelcase */
+/* eslint-disable camelcase */
 const lazyLoaderDefaults = {
   elements_selector: '.fw-lazy-load',
   class_loading: 'fw-lazy-load--loading',
   class_loaded: 'fw-lazy-load--loaded',
   class_error: 'fw-lazy-load--error',
 }
-/* eslint-enable @typescript-eslint/camelcase */
+/* eslint-enable camelcase */
 
 /**
  * Wrapper around "vanilla-lazyload"
@@ -52,6 +56,7 @@ export class LazyLoader {
    * @returns {any} Instance of attached LazyLoad
    */
   public static getInstance(): any {
+    // eslint-disable-next-line
     return this.instance
   }
 

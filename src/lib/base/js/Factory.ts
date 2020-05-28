@@ -69,6 +69,7 @@ export const Factory = (Type: Class = class {}): any =>
      * @param {any} restArgs (Optional) Any other parameters to pass to class
      */
     public static initDrupalBehaviors(selector: string, ...restArgs: any[]): void {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       ;(window as any).Drupal.behaviors[`attach${this.className}`] = {
         attach: (context: Element | Document): void => {
           // 1: Context is document when run the first time
@@ -98,6 +99,7 @@ export const Factory = (Type: Class = class {}): any =>
     public static attach(selector: string, ...restArgs: any[]): void {
       this.instances = [
         // Merge new instances with the other ones
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         ...this.instances,
         ...Array.from(document.querySelectorAll(selector)) // Cast to array for browser compatibility
           // Filter out the processed instances
@@ -117,7 +119,7 @@ export const Factory = (Type: Class = class {}): any =>
      * @param {Element | Document} context (Optional) You can pass context (= parent) from which to detach the instances
      */
     public static detach(context: Element | Document = document): void {
-      this.instances = this.instances.filter((instance: any) => {
+      this.instances = this.instances.filter((instance: {el: HTMLElement}) => {
         // Keep the instance if it's not in the context
         if (context.contains(instance.el) === false) {
           return true

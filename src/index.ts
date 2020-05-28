@@ -22,7 +22,7 @@ const requireAll = (r: any): void => {
   r.keys().forEach(r)
 }
 
-/* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 requireAll(require.context('./', true, /-sprite\.svg$/))
 
@@ -31,7 +31,7 @@ if (__SERVICE_WORKER_ACTIVE__) {
   const activateServiceWorker = async (): Promise<void> => {
     if ('serviceWorker' in navigator) {
       const {Workbox} = await import(
-        /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+        /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
         // @ts-ignore
         /* webpackChunkName: "workbox-window" */ 'workbox-window/build/workbox-window.prod.umd'
       )
@@ -61,5 +61,6 @@ if (__SERVICE_WORKER_ACTIVE__) {
     }
   }
 
+  // eslint-disable-next-line
   activateServiceWorker()
 }

@@ -125,8 +125,8 @@ export class SameHeight extends Factory() {
     this.el.classList.remove('same-height-active')
     this.removeMutationObserver()
 
-    this.classes.forEach(elClass => {
-      Array.from(this.el.querySelectorAll(elClass)).forEach(el => {
+    this.classes.forEach((elClass) => {
+      Array.from(this.el.querySelectorAll(elClass)).forEach((el) => {
         ;(el as Element).removeAttribute('style')
       })
     })
@@ -136,7 +136,7 @@ export class SameHeight extends Factory() {
    * Updates the height of the children
    */
   public update(): void {
-    this.classes.forEach(elClass => {
+    this.classes.forEach((elClass) => {
       this.applyHeight(Array.from(this.el.querySelectorAll(elClass)))
     })
   }
@@ -199,21 +199,21 @@ export class SameHeight extends Factory() {
   }
 
   public static destroyAll(): void {
-    allSameHeights.forEach(el => {
+    allSameHeights.forEach((el) => {
       el.destroy()
     })
   }
 
   public static updateAll(): void {
-    allSameHeights.forEach(el => {
+    allSameHeights.forEach((el) => {
       el.update()
     })
   }
 
   public static updateInside(elParent: HTMLElement): void {
     allSameHeights
-      .filter(instance => elParent.contains(instance.el))
-      .forEach(instance => {
+      .filter((instance) => elParent.contains(instance.el))
+      .forEach((instance) => {
         instance.update()
       })
   }

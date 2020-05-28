@@ -1,6 +1,5 @@
+import {ChangeEvent, JSBreakpoint} from '../lib/components/js-breakpoint/JSBreakpoint'
 /* eslint-disable no-underscore-dangle */
-
-import {JSBreakpoint} from '../lib/components/js-breakpoint/JSBreakpoint'
 
 import './demo.scss'
 
@@ -24,7 +23,7 @@ if (elJSBreakpointOutput instanceof HTMLElement) {
     }
 
     elJSBreakpointOutput.innerHTML = `Current breakpoint: ${JSBreakpoint.getInstance().getBreakpoint()}`
-    JSBreakpoint.getInstance().on('changed', ({prevBreakpoint, breakpoint, sizeChange}) => {
+    JSBreakpoint.getInstance().on('changed', ({prevBreakpoint, breakpoint, sizeChange}: ChangeEvent) => {
       if (__IS_DEV__) {
         console.log(
           `Changed to: ${breakpoint} from: ${prevBreakpoint}. Window is getting ${

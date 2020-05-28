@@ -44,7 +44,7 @@ export class FixedNavbar extends Factory() {
     const isFixedTop = this.el.classList.contains('fixed-top')
     const isFixedBottom = this.el.classList.contains('fixed-bottom')
 
-    document.body.style.paddingTop = `${isFixedTop ? this.el.offsetHeight : 0}px`
-    document.body.style.paddingBottom = `${isFixedBottom ? this.el.offsetHeight : 0}px`
+    document.body.style.paddingTop = `${isFixedTop ? (this.el.offsetHeight as number) : 0}px`
+    document.body.style.paddingBottom = `${isFixedBottom ? (this.el.offsetHeight as number) : 0}px`
   }
 }

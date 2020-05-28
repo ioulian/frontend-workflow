@@ -33,7 +33,9 @@ export class Slider extends Factory() {
     this.swiperInstance = new Swiper(this.el, this.settings)
   }
 
+  //
   public getInstance(): Swiper {
+    // eslint-disable-next-line
     return this.swiperInstance
   }
 }

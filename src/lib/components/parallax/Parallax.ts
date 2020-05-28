@@ -58,7 +58,7 @@ export class Parallax extends Factory() {
   public static updateInstances(): void {
     const offset: number = window.pageYOffset || document.documentElement.scrollTop
 
-    Parallax.instances.forEach(instance => {
+    Parallax.instances.forEach((instance) => {
       instance.update(offset)
     })
 

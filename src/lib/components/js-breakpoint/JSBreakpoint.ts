@@ -5,6 +5,12 @@ import 'core-js/features/string/starts-with'
 
 import './JSBreakpoint.scss'
 
+export type ChangeEvent = {
+  breakpoint: string | null
+  prevBreakpoint: string | null
+  sizeChange: -1 | 1
+}
+
 let instance: JSBreakpoint | null = null
 
 export class JSBreakpoint extends EE {
@@ -38,7 +44,7 @@ export class JSBreakpoint extends EE {
         prevBreakpoint: this.prevBreakpoint,
         // Negative if window got smaller, positive if window gt bigger
         sizeChange: this.prevSize > document.documentElement.clientWidth ? -1 : 1,
-      })
+      } as ChangeEvent)
 
       this.updateBreakpoint()
     }

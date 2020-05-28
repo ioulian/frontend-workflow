@@ -154,6 +154,7 @@ export class AsyncModuleLoader {
   }
 
   public static loadInstantiableModules(): void {
+    /* eslint-disable @typescript-eslint/no-floating-promises */
     AsyncModuleLoader.loadAccordion()
     AsyncModuleLoader.loadBottomNavbar()
     AsyncModuleLoader.loadExpandable()
@@ -163,13 +164,16 @@ export class AsyncModuleLoader {
     AsyncModuleLoader.loadParallax()
     AsyncModuleLoader.loadSameHeight()
     AsyncModuleLoader.loadSlider()
+    /* eslint-enable @typescript-eslint/no-floating-promises */
   }
 
   public static loadEventDelegatedModules(): void {
+    /* eslint-disable @typescript-eslint/no-floating-promises */
     AsyncModuleLoader.loadClickthrough()
     AsyncModuleLoader.loadLazyLoader()
     AsyncModuleLoader.loadScrollIntoView()
     AsyncModuleLoader.loadSocialShare()
+    /* eslint-enable @typescript-eslint/no-floating-promises */
   }
 
   /**

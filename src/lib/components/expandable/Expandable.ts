@@ -82,7 +82,7 @@ export class Expandable extends Factory(EE) {
   }
 
   public hasOpenClass(): boolean {
-    return this.el.classList.contains('fw-expandable--open')
+    return this.el.classList.contains('fw-expandable--open') as boolean
   }
 
   public toggle(): void {

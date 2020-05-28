@@ -1,6 +1,6 @@
 import {Slider} from './Slider'
 
-declare const Drupal: {}
+declare const Drupal: unknown
 if (typeof Drupal !== 'undefined') {
   Slider.initDrupalBehaviors('.swiper-container')
 }

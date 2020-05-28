@@ -27,7 +27,7 @@ export class InViewAnimation extends Factory() {
   }
 
   public static update(entries: IntersectionObserverEntry[]): void {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.target.getAttribute('data-once') === 'true') {
         // Don't remove the class if it should only animate once
         if (entry.isIntersecting) {
@@ -43,7 +43,7 @@ export class InViewAnimation extends Factory() {
     const threshold = this.el.getAttribute('data-animation-threshold')
 
     if (typeof threshold === 'string') {
-      const thresholdArr = threshold.split(',').map(i => parseFloat(i))
+      const thresholdArr = threshold.split(',').map((i) => parseFloat(i))
 
       if (!thresholdArr.includes(0)) {
         thresholdArr.push(0)
