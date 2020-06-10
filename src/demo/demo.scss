@@ -164,3 +164,14 @@ img.fw-full-size-in-parent {
   font-size: 0.75rem;
   margin-top: 1rem;
 }
+
+.fw-colcade {
+  &__list {
+    margin-bottom: -30px;
+    overflow: hidden;
+  }
+
+  &__grid-item {
+    margin-bottom: 30px;
+  }
+}

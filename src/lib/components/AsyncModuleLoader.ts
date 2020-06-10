@@ -27,6 +27,15 @@ export class AsyncModuleLoader {
   }
 
   /**
+   * Lazy loads "Colcade" if needed on the page
+   */
+  public static async loadColcadeLayout(): Promise<void> {
+    if (AsyncModuleLoader.checkIfElementsExist('.fw-colcade')) {
+      await import(/* webpackChunkName: "colcade" */ './colcade/index')
+    }
+  }
+
+  /**
    * Lazy loads "Expandable" if needed on the page
    */
   public static async loadExpandable(): Promise<void> {
@@ -164,6 +173,7 @@ export class AsyncModuleLoader {
     AsyncModuleLoader.loadParallax()
     AsyncModuleLoader.loadSameHeight()
     AsyncModuleLoader.loadSlider()
+    AsyncModuleLoader.loadColcadeLayout()
     /* eslint-enable @typescript-eslint/no-floating-promises */
   }
 

@@ -2392,6 +2392,11 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
+colcade@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/colcade/-/colcade-0.2.0.tgz#1d4c949d677655865089ba0b78769693beca0b32"
+  integrity sha1-HUyUnWd2VYZQiboLeHaWk77KCzI=
+
 collapse-white-space@^1.0.2:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/collapse-white-space/-/collapse-white-space-1.0.6.tgz#e63629c0016665792060dbbeb79c42239d2c5287"
