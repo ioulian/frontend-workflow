@@ -9,6 +9,8 @@ declare const window: any
  */
 export class ColcadeLayout extends Factory() {
   private colcadeInstance: any = null
+  
+  public static className: string = 'Colcade'
 
   constructor(el: Element) {
     super(el)
