@@ -19,7 +19,11 @@ export class SocialShare {
         if (elSocialShareButton !== null) {
           e.preventDefault()
 
-          SocialShare.openWindow(elSocialShareButton.getAttribute('href'), 976, 600)
+          if (elSocialShareButton.classList.contains('js-social-share--print')) {
+            window.print()
+          } else {
+            SocialShare.openWindow(elSocialShareButton.getAttribute('href'), 976, 600)
+          }
         }
       },
       false
