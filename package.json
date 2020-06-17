@@ -1,6 +1,6 @@
 {
   "name": "frontend-workflow",
-  "version": "0.30.3",
+  "version": "0.31.0",
   "description": "Frontend workflow using Webpack 4",
   "author": "Yulian Alexeyev <yulian@dev-q.be> (https://github.com/ioulian)",
   "keywords": [
@@ -37,6 +37,7 @@
   ],
   "dependencies": {
     "@fancyapps/fancybox": "3.5.7",
+    "aria-tablist": "1.2.0",
     "bootstrap": "4.5.0",
     "colcade": "0.2.0",
     "core-js": "3.6.5",

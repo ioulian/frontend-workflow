@@ -36,6 +36,15 @@ export class AsyncModuleLoader {
   }
 
   /**
+   * Lazy loads "TabList" if needed on the page
+   */
+  public static async loadTabList(): Promise<void> {
+    if (AsyncModuleLoader.checkIfElementsExist('.fw-tablist')) {
+      await import(/* webpackChunkName: "tablist" */ './tablist/index')
+    }
+  }
+
+  /**
    * Lazy loads "Expandable" if needed on the page
    */
   public static async loadExpandable(): Promise<void> {
@@ -174,6 +183,7 @@ export class AsyncModuleLoader {
     AsyncModuleLoader.loadSameHeight()
     AsyncModuleLoader.loadSlider()
     AsyncModuleLoader.loadColcadeLayout()
+    AsyncModuleLoader.loadTabList()
     /* eslint-enable @typescript-eslint/no-floating-promises */
   }
 

@@ -1283,6 +1283,11 @@ argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
+aria-tablist@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/aria-tablist/-/aria-tablist-1.2.0.tgz#8df962f3352b407b1b67bd335693a70edcc1c4da"
+  integrity sha512-ht0IdQOksl2/JSqNRD2x4H4x0IsjegNhvqVUab1X7a8sPDdIvEnF55sUtwROI/k1gKtoreAirXFW93CpmFF9MQ==
+
 arr-diff@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/arr-diff/-/arr-diff-4.0.0.tgz#d6461074febfec71e7e15235761a329a5dc7c520"

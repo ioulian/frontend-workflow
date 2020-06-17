@@ -175,3 +175,33 @@ img.fw-full-size-in-parent {
     margin-bottom: 30px;
   }
 }
+
+.demo-tabs {
+  > div {
+    &:first-child {
+      padding: 4px;
+      border: 1px solid $gray-400;
+      background-color: $gray-200;
+
+      > div {
+        display: inline-block;
+        margin-right: 4px;
+        padding: 8px 10px;
+        border: 1px solid $gray-400;
+        background-color: $color-white;
+        cursor: pointer;
+
+        &[aria-selected='true'] {
+          background-color: $gray-800;
+          color: $color-white;
+        }
+      }
+    }
+
+    &:not(:first-child) {
+      margin-top: 10px;
+      border: 1px solid $gray-400;
+      padding: 8px 10px;
+    }
+  }
+}
