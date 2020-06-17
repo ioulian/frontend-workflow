@@ -53,17 +53,22 @@ export class ClickThrough {
             }
           }
 
-          // Prevent default behavior (jumping at top for a '#' and opening a new window)
-          if (href === '#' || target === '_blank') {
-            e.preventDefault()
-          }
+          // Check if user has clicked another anchor inside the clickthrough.
+          // If yes, don't do anything
+          const elAnchor = (e.target as HTMLElement).closest('a')
+          if (!elAnchor || elAnchor.getAttribute('href') === href) {
+            // Prevent default behavior (jumping at top for a '#' and opening a new window)
+            if (href === '#' || target === '_blank') {
+              e.preventDefault()
+            }
 
-          if (href !== null && href !== '#') {
-            // Open new window if target is _blank, current window otherwise
-            if (target === '_blank') {
-              window.open(href, target)
-            } else {
-              window.location.href = href
+            if (href !== null && href !== '#') {
+              // Open new window if target is _blank, current window otherwise
+              if (target === '_blank') {
+                window.open(href, target)
+              } else {
+                window.location.href = href
+              }
             }
           }
         }
