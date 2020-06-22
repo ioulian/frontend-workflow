@@ -53,9 +53,9 @@ export class ClickThrough {
             }
           }
 
-          // Check if user has clicked another anchor inside the clickthrough.
+          // Check if user has clicked another anchor (or button) inside the clickthrough.
           // If yes, don't do anything
-          const elAnchor = (e.target as HTMLElement).closest('a')
+          const elAnchor = (e.target as HTMLElement).closest('a, button')
           if (!elAnchor || elAnchor.getAttribute('href') === href) {
             // Prevent default behavior (jumping at top for a '#' and opening a new window)
             if (href === '#' || target === '_blank') {
