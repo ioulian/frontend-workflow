@@ -1,3 +1,4 @@
+import 'element-closest/browser'
 import EE from 'onfire.js'
 import {throttle} from 'throttle-debounce'
 import {Factory} from '../../base/js/Factory'
@@ -75,6 +76,19 @@ export class Expandable extends Factory(EE) {
         false
       )
     }
+
+    if (this.shouldCloseOnOutsideClick) {
+      document.body.addEventListener('click', (e) => {
+        const elClosestExpandable = (e.target as HTMLElement).closest('.fw-expandable')
+        if (this.el !== elClosestExpandable) {
+          this.close()
+        }
+      })
+    }
+  }
+
+  get shouldCloseOnOutsideClick(): boolean {
+    return this.el.getAttribute('data-close-outside-click') === 'true'
   }
 
   get isOpen(): boolean {
