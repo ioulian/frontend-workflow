@@ -77,14 +77,14 @@ export class Expandable extends Factory(EE) {
       )
     }
 
-    if (this.shouldCloseOnOutsideClick) {
-      document.body.addEventListener('click', (e) => {
-        const elClosestExpandable = (e.target as HTMLElement).closest('.fw-expandable')
-        if (this.el !== elClosestExpandable) {
+    document.body.addEventListener('click', (e) => {
+      const elClosestExpandable = (e.target as HTMLElement).closest('.fw-expandable')
+      if (this.el !== elClosestExpandable) {
+        if (this.shouldCloseOnOutsideClick) {
           this.close()
         }
-      })
-    }
+      }
+    })
   }
 
   get shouldCloseOnOutsideClick(): boolean {
