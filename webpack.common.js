@@ -157,6 +157,7 @@ module.exports.default = {
       __IS_DEV__: devMode,
       __IS_PROD__: !devMode,
       __LANG__: config.language,
+      __PUBLIC_PATH__: JSON.stringify(devServer ? '/' : config.subFolder),
     }),
   ],
   module: {
