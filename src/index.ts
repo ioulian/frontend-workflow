@@ -35,7 +35,7 @@ if (__SERVICE_WORKER_ACTIVE__) {
         /* webpackChunkName: "fresh-content-notification" */ './lib/components/fresh-content-notification/FreshContentNotification'
       )
 
-      const wb = new Workbox('sw.js')
+      const wb = new Workbox('/sw.js')
 
       wb.addEventListener('waiting', () => {
         const notificationContent =
