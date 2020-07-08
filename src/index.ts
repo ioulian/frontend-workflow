@@ -4,10 +4,6 @@ import 'bootstrap/dist/js/bootstrap.bundle'
 // Import base styles
 import './index.scss'
 
-/* eslint-disable no-underscore-dangle */
-declare const __SERVICE_WORKER_ACTIVE__: boolean
-/* eslint-enable no-underscore-dangle */
-
 // Initialize Site
 // We do not store this variable as it's not needed in "window" object or anywhere in this file
 // This is a singleton and if you need this, just run getInstance again.
