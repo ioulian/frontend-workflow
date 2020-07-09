@@ -1,6 +1,18 @@
 import 'core-js/features/array/from'
 import 'promise-polyfill/src/polyfill'
 
+export type WatchCallback = (selector: string) => void
+export type SingleRunCallback = () => void
+
+export interface WatchConfig {
+  selector: string
+  callback: WatchCallback
+}
+
+export interface SingleRunConfig {
+  callback: SingleRunCallback
+}
+
 /**
  * Helper class to lazy load components based on DOM elements.
  *
@@ -17,151 +29,102 @@ import 'promise-polyfill/src/polyfill'
 export class AsyncModuleLoader {
   public static observer?: MutationObserver = null
 
+  public static watches: WatchConfig[] = []
+  public static singleRun: SingleRunConfig[] = []
+
+  public static addToWatch(selector: string, callback: WatchCallback): void {
+    AsyncModuleLoader.watches.push({
+      selector,
+      callback,
+    } as WatchConfig)
+  }
+
+  public static addSingleRun(callback: WatchCallback): void {
+    AsyncModuleLoader.singleRun.push({
+      callback,
+    } as SingleRunConfig)
+  }
+
   /**
-   * Lazy loads "Accordion" if needed on the page
+   * Will add a callback to a watch list that will be triggered every time a HTML changes and selector is found
    */
-  public static async loadAccordion(): Promise<void> {
-    if (AsyncModuleLoader.checkIfElementsExist('.fw-accordion')) {
+  private static addLibraryComponentsToWatch(): void {
+    AsyncModuleLoader.addToWatch('.fw-accordion', async () => {
       await import(/* webpackChunkName: "accordion" */ './accordion/index')
-    }
-  }
+    })
 
-  /**
-   * Lazy loads "Colcade" if needed on the page
-   */
-  public static async loadColcadeLayout(): Promise<void> {
-    if (AsyncModuleLoader.checkIfElementsExist('.fw-colcade')) {
+    AsyncModuleLoader.addToWatch('.fw-colcade', async () => {
       await import(/* webpackChunkName: "colcade" */ './colcade/index')
-    }
-  }
+    })
 
-  /**
-   * Lazy loads "TabList" if needed on the page
-   */
-  public static async loadTabList(): Promise<void> {
-    if (AsyncModuleLoader.checkIfElementsExist('.fw-tablist')) {
+    AsyncModuleLoader.addToWatch('.fw-tablist', async () => {
       await import(/* webpackChunkName: "tablist" */ './tablist/index')
-    }
-  }
+    })
 
-  /**
-   * Lazy loads "Expandable" if needed on the page
-   */
-  public static async loadExpandable(): Promise<void> {
-    if (AsyncModuleLoader.checkIfElementsExist('.fw-expandable')) {
+    AsyncModuleLoader.addToWatch('.fw-expandable', async () => {
       await import(/* webpackChunkName: "expandable" */ './expandable/index')
-    }
-  }
+    })
 
-  /**
-   * Lazy loads "InViewAnimation" if needed on the page
-   */
-  public static async loadInViewAnimation(): Promise<void> {
-    if (AsyncModuleLoader.checkIfElementsExist('.js-in-view-animation')) {
+    AsyncModuleLoader.addToWatch('.js-in-view-animation', async () => {
       await import(/* webpackChunkName: "inviewanimation" */ './in-view-animation/index')
-    }
-  }
+    })
 
-  /**
-   * Lazy loads "SameHeight" if needed on the page
-   */
-  public static async loadSameHeight(): Promise<void> {
-    if (AsyncModuleLoader.checkIfElementsExist('.js-sameheight')) {
+    AsyncModuleLoader.addToWatch('.js-sameheight', async () => {
       await import(/* webpackChunkName: "sameheight" */ './sameheight/index')
-    }
-  }
+    })
 
-  /**
-   * Lazy loads "FixedNavbar" if needed on the page
-   */
-  public static async loadFixedNavbar(): Promise<void> {
-    if (AsyncModuleLoader.checkIfElementsExist('.navbar.fixed-top')) {
+    AsyncModuleLoader.addToWatch('.navbar.fixed-top', async () => {
       await import(/* webpackChunkName: "fixedheader" */ './fixed-navbar/index')
-    }
-  }
+    })
 
-  /**
-   * Lazy loads "BottomNavbar" if needed on the page
-   */
-  public static async loadBottomNavbar(): Promise<void> {
-    if (AsyncModuleLoader.checkIfElementsExist('.navbar.is-bottom-mobile')) {
+    AsyncModuleLoader.addToWatch('.navbar.is-bottom-mobile', async () => {
       await import(/* webpackChunkName: "bottomnavbar" */ './bottom-navbar/index')
-    }
-  }
+    })
 
-  /**
-   * Lazy loads "Slider" if needed on the page
-   */
-  public static async loadSlider(): Promise<void> {
-    if (AsyncModuleLoader.checkIfElementsExist('.swiper-container')) {
+    AsyncModuleLoader.addToWatch('.swiper-container', async () => {
       await import(/* webpackChunkName: "slider" */ './slider/index')
-    }
-  }
+    })
 
-  /**
-   * Lazy loads "Gallery" if needed on the page
-   */
-  public static async loadGallery(): Promise<void> {
-    if (AsyncModuleLoader.checkIfElementsExist('[data-fancybox]')) {
+    AsyncModuleLoader.addToWatch('[data-fancybox]', async () => {
       await import(/* webpackChunkName: "gallery" */ './gallery/index')
-    }
+    })
   }
 
-  /**
-   * Lazy loads "Parallax" if needed on the page
-   */
-  public static async loadParallax(): Promise<void> {
-    if (AsyncModuleLoader.checkIfElementsExist('.fw-parallax')) {
-      await import(/* webpackChunkName: "parallax" */ './parallax/index')
-    }
-  }
-
-  /**
-   * Lazy loads "Clickthrough" if needed on the page
-   */
-  public static async loadClickthrough(): Promise<void> {
-    if (AsyncModuleLoader.checkIfElementsExist('.js-clickthrough')) {
+  // Will add a callback
+  private static addLibraryComponentsToSingleRun(): void {
+    AsyncModuleLoader.addSingleRun(async () => {
       await import(/* webpackChunkName: "clickthrough" */ './clickthrough/index')
-    }
-  }
+    })
 
-  /**
-   * Lazy loads "LazyLoader" if needed on the page
-   */
-  public static async loadLazyLoader(): Promise<void> {
-    if (AsyncModuleLoader.checkIfElementsExist('.fw-lazy-load')) {
+    AsyncModuleLoader.addSingleRun(async () => {
       await import(/* webpackChunkName: "lazyloader" */ './lazyloader/index')
-    }
-  }
+    })
 
-  /**
-   * Lazy loads "ScrollIntoView" if needed on the page
-   */
-  public static async loadScrollIntoView(): Promise<void> {
-    if (AsyncModuleLoader.checkIfElementsExist('.js-scroll-to')) {
+    AsyncModuleLoader.addSingleRun(async () => {
       await import(/* webpackChunkName: "scrollintoview" */ './scroll-into-view/index')
-    }
-  }
+    })
 
-  /**
-   * Lazy loads "SocialShare" if needed on the page
-   */
-  public static async loadSocialShare(): Promise<void> {
-    if (AsyncModuleLoader.checkIfElementsExist('.js-social-share')) {
+    AsyncModuleLoader.addSingleRun(async () => {
       await import(/* webpackChunkName: "socialshare" */ './social-share/index')
-    }
+    })
   }
 
   /**
    * Shortcut to load all components
    */
   public static loadAll(withMutationObserver = true): void {
-    AsyncModuleLoader.loadInstantiableModules()
-    AsyncModuleLoader.loadEventDelegatedModules()
+    // Add library components
+    AsyncModuleLoader.addLibraryComponentsToWatch()
+    AsyncModuleLoader.addLibraryComponentsToSingleRun()
+
+    // Load all components
+    AsyncModuleLoader.loadWatchModules()
+    AsyncModuleLoader.loadSingleRunModules()
 
     if (withMutationObserver === true) {
       AsyncModuleLoader.observer = new MutationObserver(() => {
-        AsyncModuleLoader.loadInstantiableModules()
+        // Load watches only on HTML change
+        AsyncModuleLoader.loadWatchModules()
       })
 
       AsyncModuleLoader.observer.observe(document, {
@@ -171,29 +134,18 @@ export class AsyncModuleLoader {
     }
   }
 
-  public static loadInstantiableModules(): void {
-    /* eslint-disable @typescript-eslint/no-floating-promises */
-    AsyncModuleLoader.loadAccordion()
-    AsyncModuleLoader.loadBottomNavbar()
-    AsyncModuleLoader.loadExpandable()
-    AsyncModuleLoader.loadFixedNavbar()
-    AsyncModuleLoader.loadGallery()
-    AsyncModuleLoader.loadInViewAnimation()
-    AsyncModuleLoader.loadParallax()
-    AsyncModuleLoader.loadSameHeight()
-    AsyncModuleLoader.loadSlider()
-    AsyncModuleLoader.loadColcadeLayout()
-    AsyncModuleLoader.loadTabList()
-    /* eslint-enable @typescript-eslint/no-floating-promises */
+  public static loadWatchModules(): void {
+    AsyncModuleLoader.watches.forEach((config: WatchConfig) => {
+      if (AsyncModuleLoader.checkIfElementsExist(config.selector)) {
+        config.callback.apply(this, [config.selector])
+      }
+    })
   }
 
-  public static loadEventDelegatedModules(): void {
-    /* eslint-disable @typescript-eslint/no-floating-promises */
-    AsyncModuleLoader.loadClickthrough()
-    AsyncModuleLoader.loadLazyLoader()
-    AsyncModuleLoader.loadScrollIntoView()
-    AsyncModuleLoader.loadSocialShare()
-    /* eslint-enable @typescript-eslint/no-floating-promises */
+  public static loadSingleRunModules(): void {
+    AsyncModuleLoader.singleRun.forEach((config: SingleRunConfig) => {
+      config.callback.apply(this)
+    })
   }
 
   /**
