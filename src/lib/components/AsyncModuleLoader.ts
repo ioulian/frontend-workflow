@@ -32,6 +32,15 @@ export class AsyncModuleLoader {
   public static watches: WatchConfig[] = []
   public static singleRun: SingleRunConfig[] = []
 
+  /**
+   * Will add a callback to a watch list that will be triggered every time a HTML changes and selector is found.
+   *
+   * Example (before "AsyncModuleLoader.loadAll()"):
+   *
+   * AsyncModuleLoader.addToWatch('.js-filters', (selector: string) => {
+   *   Filters.attach(selector)
+   * })
+   */
   public static addToWatch(selector: string, callback: WatchCallback): void {
     AsyncModuleLoader.watches.push({
       selector,
@@ -45,9 +54,6 @@ export class AsyncModuleLoader {
     } as SingleRunConfig)
   }
 
-  /**
-   * Will add a callback to a watch list that will be triggered every time a HTML changes and selector is found
-   */
   private static addLibraryComponentsToWatch(): void {
     AsyncModuleLoader.addToWatch('.fw-accordion', async () => {
       await import(/* webpackChunkName: "accordion" */ './accordion/index')
@@ -90,7 +96,6 @@ export class AsyncModuleLoader {
     })
   }
 
-  // Will add a callback
   private static addLibraryComponentsToSingleRun(): void {
     AsyncModuleLoader.addSingleRun(async () => {
       await import(/* webpackChunkName: "clickthrough" */ './clickthrough/index')
