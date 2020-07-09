@@ -30,6 +30,7 @@ export class AsyncModuleLoader {
   public static observer?: MutationObserver = null
 
   public static watches: WatchConfig[] = []
+
   public static singleRun: SingleRunConfig[] = []
 
   /**
@@ -55,6 +56,7 @@ export class AsyncModuleLoader {
   }
 
   private static addLibraryComponentsToWatch(): void {
+    /* eslint-disable @typescript-eslint/no-misused-promises */
     AsyncModuleLoader.addToWatch('.fw-accordion', async () => {
       await import(/* webpackChunkName: "accordion" */ './accordion/index')
     })
@@ -94,9 +96,11 @@ export class AsyncModuleLoader {
     AsyncModuleLoader.addToWatch('[data-fancybox]', async () => {
       await import(/* webpackChunkName: "gallery" */ './gallery/index')
     })
+    /* eslint-enable @typescript-eslint/no-misused-promises */
   }
 
   private static addLibraryComponentsToSingleRun(): void {
+    /* eslint-disable @typescript-eslint/no-misused-promises */
     AsyncModuleLoader.addSingleRun(async () => {
       await import(/* webpackChunkName: "clickthrough" */ './clickthrough/index')
     })
@@ -112,6 +116,7 @@ export class AsyncModuleLoader {
     AsyncModuleLoader.addSingleRun(async () => {
       await import(/* webpackChunkName: "socialshare" */ './social-share/index')
     })
+    /* eslint-enable @typescript-eslint/no-misused-promises */
   }
 
   /**
