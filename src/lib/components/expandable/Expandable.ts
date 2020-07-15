@@ -75,6 +75,22 @@ export class Expandable extends Factory(EE) {
         },
         false
       )
+
+      this.elToggle.addEventListener(
+        'keydown',
+        (e: KeyboardEvent) => {
+          e.preventDefault()
+
+          if (['Enter', ' '].includes(e.key)) {
+            this.toggle()
+          }
+
+          if (['Escape'].includes(e.key)) {
+            this.close()
+          }
+        },
+        false
+      )
     }
 
     document.body.addEventListener('click', (e) => {
