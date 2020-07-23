@@ -42,6 +42,7 @@
       },
       "parser": "@typescript-eslint/parser",
       "rules": {
+        "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-unsafe-call": "off",
         "@typescript-eslint/no-unsafe-member-access": "off",
         "@typescript-eslint/no-unsafe-assignment": "off",
@@ -62,6 +63,8 @@
     "__SERVICE_WORKER_ACTIVE__": "readonly",
     "__IS_DEV__": "readonly",
     "__IS_PROD__": "readonly",
-    "__LANG__": "readonly"
+    "__LANG__": "readonly",
+    "__PUBLIC_PATH__": "readonly",
+    "__BOOTSTRAP_IMPORT_BUNDLE__": "readonly"
   }
 }

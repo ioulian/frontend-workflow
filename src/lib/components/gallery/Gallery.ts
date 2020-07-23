@@ -13,6 +13,7 @@ export class Gallery {
     window.jQuery = $
     window.$ = $
 
+    // @ts-ignore
     await import(/* webpackChunkName: "fancybox" */ '@fancyapps/fancybox/dist/jquery.fancybox.min')
     window.jQuery().fancybox({
       selector,

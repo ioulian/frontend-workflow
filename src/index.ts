@@ -1,8 +1,11 @@
 import {Site} from './project/Site'
-import 'bootstrap/dist/js/bootstrap.bundle'
 
 // Import base styles
 import './index.scss'
+
+if (__BOOTSTRAP_IMPORT_BUNDLE__) {
+  import(/* webpackChunkName: "bootstrap" */ 'bootstrap/dist/js/bootstrap.bundle.min').then(undefined, undefined)
+}
 
 // Initialize Site
 // We do not store this variable as it's not needed in "window" object or anywhere in this file
@@ -18,7 +21,6 @@ const requireAll = (r: any): void => {
   r.keys().forEach(r)
 }
 
-/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 requireAll(require.context('./', true, /-sprite\.svg$/))
 
@@ -27,7 +29,6 @@ if (__SERVICE_WORKER_ACTIVE__) {
   const activateServiceWorker = async (): Promise<void> => {
     if ('serviceWorker' in navigator) {
       const {Workbox} = await import(
-        /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
         // @ts-ignore
         /* webpackChunkName: "workbox-window" */ 'workbox-window/build/workbox-window.prod.umd'
       )

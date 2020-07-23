@@ -3,3 +3,4 @@ declare const __IS_DEV__: boolean
 declare const __IS_PROD__: boolean
 declare const __LANG__: boolean
 declare const __PUBLIC_PATH__: string
+declare const __BOOTSTRAP_IMPORT_BUNDLE__: boolean

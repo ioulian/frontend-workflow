@@ -178,6 +178,12 @@ img.fw-full-size-in-parent {
 
 .demo-tabs {
   > div {
+    &:not(:first-child) {
+      margin-top: 10px;
+      border: 1px solid $gray-400;
+      padding: 8px 10px;
+    }
+
     &:first-child {
       padding: 4px;
       border: 1px solid $gray-400;
@@ -196,12 +202,6 @@ img.fw-full-size-in-parent {
           color: $color-white;
         }
       }
-    }
-
-    &:not(:first-child) {
-      margin-top: 10px;
-      border: 1px solid $gray-400;
-      padding: 8px 10px;
     }
   }
 }

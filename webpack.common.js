@@ -45,6 +45,9 @@ const defaults = {
     serviceWorker: true,
     asyncJS: true,
   },
+  bootstrap: {
+    importBundle: true,
+  },
 }
 
 // Set up environments
@@ -157,6 +160,7 @@ module.exports.default = {
       __IS_DEV__: devMode,
       __IS_PROD__: !devMode,
       __LANG__: config.language,
+      __BOOTSTRAP_IMPORT_BUNDLE__: config.bootstrap.importBundle,
       __PUBLIC_PATH__: JSON.stringify(devServer ? '/' : config.subFolder),
     }),
   ],
@@ -286,11 +290,11 @@ module.exports.default = {
     runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
+        // vendor: {
+        //   test: /[\\/]node_modules[\\/]/,
+        //   name: 'vendors',
+        //   chunks: 'all',
+        // },
         common: {
           test: /Factory\.ts|Settings\.ts|Expandable\.ts/,
           name: 'common',
