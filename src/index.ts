@@ -40,7 +40,6 @@ if (__SERVICE_WORKER_ACTIVE__) {
       let registration
 
       const showSkipWaitingPrompt = () => {
-        console.log('waiting')
         FreshContentNotification.show(
           document.documentElement.getAttribute('data-fresh-content-notification-title') ?? undefined,
           document.documentElement.getAttribute('data-fresh-content-notification-title') ?? undefined,
@@ -52,10 +51,6 @@ if (__SERVICE_WORKER_ACTIVE__) {
               })
 
               if (registration && registration.waiting) {
-                // Send a message to the waiting service worker,
-                // instructing it to activate.
-                // Note: for this to work, you have to add a message
-                // listener in your service worker. See below.
                 messageSW(registration.waiting, {type: 'SKIP_WAITING'})
               }
             },

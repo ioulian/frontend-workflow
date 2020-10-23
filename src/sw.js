@@ -1,11 +1,11 @@
 /* eslint-env serviceworker */
 /* eslint-disable no-restricted-globals, no-underscore-dangle */
 
-import {registerRoute} from 'workbox-routing'
-import {CacheFirst, StaleWhileRevalidate} from 'workbox-strategies'
 import {CacheableResponsePlugin} from 'workbox-cacheable-response'
 import {ExpirationPlugin} from 'workbox-expiration'
-import {cacheNames} from 'workbox-core'
+import {matchPrecache, precacheAndRoute} from 'workbox-precaching'
+import {registerRoute, setCatchHandler} from 'workbox-routing'
+import {CacheFirst, StaleWhileRevalidate} from 'workbox-strategies'
 
 // Cache the Google Fonts stylesheets with a stale-while-revalidate strategy.
 registerRoute(
@@ -69,18 +69,20 @@ registerRoute(
 )
 
 // "Warm" cache
+precacheAndRoute(self.__WB_MANIFEST.filter((obj) => !['/tags.html'].includes(obj.url)))
 
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches
-      .open(cacheNames.runtime)
-      .then((cache) =>
-        cache.addAll(self.__WB_MANIFEST.filter((obj) => !['/tags.html'].includes(obj.url)).map((obj) => obj.url))
-      )
-  )
+// Offline fallback
+const FALLBACK_HTML_URL = './offline.html'
+setCatchHandler(({event}) => {
+  switch (event.request.destination) {
+    case 'document':
+      // If using precached URLs:
+      return matchPrecache(FALLBACK_HTML_URL)
+
+    default:
+      return Response.error()
+  }
 })
-
-// TODO: offline fallback
 
 addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
