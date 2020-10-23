@@ -75,7 +75,7 @@ self.addEventListener('install', (event) => {
     caches
       .open(cacheNames.runtime)
       .then((cache) =>
-        cache.addAll(self.__WB_MANIFEST.filter((obj) => ['/tags.html'].includes(obj.url)).map((obj) => obj.url))
+        cache.addAll(self.__WB_MANIFEST.filter((obj) => !['/tags.html'].includes(obj.url)).map((obj) => obj.url))
       )
   )
 })
