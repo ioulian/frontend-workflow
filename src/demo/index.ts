@@ -1,3 +1,4 @@
+import Alert from 'bootstrap/js/dist/alert'
 import {ChangeEvent, JSBreakpoint} from '../lib/components/js-breakpoint/JSBreakpoint'
 /* eslint-disable no-underscore-dangle */
 
@@ -37,6 +38,13 @@ if (elJSBreakpointOutput instanceof HTMLElement) {
       }`
     })
   })
+}
+
+// Enable alerts from bootstrap
+// This is an example on how to use Bootstrap JS components
+if (!__BOOTSTRAP_IMPORT_BUNDLE__) {
+  // eslint-disable-next-line
+  Array.from(document.querySelectorAll('.alert')).map((alert) => new Alert(alert))
 }
 
 // Async module loader functionality test

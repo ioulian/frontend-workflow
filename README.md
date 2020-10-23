@@ -443,3 +443,10 @@ There is no automatic upgrade path available as this is a boilerplate, however i
 ## Copyright and license
 
 Code copyright 2020 Yulian Alexeyev. Code released under [the MIT license](LICENSE).
+
+// TODO:
+
+- <https://webpack.js.org/configuration/configuration-languages/>
+- fix critters (wait on support)
+- fix workbox
+- fix svg spritesheet (wait on support)

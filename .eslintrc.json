@@ -2,7 +2,7 @@
   "root": true,
   "overrides": [
     {
-      "files": ["webpack.common.js", "webpack.dev.js", "webpack.prod.js", "src/sw.js"],
+      "files": ["webpack.config.js", "src/sw.js"],
       "extends": ["eslint:recommended", "eslint-config-airbnb-base", "plugin:prettier/recommended"],
 
       "parserOptions": {

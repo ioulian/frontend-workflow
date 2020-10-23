@@ -1,83 +1,83 @@
 /* eslint-env serviceworker */
-/* global workbox */
 /* eslint-disable no-restricted-globals, no-underscore-dangle */
 
-const FALLBACK_HTML_URL = '/offline.html'
+import {registerRoute} from 'workbox-routing'
+import {CacheFirst, StaleWhileRevalidate} from 'workbox-strategies'
+import {CacheableResponsePlugin} from 'workbox-cacheable-response'
+import {ExpirationPlugin} from 'workbox-expiration'
+import {cacheNames} from 'workbox-core'
 
-workbox.precaching.precacheAndRoute(self.__precacheManifest || [])
-
-// HTML
-workbox.routing.registerRoute(
-  ({event}) => event.request.destination === 'document',
-  new workbox.strategies.NetworkFirst({
-    cacheName: 'cache-pages',
+// Cache the Google Fonts stylesheets with a stale-while-revalidate strategy.
+registerRoute(
+  ({url}) => url.origin === 'https://fonts.googleapis.com',
+  new StaleWhileRevalidate({
+    cacheName: 'google-fonts-stylesheets',
   })
 )
 
-// JS/CSS
-workbox.routing.registerRoute(
-  new RegExp('.(?:js|css)$'),
-  new workbox.strategies.StaleWhileRevalidate({
-    cacheName: 'cache-static-resources',
-  })
-)
-
-// Images
-workbox.routing.registerRoute(
-  new RegExp('.(png|jpg|jpeg|svg|webp|gif)$'),
-  new workbox.strategies.CacheFirst({
-    cacheName: 'cache-images',
+// Cache the underlying font files with a cache-first strategy for 1 year.
+registerRoute(
+  ({url}) => url.origin === 'https://fonts.gstatic.com',
+  new CacheFirst({
+    cacheName: 'google-fonts-webfonts',
     plugins: [
-      new workbox.expiration.Plugin({
-        maxEntries: 60,
-        maxAgeSeconds: 30 * 24 * 60 * 60,
-        purgeOnQuotaError: true,
-      }),
-    ],
-  })
-)
-
-// Other
-workbox.routing.registerRoute(
-  new RegExp('.(json|xml)$'),
-  new workbox.strategies.CacheFirst({
-    cacheName: 'cache-others',
-    plugins: [
-      new workbox.expiration.Plugin({
-        maxEntries: 20,
-        maxAgeSeconds: 7 * 24 * 60 * 60,
-        purgeOnQuotaError: true,
-      }),
-    ],
-  })
-)
-
-// Fonts
-workbox.routing.registerRoute(
-  new RegExp('^https://fonts.gstatic.com'),
-  new workbox.strategies.CacheFirst({
-    cacheName: 'cache-google-fonts-webfonts',
-    plugins: [
-      new workbox.cacheableResponse.Plugin({
+      new CacheableResponsePlugin({
         statuses: [0, 200],
       }),
-      new workbox.expiration.Plugin({
-        maxAgeSeconds: 30 * 24 * 60 * 60,
+      new ExpirationPlugin({
+        maxAgeSeconds: 60 * 60 * 24 * 365,
         maxEntries: 30,
       }),
     ],
   })
 )
 
-workbox.routing.setCatchHandler(({event}) => {
-  switch (event.request.destination) {
-    case 'document':
-      return caches.match(workbox.precaching.getCacheKeyForURL(FALLBACK_HTML_URL))
+// JS/CSS
+registerRoute(
+  ({request}) => request.destination === 'script' || request.destination === 'style',
+  new StaleWhileRevalidate({
+    cacheName: 'cache-static-resources',
+  })
+)
 
-    default:
-      return Response.error()
-  }
+// Images
+registerRoute(
+  ({request}) => request.destination === 'image',
+  new CacheFirst({
+    cacheName: 'cache-images',
+    plugins: [
+      new ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+      }),
+    ],
+  })
+)
+
+// Other
+registerRoute(
+  new RegExp('.(json|xml)$'),
+  new CacheFirst({
+    cacheName: 'cache-others',
+    plugins: [
+      new ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+      }),
+    ],
+  })
+)
+
+// "Warm" cache
+
+self.addEventListener('install', (event) => {
+  console.log(self.__WB_MANIFEST)
+  const urls = self.__WB_MANIFEST
+  const cacheName = cacheNames.runtime
+  event.waitUntil(caches.open(cacheName).then((cache) => cache.addAll(urls)))
 })
+
+// TODO: offline fallback
 
 addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {

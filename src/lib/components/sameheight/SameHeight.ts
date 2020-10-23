@@ -4,24 +4,26 @@ import {throttle} from 'throttle-debounce'
 import {Factory} from '../../base/js/Factory'
 import Settings from '../../../project/Settings'
 
-enum HeightAttribute {
+// eslint-disable-next-line
+enum PluginHeightAttribute {
   'min-height' = 'minHeight',
   'height' = 'height',
 }
 
 interface SettingsType {
   perRow?: boolean
-  heightAttribute?: HeightAttribute
+  heightAttribute?: PluginHeightAttribute
   watchSubtreeModification?: boolean
 }
 
 // Default values
 const defaults: SettingsType = {
   perRow: true,
-  heightAttribute: HeightAttribute['min-height'],
+  heightAttribute: PluginHeightAttribute['min-height'],
   watchSubtreeModification: true,
 }
 
+// eslint-disable-next-line
 const allSameHeights: SameHeight[] = []
 
 const elementDocumentOffsetTop = (el: Element): number =>
@@ -55,9 +57,9 @@ export class SameHeight extends Factory() {
 
     if (this.el.getAttribute('data-height-attribute') !== null) {
       if (this.el.getAttribute('data-height-attribute') === 'min-height') {
-        settingsFromDom.heightAttribute = HeightAttribute['min-height']
+        settingsFromDom.heightAttribute = PluginHeightAttribute['min-height']
       } else if (this.el.getAttribute('data-height-attribute') === 'height') {
-        settingsFromDom.heightAttribute = HeightAttribute.height
+        settingsFromDom.heightAttribute = PluginHeightAttribute.height
       }
     }
 

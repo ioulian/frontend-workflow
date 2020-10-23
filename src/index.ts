@@ -28,7 +28,7 @@ requireAll(require.context('./', true, /-sprite\.svg$/))
 if (__SERVICE_WORKER_ACTIVE__) {
   const activateServiceWorker = async (): Promise<void> => {
     if ('serviceWorker' in navigator) {
-      const {Workbox} = await import(
+      const {Workbox, messageSW} = await import(
         // @ts-ignore
         /* webpackChunkName: "workbox-window" */ 'workbox-window/build/workbox-window.prod.umd'
       )
@@ -37,24 +37,39 @@ if (__SERVICE_WORKER_ACTIVE__) {
       )
 
       const wb = new Workbox('/sw.js')
+      let registration
 
-      wb.addEventListener('waiting', () => {
-        const notificationContent =
-          document.documentElement.getAttribute('data-fresh-content-notification-text') !== null
-            ? document.documentElement.getAttribute('data-fresh-content-notification-text')
-            : undefined
+      const showSkipWaitingPrompt = () => {
+        FreshContentNotification.show(
+          document.documentElement.getAttribute('data-fresh-content-notification-title') ?? undefined,
+          document.documentElement.getAttribute('data-fresh-content-notification-title') ?? undefined,
+          5000,
+          {
+            accept: () => {
+              wb.addEventListener('controlling', () => {
+                window.location.reload()
+              })
 
-        const notificationTitle =
-          document.documentElement.getAttribute('data-fresh-content-notification-title') !== null
-            ? document.documentElement.getAttribute('data-fresh-content-notification-title')
-            : undefined
+              if (registration && registration.waiting) {
+                // Send a message to the waiting service worker,
+                // instructing it to activate.
+                // Note: for this to work, you have to add a message
+                // listener in your service worker. See below.
+                messageSW(registration.waiting, {type: 'SKIP_WAITING'})
+              }
+            },
+          }
+        )
+      }
 
-        FreshContentNotification.show(notificationContent, notificationTitle, 5000)
+      // Add an event listener to detect when the registered
+      // service worker has installed but is waiting to activate.
+      wb.addEventListener('waiting', showSkipWaitingPrompt)
+      wb.addEventListener('externalwaiting', showSkipWaitingPrompt)
 
-        wb.messageSW({type: 'SKIP_WAITING'})
+      wb.register().then((r) => {
+        registration = r
       })
-
-      wb.register()
     }
   }
 

@@ -1,6 +1,7 @@
 // import Settings from './Settings';
 import {AsyncModuleLoader} from '../lib/components/AsyncModuleLoader'
 
+// eslint-disable-next-line
 let instance: Site | null = null
 
 /**

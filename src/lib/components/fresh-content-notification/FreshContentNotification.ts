@@ -1,5 +1,10 @@
 import './FreshContentNotification.scss'
 
+interface Callback {
+  accept?: () => void
+  reject?: () => void
+}
+
 /**
  * Shows a toast notification when the site is cached by a service worker and a new content is available to download
  *
@@ -16,7 +21,8 @@ export class FreshContentNotification {
   public static show(
     content: string = 'New content available, click to refresh',
     title: string = 'Content updated',
-    timeout: number = 5000
+    timeout: number = 5000,
+    cb?: Callback
   ): void {
     // Add the element at the end of document
     document.body.insertAdjacentHTML(
@@ -42,7 +48,9 @@ export class FreshContentNotification {
       'click',
       (e: MouseEvent) => {
         e.preventDefault()
-        window.location.reload()
+        if (cb?.accept) {
+          cb.accept.apply(this, [])
+        }
       },
       false
     )
@@ -55,6 +63,10 @@ export class FreshContentNotification {
 
         // Do not refresh the page when dismissing the toaster
         e.stopPropagation()
+
+        if (cb?.reject) {
+          cb.reject.apply(this, [])
+        }
         el.remove()
       },
       false
@@ -62,6 +74,10 @@ export class FreshContentNotification {
 
     // Remove after a set time
     setTimeout(() => {
+      if (cb?.reject) {
+        cb.reject.apply(this, [])
+      }
+
       el.remove()
     }, timeout)
   }

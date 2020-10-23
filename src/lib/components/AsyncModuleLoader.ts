@@ -96,6 +96,10 @@ export class AsyncModuleLoader {
     AsyncModuleLoader.addToWatch('[data-fancybox]', async () => {
       await import(/* webpackChunkName: "gallery" */ './gallery/index')
     })
+
+    AsyncModuleLoader.addToWatch('.fw-parallax', async () => {
+      await import(/* webpackChunkName: "parallax" */ './parallax/index')
+    })
     /* eslint-enable @typescript-eslint/no-misused-promises */
   }
 

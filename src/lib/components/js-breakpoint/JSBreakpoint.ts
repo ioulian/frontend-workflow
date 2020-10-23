@@ -11,6 +11,7 @@ export type ChangeEvent = {
   sizeChange: -1 | 1
 }
 
+// eslint-disable-next-line
 let instance: JSBreakpoint | null = null
 
 export class JSBreakpoint extends EE {

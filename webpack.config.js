@@ -3,13 +3,17 @@
 
 const path = require('path')
 const webpack = require('webpack')
-const merge = require('webpack-merge')
+const {merge} = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const {InjectManifest} = require('workbox-webpack-plugin')
+const PrettierPlugin = require('prettier-webpack-plugin')
+const DashboardPlugin = require('webpack-dashboard/plugin')
 const {cosmiconfigSync} = require('cosmiconfig')
-const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
+const Critters = require('critters-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const {version} = require('./package.json')
 
 const defaults = {
   theme: '#007bb3',
@@ -59,7 +63,7 @@ const explorerSync = cosmiconfigSync('fw')
 const configFile = explorerSync.search()
 
 if (configFile === null) {
-  throw new Error('No config found')
+  console.warn('No config file found, using defaults')
 }
 
 const config = merge(defaults, configFile.config)
@@ -79,6 +83,7 @@ const htmlPluginSettings = {
   siteTwitterSite: config.html.twitterSite,
   siteTwitterAuthor: config.html.twitterAuthor,
   googleSiteVerification: config.googleSiteVerification,
+  scriptLoading: config.modules.asyncJS,
   minify: {
     collapseWhitespace: !devMode,
     removeComments: !devMode,
@@ -91,24 +96,16 @@ const htmlPluginSettings = {
 
 module.exports = {}
 module.exports.default = {
+  mode: devMode ? 'development' : 'production',
+  devtool: devMode ? 'source-map' : false,
+  performance: {
+    hints: false, // 'warning',
+    maxEntrypointSize: 250000, // in bytes, default 250k
+    maxAssetSize: 450000, // in bytes
+  },
   target: 'web',
   entry: {
     main: path.resolve(__dirname, 'src/index.ts'),
-
-    // Enable these if AsyncModuleLoader doesn't work correctly
-    // clickthrough: path.resolve(__dirname, 'src/lib/components/clickthrough/index.ts'),
-    // expandable: path.resolve(__dirname, 'src/lib/components/expandable/index.ts'),
-    // accordion: path.resolve(__dirname, 'src/lib/components/accordion/index.ts'),
-    // sameheight: path.resolve(__dirname, 'src/lib/components/sameheight/index.ts'),
-    // inviewanimation: path.resolve(__dirname, 'src/lib/components/in-view-animation/index.ts'),
-    // lazyloader: path.resolve(__dirname, 'src/lib/components/lazyloader/index.ts'),
-    // scrollintoview: path.resolve(__dirname, 'src/lib/components/scroll-into-view/index.ts'),
-    // fixednavbar: path.resolve(__dirname, 'src/lib/components/fixed-navbar/index.ts'),
-    // socialshare: path.resolve(__dirname, 'src/lib/components/social-share/index.ts'),
-    // slider: path.resolve(__dirname, 'src/lib/components/slider/index.ts'),
-    // parallax: path.resolve(__dirname, 'src/lib/components/parallax/index.ts'),
-    // gallery: path.resolve(__dirname, 'src/lib/components/gallery/index.ts'),
-    // bottomnavbar: path.resolve(__dirname, 'src/lib/components/bottom-navbar/index.ts'),
 
     // Remove me to disable demo code!
     demo: path.resolve(__dirname, 'src/demo/index.ts'),
@@ -119,13 +116,32 @@ module.exports.default = {
     chunkFilename: `js/[name].chunk${config.addFilenameHashes ? '.[contenthash]' : ''}.js`,
     publicPath: devServer ? '/' : config.subFolder,
   },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    hot: false,
+    open: true,
+    https: config.devServerHTTPS,
+  },
   plugins: [
     // Clean build folder on build
     devMode === false ? new CleanWebpackPlugin() : () => {},
+
+    // Define constants for the client (they are injected in the project TS/JS code)
+    new webpack.DefinePlugin({
+      __SERVICE_WORKER_ACTIVE__: serviceWorkerActive,
+      __IS_DEV__: devMode,
+      __IS_PROD__: !devMode,
+      __LANG__: config.language,
+      __BOOTSTRAP_IMPORT_BUNDLE__: config.bootstrap.importBundle,
+      __PUBLIC_PATH__: JSON.stringify(devServer ? '/' : config.subFolder),
+    }),
+
     new MiniCssExtractPlugin({
       filename: `css/[name].bundle${config.addFilenameHashes ? '.[contenthash]' : ''}.css`,
       chunkFilename: `css/[name].chunk${config.addFilenameHashes ? '.[contenthash]' : ''}.css`,
     }),
+
     // Create pages
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -144,25 +160,59 @@ module.exports.default = {
           inject: true,
         })
       : () => {},
-    new SpriteLoaderPlugin({
-      plainSprite: true,
-    }),
+
+    // devMode === false && config.modules.favicons
+    //  ? new FaviconsWebpackPlugin({
+    //      logo: path.resolve(__dirname, 'src/favicon.png'),
+    //      prefix: './',
+    //      inject: true,
+    //      favicons: {
+    //        appName: config.manifest.name,
+    //        appShortName: config.manifest.shortName,
+    //        appDescription: config.manifest.description,
+    //        developerName: config.manifest.author,
+    //        developerURL: config.manifest.authorUrl,
+    //        background: config.background,
+    //        theme_color: config.theme,
+    //        display: 'standalone',
+    //        orientation: 'any',
+    //        start_url: '/index.html',
+    //        appleStatusBarStyle: 'black-translucent',
+    //        version,
+    //        scope: '/',
+    //        lang: config.language,
+    //        logging: false,
+    //        icons: {
+    //          android: true,
+    //          appleIcon: true,
+    //          appleStartup: true,
+    //          coast: true,
+    //          favicons: true,
+    //          firefox: true,
+    //          windows: true,
+    //          yandex: true,
+    //        },
+    //      },
+    //    })
+    //  : () => {},
+
+    // devMode === false && config.modules.criticalCSS
+    //   ? new Critters({
+    //       preload: 'swap',
+    //       noscriptFallback: true,
+    //       pruneSource: false,
+    //     })
+    //   : () => {},
+
     serviceWorkerActive
       ? new InjectManifest({
           swSrc: './src/sw.js',
-          importWorkboxFrom: 'local',
           exclude: [/runtime\.bundle\./],
         })
       : () => {},
-    // Define constants for the client (they are injected in the project TS/JS code)
-    new webpack.DefinePlugin({
-      __SERVICE_WORKER_ACTIVE__: serviceWorkerActive,
-      __IS_DEV__: devMode,
-      __IS_PROD__: !devMode,
-      __LANG__: config.language,
-      __BOOTSTRAP_IMPORT_BUNDLE__: config.bootstrap.importBundle,
-      __PUBLIC_PATH__: JSON.stringify(devServer ? '/' : config.subFolder),
-    }),
+
+    devMode === true ? new PrettierPlugin() : () => {},
+    devMode === true ? new DashboardPlugin() : () => {},
   ],
   module: {
     rules: [
@@ -192,20 +242,8 @@ module.exports.default = {
         ],
       },
       {
-        test: /-sprite\.svg$/,
-        use: [
-          {loader: 'svg-sprite-loader', options: {extract: true}},
-          {
-            loader: 'svgo-loader',
-            options: {
-              plugins: [],
-            },
-          },
-        ],
-      },
-      {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
-        exclude: /-sprite\.svg$/,
+        // exclude: /-sprite\.svg$/,
         use: [
           {
             loader: 'file-loader',
