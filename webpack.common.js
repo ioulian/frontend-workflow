@@ -238,10 +238,6 @@ module.exports.default = {
               svgo: {
                 plugins: [],
               },
-              webp: {
-                quality: 80,
-                alphaQuality: 85,
-              },
             },
           },
         ],
