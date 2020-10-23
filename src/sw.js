@@ -4,8 +4,8 @@
 import {CacheableResponsePlugin} from 'workbox-cacheable-response'
 import {ExpirationPlugin} from 'workbox-expiration'
 import {matchPrecache, precacheAndRoute} from 'workbox-precaching'
-import {registerRoute, setCatchHandler} from 'workbox-routing'
-import {CacheFirst, StaleWhileRevalidate} from 'workbox-strategies'
+import {registerRoute, setCatchHandler /* , setDefaultHandler */} from 'workbox-routing'
+import {CacheFirst, StaleWhileRevalidate, NetworkFirst} from 'workbox-strategies'
 
 // Cache the Google Fonts stylesheets with a stale-while-revalidate strategy.
 registerRoute(
@@ -29,6 +29,16 @@ registerRoute(
         maxEntries: 30,
       }),
     ],
+  })
+)
+
+// setDefaultHandler(new StaleWhileRevalidate());
+
+// HTML
+registerRoute(
+  ({request}) => request.destination === 'document',
+  new NetworkFirst({
+    cacheName: 'cache-pages',
   })
 )
 
@@ -76,7 +86,6 @@ const FALLBACK_HTML_URL = './offline.html'
 setCatchHandler(({event}) => {
   switch (event.request.destination) {
     case 'document':
-      // If using precached URLs:
       return matchPrecache(FALLBACK_HTML_URL)
 
     default:
