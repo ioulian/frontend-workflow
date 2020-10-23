@@ -9,6 +9,12 @@
 
   > * {
     object-fit: cover;
+
+    > * {
+      @include fw-full-size-in-parent();
+
+      object-fit: cover;
+    }
   }
 }
 
