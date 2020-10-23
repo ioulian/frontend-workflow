@@ -40,6 +40,7 @@ if (__SERVICE_WORKER_ACTIVE__) {
       let registration
 
       const showSkipWaitingPrompt = () => {
+        console.log('waiting')
         FreshContentNotification.show(
           document.documentElement.getAttribute('data-fresh-content-notification-title') ?? undefined,
           document.documentElement.getAttribute('data-fresh-content-notification-title') ?? undefined,

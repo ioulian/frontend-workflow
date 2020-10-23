@@ -450,3 +450,4 @@ Code copyright 2020 Yulian Alexeyev. Code released under [the MIT license](LICEN
 - fix critters (wait on support)
 - fix workbox
 - fix svg spritesheet (wait on support)
+- fix header on mobile

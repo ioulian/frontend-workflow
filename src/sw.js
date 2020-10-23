@@ -72,7 +72,11 @@ registerRoute(
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(cacheNames.runtime).then((cache) => cache.addAll(self.__WB_MANIFEST.map((obj) => obj.url)))
+    caches
+      .open(cacheNames.runtime)
+      .then((cache) =>
+        cache.addAll(self.__WB_MANIFEST.filter((obj) => ['/tags.html'].includes(obj.url)).map((obj) => obj.url))
+      )
   )
 })
 
