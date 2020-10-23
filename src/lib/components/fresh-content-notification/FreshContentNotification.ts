@@ -41,7 +41,7 @@ export class FreshContentNotification {
     )
 
     const el = document.querySelector('.fresh-content-notification')
-    const elClose = el.querySelector('.close')
+    const elClose = el.querySelector('.btn-close')
 
     // Reload page to show the new content
     el.addEventListener(
