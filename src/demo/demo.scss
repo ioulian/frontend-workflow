@@ -4,6 +4,14 @@
   @include fw-full-size-in-parent();
 }
 
+.demo-image {
+  @include fw-aspect-ratio(960, 640);
+
+  > * {
+    object-fit: cover;
+  }
+}
+
 img.fw-full-size-in-parent {
   object-fit: cover;
 }

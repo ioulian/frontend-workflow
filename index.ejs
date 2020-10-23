@@ -377,36 +377,39 @@
                 </div>
                 <h4>Picture tag</h4>
                 <p>
-                  <picture width="960" height="640" intrinsicsize="960 x 640">
-                    <source
-                      media="print"
-                      data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-1x.jpg') %>"
-                    />
+                  <span class="demo-image">
+                    <picture width="960" height="640" intrinsicsize="960 x 640">
+                      <source
+                        media="print"
+                        data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-1x.jpg') %>"
+                      />
 
-                    <source
-                      media="(max-width: 480px)"
-                      data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-1x.jpg') %>"
-                    />
+                      <source
+                        media="(max-width: 480px)"
+                        data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-1x.jpg') %>"
+                      />
 
-                    <source
-                      media="(max-width: 640px)"
-                      data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-2x.jpg') %>"
-                    />
+                      <source
+                        media="(max-width: 640px)"
+                        data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-2x.jpg') %>"
+                      />
 
-                    <source
-                      media="(max-width: 1024px)"
-                      data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-4x.jpg') %>"
-                    />
+                      <source
+                        media="(max-width: 1024px)"
+                        data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-4x.jpg') %>"
+                      />
 
-                    <img
-                      data-src="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-4x.jpg') %>"
-                      alt="Nymphenburg Castle in Munich during sunset"
-                      class="fw-lazy-load fw-lazy-load--opacity"
-                      width="960"
-                      height="640"
-                      intrinsicsize="960 x 640"
-                    />
-                  </picture>
+                      <img
+                        data-src="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-4x.jpg') %>"
+                        alt="Nymphenburg Castle in Munich during sunset"
+                        class="fw-lazy-load fw-lazy-load--opacity"
+                        width="960"
+                        height="640"
+                        intrinsicsize="960 x 640"
+                      />
+                    </picture>
+                  </span>
+
                   <small
                     >Images from:
                     <a href="https://responsiveimages.org" target="_blank" rel="noopener noreferrer"
@@ -417,14 +420,16 @@
 
                 <h4>Image tag</h4>
                 <p>
-                  <img
-                    class="fw-lazy-load fw-lazy-load--opacity"
-                    data-src="<%= require('./src/demo/media/responsive-images/img/yacht_race-desktop.jpg') %>"
-                    alt="A very exciting yacht race."
-                    width="1280"
-                    height="852"
-                    intrinsicsize="1280 x 852"
-                  />
+                  <span class="demo-image">
+                    <img
+                      class="fw-lazy-load fw-lazy-load--opacity"
+                      data-src="<%= require('./src/demo/media/responsive-images/img/yacht_race-desktop.jpg') %>"
+                      alt="A very exciting yacht race."
+                      width="1280"
+                      height="852"
+                      intrinsicsize="1280 x 852"
+                    />
+                  </span>
                   <small
                     >Images from:
                     <a href="https://responsiveimages.org" target="_blank" rel="noopener noreferrer"
