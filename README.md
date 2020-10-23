@@ -232,7 +232,6 @@ To create a production build, use `yarn build` (will lint code before) or use `y
 #### Submodules
 
 - **Favicons**: Will generate all icons and manifests for a PWA ready app.
-- **CriticalCSS**: Will inline critical CSS, based on 3 viewports (Mobile, Tablet Horizontal, Desktop). You can edit the viewports.
 - **ServiceWorker**: Will generate a service worker to cache resources of the website, thus allowing offline usage. (Depends on how you structure your app).
 - **Async JS**: Will add `async` attribute on all scripts allowing them not to block the rendering.
 
@@ -299,7 +298,6 @@ Before creating a build, you should update the following files/settings:
 | serviceWorkerOnLocalHost          | `boolean`       | false               | Activate service-worker on localhost (allows you to test it, don't enable it when developing your application)                                                                                                                            |
 | createTagsFile                    | `boolean`       | false               | If set to true, an additional `tags.html` file will be created with all favicon and manifest links (Useful to include them later if you are building your html files on the server). They are however always injected into `.html` files. |
 | modules.favicons                  | `boolean`       | true                | Generate favicons on build. Only used in production build.                                                                                                                                                                                |
-| modules.criticalCSS               | `boolean`       | true                | Inline Critical CSS. Only used in production build.                                                                                                                                                                                       |
 | modules.serviceWorker             | `boolean`       | true                | Generate a Service Worker using WorkBox. Only used in production build.                                                                                                                                                                   |
 | modules.asyncJS                   | `boolean`       | true                | Add `async` attribute to scripts. Only used in production build.                                                                                                                                                                          |
 | bootstrap.importBundle            | `boolean`       | true                | If set to `true`, the whole JS bundle will be included for ease. If you want to have more control of what components are loaded, you can set this to `false` and import select components from Bootstrap directly.                        |
@@ -447,7 +445,5 @@ Code copyright 2020 Yulian Alexeyev. Code released under [the MIT license](LICEN
 // TODO:
 
 - <https://webpack.js.org/configuration/configuration-languages/>
-- fix critters (wait on support)
-- fix workbox
 - fix svg spritesheet (wait on support)
-- fix header on mobile
+- fix favicons

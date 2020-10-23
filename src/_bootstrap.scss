@@ -14,9 +14,8 @@
 
 // Add your variables here and/or override Bootstrap variables
 
-// Do not inline print styles as CriticalCSS merges this media and thus breaks the slicing.
-// We should also not download the print styles if they are not needed.
-$enable-print-styles: false;
+// Maybe not download print styles if not needed?
+// $enable-print-styles: false;
 
 $primary: #007bb3;
 $code-color: #ad0652;

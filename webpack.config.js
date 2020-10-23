@@ -11,7 +11,6 @@ const {InjectManifest} = require('workbox-webpack-plugin')
 const PrettierPlugin = require('prettier-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 const {cosmiconfigSync} = require('cosmiconfig')
-const Critters = require('critters-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const {version} = require('./package.json')
 
@@ -45,7 +44,6 @@ const defaults = {
   createTagsFile: true,
   modules: {
     favicons: true,
-    criticalCSS: true,
     serviceWorker: true,
     asyncJS: true,
   },
@@ -195,14 +193,6 @@ module.exports.default = {
     //      },
     //    })
     //  : () => {},
-
-    // devMode === false && config.modules.criticalCSS
-    //   ? new Critters({
-    //       preload: 'swap',
-    //       noscriptFallback: true,
-    //       pruneSource: false,
-    //     })
-    //   : () => {},
 
     serviceWorkerActive
       ? new InjectManifest({

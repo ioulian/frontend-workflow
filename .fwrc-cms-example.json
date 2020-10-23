@@ -18,7 +18,6 @@
   "subFolder": "/themes/custom/fw2020/dist/",
   "createTagsFile": true,
   "modules": {
-    "criticalCSS": false,
     "serviceWorker": false
   }
 }
