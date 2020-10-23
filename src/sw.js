@@ -71,10 +71,9 @@ registerRoute(
 // "Warm" cache
 
 self.addEventListener('install', (event) => {
-  console.log(self.__WB_MANIFEST)
-  const urls = self.__WB_MANIFEST
-  const cacheName = cacheNames.runtime
-  event.waitUntil(caches.open(cacheName).then((cache) => cache.addAll(urls)))
+  event.waitUntil(
+    caches.open(cacheNames.runtime).then((cache) => cache.addAll(self.__WB_MANIFEST.map((obj) => obj.url)))
+  )
 })
 
 // TODO: offline fallback
