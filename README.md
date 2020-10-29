@@ -416,13 +416,27 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 
 These are our own TODO's that might, or might not be included in this workflow, based on priority, ease of use/configuration and performance gain/penalty. If you want to implement them or help us out, you can always let us know!
 
+- (HIGH PRIO) fix svg spritesheet (wait on support)
+- (HIGH PRIO) favicons are in alpha, update when needed
 - (MED PRIO) Change factory to [https://github.com/fasttime/polytype](https://github.com/fasttime/polytype), it's a better module
 - (MED PRIO) Update html webpack plugin and favicons plugin
 - (LOW PRIO) Add fallbacks for images/fonts if offline
+- (LOW PRIO) [https://webpack.js.org/configuration/configuration-languages/](https://webpack.js.org/configuration/configuration-languages/)
 - (LOW PRIO) Follow [Gimli](https://gimli.app/) to add it in the future
 - (LOW PRIO) Change lazy loading to this way: [https://addyosmani.com/blog/lazy-loading/](https://addyosmani.com/blog/lazy-loading/)
 - (LOW PRIO) Change fixed header implementation to [https://pqina.nl/blog/applying-styles-based-on-the-user-scroll-position-with-smart-css/](https://pqina.nl/blog/applying-styles-based-on-the-user-scroll-position-with-smart-css/) maybe?
 - (LOW PRIO) Check how to implement font-variant-numeric: tabular-nums;
+
+Files to load for drupal:
+
+- frontend/dist/css/vendors.chunk.css: {}
+- frontend/dist/css/main.chunk.css: {}
+- frontend/dist/css/demo.chunk.css: {}
+- frontend/dist/js/runtime.bundle.js: {}
+- frontend/dist/js/vendors.chunk.js: {}
+- frontend/dist/js/main.chunk.js: {}
+- frontend/dist/js/common.chunk.js: {}
+- frontend/dist/js/demo.chunk.js: {}
 
 ## Possible libraries/workflows
 
@@ -441,9 +455,3 @@ There is no automatic upgrade path available as this is a boilerplate, however i
 ## Copyright and license
 
 Code copyright 2020 Yulian Alexeyev. Code released under [the MIT license](LICENSE).
-
-// TODO:
-
-- <https://webpack.js.org/configuration/configuration-languages/>
-- fix svg spritesheet (wait on support)
-- fix favicons

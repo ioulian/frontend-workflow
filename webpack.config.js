@@ -92,8 +92,7 @@ const htmlPluginSettings = {
   },
 }
 
-module.exports = {}
-module.exports.default = {
+module.exports = {
   mode: devMode ? 'development' : 'production',
   devtool: devMode ? 'source-map' : false,
   performance: {
@@ -154,45 +153,49 @@ module.exports.default = {
     config.createTagsFile
       ? new HtmlWebpackPlugin({
           filename: 'tags.html',
-          template: 'tags.ejs',
-          inject: true,
+          templateContent: ({htmlWebpackPlugin}) => {
+            return `${htmlWebpackPlugin.tags.headTags.filter(
+              (tag) => !(tag.tagName === 'link' && tag.attributes.rel === 'stylesheet')
+            )}`
+          },
+          inject: false,
         })
       : () => {},
 
-    // devMode === false && config.modules.favicons
-    //  ? new FaviconsWebpackPlugin({
-    //      logo: path.resolve(__dirname, 'src/favicon.png'),
-    //      prefix: './',
-    //      inject: true,
-    //      favicons: {
-    //        appName: config.manifest.name,
-    //        appShortName: config.manifest.shortName,
-    //        appDescription: config.manifest.description,
-    //        developerName: config.manifest.author,
-    //        developerURL: config.manifest.authorUrl,
-    //        background: config.background,
-    //        theme_color: config.theme,
-    //        display: 'standalone',
-    //        orientation: 'any',
-    //        start_url: '/index.html',
-    //        appleStatusBarStyle: 'black-translucent',
-    //        version,
-    //        scope: '/',
-    //        lang: config.language,
-    //        logging: false,
-    //        icons: {
-    //          android: true,
-    //          appleIcon: true,
-    //          appleStartup: true,
-    //          coast: true,
-    //          favicons: true,
-    //          firefox: true,
-    //          windows: true,
-    //          yandex: true,
-    //        },
-    //      },
-    //    })
-    //  : () => {},
+    devMode === false && config.modules.favicons
+      ? new FaviconsWebpackPlugin({
+          logo: path.resolve(__dirname, 'src/favicon.png'),
+          prefix: './',
+          inject: true,
+          favicons: {
+            appName: config.manifest.name,
+            appShortName: config.manifest.shortName,
+            appDescription: config.manifest.description,
+            developerName: config.manifest.author,
+            developerURL: config.manifest.authorUrl,
+            background: config.background,
+            theme_color: config.theme,
+            display: 'standalone',
+            orientation: 'any',
+            start_url: '/index.html',
+            appleStatusBarStyle: 'black-translucent',
+            version,
+            scope: '/',
+            lang: config.language,
+            logging: false,
+            icons: {
+              android: true,
+              appleIcon: true,
+              appleStartup: true,
+              coast: true,
+              favicons: true,
+              firefox: true,
+              windows: true,
+              yandex: true,
+            },
+          },
+        })
+      : () => {},
 
     serviceWorkerActive
       ? new InjectManifest({
@@ -328,5 +331,3 @@ module.exports.default = {
     },
   },
 }
-
-module.exports.config = config
