@@ -419,7 +419,6 @@ These are our own TODO's that might, or might not be included in this workflow, 
 - (HIGH PRIO) fix svg spritesheet (wait on support)
 - (HIGH PRIO) favicons are in alpha, update when needed
 - (MED PRIO) Change factory to [https://github.com/fasttime/polytype](https://github.com/fasttime/polytype), it's a better module
-- (MED PRIO) Update html webpack plugin and favicons plugin
 - (LOW PRIO) Add fallbacks for images/fonts if offline
 - (LOW PRIO) [https://webpack.js.org/configuration/configuration-languages/](https://webpack.js.org/configuration/configuration-languages/)
 - (LOW PRIO) Follow [Gimli](https://gimli.app/) to add it in the future
