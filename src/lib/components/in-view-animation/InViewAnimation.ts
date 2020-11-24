@@ -1,5 +1,3 @@
-import 'intersection-observer'
-
 import {Factory} from '../../base/js/Factory'
 
 import './InViewAnimation.scss'

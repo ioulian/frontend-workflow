@@ -1,5 +1,3 @@
-import 'element-closest/browser'
-
 import './ClickThrough.css'
 
 /**

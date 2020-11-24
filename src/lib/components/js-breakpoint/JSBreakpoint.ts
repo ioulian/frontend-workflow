@@ -1,7 +1,6 @@
 import EE from 'onfire.js'
 import {throttle} from 'throttle-debounce'
 import Settings from '../../../project/Settings'
-import 'core-js/features/string/starts-with'
 
 import './JSBreakpoint.scss'
 

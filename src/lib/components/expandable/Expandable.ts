@@ -1,4 +1,3 @@
-import 'element-closest/browser'
 import EE from 'onfire.js'
 import {throttle} from 'throttle-debounce'
 import {Factory} from '../../base/js/Factory'

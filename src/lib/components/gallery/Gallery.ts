@@ -1,4 +1,3 @@
-import 'promise-polyfill/src/polyfill'
 import $ from 'jquery/dist/jquery.slim'
 
 import '@fancyapps/fancybox/dist/jquery.fancybox.min.css'

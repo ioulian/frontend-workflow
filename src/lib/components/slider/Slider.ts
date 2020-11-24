@@ -1,9 +1,9 @@
 // eslint-disable-next-line import/no-unresolved
 import {SwiperOptions} from 'swiper/index'
-import Swiper from 'swiper/js/swiper.min'
+import Swiper from 'swiper/swiper-bundle.min'
 import {Factory} from '../../base/js/Factory'
 
-import 'swiper/css/swiper.min.css'
+import 'swiper/swiper-bundle.css'
 
 const defaults: SwiperOptions = {
   navigation: {
@@ -33,7 +33,6 @@ export class Slider extends Factory() {
     this.swiperInstance = new Swiper(this.el, this.settings)
   }
 
-  //
   public getInstance(): Swiper {
     // eslint-disable-next-line
     return this.swiperInstance

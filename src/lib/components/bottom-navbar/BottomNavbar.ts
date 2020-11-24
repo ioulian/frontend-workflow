@@ -1,6 +1,3 @@
-import 'core-js/features/array/from'
-import 'core-js/features/array/includes'
-
 import {JSBreakpoint} from '../js-breakpoint/JSBreakpoint'
 
 import {Factory} from '../../base/js/Factory'

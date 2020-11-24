@@ -1,5 +1,3 @@
-import 'core-js/features/array/from'
-
 import {throttle} from 'throttle-debounce'
 import {Factory} from '../../base/js/Factory'
 import Settings from '../../../project/Settings'

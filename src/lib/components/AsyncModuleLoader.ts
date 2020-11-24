@@ -1,6 +1,3 @@
-import 'core-js/features/array/from'
-import 'promise-polyfill/src/polyfill'
-
 export type WatchCallback = (selector: string) => void
 export type SingleRunCallback = () => void
 
