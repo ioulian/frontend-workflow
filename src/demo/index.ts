@@ -4,8 +4,6 @@ import {ChangeEvent, JSBreakpoint} from '../lib/components/js-breakpoint/JSBreak
 
 import './demo.scss'
 
-declare const __IS_DEV__: boolean
-
 // JSBreakpoint example
 const elJSBreakpointOutput = document.getElementById('js-breakpoint-example')
 
