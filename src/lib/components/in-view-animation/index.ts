@@ -7,3 +7,11 @@ if (typeof Drupal !== 'undefined') {
 }
 
 InViewAnimation.attach('.js-in-view-animation')
+
+// Watch on HTML change and attach new items
+new MutationObserver(() => {
+  InViewAnimation.attach('.fw-in-view-animation')
+}).observe(document, {
+  childList: true,
+  subtree: true,
+})

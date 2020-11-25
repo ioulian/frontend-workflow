@@ -155,7 +155,7 @@ module.exports = {
           filename: 'tags.html',
           templateContent: ({htmlWebpackPlugin}) => {
             return `${htmlWebpackPlugin.tags.headTags.filter(
-              (tag) => !(tag.tagName === 'link' && tag.attributes.rel === 'stylesheet')
+              (tag) => !(tag.tagName === 'link' && tag.attributes.rel === 'stylesheet') && tag.tagName !== 'script'
             )}`
           },
           inject: false,

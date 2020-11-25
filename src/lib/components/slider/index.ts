@@ -12,3 +12,11 @@ window.addEventListener('load', () => {
     slider.getInstance().update()
   })
 })
+
+// Watch on HTML change and attach new items
+new MutationObserver(() => {
+  Slider.attach('.swiper-container')
+}).observe(document, {
+  childList: true,
+  subtree: true,
+})
