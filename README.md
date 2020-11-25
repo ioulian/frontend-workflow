@@ -71,11 +71,14 @@ If you don't want to use them, remove them from `src/project/Site.ts`.
 
 The default components work on these browsers:
 
-- Edge (Chromium)
+- IE11
+- Edge
 - Chrome (+ Mobile)
 - FireFox
 - Opera
 - Safari (+ Mobile)
+
+There is also [Core-JS](https://github.com/zloirock/core-js) polyfill library added for your convenience if you'll need to add more polyfills in the future.
 
 ## Install
 
@@ -415,7 +418,6 @@ These are our own TODO's that might, or might not be included in this workflow, 
 
 - (HIGH PRIO) fix svg spritesheet (wait on support)
 - (HIGH PRIO) favicons are in alpha, update when needed
-- (MED PRIO) Remove support for old browsers
 - (MED PRIO) Change factory to [https://github.com/fasttime/polytype](https://github.com/fasttime/polytype), it's a better module
 - (LOW PRIO) Add fallbacks for images/fonts if offline
 - (LOW PRIO) [https://webpack.js.org/configuration/configuration-languages/](https://webpack.js.org/configuration/configuration-languages/)

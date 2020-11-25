@@ -1,3 +1,5 @@
+import 'element-closest/browser'
+
 // To let TypeScript know that 'share' can be found in 'navigator'
 declare const navigator: {
   share?: any

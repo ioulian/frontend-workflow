@@ -1,3 +1,4 @@
+import 'promise-polyfill/src/polyfill'
 import Colcade from 'colcade/colcade'
 import {Factory} from '../../base/js/Factory'
 

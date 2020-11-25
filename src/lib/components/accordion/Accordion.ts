@@ -1,3 +1,6 @@
+import 'core-js/features/array/from'
+import 'core-js/features/array/find'
+
 import EE from 'onfire.js'
 import {debounce} from 'throttle-debounce'
 import {Factory} from '../../base/js/Factory'

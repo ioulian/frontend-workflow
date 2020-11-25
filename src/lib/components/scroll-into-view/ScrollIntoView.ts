@@ -1,3 +1,4 @@
+import 'element-closest/browser'
 import smoothscroll from 'smoothscroll-polyfill'
 
 /**
