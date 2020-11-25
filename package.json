@@ -1,7 +1,7 @@
 {
   "name": "frontend-workflow",
-  "version": "0.31.1",
-  "description": "Frontend workflow using Webpack 4",
+  "version": "0.32.0",
+  "description": "Frontend workflow using Webpack 5",
   "author": "Yulian Alexeyev <yulian@dev-q.be> (https://github.com/ioulian)",
   "keywords": [
     "css",
@@ -19,7 +19,8 @@
     "es6",
     "drupal",
     "drupal8",
-    "web"
+    "web",
+    "storybook"
   ],
   "license": "MIT",
   "homepage": "https://github.com/ioulian/frontend-workflow",
@@ -60,11 +61,11 @@
     "workbox-strategies": "5.1.4"
   },
   "scripts": {
-    "start": "NODE_ENV=devserver webpack serve",
-    "start:d": "NODE_ENV=devserver webpack-dashboard -- webpack serve",
+    "start": "cross-env NODE_ENV=devserver webpack serve",
+    "start:d": "cross-env NODE_ENV=devserver webpack-dashboard -- webpack serve",
     "watch": "webpack --watch",
     "build": "yarn lint && yarn export",
-    "export": "NODE_ENV=production webpack",
+    "export": "cross-env NODE_ENV=production webpack",
     "lint": "yarn tslint:lint && yarn eslint:lint && yarn stylelint:lint",
     "tslint:lint": "tsc --noEmit --project .tsconfig.json",
     "eslint:lint": "eslint 'src/**/*.{js,ts}'",
@@ -73,9 +74,9 @@
     "stylelint:fix": "stylelint --fix 'src/**/*.{scss,css}'",
     "prettier:lint": "prettier --check 'src/**/*.{js,scss,css,ts}'",
     "prettier:fix": "prettier --write 'src/**/*.{js,scss,css,ts}'",
-    "analyze": "NODE_ENV=production webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json --default-sizes gzip",
-    "storybook": "NODE_ENV=devserver start-storybook -p 6006",
-    "build-storybook": "NODE_ENV=production build-storybook"
+    "analyze": "cross-env NODE_ENV=production webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json --default-sizes gzip",
+    "storybook": "cross-env NODE_ENV=devserver start-storybook -p 6006",
+    "build-storybook": "cross-env NODE_ENV=production build-storybook"
   },
   "devDependencies": {
     "@babel/core": "7.12.9",
@@ -83,6 +84,7 @@
     "@storybook/addon-actions": "6.1.6",
     "@storybook/addon-essentials": "6.1.6",
     "@storybook/addon-links": "6.1.6",
+    "@storybook/addon-storysource": "6.1.6",
     "@storybook/html": "6.1.6",
     "@types/swiper": "5.4.0",
     "@types/throttle-debounce": "2.1.0",
@@ -94,6 +96,7 @@
     "cosmiconfig": "7.0.0",
     "css-loader": "5.0.0",
     "cssnano": "4.1.10",
+    "cross-env": "7.0.2",
     "eslint": "7.11.0",
     "eslint-config-airbnb-base": "14.2.0",
     "eslint-config-prettier": "6.14.0",

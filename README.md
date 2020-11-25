@@ -29,6 +29,7 @@ If you don't want to use them, remove them from `src/project/Site.ts`.
 - [Frontend workflow](#frontend-workflow)
   - [Table of contents](#table-of-contents)
   - [Browser support](#browser-support)
+  - [OS Support](#os-support)
   - [Install](#install)
   - [Usage](#usage)
     - [Developing](#developing)
@@ -48,6 +49,7 @@ If you don't want to use them, remove them from `src/project/Site.ts`.
       - [Mobile](#mobile)
       - [Server-side performance](#server-side-performance)
     - [Analyze](#analyze)
+    - [Storybook](#storybook)
     - [Options](#options)
       - [Config Files](#config-files)
         - [.fwrc.json](#fwrcjson)
@@ -72,13 +74,17 @@ If you don't want to use them, remove them from `src/project/Site.ts`.
 The default components work on these browsers:
 
 - IE11
-- Edge
+- Edge (Chromium)
 - Chrome (+ Mobile)
 - FireFox
 - Opera
 - Safari (+ Mobile)
 
 There is also [Core-JS](https://github.com/zloirock/core-js) polyfill library added for your convenience if you'll need to add more polyfills in the future.
+
+## OS Support
+
+Has been tested on OSX, Linux and Windows 10 (with Powershell).
 
 ## Install
 
@@ -260,6 +266,11 @@ Keep in mind that servers (and their configuration) are a big part of performanc
 This workflow has [Bundle Analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) included if you want to see how to optimize your bundle. You can run it with `yarn analyze` and it will make a production build (can take a while) and open up a browser window with the analysis of the bundle.
 
 When running this command, a `stats.json` will be generated. You can also upload it [here](http://webpack.github.io/analyse/) and it will show you more info on how to optimize your build.
+
+### Storybook
+
+There is a basic installation of storybook in this repository. You can run it with `yarn storybook`.
+There you can find most of the standard components that are included in the library. You can also add your own components, can be used as a styleguide.
 
 ### Options
 
