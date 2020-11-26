@@ -39,3 +39,11 @@ const Template = () => {
 
 export const Default = Template.bind({})
 Default.args = {}
+
+Default.story = {
+  parameters: {
+    storySource: {
+      source: `<a href="#" class="has-link-underline">link</a>`,
+    },
+  },
+}

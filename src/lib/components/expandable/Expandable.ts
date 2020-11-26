@@ -79,13 +79,13 @@ export class Expandable extends Factory(EE) {
       this.elToggle.addEventListener(
         'keydown',
         (e: KeyboardEvent) => {
-          e.preventDefault()
-
           if (['Enter', ' '].includes(e.key)) {
+            e.preventDefault()
             this.toggle()
           }
 
           if (['Escape'].includes(e.key)) {
+            e.preventDefault()
             this.close()
           }
         },

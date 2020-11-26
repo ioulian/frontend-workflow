@@ -27,3 +27,16 @@ const Template = () => {
 
 export const Default = Template.bind({})
 Default.args = {}
+
+Default.story = {
+  parameters: {
+    storySource: {
+      source: `<img
+  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+  class="fw-lazy-load fw-lazy-load--opacity"
+  data-src="full-image-path.jpg"
+  alt=""
+/>`,
+    },
+  },
+}

@@ -76,3 +76,27 @@ const Template = () => {
 
 export const Default = Template.bind({})
 Default.args = {}
+
+Default.story = {
+  parameters: {
+    storySource: {
+      source: `<div class="row fw-colcade">
+  <div class="col-6 fw-colcade__grid-col"></div>
+  <div class="col-6 fw-colcade__grid-col"></div>
+  <div class="fw-colcade__grid-item">
+    <img src="#" alt="" />
+  </div>
+  <div class="fw-colcade__grid-item">
+    <img src="#" alt="" />
+  </div>
+  <div class="fw-colcade__grid-item">
+    <img src="#" alt="" />
+  </div>
+  <div class="fw-colcade__grid-item">
+    <img src="#" alt="" />
+  </div>
+  ...
+</div>`,
+    },
+  },
+}

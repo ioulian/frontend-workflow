@@ -37,3 +37,26 @@ const Template = () => {
 
 export const Default = Template.bind({})
 Default.args = {}
+
+Default.story = {
+  parameters: {
+    storySource: {
+      source: `<div>
+  <div class="fw-tablist">
+    <div aria-controls="item-1">Toggle 1</div>
+    <div aria-controls="item-2">Toggle 2</div>
+    <div aria-controls="item-3">Toggle 3</div>
+  </div>
+  <div id="item-1">
+    ...
+  </div>
+  <div id="item-2">
+    ...
+  </div>
+  <div id="item-3">
+    ...
+  </div>
+</div>`,
+    },
+  },
+}

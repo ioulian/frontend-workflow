@@ -66,3 +66,18 @@ const Template = () => {
 
 export const Default = Template.bind({})
 Default.args = {}
+
+Default.story = {
+  parameters: {
+    storySource: {
+      source: `<a
+  href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftrusting-perlman-3c2ee5.netlify.com"
+  class="js-social-share has-link-underline"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Share this page on twitter
+</a>`,
+    },
+  },
+}

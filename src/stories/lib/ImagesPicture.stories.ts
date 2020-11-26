@@ -50,3 +50,34 @@ const Template = () => {
 
 export const Default = Template.bind({})
 Default.args = {}
+
+Default.story = {
+  parameters: {
+    storySource: {
+      source: `<picture>
+  <source
+    media="print"
+    data-srcset="image-print.jpg"
+  />
+  <source
+    media="(max-width: 480px)"
+    data-srcset="image-480px.jpg"
+  />
+  <source
+    media="(max-width: 640px)"
+    data-srcset="image-640px.jpg"
+  />
+  <source
+    media="(max-width: 1024px)"
+    data-srcset="image-1024px.jpg"
+  />
+  <img
+    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+    data-src="image-1920px.jpg"
+    alt=""
+    class="fw-lazy-load fw-lazy-load--opacity"
+  />
+</picture>`,
+    },
+  },
+}

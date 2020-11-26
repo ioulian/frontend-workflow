@@ -10,7 +10,7 @@ const Template = ({label}: any) => {
 <div class="fw-expandable">
   <h4>
     <button id="demo-expandable-toggle" class="fw-expandable__toggle">
-      <span> ${label as string}</span>
+      <span>${label as string}</span>
     </button>
   </h4>
   <div id="demo-expandable-content" class="fw-expandable__content-wrapper">
@@ -21,9 +21,9 @@ const Template = ({label}: any) => {
         ornare ex, id vulputate lectus. Praesent et interdum elit, nec sagittis nisl. Aliquam vel
         hendrerit urna.
       </p>
-      <p><input type="text" /></p>
-      <p><input type="text" /></p>
-      <p><input type="text" /></p>
+      <p><label for="input-1">Form input 1</label><input id="input-1" type="text" /></p>
+      <p><label for="input-2">Form input 2</label><input id="input-2" type="text" /></p>
+      <p><label for="input-3">Form input 3</label><input id="input-3" type="text" /></p>
       <p>
         Quisque scelerisque leo sit amet magna lobortis dictum. Quisque cursus, augue a interdum
         volutpat, felis mi ullamcorper diam, nec venenatis lacus ipsum id odio. Vestibulum ante ipsum
@@ -46,4 +46,23 @@ const Template = ({label}: any) => {
 export const Default = Template.bind({})
 Default.args = {
   label: 'Accordion title example',
+}
+
+Default.story = {
+  parameters: {
+    storySource: {
+      source: `<div class="fw-expandable">
+  <h4>
+    <button id="demo-expandable-toggle" class="fw-expandable__toggle">
+      <span>Toggle</span>
+    </button>
+  </h4>
+  <div id="demo-expandable-content" class="fw-expandable__content-wrapper">
+    <div class="fw-expandable__content">
+      <p>...</p>
+    </div>
+  </div>
+</div>`,
+    },
+  },
 }

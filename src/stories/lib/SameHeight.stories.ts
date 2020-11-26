@@ -32,3 +32,24 @@ const Template = () => {
 
 export const Default = Template.bind({})
 Default.args = {}
+
+Default.story = {
+  parameters: {
+    storySource: {
+      source: `<div class="js-sameheight" data-child-selector=".js-sameheight__child" data-per-row="true" data-height-attribute="height">
+  <div class="js-sameheight__child">
+    ...
+  </div>
+  <div class="js-sameheight__child">
+    ....
+  </div>
+  <div class="js-sameheight__child">
+    ...
+  </div>
+  <div class="js-sameheight__child">
+    ...
+  </div>
+</div>`,
+    },
+  },
+}

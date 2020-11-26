@@ -37,3 +37,16 @@ const Template = () => {
 
 export const Default = Template.bind({})
 Default.args = {}
+
+Default.story = {
+  parameters: {
+    storySource: {
+      source: `<a href="image-1.jpg" data-fancybox="demo-gallery">
+  <img src="image-1-small.jpg" alt="" />
+</a>
+<a href="image-2.jpg" data-fancybox="demo-gallery">
+  <img src="image-2-small.jpg" alt="" />
+</a>`,
+    },
+  },
+}

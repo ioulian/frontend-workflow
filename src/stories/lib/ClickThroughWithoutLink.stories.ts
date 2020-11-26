@@ -21,3 +21,13 @@ const Template = () => {
 
 export const Default = Template.bind({})
 Default.args = {}
+
+Default.story = {
+  parameters: {
+    storySource: {
+      source: `<div class="js-clickthrough" data-href="#" data-target="_blank" tabindex="0" role="link">
+  ...
+</div>`,
+    },
+  },
+}

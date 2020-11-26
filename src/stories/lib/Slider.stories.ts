@@ -19,3 +19,20 @@ const Template = () => {
 
 export const Default = Template.bind({})
 Default.args = {}
+
+Default.story = {
+  parameters: {
+    storySource: {
+      source: `<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">...</div>
+    <div class="swiper-slide">...</div>
+    <div class="swiper-slide">...</div>
+    ...
+  </div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>`,
+    },
+  },
+}
