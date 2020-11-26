@@ -9,7 +9,7 @@ TabList.attach('.fw-tablist')
 // Watch on HTML change and attach new items
 new MutationObserver(() => {
   TabList.attach('.fw-tablist')
-}).observe(document, {
+}).observe(document.body, {
   childList: true,
   subtree: true,
 })

@@ -44,7 +44,7 @@ export class LazyLoader {
       this.update()
     })
 
-    this.observer.observe(document, {
+    this.observer.observe(document.body, {
       childList: true,
       subtree: true,
     })

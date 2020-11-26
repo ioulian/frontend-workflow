@@ -141,7 +141,7 @@ export class AsyncModuleLoader {
         AsyncModuleLoader.loadWatchModules()
       })
 
-      AsyncModuleLoader.observer.observe(document, {
+      AsyncModuleLoader.observer.observe(document.body, {
         childList: true,
         subtree: true,
       })

@@ -9,7 +9,7 @@ ColcadeLayout.attach('.fw-colcade')
 // Watch on HTML change and attach new items
 new MutationObserver(() => {
   ColcadeLayout.attach('.fw-colcade')
-}).observe(document, {
+}).observe(document.body, {
   childList: true,
   subtree: true,
 })

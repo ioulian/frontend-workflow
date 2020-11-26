@@ -9,7 +9,7 @@ Parallax.attach('.fw-parallax')
 // Watch on HTML change and attach new items
 new MutationObserver(() => {
   Parallax.attach('.fw-parallax')
-}).observe(document, {
+}).observe(document.body, {
   childList: true,
   subtree: true,
 })
