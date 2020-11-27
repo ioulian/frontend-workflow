@@ -1,8 +1,4 @@
-/* eslint-disable max-classes-per-file */
-
 import 'core-js/features/array/from'
-
-type Class = new (...args: any[]) => any
 
 /**
  * DOM attachment helper

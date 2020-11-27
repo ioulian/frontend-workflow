@@ -55,6 +55,7 @@ const defaults = {
 // Set up environments
 const devMode = process.env.NODE_ENV !== 'production'
 const devServer = process.env.NODE_ENV === 'devserver'
+const isStorybook = process.env.IS_STORYBOOK === 'true'
 
 // Get config
 const explorerSync = cosmiconfigSync('fw')
@@ -134,23 +135,29 @@ module.exports = {
       __PUBLIC_PATH__: JSON.stringify(devServer ? '/' : config.subFolder),
     }),
 
-    new MiniCssExtractPlugin({
-      filename: `css/[name].bundle${config.addFilenameHashes ? '.[contenthash]' : ''}.css`,
-      chunkFilename: `css/[name].chunk${config.addFilenameHashes ? '.[contenthash]' : ''}.css`,
-    }),
+    !isStorybook
+      ? new MiniCssExtractPlugin({
+          filename: `css/[name].bundle${config.addFilenameHashes ? '.[contenthash]' : ''}.css`,
+          chunkFilename: `css/[name].chunk${config.addFilenameHashes ? '.[contenthash]' : ''}.css`,
+        })
+      : () => {},
 
     // Create pages
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.ejs',
-      ...htmlPluginSettings,
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'offline.html',
-      template: 'offline.ejs',
-      ...htmlPluginSettings,
-    }),
-    config.createTagsFile
+    !isStorybook
+      ? new HtmlWebpackPlugin({
+          filename: 'index.html',
+          template: 'index.ejs',
+          ...htmlPluginSettings,
+        })
+      : () => {},
+    !isStorybook
+      ? new HtmlWebpackPlugin({
+          filename: 'offline.html',
+          template: 'offline.ejs',
+          ...htmlPluginSettings,
+        })
+      : () => {},
+    !isStorybook && config.createTagsFile
       ? new HtmlWebpackPlugin({
           filename: 'tags.html',
           templateContent: ({htmlWebpackPlugin}) => {
@@ -162,7 +169,7 @@ module.exports = {
         })
       : () => {},
 
-    devMode === false && config.modules.favicons
+    devMode === false && !isStorybook && config.modules.favicons
       ? new FaviconsWebpackPlugin({
           logo: path.resolve(__dirname, 'src/favicon.png'),
           prefix: './',
@@ -197,7 +204,7 @@ module.exports = {
         })
       : () => {},
 
-    serviceWorkerActive
+    !isStorybook && serviceWorkerActive
       ? new InjectManifest({
           swSrc: './src/sw.js',
           exclude: [/runtime\.bundle\./],
@@ -310,7 +317,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.scss'],
+    extensions: ['.tsx', '.ts', '.js', '.scss', '.mjs'],
   },
   optimization: {
     usedExports: true,

@@ -11633,10 +11633,10 @@ polished@^3.4.4:
   dependencies:
     "@babel/runtime" "^7.9.2"
 
-polytype@0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/polytype/-/polytype-0.11.0.tgz#cc9bc85f92ba6cbd7fed4072cde177448f22600d"
-  integrity sha512-bSV/BaTzI48HsQmekbrGYmRLwFjT2vwRozTB0W9vgcTMx1PzSXgYKPET+ek4Cc3qEqZpQs+DOBarKE3zktIaTQ==
+polytype@0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/polytype/-/polytype-0.10.0.tgz#ec8b72f6f7d4a4b39884872ec43a128c45d6a411"
+  integrity sha512-cOO64WWuWklNqp3dU3EbQwko22nOlC7ZMHAJKrJ1uVQwBG6M74tVfietxGJUG/ga7obfVUIpbLdoXYtjvG0AEg==
 
 popper.js@1.16.1:
   version "1.16.1"

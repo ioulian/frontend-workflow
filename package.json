@@ -47,7 +47,7 @@
     "intersection-observer": "0.11.0",
     "jquery": "3.5.1",
     "onfire.js": "2.0.1",
-    "polytype": "0.11.0",
+    "polytype": "0.10.0",
     "popper.js": "1.16.1",
     "promise-polyfill": "8.1.3",
     "smoothscroll-polyfill": "0.4.4",
@@ -76,8 +76,8 @@
     "prettier:lint": "prettier --check 'src/**/*.{js,scss,css,ts}'",
     "prettier:fix": "prettier --write 'src/**/*.{js,scss,css,ts}'",
     "analyze": "cross-env NODE_ENV=production webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json --default-sizes gzip",
-    "storybook": "cross-env NODE_ENV=devserver start-storybook -p 6006",
-    "build-storybook": "cross-env NODE_ENV=production build-storybook"
+    "storybook": "cross-env NODE_ENV=devserver IS_STORYBOOK=true start-storybook -p 6006",
+    "build-storybook": "cross-env NODE_ENV=production IS_STORYBOOK=true build-storybook -o dist/storybook"
   },
   "devDependencies": {
     "@babel/core": "7.12.9",

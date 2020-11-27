@@ -31,6 +31,9 @@ module.exports = {
         ...config.module,
         rules: custom.module.rules
       },
+      resolve: {
+        extensions: ['.tsx', '.ts', '.js', '.scss', '.mjs'],
+      },
       plugins: [
         ...config.plugins,
         custom.plugins[1] // DefinePlugin

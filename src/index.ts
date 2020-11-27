@@ -41,8 +41,8 @@ if (__SERVICE_WORKER_ACTIVE__) {
 
       const showSkipWaitingPrompt = () => {
         FreshContentNotification.show(
-          document.documentElement.getAttribute('data-fresh-content-notification-title') ?? undefined,
-          document.documentElement.getAttribute('data-fresh-content-notification-title') ?? undefined,
+          document.documentElement.getAttribute('data-fresh-content-notification-title') || undefined,
+          document.documentElement.getAttribute('data-fresh-content-notification-title') || undefined,
           5000,
           {
             accept: () => {
