@@ -4,7 +4,7 @@
     "sourceMap": true,
     "noImplicitAny": false,
     "module": "esNext",
-    "target": "es5",
+    "target": "es2020",
     "jsx": "react",
     "allowJs": false,
     "resolveJsonModule": true,
@@ -12,6 +12,6 @@
     "baseUrl": ".",
     "moduleResolution": "node",
     "downlevelIteration": true,
-    "lib": ["dom", "es7", "dom.iterable"]
+    "lib": ["dom", "es2020", "dom.iterable"]
   }
 }

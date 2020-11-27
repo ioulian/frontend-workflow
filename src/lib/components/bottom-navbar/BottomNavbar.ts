@@ -1,6 +1,8 @@
 import 'core-js/features/array/from'
 import 'core-js/features/array/includes'
 
+import {classes} from 'polytype'
+
 import {JSBreakpoint} from '../js-breakpoint/JSBreakpoint'
 
 import {Factory} from '../../base/js/Factory'
@@ -20,7 +22,7 @@ const defaults: SettingsType = {
  * Sets the position of fixed navbar to bottom on handheld devices
  * As most smartphone users use their devices with one hand, this is the best UX
  */
-export class BottomNavbar extends Factory() {
+export class BottomNavbar extends classes(Factory) {
   private wasFixedTop = true
 
   private settings: SettingsType
@@ -28,7 +30,7 @@ export class BottomNavbar extends Factory() {
   public static className: string = 'BottomNavbar'
 
   constructor(el: Element, settings: SettingsType) {
-    super(el)
+    super([el])
 
     const settingsFromDom: SettingsType = {}
 

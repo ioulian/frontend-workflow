@@ -1,9 +1,11 @@
+import {classes} from 'polytype'
+
 import {Factory} from '../../base/js/Factory'
 
 /**
  * Basic parallax functionality based on window scroll position
  */
-export class Parallax extends Factory() {
+export class Parallax extends classes(Factory) {
   public static attached = false
 
   public static shouldAnimate = false
@@ -12,17 +14,8 @@ export class Parallax extends Factory() {
 
   public static className = 'Parallax'
 
-  public update(offset: number): void {
-    const depth: number = parseFloat(this.el.getAttribute('data-depth') || '0.5')
-    const translate3d = `translate3d(0, ${(offset * depth).toFixed(5)}px, 0)`
-
-    if (this.el instanceof HTMLElement) {
-      this.el.style.transform = translate3d
-    }
-  }
-
-  public static attach(selector: string, ...restArgs: any[]): void {
-    super.attach(selector, ...restArgs)
+  constructor(el: Element) {
+    super([el])
 
     // Only activate this logic once per page
     if (Parallax.attached === false) {
@@ -49,6 +42,15 @@ export class Parallax extends Factory() {
       // Preset position (needed if a user refreshes the page after scroll, the top will be preset by the browser)
       Parallax.updateInstances()
       Parallax.attached = true
+    }
+  }
+
+  public update(offset: number): void {
+    const depth: number = parseFloat(this.el.getAttribute('data-depth') || '0.5')
+    const translate3d = `translate3d(0, ${(offset * depth).toFixed(5)}px, 0)`
+
+    if (this.el instanceof HTMLElement) {
+      this.el.style.transform = translate3d
     }
   }
 

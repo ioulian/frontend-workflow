@@ -1,4 +1,6 @@
 import 'element-closest/browser'
+
+import {classes} from 'polytype'
 import EE from 'onfire.js'
 import {throttle} from 'throttle-debounce'
 import {Factory} from '../../base/js/Factory'
@@ -12,7 +14,7 @@ import './Expandable.scss'
  * When using, keep in mind that '.fw-expandable__toggle' needs to have an id and
  * '.fw-expandable__content-wrapper' also needs an id
  */
-export class Expandable extends Factory(EE) {
+export class Expandable extends classes(Factory, EE) {
   private elToggle?: HTMLElement
 
   private elContent?: HTMLElement
@@ -26,7 +28,7 @@ export class Expandable extends Factory(EE) {
   public static className: string = 'Expandable'
 
   constructor(el: Element) {
-    super(el)
+    super([el])
 
     this.elToggle = this.el.querySelector('.fw-expandable__toggle')
     this.elContent = this.el.querySelector('.fw-expandable__content')
@@ -112,7 +114,7 @@ export class Expandable extends Factory(EE) {
   }
 
   public hasOpenClass(): boolean {
-    return this.el.classList.contains('fw-expandable--open') as boolean
+    return this.el.classList.contains('fw-expandable--open')
   }
 
   public toggle(): void {

@@ -1,5 +1,6 @@
 import 'core-js/features/array/from'
 
+import {classes} from 'polytype'
 import {throttle} from 'throttle-debounce'
 import {Factory} from '../../base/js/Factory'
 import Settings from '../../../project/Settings'
@@ -33,7 +34,7 @@ const elementDocumentOffsetTop = (el: Element): number =>
 /**
  * This script allows you to make HTMLElements have the same height
  */
-export class SameHeight extends Factory() {
+export class SameHeight extends classes(Factory) {
   private settings: SettingsType
 
   private classes: string[]
@@ -43,7 +44,7 @@ export class SameHeight extends Factory() {
   private throttledResize: any
 
   constructor(el: Element, settings: SettingsType) {
-    super(el)
+    super([el])
 
     const settingsFromDom: SettingsType = {}
 
@@ -129,7 +130,7 @@ export class SameHeight extends Factory() {
 
     this.classes.forEach((elClass) => {
       Array.from(this.el.querySelectorAll(elClass)).forEach((el) => {
-        ;(el as Element).removeAttribute('style')
+        el.removeAttribute('style')
       })
     })
   }

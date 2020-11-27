@@ -1,5 +1,7 @@
 import 'intersection-observer'
 
+import {classes} from 'polytype'
+
 import {Factory} from '../../base/js/Factory'
 
 import './InViewAnimation.scss'
@@ -7,13 +9,13 @@ import './InViewAnimation.scss'
 /**
  * Basic animation trigger based on IntersectionObserver
  */
-export class InViewAnimation extends Factory() {
+export class InViewAnimation extends classes(Factory) {
   private observer: IntersectionObserver
 
   public static className: string = 'InViewAnimation'
 
   constructor(el: Element) {
-    super(el)
+    super([el])
 
     this.observer = new IntersectionObserver(InViewAnimation.update.bind(this), {
       threshold: this.threshold,
