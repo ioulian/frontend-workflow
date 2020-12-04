@@ -1,6 +1,6 @@
 {
   "name": "frontend-workflow",
-  "version": "0.33.0",
+  "version": "0.34.0",
   "description": "Frontend workflow using Webpack 4",
   "author": "Yulian Alexeyev <yulian@dev-q.be> (https://github.com/ioulian)",
   "keywords": [
@@ -82,6 +82,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.12.9",
+    "@beyonk/google-fonts-webpack-plugin": "1.5.0",
     "@csstools/postcss-sass": "4.0.0",
     "@storybook/addon-a11y": "6.1.6",
     "@storybook/addon-actions": "6.1.6",

@@ -13,6 +13,7 @@ const DashboardPlugin = require('webpack-dashboard/plugin')
 const {cosmiconfigSync} = require('cosmiconfig')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
+const GoogleFontsPlugin = require('@beyonk/google-fonts-webpack-plugin')
 const {version} = require('./package.json')
 
 const defaults = {
@@ -54,6 +55,7 @@ const defaults = {
   components: {
     expose: false,
   },
+  googleFonts: [],
 }
 
 // Set up environments
@@ -73,6 +75,7 @@ const config = merge(defaults, configFile.config)
 
 // Setup some settings
 const serviceWorkerActive = config.modules.serviceWorker && (!devMode || config.serviceWorkerOnLocalHost)
+const shouldUseGoogleFonts = Array.isArray(config.googleFonts) && config.googleFonts.length !== 0
 
 const htmlPluginSettings = {
   title: config.name,
@@ -86,6 +89,7 @@ const htmlPluginSettings = {
   siteTwitterSite: config.html.twitterSite,
   siteTwitterAuthor: config.html.twitterAuthor,
   googleSiteVerification: config.googleSiteVerification,
+  googleFontsActive: shouldUseGoogleFonts,
   scriptLoading: config.modules.asyncJS,
   minify: {
     collapseWhitespace: !devMode,
@@ -176,6 +180,12 @@ module.exports = {
     new SpriteLoaderPlugin({
       plainSprite: true,
     }),
+    shouldUseGoogleFonts
+      ? new GoogleFontsPlugin({
+          fonts: config.googleFonts,
+          filename: `css/fonts.css`,
+        })
+      : () => {},
     devMode === false && !isStorybook && config.modules.favicons
       ? new FaviconsWebpackPlugin({
           logo: path.resolve(__dirname, 'src/favicon.png'),

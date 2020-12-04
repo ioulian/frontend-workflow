@@ -83,6 +83,10 @@
     <!-- 😌 Grab asset and cache it, can be <img /> or <script> too -->
     <!-- The CSS is handled by webpack, preload if using third party plugins -->
     <!-- <link as="style" rel="preload" href="https://unpkg.com/sanitize.css" /> -->
+
+    <% if (htmlWebpackPlugin.options.googleFontsActive) { %>
+    <link href="/css/fonts.css" rel="stylesheet" />
+    <% } %>
   </head>
 
   <body itemscope itemtype="http://schema.org/WebPage" style="padding-top: 56px">
