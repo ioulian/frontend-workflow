@@ -57,6 +57,8 @@ export class Accordion extends classes(Factory, EE) {
     window.addEventListener('load', () => {
       this.openFirstIfAny()
     })
+
+    Accordion.makeGlobal(Accordion.className)
   }
 
   /**

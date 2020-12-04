@@ -127,4 +127,16 @@ export class Factory {
   public static getInstanceFromElement(el: Element): undefined | Factory {
     return this.instances.find((instance) => instance.el === el) as undefined | Factory
   }
+
+  public static makeGlobal(className: string): void {
+    if (__EXPOSE_COMPONENTS__) {
+      // @ts-ignore
+      window.FW = window.FW || {}
+      // @ts-ignore
+      window.FW[className] = {
+        // @ts-ignore
+        getInstanceFromElement: this.getInstanceFromElement.bind(this),
+      }
+    }
+  }
 }

@@ -3,4 +3,4 @@
 [build]
   base = "" # Root directory
   publish = "dist"
-  command = "yarn export"
+  command = "yarn build:all"

@@ -20,5 +20,7 @@ export class ColcadeLayout extends classes(Factory) {
       columns: '.fw-colcade__grid-col',
       items: '.fw-colcade__grid-item',
     })
+
+    ColcadeLayout.makeGlobal(ColcadeLayout.className)
   }
 }

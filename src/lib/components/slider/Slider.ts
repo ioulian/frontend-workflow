@@ -18,6 +18,7 @@ const defaults: SwiperOptions = {
  * Slider
  */
 export class Slider extends classes(Factory) {
+  // @ts-ignore
   private swiperInstance: Swiper | null = null
 
   private settings: SwiperOptions
@@ -32,10 +33,13 @@ export class Slider extends classes(Factory) {
       ...settings,
     }
 
+    // @ts-ignore
     this.swiperInstance = new Swiper(this.el, this.settings)
+
+    Slider.makeGlobal(Slider.className)
   }
 
-  //
+  // @ts-ignore
   public getInstance(): Swiper {
     // eslint-disable-next-line
     return this.swiperInstance

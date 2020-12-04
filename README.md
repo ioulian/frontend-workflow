@@ -312,6 +312,7 @@ Before creating a build, you should update the following files/settings:
 | modules.serviceWorker             | `boolean`       | true                | Generate a Service Worker using WorkBox. Only used in production build.                                                                                                                                                                   |
 | modules.asyncJS                   | `boolean`       | true                | Add `async` attribute to scripts. Only used in production build.                                                                                                                                                                          |
 | bootstrap.importBundle            | `boolean`       | true                | If set to `true`, the whole JS bundle will be included for ease. If you want to have more control of what components are loaded, you can set this to `false` and import select components from Bootstrap directly.                        |
+| components.expose                 | `boolean`       | false               | If set to `true`, all default components will be exposed to window.FW object                                                                                                                                                              |
 
 **Note** All options are "optional" in the sense that the build will still work if you don't pass them, but you should review and define all "Required" options for the launch of your app.
 

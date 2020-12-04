@@ -36,7 +36,9 @@ module.exports = {
       },
       plugins: [
         ...config.plugins,
-        custom.plugins[1] // DefinePlugin
+        custom.plugins[1], // DefinePlugin
+        custom.plugins[2], // MiniCssExtractPlugin
+        custom.plugins[6] // SpriteLoaderPlugin
       ]
     };
   },

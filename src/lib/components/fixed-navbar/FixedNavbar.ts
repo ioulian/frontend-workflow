@@ -28,6 +28,8 @@ export class FixedNavbar extends classes(Factory) {
 
     this.update()
     this.updatePadding()
+
+    FixedNavbar.makeGlobal(FixedNavbar.className)
   }
 
   public update(): void {

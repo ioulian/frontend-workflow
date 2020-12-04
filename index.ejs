@@ -85,19 +85,8 @@
     <!-- <link as="style" rel="preload" href="https://unpkg.com/sanitize.css" /> -->
   </head>
 
-  <body itemscope itemtype="http://schema.org/WebPage" style="padding-top: 56px;">
-    <div class="svg-sprite" aria-hidden="true">
-      <!-- prettier-ignore -->
-      <% if (htmlWebpackPlugin.files.sprites) { %>
-      <!-- prettier-ignore -->
-      <% for (var spriteFileName in htmlWebpackPlugin.files.sprites) { %>
-      <!-- prettier-ignore -->
-      <%= htmlWebpackPlugin.files.sprites[spriteFileName] %>
-      <!-- prettier-ignore -->
-      <% } %>
-      <!-- prettier-ignore -->
-      <% } %>
-    </div>
+  <body itemscope itemtype="http://schema.org/WebPage" style="padding-top: 56px">
+    <div class="svg-sprite" aria-hidden="true"><%= compilation.assets["sprite.svg"].source() %></div>
     <header
       id="main-navbar"
       class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top is-bottom-mobile"
@@ -113,7 +102,15 @@
         >
           Frontend workflow
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navMenu"
+          aria-controls="navMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <nav id="navMenu" class="collapse navbar-collapse" aria-label="Main menu">
@@ -301,9 +298,7 @@
         <div class="container py-5 position-relative">
           <div class="row">
             <div class="col col-lg-8 offset-lg-2 fw-parallax" data-depth="0.2">
-              <h1 class="my-4">
-                Frontend workflow
-              </h1>
+              <h1 class="my-4">Frontend workflow</h1>
               <h2 class="h3 font-weight-light mb-0">
                 Webpack based frontend workflow that is optimized for <strong>performance</strong>,
                 <strong>ease of use</strong> and <strong>code quality</strong>.
@@ -319,8 +314,7 @@
               <div class="content">
                 <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
                   Simple alert to test if Boostrap has been initialized correctly.
-                  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
-                  </button>
+                  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
                 </div>
                 <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
                   <h3 id="section-documentation" class="js-in-view-animation__item">Documentation</h3>
@@ -465,9 +459,7 @@
                   tabindex="0"
                   role="link"
                 >
-                  <p>
-                    This text doesn't have a link inside, but you can define it with data attributes.
-                  </p>
+                  <p>This text doesn't have a link inside, but you can define it with data attributes.</p>
                 </div>
 
                 <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">

@@ -51,6 +51,8 @@ export class BottomNavbar extends classes(Factory) {
     })
 
     this.update()
+
+    BottomNavbar.makeGlobal(BottomNavbar.className)
   }
 
   public update(): void {

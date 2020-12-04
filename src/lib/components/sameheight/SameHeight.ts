@@ -95,6 +95,8 @@ export class SameHeight extends classes(Factory) {
     if (this.settings.watchSubtreeModification === true) {
       this.addMutationObserver()
     }
+
+    SameHeight.makeGlobal(SameHeight.className)
   }
 
   /**

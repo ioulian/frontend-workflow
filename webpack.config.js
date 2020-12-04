@@ -12,6 +12,7 @@ const PrettierPlugin = require('prettier-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 const {cosmiconfigSync} = require('cosmiconfig')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
 const {version} = require('./package.json')
 
 const defaults = {
@@ -49,6 +50,9 @@ const defaults = {
   },
   bootstrap: {
     importBundle: true,
+  },
+  components: {
+    expose: false,
   },
 }
 
@@ -133,6 +137,7 @@ module.exports = {
       __LANG__: config.language,
       __BOOTSTRAP_IMPORT_BUNDLE__: config.bootstrap.importBundle,
       __PUBLIC_PATH__: JSON.stringify(devServer ? '/' : config.subFolder),
+      __EXPOSE_COMPONENTS__: config.components.expose,
     }),
 
     !isStorybook
@@ -168,7 +173,9 @@ module.exports = {
           inject: false,
         })
       : () => {},
-
+    new SpriteLoaderPlugin({
+      plainSprite: true,
+    }),
     devMode === false && !isStorybook && config.modules.favicons
       ? new FaviconsWebpackPlugin({
           logo: path.resolve(__dirname, 'src/favicon.png'),
@@ -227,7 +234,7 @@ module.exports = {
       {
         test: /\.(sa|sc)ss$/,
         use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          devMode || isStorybook ? 'style-loader' : MiniCssExtractPlugin.loader,
           {loader: 'css-loader', options: {sourceMap: devMode}},
           {loader: 'postcss-loader', options: {sourceMap: devMode}},
           {loader: 'sass-loader', options: {sourceMap: devMode}},
@@ -236,14 +243,26 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          devMode || isStorybook ? 'style-loader' : MiniCssExtractPlugin.loader,
           {loader: 'css-loader', options: {sourceMap: devMode}},
           {loader: 'postcss-loader', options: {sourceMap: devMode}},
         ],
       },
       {
+        test: /-sprite\.svg$/,
+        use: [
+          {loader: 'svg-sprite-loader', options: {extract: true}},
+          {
+            loader: 'svgo-loader',
+            options: {
+              plugins: [],
+            },
+          },
+        ],
+      },
+      {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
-        // exclude: /-sprite\.svg$/,
+        exclude: /-sprite\.svg$/,
         use: [
           {
             loader: 'file-loader',

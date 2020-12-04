@@ -43,6 +43,8 @@ export class Parallax extends classes(Factory) {
       Parallax.updateInstances()
       Parallax.attached = true
     }
+
+    Parallax.makeGlobal(Parallax.className)
   }
 
   public update(offset: number): void {

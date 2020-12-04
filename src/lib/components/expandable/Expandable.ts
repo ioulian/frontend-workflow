@@ -41,6 +41,8 @@ export class Expandable extends classes(Factory, EE) {
     this.addEventListeners()
 
     this.el.classList.add('fw-expandable--init')
+
+    Expandable.makeGlobal(Expandable.className)
   }
 
   private setAriaAttributes(): void {

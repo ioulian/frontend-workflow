@@ -65,6 +65,7 @@
     "__IS_PROD__": "readonly",
     "__LANG__": "readonly",
     "__PUBLIC_PATH__": "readonly",
-    "__BOOTSTRAP_IMPORT_BUNDLE__": "readonly"
+    "__BOOTSTRAP_IMPORT_BUNDLE__": "readonly",
+    "__EXPOSE_COMPONENTS__": "readonly"
   }
 }

@@ -26,6 +26,8 @@ export class InViewAnimation extends classes(Factory) {
     // Add init class, this will put the animation in it's initial position
     // This will help if user has JS disabled, the element will still be visible/correctly positioned
     this.el.classList.add('js-in-view-animation--init')
+
+    InViewAnimation.makeGlobal(InViewAnimation.className)
   }
 
   public static update(entries: IntersectionObserverEntry[]): void {
