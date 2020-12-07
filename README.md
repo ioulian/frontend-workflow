@@ -429,8 +429,6 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 
 These are our own TODO's that might, or might not be included in this workflow, based on priority, ease of use/configuration and performance gain/penalty. If you want to implement them or help us out, you can always let us know!
 
-- (HIGH PRIO) fix svg spritesheet (wait on support)
-- (HIGH PRIO) favicons are in alpha, update when needed
 - (LOW PRIO) Add fallbacks for images/fonts if offline
 - (LOW PRIO) [https://webpack.js.org/configuration/configuration-languages/](https://webpack.js.org/configuration/configuration-languages/)
 - (LOW PRIO) Change lazy loading to this way: [https://addyosmani.com/blog/lazy-loading/](https://addyosmani.com/blog/lazy-loading/)
