@@ -109,8 +109,8 @@
         <button
           class="navbar-toggler"
           type="button"
-          data-toggle="collapse"
-          data-target="#navMenu"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
           aria-controls="navMenu"
           aria-expanded="false"
           aria-label="Toggle navigation"
@@ -118,24 +118,16 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <nav id="navMenu" class="collapse navbar-collapse" aria-label="Main menu">
-          <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item active">
               <a href="#" class="nav-link js-scroll-to" data-target="#section-documentation" data-offset="#main-navbar"
                 >Documentation</a
               >
             </li>
             <li class="nav-item active dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="navbarDropdown" role="button"
+                >Components</a
               >
-                Components
-              </a>
               <nav class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <ul class="list-unstyled">
                   <li>
@@ -318,7 +310,7 @@
               <div class="content">
                 <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
                   Simple alert to test if Boostrap has been initialized correctly.
-                  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
                   <h3 id="section-documentation" class="js-in-view-animation__item">Documentation</h3>

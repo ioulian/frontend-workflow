@@ -39,7 +39,7 @@
   "dependencies": {
     "@fancyapps/fancybox": "3.5.7",
     "aria-tablist": "1.2.2",
-    "bootstrap": "5.0.0-alpha3",
+    "bootstrap": "5.0.0-beta1",
     "colcade": "0.2.0",
     "core-js": "3.6.5",
     "element-closest": "3.0.2",
