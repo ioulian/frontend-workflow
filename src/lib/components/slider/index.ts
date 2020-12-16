@@ -1,6 +1,5 @@
 import {Slider} from './Slider'
 
-declare const Drupal: unknown
 if (typeof Drupal !== 'undefined') {
   Slider.initDrupalBehaviors('.swiper-container')
 }
@@ -12,4 +11,12 @@ window.addEventListener('load', () => {
   Slider.instances.forEach((slider: Slider) => {
     slider.getInstance().update()
   })
+})
+
+// Watch on HTML change and attach new items
+new MutationObserver(() => {
+  Slider.attach('.swiper-container')
+}).observe(document.body, {
+  childList: true,
+  subtree: true,
 })

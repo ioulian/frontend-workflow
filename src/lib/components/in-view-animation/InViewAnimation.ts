@@ -1,5 +1,7 @@
 import 'intersection-observer'
 
+import {classes} from 'polytype'
+
 import {Factory} from '../../base/js/Factory'
 
 import './InViewAnimation.scss'
@@ -7,13 +9,13 @@ import './InViewAnimation.scss'
 /**
  * Basic animation trigger based on IntersectionObserver
  */
-export class InViewAnimation extends Factory() {
+export class InViewAnimation extends classes(Factory) {
   private observer: IntersectionObserver
 
   public static className: string = 'InViewAnimation'
 
   constructor(el: Element) {
-    super(el)
+    super([el])
 
     this.observer = new IntersectionObserver(InViewAnimation.update.bind(this), {
       threshold: this.threshold,
@@ -24,6 +26,8 @@ export class InViewAnimation extends Factory() {
     // Add init class, this will put the animation in it's initial position
     // This will help if user has JS disabled, the element will still be visible/correctly positioned
     this.el.classList.add('js-in-view-animation--init')
+
+    InViewAnimation.makeGlobal(InViewAnimation.className)
   }
 
   public static update(entries: IntersectionObserverEntry[]): void {

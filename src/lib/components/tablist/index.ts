@@ -1,8 +1,15 @@
 import {TabList} from './TabList'
 
-declare const Drupal: unknown
 if (typeof Drupal !== 'undefined') {
   TabList.initDrupalBehaviors('.fw-tablist')
 }
 
 TabList.attach('.fw-tablist')
+
+// Watch on HTML change and attach new items
+new MutationObserver(() => {
+  TabList.attach('.fw-tablist')
+}).observe(document.body, {
+  childList: true,
+  subtree: true,
+})

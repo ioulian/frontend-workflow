@@ -1,9 +1,11 @@
 // eslint-disable-next-line import/no-unresolved
-import {SwiperOptions} from 'swiper/index'
-import Swiper from 'swiper/js/swiper.min'
+import {classes} from 'polytype'
+import {SwiperOptions} from 'swiper'
+import Swiper from 'swiper/swiper-bundle.min'
+
 import {Factory} from '../../base/js/Factory'
 
-import 'swiper/css/swiper.min.css'
+import 'swiper/swiper-bundle.css'
 
 const defaults: SwiperOptions = {
   navigation: {
@@ -15,7 +17,8 @@ const defaults: SwiperOptions = {
 /**
  * Slider
  */
-export class Slider extends Factory() {
+export class Slider extends classes(Factory) {
+  // @ts-ignore
   private swiperInstance: Swiper | null = null
 
   private settings: SwiperOptions
@@ -23,17 +26,20 @@ export class Slider extends Factory() {
   public static className: string = 'Slider'
 
   constructor(el: Element, settings: SwiperOptions) {
-    super(el)
+    super([el])
 
     this.settings = {
       ...defaults,
       ...settings,
     }
 
+    // @ts-ignore
     this.swiperInstance = new Swiper(this.el, this.settings)
+
+    Slider.makeGlobal(Slider.className)
   }
 
-  //
+  // @ts-ignore
   public getInstance(): Swiper {
     // eslint-disable-next-line
     return this.swiperInstance

@@ -29,6 +29,7 @@ If you don't want to use them, remove them from `src/project/Site.ts`.
 - [Frontend workflow](#frontend-workflow)
   - [Table of contents](#table-of-contents)
   - [Browser support](#browser-support)
+  - [OS Support](#os-support)
   - [Install](#install)
   - [Usage](#usage)
     - [Developing](#developing)
@@ -48,6 +49,7 @@ If you don't want to use them, remove them from `src/project/Site.ts`.
       - [Mobile](#mobile)
       - [Server-side performance](#server-side-performance)
     - [Analyze](#analyze)
+    - [Storybook](#storybook)
     - [Options](#options)
       - [Config Files](#config-files)
         - [.fwrc.json](#fwrcjson)
@@ -72,13 +74,17 @@ If you don't want to use them, remove them from `src/project/Site.ts`.
 The default components work on these browsers:
 
 - IE11
-- Edge
+- Edge (Chromium)
 - Chrome (+ Mobile)
 - FireFox
 - Opera
 - Safari (+ Mobile)
 
 There is also [Core-JS](https://github.com/zloirock/core-js) polyfill library added for your convenience if you'll need to add more polyfills in the future.
+
+## OS Support
+
+Has been tested on OSX, Linux and Windows 10 (with Powershell).
 
 ## Install
 
@@ -232,7 +238,6 @@ To create a production build, use `yarn build` (will lint code before) or use `y
 #### Submodules
 
 - **Favicons**: Will generate all icons and manifests for a PWA ready app.
-- **CriticalCSS**: Will inline critical CSS, based on 3 viewports (Mobile, Tablet Horizontal, Desktop). You can edit the viewports.
 - **ServiceWorker**: Will generate a service worker to cache resources of the website, thus allowing offline usage. (Depends on how you structure your app).
 - **Async JS**: Will add `async` attribute on all scripts allowing them not to block the rendering.
 
@@ -261,6 +266,11 @@ Keep in mind that servers (and their configuration) are a big part of performanc
 This workflow has [Bundle Analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) included if you want to see how to optimize your bundle. You can run it with `yarn analyze` and it will make a production build (can take a while) and open up a browser window with the analysis of the bundle.
 
 When running this command, a `stats.json` will be generated. You can also upload it [here](http://webpack.github.io/analyse/) and it will show you more info on how to optimize your build.
+
+### Storybook
+
+There is a basic installation of storybook in this repository. You can run it with `yarn storybook`.
+There you can find most of the standard components that are included in the library. You can also add your own components, can be used as a styleguide.
 
 ### Options
 
@@ -299,9 +309,11 @@ Before creating a build, you should update the following files/settings:
 | serviceWorkerOnLocalHost          | `boolean`       | false               | Activate service-worker on localhost (allows you to test it, don't enable it when developing your application)                                                                                                                            |
 | createTagsFile                    | `boolean`       | false               | If set to true, an additional `tags.html` file will be created with all favicon and manifest links (Useful to include them later if you are building your html files on the server). They are however always injected into `.html` files. |
 | modules.favicons                  | `boolean`       | true                | Generate favicons on build. Only used in production build.                                                                                                                                                                                |
-| modules.criticalCSS               | `boolean`       | true                | Inline Critical CSS. Only used in production build.                                                                                                                                                                                       |
 | modules.serviceWorker             | `boolean`       | true                | Generate a Service Worker using WorkBox. Only used in production build.                                                                                                                                                                   |
 | modules.asyncJS                   | `boolean`       | true                | Add `async` attribute to scripts. Only used in production build.                                                                                                                                                                          |
+| bootstrap.importBundle            | `boolean`       | true                | If set to `true`, the whole JS bundle will be included for ease. If you want to have more control of what components are loaded, you can set this to `false` and import select components from Bootstrap directly.                        |
+| components.expose                 | `boolean`       | false               | If set to `true`, all default components will be exposed to window.FW object                                                                                                                                                              |
+| googleFonts                       | `array`         | []                  | See [FontObject[]](https://github.com/beyonk-adventures/google-fonts-webpack-plugin#fontobject) from the plugin. When set the fonts will be served locally, optimizing loading times                                                      |
 
 **Note** All options are "optional" in the sense that the build will still work if you don't pass them, but you should review and define all "Required" options for the launch of your app.
 
@@ -417,13 +429,22 @@ If you encounter bugs or have some requests, please create a ticket at [Github](
 
 These are our own TODO's that might, or might not be included in this workflow, based on priority, ease of use/configuration and performance gain/penalty. If you want to implement them or help us out, you can always let us know!
 
-- (MED PRIO) Change factory to [https://github.com/fasttime/polytype](https://github.com/fasttime/polytype), it's a better module
-- (MED PRIO) Update html webpack plugin and favicons plugin
 - (LOW PRIO) Add fallbacks for images/fonts if offline
-- (LOW PRIO) Follow [Gimli](https://gimli.app/) to add it in the future
+- (LOW PRIO) [https://webpack.js.org/configuration/configuration-languages/](https://webpack.js.org/configuration/configuration-languages/)
 - (LOW PRIO) Change lazy loading to this way: [https://addyosmani.com/blog/lazy-loading/](https://addyosmani.com/blog/lazy-loading/)
 - (LOW PRIO) Change fixed header implementation to [https://pqina.nl/blog/applying-styles-based-on-the-user-scroll-position-with-smart-css/](https://pqina.nl/blog/applying-styles-based-on-the-user-scroll-position-with-smart-css/) maybe?
-- (LOW PRIO) Check how to implement font-variant-numeric: tabular-nums;
+- (LOW PRIO) v0.11.0 of polytype breaks Storybook, we use 1 version below
+
+Files to load for drupal:
+
+- frontend/dist/css/vendors.chunk.css: {}
+- frontend/dist/css/main.chunk.css: {}
+- frontend/dist/css/demo.chunk.css: {}
+- frontend/dist/js/runtime.bundle.js: {}
+- frontend/dist/js/vendors.chunk.js: {}
+- frontend/dist/js/main.chunk.js: {}
+- frontend/dist/js/common.chunk.js: {}
+- frontend/dist/js/demo.chunk.js: {}
 
 ## Possible libraries/workflows
 

@@ -4,15 +4,14 @@
     "sourceMap": true,
     "noImplicitAny": false,
     "module": "esNext",
-    "target": "es5",
+    "target": "ES2016",
     "jsx": "react",
     "allowJs": false,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "typeRoots": ["./src/@typings"],
     "baseUrl": ".",
     "moduleResolution": "node",
     "downlevelIteration": true,
-    "lib": ["dom", "es7", "dom.iterable"]
+    "lib": ["dom", "es2020", "dom.iterable"]
   }
 }

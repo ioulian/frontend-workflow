@@ -1,4 +1,5 @@
 import 'promise-polyfill/src/polyfill'
+
 import $ from 'jquery/dist/jquery.slim'
 
 import '@fancyapps/fancybox/dist/jquery.fancybox.min.css'
@@ -13,6 +14,7 @@ export class Gallery {
     window.jQuery = $
     window.$ = $
 
+    // @ts-ignore
     await import(/* webpackChunkName: "fancybox" */ '@fancyapps/fancybox/dist/jquery.fancybox.min')
     window.jQuery().fancybox({
       selector,

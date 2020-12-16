@@ -32,4 +32,10 @@
       @include fw-set-properties($properties, nth($values, 5));
     }
   }
+
+  @if length($values) >= 6 and nth($values, 6) != null {
+    @include media-breakpoint-up(xxl) {
+      @include fw-set-properties($properties, nth($values, 6));
+    }
+  }
 }

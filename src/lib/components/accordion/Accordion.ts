@@ -1,6 +1,7 @@
 import 'core-js/features/array/from'
 import 'core-js/features/array/find'
 
+import {classes} from 'polytype'
 import EE from 'onfire.js'
 import {debounce} from 'throttle-debounce'
 import {Factory} from '../../base/js/Factory'
@@ -20,7 +21,7 @@ const defaults: SettingsType = {
 /**
  * Accordion style div expander
  */
-export class Accordion extends Factory(EE) {
+export class Accordion extends classes(Factory, EE) {
   private settings: SettingsType
 
   private items: AccordionItem[]
@@ -30,7 +31,7 @@ export class Accordion extends Factory(EE) {
   public static className: string = 'Accordion'
 
   constructor(el: Element, settings: SettingsType) {
-    super(el)
+    super([el, settings], [])
 
     // Get settings from DOM data-attributes
     const settingsFromDom: SettingsType = {}
@@ -56,6 +57,8 @@ export class Accordion extends Factory(EE) {
     window.addEventListener('load', () => {
       this.openFirstIfAny()
     })
+
+    Accordion.makeGlobal(Accordion.className)
   }
 
   /**
@@ -76,7 +79,7 @@ export class Accordion extends Factory(EE) {
     this.handleOpenedClosed = debounce(Settings.debounce, this.triggerResize.bind(this))
 
     this.items = Array.from(this.el.querySelectorAll('.fw-accordion__item')).map((el) => {
-      const newItem = new AccordionItem(el as Element)
+      const newItem = new AccordionItem(el)
 
       if (this.settings.closeOthers === true) {
         newItem.on('open', (e: {target: AccordionItem}) => {

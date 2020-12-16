@@ -1,5 +1,10 @@
 import './FreshContentNotification.scss'
 
+interface Callback {
+  accept?: () => void
+  reject?: () => void
+}
+
 /**
  * Shows a toast notification when the site is cached by a service worker and a new content is available to download
  *
@@ -16,15 +21,16 @@ export class FreshContentNotification {
   public static show(
     content: string = 'New content available, click to refresh',
     title: string = 'Content updated',
-    timeout: number = 5000
+    timeout: number = 5000,
+    cb?: Callback
   ): void {
     // Add the element at the end of document
     document.body.insertAdjacentHTML(
       'beforeend',
-      `<div class="toast fresh-content-notification fade show" role="alert" aria-live="polite" aria-atomic="true">
+      `<div class="toast fresh-content-notification" role="alert" aria-live="polite" aria-atomic="true">
   <div class="toast-header">
     <strong class="mr-auto">${title}</strong>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+    <button type="button" class="btn-close" data-dismiss="toast" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -35,14 +41,16 @@ export class FreshContentNotification {
     )
 
     const el = document.querySelector('.fresh-content-notification')
-    const elClose = el.querySelector('.close')
+    const elClose = el.querySelector('.btn-close')
 
     // Reload page to show the new content
     el.addEventListener(
       'click',
       (e: MouseEvent) => {
         e.preventDefault()
-        window.location.reload()
+        if (cb?.accept) {
+          cb.accept.apply(this, [])
+        }
       },
       false
     )
@@ -55,6 +63,10 @@ export class FreshContentNotification {
 
         // Do not refresh the page when dismissing the toaster
         e.stopPropagation()
+
+        if (cb?.reject) {
+          cb.reject.apply(this, [])
+        }
         el.remove()
       },
       false
@@ -62,6 +74,10 @@ export class FreshContentNotification {
 
     // Remove after a set time
     setTimeout(() => {
+      if (cb?.reject) {
+        cb.reject.apply(this, [])
+      }
+
       el.remove()
     }, timeout)
   }

@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import LazyLoad from 'vanilla-lazyload/dist/lazyload.amd'
 
 import './LazyLoader.scss'
@@ -46,7 +44,7 @@ export class LazyLoader {
       this.update()
     })
 
-    this.observer.observe(document, {
+    this.observer.observe(document.body, {
       childList: true,
       subtree: true,
     })

@@ -83,21 +83,14 @@
     <!-- 😌 Grab asset and cache it, can be <img /> or <script> too -->
     <!-- The CSS is handled by webpack, preload if using third party plugins -->
     <!-- <link as="style" rel="preload" href="https://unpkg.com/sanitize.css" /> -->
+
+    <% if (htmlWebpackPlugin.options.googleFontsActive) { %>
+    <link href="/css/fonts.css" rel="stylesheet" />
+    <% } %>
   </head>
 
-  <body itemscope itemtype="http://schema.org/WebPage">
-    <div class="svg-sprite" aria-hidden="true">
-      <!-- prettier-ignore -->
-      <% if (htmlWebpackPlugin.files.sprites) { %>
-      <!-- prettier-ignore -->
-      <% for (var spriteFileName in htmlWebpackPlugin.files.sprites) { %>
-      <!-- prettier-ignore -->
-      <%= htmlWebpackPlugin.files.sprites[spriteFileName] %>
-      <!-- prettier-ignore -->
-      <% } %>
-      <!-- prettier-ignore -->
-      <% } %>
-    </div>
+  <body itemscope itemtype="http://schema.org/WebPage" style="padding-top: 56px">
+    <div class="svg-sprite" aria-hidden="true"><%= compilation.assets["sprite.svg"].source() %></div>
     <header
       id="main-navbar"
       class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top is-bottom-mobile"
@@ -125,7 +118,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <nav id="navMenu" class="collapse navbar-collapse" aria-label="Main menu">
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
             <li class="nav-item active">
               <a href="#" class="nav-link js-scroll-to" data-target="#section-documentation" data-offset="#main-navbar"
                 >Documentation</a
@@ -299,16 +292,17 @@
     <main>
       <section class="jumbotron overflow-hidden position-relative rounded-0">
         <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
           data-src="<%= require('./src/demo/media/hero-bg.jpg') %>"
+          width="1920"
+          height="663"
           class="fw-lazy-load fw-lazy-load--opacity-scale fw-full-size-in-parent"
           alt="Header image with sand"
         />
-        <div class="container py-5">
+        <div class="container py-5 position-relative">
           <div class="row">
             <div class="col col-lg-8 offset-lg-2 fw-parallax" data-depth="0.2">
-              <h1 class="my-4">
-                Frontend workflow
-              </h1>
+              <h1 class="my-4">Frontend workflow</h1>
               <h2 class="h3 font-weight-light mb-0">
                 Webpack based frontend workflow that is optimized for <strong>performance</strong>,
                 <strong>ease of use</strong> and <strong>code quality</strong>.
@@ -322,6 +316,10 @@
           <div class="row">
             <div class="col col-lg-8 offset-lg-2">
               <div class="content">
+                <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
+                  Simple alert to test if Boostrap has been initialized correctly.
+                  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                </div>
                 <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
                   <h3 id="section-documentation" class="js-in-view-animation__item">Documentation</h3>
                 </div>
@@ -380,35 +378,40 @@
                 </div>
                 <h4>Picture tag</h4>
                 <p>
-                  <picture width="960" height="640">
-                    <source
-                      media="print"
-                      data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-1x.jpg') %>"
-                    />
+                  <span class="demo-image">
+                    <picture width="960" height="640" intrinsicsize="960 x 640">
+                      <source
+                        media="print"
+                        data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-1x.jpg') %>"
+                      />
 
-                    <source
-                      media="(max-width: 480px)"
-                      data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-1x.jpg') %>"
-                    />
+                      <source
+                        media="(max-width: 480px)"
+                        data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-1x.jpg') %>"
+                      />
 
-                    <source
-                      media="(max-width: 640px)"
-                      data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-2x.jpg') %>"
-                    />
+                      <source
+                        media="(max-width: 640px)"
+                        data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-2x.jpg') %>"
+                      />
 
-                    <source
-                      media="(max-width: 1024px)"
-                      data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-4x.jpg') %>"
-                    />
+                      <source
+                        media="(max-width: 1024px)"
+                        data-srcset="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-4x.jpg') %>"
+                      />
 
-                    <img
-                      data-src="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-4x.jpg') %>"
-                      alt="Nymphenburg Castle in Munich during sunset"
-                      class="fw-lazy-load fw-lazy-load--opacity"
-                      width="960"
-                      height="640"
-                    />
-                  </picture>
+                      <img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+                        data-src="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-4x.jpg') %>"
+                        alt="Nymphenburg Castle in Munich during sunset"
+                        class="fw-lazy-load fw-lazy-load--opacity"
+                        width="960"
+                        height="640"
+                        intrinsicsize="960 x 640"
+                      />
+                    </picture>
+                  </span>
+
                   <small
                     >Images from:
                     <a href="https://responsiveimages.org" target="_blank" rel="noopener noreferrer"
@@ -419,13 +422,17 @@
 
                 <h4>Image tag</h4>
                 <p>
-                  <img
-                    class="fw-lazy-load fw-lazy-load--opacity"
-                    data-src="<%= require('./src/demo/media/responsive-images/img/yacht_race-desktop.jpg') %>"
-                    alt="A very exciting yacht race."
-                    width="1280"
-                    height="852"
-                  />
+                  <span class="demo-image">
+                    <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+                      class="fw-lazy-load fw-lazy-load--opacity"
+                      data-src="<%= require('./src/demo/media/responsive-images/img/yacht_race-desktop.jpg') %>"
+                      alt="A very exciting yacht race."
+                      width="1280"
+                      height="852"
+                      intrinsicsize="1280 x 852"
+                    />
+                  </span>
                   <small
                     >Images from:
                     <a href="https://responsiveimages.org" target="_blank" rel="noopener noreferrer"
@@ -456,9 +463,7 @@
                   tabindex="0"
                   role="link"
                 >
-                  <p>
-                    This text doesn't have a link inside, but you can define it with data attributes.
-                  </p>
+                  <p>This text doesn't have a link inside, but you can define it with data attributes.</p>
                 </div>
 
                 <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
@@ -756,22 +761,26 @@
                   data-fancybox="demo-gallery"
                 >
                   <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
                     data-src="<%= require('./src/demo/media/responsive-images/picture/test_landscape_1-4x.jpg') %>"
                     alt="Nymphenburg Castle in Munich during sunset"
                     class="fw-lazy-load fw-lazy-load--opacity"
                     width="960"
                     height="640"
+                    intrinsicsize="960 x 640"
                 /></a>
                 <a
                   href="<%= require('./src/demo/media/responsive-images/img/yacht_race-desktop.jpg') %>"
                   data-fancybox="demo-gallery"
                 >
                   <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
                     data-src="<%= require('./src/demo/media/responsive-images/img/yacht_race-desktop.jpg') %>"
                     class="fw-lazy-load fw-lazy-load--opacity"
                     alt="A very exciting yacht race."
                     width="1280"
                     height="852"
+                    intrinsicsize="1280 x 852"
                 /></a>
 
                 <div class="js-in-view-animation js-in-view-animation--fade-in-from-left" data-once="true">
@@ -802,11 +811,17 @@
                   <svg>
                     <use xlink:href="#biology-sprite"></use>
                   </svg>
-                  <img src="<%= require('./src/demo/media/book.svg') %>" alt="book icon" />
+                  <img src="<%= require('./src/demo/media/book.svg') %>" width="32" height="32" alt="book icon" />
                 </div>
                 <div class="app-demo-svg-sprites-credits">
                   Icons made by
-                  <a href="https://www.flaticon.com/authors/freepik" target="_blank" title="Freepik">Freepik</a>
+                  <a
+                    href="https://www.flaticon.com/authors/freepik"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Freepik"
+                    >Freepik</a
+                  >
                   from
                   <a href="https://www.flaticon.com/" title="Flaticon" target="_blank" rel="noopener noreferrer"
                     >www.flaticon.com</a
@@ -826,37 +841,57 @@
                   <div class="col-6 fw-colcade__grid-col"></div>
                   <div class="fw-colcade__grid-item">
                     <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
                       class="fw-lazy-load fw-lazy-load--opacity"
                       data-src="https://picsum.photos/460/500"
                       alt="Sample Colcade image 1"
+                      width="460"
+                      height="500"
+                      intrinsicsize="460 x 500"
                     />
                   </div>
                   <div class="fw-colcade__grid-item">
                     <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
                       class="fw-lazy-load fw-lazy-load--opacity"
                       data-src="https://picsum.photos/460/400"
                       alt="Sample Colcade image 2"
+                      width="460"
+                      height="400"
+                      intrinsicsize="460 x 400"
                     />
                   </div>
                   <div class="fw-colcade__grid-item">
                     <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
                       class="fw-lazy-load fw-lazy-load--opacity"
                       data-src="https://picsum.photos/460/300"
                       alt="Sample Colcade image 3"
+                      width="460"
+                      height="300"
+                      intrinsicsize="460 x 300"
                     />
                   </div>
                   <div class="fw-colcade__grid-item">
                     <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
                       class="fw-lazy-load fw-lazy-load--opacity"
                       data-src="https://picsum.photos/460/700"
                       alt="Sample Colcade image 4"
+                      width="460"
+                      height="700"
+                      intrinsicsize="460 x 700"
                     />
                   </div>
                   <div class="fw-colcade__grid-item">
                     <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
                       class="fw-lazy-load fw-lazy-load--opacity"
                       data-src="https://picsum.photos/460/420"
                       alt="Sample Colcade image 5"
+                      width="460"
+                      height="420"
+                      intrinsicsize="460 x 420"
                     />
                   </div>
                 </div>

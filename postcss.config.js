@@ -4,7 +4,7 @@ module.exports = {
     require('postcss-utilities'),
     require('postcss-preset-env'),
     require('postcss-easing-gradients'),
-    require('postcss-css-variables')({
+    require('postcss-custom-properties')({
       preserve: true,
     }),
     require('autoprefixer'),
