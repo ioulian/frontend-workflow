@@ -32,18 +32,7 @@
   </head>
 
   <body itemscope itemtype="http://schema.org/WebPage">
-    <div class="svg-sprite" aria-hidden="true">
-      <!-- prettier-ignore -->
-      <% if (htmlWebpackPlugin.files.sprites) { %>
-      <!-- prettier-ignore -->
-      <% for (var spriteFileName in htmlWebpackPlugin.files.sprites) { %>
-      <!-- prettier-ignore -->
-      <%= htmlWebpackPlugin.files.sprites[spriteFileName] %>
-      <!-- prettier-ignore -->
-      <% } %>
-      <!-- prettier-ignore -->
-      <% } %>
-    </div>
+    <div class="svg-sprite" aria-hidden="true"><%= compilation.assets["sprite.svg"].source() %></div>
 
     <header
       id="main-navbar"
