@@ -33,6 +33,14 @@ export class Slider extends classes(Factory) {
       ...settings,
     }
 
+    const inlineSettings = this.el.hasAttribute('data-settings') ? this.el.getAttribute('data-settings') : null
+    if (inlineSettings !== null) {
+      this.settings = {
+        ...this.settings,
+        ...JSON.parse(inlineSettings),
+      }
+    }
+
     // @ts-ignore
     this.swiperInstance = new Swiper(this.el, this.settings)
 
