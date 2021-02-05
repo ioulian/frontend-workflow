@@ -4,7 +4,6 @@ import {Site} from './project/Site'
 import './index.scss'
 
 if (__BOOTSTRAP_IMPORT_BUNDLE__) {
-  console.log('enter')
   import(/* webpackChunkName: "bootstrap" */ 'bootstrap/dist/js/bootstrap.bundle.min').then(undefined, undefined)
 }
 
