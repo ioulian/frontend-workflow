@@ -14,6 +14,7 @@ const {cosmiconfigSync} = require('cosmiconfig')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
 const GoogleFontsPlugin = require('@beyonk/google-fonts-webpack-plugin')
+const CleanObsoleteChunks = require('webpack-clean-obsolete-chunks')
 const {version} = require('./package.json')
 
 const defaults = {
@@ -132,6 +133,7 @@ module.exports = {
   plugins: [
     // Clean build folder on build
     devMode === false ? new CleanWebpackPlugin() : () => {},
+    devMode === true ? new CleanObsoleteChunks() : () => {},
 
     // Define constants for the client (they are injected in the project TS/JS code)
     new webpack.DefinePlugin({

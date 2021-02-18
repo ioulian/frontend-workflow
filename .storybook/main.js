@@ -1,16 +1,13 @@
-const path = require('path');
+const path = require('path')
 
-const custom = require('../webpack.config.js');
+const custom = require('../webpack.config.js')
 
 module.exports = {
-  "stories": [
-    "../src/**/*.stories.mdx",
-    "../src/**/*.stories.@(js|jsx|ts|tsx)"
-  ],
-  "addons": [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-a11y",
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-a11y',
     {
       name: '@storybook/addon-storysource',
       options: {
@@ -19,7 +16,7 @@ module.exports = {
           include: [path.resolve(__dirname, '../src')], // You can specify directories
         },
         loaderOptions: {
-          prettierConfig: { printWidth: 80, singleQuote: false },
+          prettierConfig: {printWidth: 80, singleQuote: false},
         },
       },
     },
@@ -29,17 +26,17 @@ module.exports = {
       ...config,
       module: {
         ...config.module,
-        rules: custom.module.rules
+        rules: custom.module.rules,
       },
       resolve: {
         extensions: ['.tsx', '.ts', '.js', '.scss', '.mjs'],
       },
       plugins: [
         ...config.plugins,
-        custom.plugins[1], // DefinePlugin
-        custom.plugins[2], // MiniCssExtractPlugin
-        custom.plugins[6] // SpriteLoaderPlugin
-      ]
-    };
+        custom.plugins[2], // DefinePlugin
+        custom.plugins[3], // MiniCssExtractPlugin
+        custom.plugins[7], // SpriteLoaderPlugin
+      ],
+    }
   },
-};
+}
