@@ -360,11 +360,11 @@ module.exports = {
         //   name: 'vendors',
         //   chunks: 'all',
         // },
-        common: {
-          test: /Factory\.ts|Settings\.ts|Expandable\.ts/,
-          name: 'common',
-          chunks: 'all',
-        },
+        // common: {
+        //   test: /Factory\.ts|Settings\.ts|Expandable\.ts/,
+        //   name: 'common',
+        //   chunks: 'all',
+        // },
       },
     },
   },
