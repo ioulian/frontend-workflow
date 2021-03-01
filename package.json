@@ -33,6 +33,7 @@
   },
   "private": false,
   "sideEffects": [
+    "*.js",
     "*.css",
     "*.scss"
   ],
