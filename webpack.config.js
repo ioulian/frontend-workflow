@@ -41,6 +41,7 @@ const defaults = {
   },
   devServerHTTPS: true,
   addFilenameHashes: true,
+  forceNoHashesOnDev: false,
   outputPath: 'dist',
   subFolder: '/',
   serviceWorkerOnLocalHost: false,
@@ -77,6 +78,7 @@ const config = merge(defaults, configFile.config)
 // Setup some settings
 const serviceWorkerActive = config.modules.serviceWorker && (!devMode || config.serviceWorkerOnLocalHost)
 const shouldUseGoogleFonts = Array.isArray(config.googleFonts) && config.googleFonts.length !== 0
+const addHash = config.addFilenameHashes && !(devMode === true && config.forceNoHashesOnDev === true)
 
 const htmlPluginSettings = {
   title: config.name,
@@ -119,8 +121,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, config.outputPath),
-    filename: `js/[name].bundle${config.addFilenameHashes ? '.[contenthash]' : ''}.js`,
-    chunkFilename: `js/[name].chunk${config.addFilenameHashes ? '.[contenthash]' : ''}.js`,
+    filename: `js/[name].bundle${addHash ? '.[contenthash]' : ''}.js`,
+    chunkFilename: `js/[name].chunk${addHash ? '.[contenthash]' : ''}.js`,
     publicPath: devServer ? '/' : config.subFolder,
   },
   devServer: {
@@ -148,8 +150,8 @@ module.exports = {
 
     !isStorybook
       ? new MiniCssExtractPlugin({
-          filename: `css/[name].bundle${config.addFilenameHashes ? '.[contenthash]' : ''}.css`,
-          chunkFilename: `css/[name].chunk${config.addFilenameHashes ? '.[contenthash]' : ''}.css`,
+          filename: `css/[name].bundle${addHash ? '.[contenthash]' : ''}.css`,
+          chunkFilename: `css/[name].chunk${addHash ? '.[contenthash]' : ''}.css`,
         })
       : () => {},
 
@@ -280,7 +282,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               context: path.resolve(__dirname, 'src'),
-              name: `img/[path][name]${config.addFilenameHashes ? '.[contenthash]' : ''}.[ext]`,
+              name: `img/[path][name]${addHash ? '.[contenthash]' : ''}.[ext]`,
               outputPath: './',
               publicPath: devServer ? '/' : config.subFolder,
               useRelativePaths: true,
@@ -340,7 +342,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               context: path.resolve(__dirname, 'src'),
-              name: `fonts/[path][name]${config.addFilenameHashes ? '.[contenthash]' : ''}.[ext]`,
+              name: `fonts/[path][name]${addHash ? '.[contenthash]' : ''}.[ext]`,
             },
           },
         ],
