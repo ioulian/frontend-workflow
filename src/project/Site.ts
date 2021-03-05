@@ -14,7 +14,6 @@ export class Site {
       instance = this
     }
 
-    // Remove this line if the AsyncModuleLoader doesn't work correctly.
     AsyncModuleLoader.loadAll()
 
     // Add your stuff here
