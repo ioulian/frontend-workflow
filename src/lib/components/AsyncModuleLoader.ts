@@ -19,12 +19,6 @@ export interface SingleRunConfig {
  * If you try to load a component, it will first search for DOM elements that it can apply to.
  * 1: If nothing is found, it will not be loaded, thus saving bandwidth on unneeded JS code
  * 2: If elements are found in the DOM, the component will be loaded and executed on these elements
- *
- * Keep in mind, if you have ajax based navigation, or the DOM is dynamically changed, you'll need to manually
- * load the needed components (preferably in an event listener after the DOM has been updated)
- *
- * This class does not contain all components that are included in this workflow,
- * as some components are not bound on specific elements. These you should add manually.
  */
 export class AsyncModuleLoader {
   public static observer?: MutationObserver = null
