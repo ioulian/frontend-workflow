@@ -417,7 +417,8 @@ You can see the demo here: [https://trusting-perlman-3c2ee5.netlify.com](https:/
 
 - Remove `demo` entry point from `webpack.common.js`
 - Remove `src/demo`
-- Remove demo html from `index.html`
+- Remove demo html from `index.ejs` and `offline.ejs`
+- *NOTE*: The stories require demo content. The build will fail if the images from demo are removed because they are needed for some stories. You can replace those images with your own or some placeholder.
 
 You can now start with our own project.
 
