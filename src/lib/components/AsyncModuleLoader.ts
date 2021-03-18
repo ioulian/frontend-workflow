@@ -83,7 +83,7 @@ export class AsyncModuleLoader {
       await import(/* webpackChunkName: "bottomnavbar" */ './bottom-navbar/index')
     })
 
-    AsyncModuleLoader.addToWatch('.swiper-container', async () => {
+    AsyncModuleLoader.addToWatch('.fw-slider', async () => {
       await import(/* webpackChunkName: "slider" */ './slider/index')
     })
 

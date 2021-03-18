@@ -55,7 +55,7 @@ if (elDemoSlider instanceof HTMLElement) {
     'click',
     () => {
       elDemoSlider.innerHTML = `
-      <div class="swiper-container">
+      <div class="swiper-container fw-slider">
         <div class="swiper-wrapper">
           <div class="swiper-slide">Slide 1</div>
           <div class="swiper-slide">Slide 2</div>

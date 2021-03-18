@@ -5,7 +5,7 @@ export default {
 
 const Template = () => {
   return `
-<div class="swiper-container">
+<div class="swiper-container fw-slider">
   <div class="swiper-wrapper">
     <div class="swiper-slide">Slide 1</div>
     <div class="swiper-slide">Slide 2</div>
@@ -23,7 +23,7 @@ Default.args = {}
 Default.story = {
   parameters: {
     storySource: {
-      source: `<div class="swiper-container">
+      source: `<div class="swiper-container fw-slider">
   <div class="swiper-wrapper">
     <div class="swiper-slide">...</div>
     <div class="swiper-slide">...</div>

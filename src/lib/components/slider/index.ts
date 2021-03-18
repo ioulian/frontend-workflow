@@ -1,10 +1,10 @@
 import {Slider} from './Slider'
 
 if (typeof Drupal !== 'undefined') {
-  Slider.initDrupalBehaviors('.swiper-container')
+  Slider.initDrupalBehaviors('.fw-slider')
 }
 
-Slider.attach('.swiper-container')
+Slider.attach('.fw-slider')
 
 // Css is loaded later when in dev mode, update the slider on load of css
 window.addEventListener('load', () => {
@@ -15,7 +15,7 @@ window.addEventListener('load', () => {
 
 // Watch on HTML change and attach new items
 new MutationObserver(() => {
-  Slider.attach('.swiper-container')
+  Slider.attach('.fw-slider')
 }).observe(document.body, {
   childList: true,
   subtree: true,
