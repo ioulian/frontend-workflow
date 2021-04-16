@@ -4,3 +4,8 @@
   base = "" # Root directory
   publish = "dist"
   command = "yarn build:all"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Permissions-Policy = "interest-cohort=()"
