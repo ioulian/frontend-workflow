@@ -59,6 +59,7 @@ If you don't want to use them, remove them from `src/project/Site.ts`.
     - [Setting a subfolder](#setting-a-subfolder)
     - [Disable Critical CSS](#disable-critical-css)
     - [Favicons](#favicons)
+  - [Generator](#generator)
   - [Files to deploy](#files-to-deploy)
   - [TypScript usage examples](#typscript-usage-examples)
     - [Import thirdparty library](#import-thirdparty-library)
@@ -375,6 +376,18 @@ Critical CSS plugin uses headless browser to render the index.html and get only 
 ### Favicons
 
 As Favicon and manifest tags are injected into `index.html` file on build, you will need to set `createTagsFile` to `true` to generate a `dist/tags.html` file that you can then inject into the head of your project.
+
+## Generator
+
+We have included a code generator to generate some commonly used pieces of code.
+
+You can use it with `yarn generate`. These are all options:
+
+- `yarn generate js component [name] (--withCss)`: Will create a JS component.
+- `yarn generate css folder-structure`: Will create a basic folder structure
+- `yarn generate css section [name]`
+- `yarn generate css block [name]`
+- `yarn generate css component [name]`
 
 ## Files to deploy
 

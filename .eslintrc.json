@@ -15,7 +15,7 @@
       }
     },
     {
-      "files": ["src/**/*.ts"],
+      "files": ["src/**/*.ts", "scripts/**/*.ts"],
       "parserOptions": {
         "project": "./.tsconfig.json"
       },

@@ -1,6 +1,6 @@
 {
   "name": "frontend-workflow",
-  "version": "0.35.0",
+  "version": "0.36.1",
   "description": "Frontend workflow using Webpack 4",
   "author": "Yulian Alexeyev <yulian@dev-q.be> (https://github.com/ioulian)",
   "keywords": [
@@ -79,7 +79,8 @@
     "prettier:fix": "prettier --write 'src/**/*.{js,scss,css,ts}'",
     "analyze": "cross-env NODE_ENV=production webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json --default-sizes gzip",
     "storybook": "cross-env NODE_ENV=devserver IS_STORYBOOK=true start-storybook -p 6006",
-    "build-storybook": "cross-env NODE_ENV=production IS_STORYBOOK=true build-storybook -o dist/storybook"
+    "build-storybook": "cross-env NODE_ENV=production IS_STORYBOOK=true build-storybook -o dist/storybook",
+    "generate": "ts-node scripts/generate/index.ts"
   },
   "devDependencies": {
     "@babel/core": "7.12.9",
@@ -114,6 +115,8 @@
     "image-webpack-loader": "7.0.1",
     "mini-css-extract-plugin": "1.1.2",
     "node-sass": "4.14.1",
+    "param-case": "3.0.4",
+    "pascal-case": "3.1.2",
     "postcss-custom-properties": "10.0.0",
     "postcss-easing-gradients": "3.0.1",
     "postcss-loader": "4.0.4",
@@ -133,16 +136,18 @@
     "svgo": "1.3.2",
     "svgo-loader": "2.2.1",
     "ts-loader": "8.0.6",
+    "ts-node": "9.1.1",
     "typescript": "4.0.3",
     "webpack": "4.44.2",
     "webpack-bundle-analyzer": "3.9.0",
-    "webpack-clean-obsolete-chunks": "^0.4.0",
+    "webpack-clean-obsolete-chunks": "0.4.0",
     "webpack-cli": "4.2.0",
     "webpack-dashboard": "3.2.1",
     "webpack-dev-server": "3.11.0",
     "webpack-merge": "5.4.0",
     "webpack-stream": "6.1.0",
-    "workbox-webpack-plugin": "5.1.4"
+    "workbox-webpack-plugin": "5.1.4",
+    "yargs": "16.2.0"
   },
   "browserslist": [
     "defaults"
