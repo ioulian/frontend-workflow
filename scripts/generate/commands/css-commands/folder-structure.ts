@@ -6,11 +6,13 @@ import {
   CSS_STYLES_DIR,
   resolveDir,
   writeFile,
+  fileExists,
+  readFile,
 } from '../../utils'
 
 exports.command = 'folder-structure'
 
-exports.describe = 'Creates a folder structure for CSS.'
+exports.describe = 'Creates a folder structure for CSS. This will overwrite existing code!'
 
 exports.handler = () => {
   const generalDir = createDir(`${CSS_STYLES_DIR}/general`)
@@ -33,7 +35,8 @@ exports.handler = () => {
   writeFile(
     `${sectionsDir}/_base.scss`,
     `@import './header/base';
-@import './footer/base';`
+@import './footer/base';
+`
   )
 
   const blocksDir = createDir(CSS_BLOCKS_DIR)
@@ -49,7 +52,18 @@ exports.handler = () => {
 @import './sections/base';`
   )
 
-  console.log(`Done!
+  // Add to index
+  const baseFilePath = resolveDir(`/src/index.scss`)
+  const baseFileExists = fileExists(baseFilePath)
+  if (baseFileExists) {
+    writeFile(
+      baseFilePath,
+      `${readFile(baseFilePath)}@import './project/styles/base';
+`
+    )
 
-Do not forget to add "@import './project/styles/base';" in 'src/index.scss' at the end of the file.`)
+    console.log('Done and automatically added to src/index.scss!')
+  } else {
+    console.log('Done! Do not forget to import this file in src/index.scss!')
+  }
 }
