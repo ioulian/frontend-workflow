@@ -15,6 +15,7 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
 const GoogleFontsPlugin = require('@beyonk/google-fonts-webpack-plugin')
 const CleanObsoleteChunks = require('webpack-clean-obsolete-chunks')
+const {ESBuildMinifyPlugin} = require('esbuild-loader')
 const {version} = require('./package.json')
 
 const defaults = {
@@ -46,6 +47,7 @@ const defaults = {
   subFolder: '/',
   serviceWorkerOnLocalHost: false,
   createTagsFile: true,
+  useEsBuild: false,
   modules: {
     favicons: true,
     serviceWorker: true,
@@ -237,14 +239,23 @@ module.exports = {
   ],
   module: {
     rules: [
-      {
-        test: /\.tsx?$/,
-        loader: 'ts-loader',
-        exclude: /node_modules/,
-        options: {
-          configFile: '.tsconfig.json',
-        },
-      },
+      config.useEsBuild
+        ? {
+            test: /\.tsx?$/,
+            loader: 'esbuild-loader',
+            options: {
+              loader: 'ts',
+              target: 'es2016',
+            },
+          }
+        : {
+            test: /\.tsx?$/,
+            loader: 'ts-loader',
+            exclude: /node_modules/,
+            options: {
+              configFile: '.tsconfig.json',
+            },
+          },
       {
         test: /\.(sa|sc)ss$/,
         use: [
@@ -355,6 +366,13 @@ module.exports = {
   optimization: {
     usedExports: true,
     runtimeChunk: 'single',
+    minimizer: config.useEsBuild
+      ? [
+          new ESBuildMinifyPlugin({
+            target: 'es2016',
+          }),
+        ]
+      : [],
     splitChunks: {
       cacheGroups: {
         // vendor: {
