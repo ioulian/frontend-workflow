@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/aa5f20fe-ba4c-4956-b6b5-fcb2470537e1/deploy-status)](https://app.netlify.com/sites/trusting-perlman-3c2ee5/deploys)
 
-This repository contains a (opinionated) starterkit for developing a frontend application/website. It contains code linting (with Prettier, ESLint and StyleLint), TypeScript, PostCSS with SASS (that has Bootstrap framework initialized) and generation of Favicons. The build is based on Webpack 4.
+This repository contains a (opinionated) starterkit for developing a frontend application/website. It contains code linting (with Prettier, ESLint and StyleLint), TypeScript, PostCSS with SASS (that has Bootstrap framework initialized) and generation of Favicons. The build is based on Webpack 5.
 
 You can preview the output here: [https://trusting-perlman-3c2ee5.netlify.com](https://trusting-perlman-3c2ee5.netlify.com). There you'll find included JS components and you can do your own audit checks on this site to compare the performance with other projects.
 

@@ -95,7 +95,7 @@ const htmlPluginSettings = {
   siteTwitterAuthor: config.html.twitterAuthor,
   googleSiteVerification: config.googleSiteVerification,
   googleFontsActive: shouldUseGoogleFonts,
-  scriptLoading: config.modules.asyncJS,
+  scriptLoading: config.modules.asyncJS ? 'defer' : 'blocking',
   minify: {
     collapseWhitespace: !devMode,
     removeComments: !devMode,
@@ -175,11 +175,10 @@ module.exports = {
     !isStorybook && config.createTagsFile
       ? new HtmlWebpackPlugin({
           filename: 'tags.html',
-          templateContent: ({htmlWebpackPlugin}) => {
-            return `${htmlWebpackPlugin.tags.headTags.filter(
+          templateContent: ({htmlWebpackPlugin}) =>
+            `${htmlWebpackPlugin.tags.headTags.filter(
               (tag) => !(tag.tagName === 'link' && tag.attributes.rel === 'stylesheet') && tag.tagName !== 'script'
-            )}`
-          },
+            )}`,
           inject: false,
         })
       : () => {},
