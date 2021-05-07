@@ -3,6 +3,9 @@ const path = require('path')
 const custom = require('../webpack.config.js')
 
 module.exports = {
+  core: {
+    builder: 'webpack5',
+  },
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-links',
@@ -30,6 +33,10 @@ module.exports = {
       },
       resolve: {
         extensions: ['.tsx', '.ts', '.js', '.scss', '.mjs'],
+        fallback: {
+          crypto: false,
+          path: false,
+        },
       },
       plugins: [
         ...config.plugins,
