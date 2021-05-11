@@ -451,17 +451,6 @@ These are our own TODO's that might, or might not be included in this workflow, 
 - (LOW PRIO) Change fixed header implementation to [https://pqina.nl/blog/applying-styles-based-on-the-user-scroll-position-with-smart-css/](https://pqina.nl/blog/applying-styles-based-on-the-user-scroll-position-with-smart-css/) maybe?
 - (LOW PRIO) v0.11.0 of polytype breaks Storybook, we use 1 version below
 
-Files to load for drupal:
-
-- frontend/dist/css/vendors.chunk.css: {}
-- frontend/dist/css/main.chunk.css: {}
-- frontend/dist/css/demo.chunk.css: {}
-- frontend/dist/js/runtime.bundle.js: {}
-- frontend/dist/js/vendors.chunk.js: {}
-- frontend/dist/js/main.chunk.js: {}
-- frontend/dist/js/common.chunk.js: {}
-- frontend/dist/js/demo.chunk.js: {}
-
 ## Possible libraries/workflows
 
 To keep the performance of the app up and the workload for developers low, this is a list of useful libraries/workflows:
