@@ -16,6 +16,7 @@ const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
 const GoogleFontsPlugin = require('@beyonk/google-fonts-webpack-plugin')
 const CleanObsoleteChunks = require('webpack-clean-obsolete-chunks')
 const {ESBuildMinifyPlugin} = require('esbuild-loader')
+const TerserPlugin = require('terser-webpack-plugin')
 const {version} = require('./package.json')
 
 const defaults = {
@@ -365,13 +366,19 @@ module.exports = {
   optimization: {
     usedExports: true,
     runtimeChunk: 'single',
-    minimizer: config.useEsBuild
-      ? [
-          new ESBuildMinifyPlugin({
+    minimizer: [
+      config.useEsBuild
+        ? new ESBuildMinifyPlugin({
             target: 'es2016',
+          })
+        : new TerserPlugin({
+            parallel: true,
+            sourceMap: false,
+            terserOptions: {
+              // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
+            },
           }),
-        ]
-      : [],
+    ],
     splitChunks: {
       cacheGroups: {
         // vendor: {
