@@ -19,6 +19,8 @@ const {ESBuildMinifyPlugin} = require('esbuild-loader')
 const TerserPlugin = require('terser-webpack-plugin')
 const {version} = require('./package.json')
 
+process.traceDeprecation = true
+
 const defaults = {
   theme: '#007bb3',
   background: '#ffffff',
@@ -214,7 +216,19 @@ module.exports = {
             lang: config.language,
             logging: false,
             icons: {
-              android: ['android-chrome-192x192.png', 'android-chrome-256x256.png', 'android-chrome-512x512.png'],
+              android: [
+                // Icons marked with "x" are not actually needed.
+                // But because you can't modify output of manifest.json now, we still need to provide them.
+                'android-chrome-36x36.png', // x
+                'android-chrome-48x48.png', // x
+                'android-chrome-72x72.png', // x
+                'android-chrome-96x96.png', // x
+                'android-chrome-144x144.png', // x
+                'android-chrome-192x192.png',
+                'android-chrome-256x256.png',
+                'android-chrome-384x384.png', // x
+                'android-chrome-512x512.png',
+              ],
               appleIcon: ['apple-touch-icon-1024x1024.png', 'apple-touch-icon-180x180.png', 'apple-touch-icon.png'],
               appleStartup: false,
               coast: ['coast-228x228.png'],
