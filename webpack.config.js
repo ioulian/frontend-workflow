@@ -19,8 +19,6 @@ const {ESBuildMinifyPlugin} = require('esbuild-loader')
 const TerserPlugin = require('terser-webpack-plugin')
 const {version} = require('./package.json')
 
-process.traceDeprecation = true
-
 const defaults = {
   theme: '#007bb3',
   background: '#ffffff',
@@ -387,7 +385,7 @@ module.exports = {
           })
         : new TerserPlugin({
             parallel: true,
-            sourceMap: false,
+            // sourceMap: false,
             terserOptions: {
               // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
             },
