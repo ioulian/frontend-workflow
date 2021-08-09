@@ -379,19 +379,5 @@ module.exports = {
             },
           }),
     ],
-    splitChunks: {
-      cacheGroups: {
-        // vendor: {
-        //   test: /[\\/]node_modules[\\/]/,
-        //   name: 'vendors',
-        //   chunks: 'all',
-        // },
-        // common: {
-        //   test: /Factory\.ts|Settings\.ts|Expandable\.ts/,
-        //   name: 'common',
-        //   chunks: 'all',
-        // },
-      },
-    },
   },
 }
