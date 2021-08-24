@@ -2,7 +2,7 @@
 
 exports.command = 'js <command>'
 exports.desc = 'Generators for JS.'
-exports.builder = (yargs) =>
+exports.builder = (yargs: any) =>
   yargs.commandDir('js-commands', {
     extensions: ['js', 'ts'],
   })

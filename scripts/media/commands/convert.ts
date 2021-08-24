@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return, @typescript-eslint/no-empty-function */
 
-exports.command = 'css <command>'
-exports.desc = 'Generators for CSS.'
+exports.command = 'convert <command>'
+exports.desc = 'Converters for Media.'
 exports.builder = (yargs: any) =>
-  yargs.commandDir('css-commands', {
+  yargs.commandDir('convert', {
     extensions: ['js', 'ts'],
   })
 exports.handler = () => {}

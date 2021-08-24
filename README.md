@@ -60,6 +60,7 @@ If you don't want to use them, remove them from `src/project/Site.ts`.
     - [Disable Critical CSS](#disable-critical-css)
     - [Favicons](#favicons)
   - [Generator](#generator)
+  - [Media converter](#media-converter)
   - [Files to deploy](#files-to-deploy)
   - [TypScript usage examples](#typscript-usage-examples)
     - [Import thirdparty library](#import-thirdparty-library)
@@ -389,6 +390,14 @@ You can use it with `yarn generate`. These are all options:
 - `yarn generate css section [name]`
 - `yarn generate css block [name]`
 - `yarn generate css component [name]`
+
+## Media converter
+
+There are also some helpers for the media. The first one is to convert video's to a smaller size (mp4 and/or webm).
+(You'll need to install `ffmpeg` to use these commands). The output of the command will be at the root of the project.
+
+- `yarn media convert video-mp4 [path_to_video] (--stripAudio) (--scaleDown)`
+- `yarn media convert video-webm [path_to_video] (--stripAudio) (--scaleDown)`
 
 ## Files to deploy
 

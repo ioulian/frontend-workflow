@@ -81,7 +81,8 @@
     "analyze": "cross-env NODE_ENV=production webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json --default-sizes gzip",
     "storybook": "cross-env NODE_ENV=devserver IS_STORYBOOK=true start-storybook -p 6006",
     "build-storybook": "cross-env NODE_ENV=production IS_STORYBOOK=true build-storybook -o dist/storybook",
-    "generate": "ts-node scripts/generate/index.ts"
+    "generate": "ts-node scripts/generate/index.ts",
+    "media": "ts-node scripts/media/index.ts"
   },
   "devDependencies": {
     "@babel/core": "7.15.0",
