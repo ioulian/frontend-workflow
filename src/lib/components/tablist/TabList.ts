@@ -11,9 +11,8 @@ export class TabList extends classes(Factory) {
 
   constructor(el: Element) {
     super([el])
+    TabList.makeGlobal(TabList.className)
 
     AriaTablist(this.el as HTMLElement)
-
-    TabList.makeGlobal(TabList.className)
   }
 }

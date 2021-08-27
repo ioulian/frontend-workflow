@@ -16,6 +16,7 @@ export class FixedNavbar extends classes(Factory) {
 
   constructor(el: Element) {
     super([el])
+    FixedNavbar.makeGlobal(FixedNavbar.className)
 
     window.addEventListener('scroll', throttle(Settings.throttle, this.update.bind(this)), {passive: true})
     window.addEventListener('resize', throttle(Settings.throttle, this.update.bind(this)), {passive: true})
@@ -28,8 +29,6 @@ export class FixedNavbar extends classes(Factory) {
 
     this.update()
     this.updatePadding()
-
-    FixedNavbar.makeGlobal(FixedNavbar.className)
   }
 
   public update(): void {

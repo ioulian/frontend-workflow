@@ -43,8 +43,11 @@ export class SameHeight extends classes(Factory) {
 
   private throttledResize: any
 
+  public static className: string = 'Accordion'
+
   constructor(el: Element, settings: SettingsType) {
     super([el])
+    SameHeight.makeGlobal(SameHeight.className)
 
     const settingsFromDom: SettingsType = {}
 
@@ -95,8 +98,6 @@ export class SameHeight extends classes(Factory) {
     if (this.settings.watchSubtreeModification === true) {
       this.addMutationObserver()
     }
-
-    SameHeight.makeGlobal(SameHeight.className)
   }
 
   /**

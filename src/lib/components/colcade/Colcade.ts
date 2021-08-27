@@ -15,12 +15,11 @@ export class ColcadeLayout extends classes(Factory) {
 
   constructor(el: Element) {
     super([el])
+    ColcadeLayout.makeGlobal(ColcadeLayout.className)
 
     this.colcadeInstance = new Colcade(this.el, {
       columns: '.fw-colcade__grid-col',
       items: '.fw-colcade__grid-item',
     })
-
-    ColcadeLayout.makeGlobal(ColcadeLayout.className)
   }
 }

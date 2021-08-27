@@ -16,6 +16,7 @@ export class Parallax extends classes(Factory) {
 
   constructor(el: Element) {
     super([el])
+    Parallax.makeGlobal(Parallax.className)
 
     // Only activate this logic once per page
     if (Parallax.attached === false) {
@@ -43,8 +44,6 @@ export class Parallax extends classes(Factory) {
       Parallax.updateInstances()
       Parallax.attached = true
     }
-
-    Parallax.makeGlobal(Parallax.className)
   }
 
   public update(offset: number): void {

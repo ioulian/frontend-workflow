@@ -10,6 +10,15 @@ export class SocialShare {
    * Attaches event listener
    */
   public static attachEvents(): void {
+    if (__EXPOSE_COMPONENTS__) {
+      // @ts-ignore
+      window.FW = window.FW || {}
+      // @ts-ignore
+      window.FW.SocialShare = {
+        openWindow: SocialShare.openWindow,
+      }
+    }
+
     window.addEventListener(
       'click',
       (e: MouseEvent) => {
@@ -22,7 +31,7 @@ export class SocialShare {
           if (elSocialShareButton.classList.contains('js-social-share--print')) {
             window.print()
           } else {
-            SocialShare.openWindow(elSocialShareButton.getAttribute('href'), 976, 600)
+            SocialShare.openWindow(elSocialShareButton.getAttribute('href'))
           }
         }
       },
@@ -60,7 +69,7 @@ export class SocialShare {
     )
   }
 
-  public static openWindow(url: string, winWidth: number, winHeight: number): void {
+  public static openWindow(url: string, winWidth: number = 976, winHeight: number = 600): void {
     const winTop = window.screen.height / 2 - winHeight / 2
     const winLeft = window.screen.width / 2 - winWidth / 2
 

@@ -55,6 +55,12 @@
             "ignoreParameters": true,
             "ignoreProperties": true
           }
+        ],
+        "@typescript-eslint/unbound-method": [
+          "error",
+          {
+            "ignoreStatic": true
+          }
         ]
       }
     }

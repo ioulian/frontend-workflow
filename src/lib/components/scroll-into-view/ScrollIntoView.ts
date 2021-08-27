@@ -28,6 +28,15 @@ export class ScrollIntoView {
     // Polyfill other browsers
     smoothscroll.polyfill()
 
+    if (__EXPOSE_COMPONENTS__) {
+      // @ts-ignore
+      window.FW = window.FW || {}
+      // @ts-ignore
+      window.FW.ScrollIntoView = {
+        scrollTo: ScrollIntoView.scrollTo,
+      }
+    }
+
     window.addEventListener(
       'click',
       (e: MouseEvent) => {
@@ -40,29 +49,10 @@ export class ScrollIntoView {
 
           // Only continue if target is found on the page
           if (elTarget instanceof HTMLElement) {
-            const offset = ScrollIntoView.getOffset(elScrollTo as HTMLElement)
-
             e.preventDefault()
 
-            if (offset === 0) {
-              // If no offset is given, just scroll to the element
-              ScrollIntoView.scrollTo(elTarget)
-            } else {
-              // If offset is given, "reposition" target element with a given offset so that the scroll gets the position with an offset
-              // Read more here: https://stackoverflow.com/questions/24665602/scrollintoview-scrolls-just-too-far
-
-              // Reposition element
-              const {position, top} = elTarget.style
-              elTarget.style.position = 'relative'
-              elTarget.style.top = `-${offset}px`
-
-              // Let browser scroll to it
-              ScrollIntoView.scrollTo(elTarget)
-
-              // Put it back
-              elTarget.style.top = top
-              elTarget.style.position = position
-            }
+            const offset = ScrollIntoView.getOffset(elScrollTo as HTMLElement)
+            ScrollIntoView.scrollTo(elTarget, offset)
           }
         }
       },
@@ -74,9 +64,30 @@ export class ScrollIntoView {
    * Scrolls to a specific DOM element using smooth scrollIntoView
    *
    * @param {HTMLElement} elTarget Target to scroll to
+   * @param {HTMLElement} offset Offset scrolling by number of pixels (useful when using fixed headers)
    */
-  public static scrollTo(elTarget: HTMLElement): void {
-    elTarget.scrollIntoView({behavior: 'smooth', block: 'start'})
+  public static scrollTo(elTarget: HTMLElement, offset: number = 0): void {
+    const elTargetCopy = elTarget
+
+    if (offset === 0) {
+      // If no offset is given, just scroll to the element
+      elTargetCopy.scrollIntoView({behavior: 'smooth', block: 'start'})
+    } else {
+      // If offset is given, "reposition" target element with a given offset so that the scroll gets the position with an offset
+      // Read more here: https://stackoverflow.com/questions/24665602/scrollintoview-scrolls-just-too-far
+
+      // Reposition element
+      const {position, top} = elTargetCopy.style
+      elTargetCopy.style.position = 'relative'
+      elTargetCopy.style.top = `-${offset}px`
+
+      // Let browser scroll to it
+      elTargetCopy.scrollIntoView({behavior: 'smooth', block: 'start'})
+
+      // Put it back
+      elTargetCopy.style.top = top
+      elTargetCopy.style.position = position
+    }
   }
 
   /**

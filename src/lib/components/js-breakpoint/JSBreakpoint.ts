@@ -26,6 +26,13 @@ export class JSBreakpoint extends EE {
       instance = this
     }
 
+    if (__EXPOSE_COMPONENTS__) {
+      // @ts-ignore
+      window.FW = window.FW || {}
+      // @ts-ignore
+      window.FW.JSBreakpoint = this
+    }
+
     this.createElement()
 
     window.addEventListener('resize', throttle(Settings.throttle, this.trigger.bind(this)), {

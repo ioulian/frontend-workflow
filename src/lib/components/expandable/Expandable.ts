@@ -29,6 +29,7 @@ export class Expandable extends classes(Factory, EE) {
 
   constructor(el: Element) {
     super([el])
+    Expandable.makeGlobal(Expandable.className)
 
     this.elToggle = this.el.querySelector('.fw-expandable__toggle')
     this.elContent = this.el.querySelector('.fw-expandable__content')
@@ -41,8 +42,6 @@ export class Expandable extends classes(Factory, EE) {
     this.addEventListeners()
 
     this.el.classList.add('fw-expandable--init')
-
-    Expandable.makeGlobal(Expandable.className)
   }
 
   private setAriaAttributes(): void {

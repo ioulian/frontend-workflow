@@ -32,6 +32,7 @@ export class Accordion extends classes(Factory, EE) {
 
   constructor(el: Element, settings: SettingsType) {
     super([el, settings], [])
+    Accordion.makeGlobal(Accordion.className)
 
     // Get settings from DOM data-attributes
     const settingsFromDom: SettingsType = {}
@@ -57,8 +58,6 @@ export class Accordion extends classes(Factory, EE) {
     window.addEventListener('load', () => {
       this.openFirstIfAny()
     })
-
-    Accordion.makeGlobal(Accordion.className)
   }
 
   /**

@@ -34,6 +34,17 @@ export class LazyLoader {
    * @param {SettingsType} settings Settings to pass to LazyLoad instance
    */
   public static attach(settings: SettingsType = {}): void {
+    if (__EXPOSE_COMPONENTS__) {
+      // @ts-ignore
+      window.FW = window.FW || {}
+      // @ts-ignore
+      window.FW.LazyLoader = {
+        getInstance: LazyLoader.getInstance,
+        update: LazyLoader.update,
+        destroy: LazyLoader.destroy,
+      }
+    }
+
     this.instance = new LazyLoad({
       ...lazyLoaderDefaults,
       ...settings,

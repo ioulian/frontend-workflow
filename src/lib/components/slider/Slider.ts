@@ -27,6 +27,7 @@ export class Slider extends classes(Factory) {
 
   constructor(el: Element, settings: SwiperOptions) {
     super([el])
+    Slider.makeGlobal(Slider.className)
 
     this.settings = {
       ...defaults,
@@ -43,8 +44,6 @@ export class Slider extends classes(Factory) {
 
     // @ts-ignore
     this.swiperInstance = new Swiper(this.el, this.settings)
-
-    Slider.makeGlobal(Slider.className)
   }
 
   // @ts-ignore

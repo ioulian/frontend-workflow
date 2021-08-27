@@ -31,6 +31,7 @@ export class BottomNavbar extends classes(Factory) {
 
   constructor(el: Element, settings: SettingsType) {
     super([el])
+    BottomNavbar.makeGlobal(BottomNavbar.className)
 
     const settingsFromDom: SettingsType = {}
 
@@ -51,8 +52,6 @@ export class BottomNavbar extends classes(Factory) {
     })
 
     this.update()
-
-    BottomNavbar.makeGlobal(BottomNavbar.className)
   }
 
   public update(): void {
