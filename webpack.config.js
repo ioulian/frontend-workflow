@@ -133,6 +133,7 @@ module.exports = {
     hot: false,
     open: true,
     https: config.devServerHTTPS,
+    progress: true,
   },
   plugins: [
     // Define constants for the client (they are injected in the project TS/JS code)
