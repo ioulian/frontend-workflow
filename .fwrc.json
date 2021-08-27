@@ -14,5 +14,6 @@
     "siteName": "Frontend Workflow",
     "siteSummary": "Frontend starter kit",
     "author": "Yulian Alexeyev"
-  }
+  },
+  "useEsBuild": true
 }
