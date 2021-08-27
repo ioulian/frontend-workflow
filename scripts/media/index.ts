@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 /* eslint-disable @typescript-eslint/no-var-requires, import/no-extraneous-dependencies, no-unused-expressions */
+// @ts-ignore
 const yargs = require('yargs')
 
 yargs
