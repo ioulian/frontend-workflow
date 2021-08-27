@@ -48,7 +48,7 @@ const defaults = {
   subFolder: '/',
   serviceWorkerOnLocalHost: false,
   createTagsFile: true,
-  useEsBuild: false,
+  useEsBuild: true,
   modules: {
     favicons: true,
     serviceWorker: true,
