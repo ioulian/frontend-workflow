@@ -5,7 +5,6 @@ const path = require('path')
 const webpack = require('webpack')
 const {merge} = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const {InjectManifest} = require('workbox-webpack-plugin')
 const PrettierPlugin = require('prettier-webpack-plugin')
@@ -14,7 +13,6 @@ const {cosmiconfigSync} = require('cosmiconfig')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
 const GoogleFontsPlugin = require('@beyonk/google-fonts-webpack-plugin')
-const CleanObsoleteChunks = require('webpack-clean-obsolete-chunks')
 const {ESBuildMinifyPlugin} = require('esbuild-loader')
 const TerserPlugin = require('terser-webpack-plugin')
 const {version} = require('./package.json')
@@ -127,6 +125,7 @@ module.exports = {
     filename: `js/[name].bundle${addHash ? '.[contenthash]' : ''}.js`,
     chunkFilename: `js/[name].chunk${addHash ? '.[contenthash]' : ''}.js`,
     publicPath: devServer ? '/' : config.subFolder,
+    clean: true,
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
@@ -136,10 +135,6 @@ module.exports = {
     https: config.devServerHTTPS,
   },
   plugins: [
-    // Clean build folder on build
-    devMode === false ? new CleanWebpackPlugin() : () => {},
-    devMode === true ? new CleanObsoleteChunks() : () => {},
-
     // Define constants for the client (they are injected in the project TS/JS code)
     new webpack.DefinePlugin({
       __SERVICE_WORKER_ACTIVE__: serviceWorkerActive,
