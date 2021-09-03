@@ -69,9 +69,11 @@
     "__SERVICE_WORKER_ACTIVE__": "readonly",
     "__IS_DEV__": "readonly",
     "__IS_PROD__": "readonly",
-    "__LANG__": "readonly",
     "__PUBLIC_PATH__": "readonly",
     "__BOOTSTRAP_IMPORT_BUNDLE__": "readonly",
-    "__EXPOSE_COMPONENTS__": "readonly"
+    "__EXPOSE_COMPONENTS__": "readonly",
+    "__PUSH_ENABLED__": "readonly",
+    "__PUSH_VAPID_KEY_ENDPOINT__": "readonly",
+    "__PUSH_REGISTER_ENDPOINT__": "readonly"
   }
 }

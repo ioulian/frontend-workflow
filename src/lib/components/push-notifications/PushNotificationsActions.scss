@@ -1,0 +1,21 @@
+.fw-push-notifications-actions {
+  $root: &;
+
+  &__default {
+    #{$root}:not(#{$root}--default) & {
+      display: none;
+    }
+  }
+
+  &__denied {
+    #{$root}:not(#{$root}--denied) & {
+      display: none;
+    }
+  }
+
+  &__granted {
+    #{$root}:not(#{$root}--granted) & {
+      display: none;
+    }
+  }
+}

@@ -17,5 +17,9 @@
   },
   "components": {
     "expose": true
+  },
+  "serviceWorkerOnLocalHost": true,
+  "pushNotifications": {
+    "enabled": true
   }
 }

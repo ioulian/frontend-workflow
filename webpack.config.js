@@ -15,6 +15,8 @@ const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
 const GoogleFontsPlugin = require('@beyonk/google-fonts-webpack-plugin')
 const {ESBuildMinifyPlugin} = require('esbuild-loader')
 const TerserPlugin = require('terser-webpack-plugin')
+const webPush = require('web-push')
+const bodyParser = require('body-parser')
 const {version} = require('./package.json')
 
 const defaults = {
@@ -39,7 +41,7 @@ const defaults = {
     twitterSite: null,
     twitterAuthor: null,
   },
-  devServerHTTPS: true,
+  devServerHTTPS: false,
   addFilenameHashes: true,
   forceNoHashesOnDev: false,
   outputPath: 'dist',
@@ -51,6 +53,11 @@ const defaults = {
     favicons: true,
     serviceWorker: true,
     asyncJS: true,
+  },
+  pushNotifications: {
+    enabled: false,
+    vapidKeyEndpoint: '/push-test/vapidPublicKey',
+    registerEndpoint: '/push-test/register',
   },
   bootstrap: {
     importBundle: true,
@@ -128,12 +135,50 @@ module.exports = {
     clean: true,
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
     compress: true,
     hot: false,
     open: true,
     https: config.devServerHTTPS,
-    progress: true,
+    onAfterSetupMiddleware: config.pushNotifications.enabled
+      ? (server) => {
+          if (!server) {
+            throw new Error('webpack-dev-server is not defined')
+          }
+
+          // For testing purposes we generate those keys each time the server starts.
+          // In real world, they are fixed and will not change.
+          // This means, if you are testing, clear site data each time you start up the server.
+          // This way a new service worker will be set and thus new subscription will be made.
+          const VAPIDKeys = webPush.generateVAPIDKeys()
+          console.log(VAPIDKeys)
+
+          webPush.setVapidDetails('https://localhost:8080/', VAPIDKeys.publicKey, VAPIDKeys.privateKey)
+
+          server.app.get('/push-test/vapidPublicKey', (req, res) => {
+            res.send(VAPIDKeys.publicKey)
+          })
+
+          server.app.post('/push-test/register', (req, res) => {
+            res.sendStatus(201)
+          })
+
+          server.app.post('/push-test/sendNotification', bodyParser.json(), (req, res) => {
+            const {subscription} = req.body
+
+            setTimeout(() => {
+              webPush
+                .sendNotification(subscription, '{"title":"Notification Title","body":"Notification Body"}')
+                .then(() => {
+                  res.sendStatus(201)
+                })
+                .catch((error) => {
+                  console.log(error)
+                  res.sendStatus(500)
+                })
+            }, req.body.delay * 1000)
+          })
+        }
+      : () => {},
   },
   plugins: [
     // Define constants for the client (they are injected in the project TS/JS code)
@@ -141,10 +186,12 @@ module.exports = {
       __SERVICE_WORKER_ACTIVE__: serviceWorkerActive,
       __IS_DEV__: devMode,
       __IS_PROD__: !devMode,
-      __LANG__: config.language,
       __BOOTSTRAP_IMPORT_BUNDLE__: config.bootstrap.importBundle,
       __PUBLIC_PATH__: JSON.stringify(devServer ? '/' : config.subFolder),
       __EXPOSE_COMPONENTS__: config.components.expose,
+      __PUSH_ENABLED__: config.pushNotifications.enabled,
+      __PUSH_VAPID_KEY_ENDPOINT__: JSON.stringify(config.pushNotifications.vapidKeyEndpoint),
+      __PUSH_REGISTER_ENDPOINT__: JSON.stringify(config.pushNotifications.registerEndpoint),
     }),
 
     !isStorybook

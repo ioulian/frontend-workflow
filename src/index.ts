@@ -1,3 +1,6 @@
+import {PushNotificationsManager} from './lib/components/push-notifications/PushNotificationsManager'
+import {ServiceWorkerClientHelpers} from './lib/components/ServiceWorkerClientHelpers'
+
 import {Site} from './project/Site'
 
 // Import base styles
@@ -37,7 +40,6 @@ if (__SERVICE_WORKER_ACTIVE__) {
       )
 
       const wb = new Workbox('/sw.js')
-      let registration
 
       const showSkipWaitingPrompt = () => {
         FreshContentNotification.show(
@@ -50,6 +52,7 @@ if (__SERVICE_WORKER_ACTIVE__) {
                 window.location.reload()
               })
 
+              const registration = ServiceWorkerClientHelpers.getRegistration()
               if (registration && registration.waiting) {
                 messageSW(registration.waiting, {type: 'SKIP_WAITING'})
               }
@@ -64,8 +67,17 @@ if (__SERVICE_WORKER_ACTIVE__) {
       wb.addEventListener('externalwaiting', showSkipWaitingPrompt)
 
       wb.register().then((r) => {
-        registration = r
+        ServiceWorkerClientHelpers.setRegistration(r)
       })
+
+      navigator.serviceWorker.ready
+        .then((r) => {
+          if (__PUSH_ENABLED__) {
+            ServiceWorkerClientHelpers.setRegistration(r)
+            PushNotificationsManager.subscribe()
+          }
+        })
+        .catch(null)
     }
   }
 

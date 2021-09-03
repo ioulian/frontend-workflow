@@ -1,4 +1,6 @@
 import Alert from 'bootstrap/js/dist/alert'
+import {ServiceWorkerClientHelpers} from '../lib/components/ServiceWorkerClientHelpers'
+import {PushNotificationsManager} from '../lib/components/push-notifications/PushNotificationsManager'
 import {ChangeEvent, JSBreakpoint} from '../lib/components/js-breakpoint/JSBreakpoint'
 /* eslint-disable no-underscore-dangle */
 
@@ -68,4 +70,51 @@ if (elDemoSlider instanceof HTMLElement) {
     },
     false
   )
+}
+
+// Demo functionality for sending basic notifications
+const demoNotification: HTMLElement = document.querySelector('.demo-send-notification')
+
+if (demoNotification instanceof HTMLElement) {
+  demoNotification.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    PushNotificationsManager.pushNotification('Test notification', {
+      // actions?: NotificationAction[];
+      // badge?: string;
+      body: 'Test body',
+      // data?: any;
+      // dir?: NotificationDirection;
+      // icon?: string;
+      // image?: string;
+      // lang?: string;
+      // renotify?: boolean;
+      // requireInteraction?: boolean;
+      // silent?: boolean;
+      // tag?: string;
+      // timestamp?: number;
+      // vibrate?: VibratePattern;
+    })
+  })
+}
+
+// Demo functionality for sending push notifications
+const demoPushNotification: HTMLElement = document.querySelector('.demo-send-push-notification')
+
+if (demoPushNotification instanceof HTMLElement) {
+  demoPushNotification.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    // eslint-disable-next-line
+    fetch('./push-test/sendNotification', {
+      method: 'post',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        subscription: ServiceWorkerClientHelpers.getPushSubscription(),
+        delay: 5,
+      }),
+    })
+  })
 }

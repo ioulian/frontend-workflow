@@ -94,6 +94,10 @@ export class AsyncModuleLoader {
     AsyncModuleLoader.addToWatch('.fw-parallax', async () => {
       await import(/* webpackChunkName: "parallax" */ './parallax/index')
     })
+
+    AsyncModuleLoader.addToWatch('.fw-push-notifications-actions', async () => {
+      await import(/* webpackChunkName: "push-notifications" */ './push-notifications/index')
+    })
     /* eslint-enable @typescript-eslint/no-misused-promises */
   }
 
