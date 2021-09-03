@@ -9,7 +9,6 @@ You can preview the output here: [https://trusting-perlman-3c2ee5.netlify.com](h
 The focus of this workflow is performance:
 
 - By using a css-only framework, you are free to choose **whatever JS Framework you want**. [1][2]
-- By inlining critical CSS/JS and async loading the rest, you'll get a fast **First Meaningful Paint**.
 - By using linting tools for CSS and JS, everybody follows a **consistent code style**.
 - By using TypeScript, you can check your code on type errors and more.
 - By generating Favicons automatically, you don't need to spend hours making all sizes of icons for all possible usecases.
@@ -57,7 +56,6 @@ If you don't want to use them, remove them from `src/project/Site.ts`.
   - [CMS Mode](#cms-mode)
     - [Removing filename hashes](#removing-filename-hashes)
     - [Setting a subfolder](#setting-a-subfolder)
-    - [Disable Critical CSS](#disable-critical-css)
     - [Favicons](#favicons)
     - [Push notifications](#push-notifications)
       - [Using it in production](#using-it-in-production)
@@ -373,12 +371,6 @@ By setting `addFilenameHashes` to `false`, you can remove the cache busting hash
 ### Setting a subfolder
 
 Most of the time, when using a CMS, the frontend will not be at the root of your project, but in a subfolder. You can change the `subFolder` config key to something like this: `/themes/custom/fw2020/dist/` (this workflow should be inside `/themes/custom/fw2020/`). All the links should then point to correct path.
-
-### Disable Critical CSS
-
-Critical CSS plugin uses headless browser to render the index.html and get only the visible CSS from it. This will not work if using a CMS. You should disable it, making the build faster.
-
-**Note:** You can still use it if `index.html` is up to date with your backend and then manually copy the CSS, but this is manual work and prone to errors.
 
 ### Favicons
 
