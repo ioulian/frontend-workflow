@@ -472,7 +472,6 @@ These are our own TODO's that might, or might not be included in this workflow, 
 - (LOW PRIO) [https://webpack.js.org/configuration/configuration-languages/](https://webpack.js.org/configuration/configuration-languages/)
 - (LOW PRIO) Change lazy loading to this way: [https://addyosmani.com/blog/lazy-loading/](https://addyosmani.com/blog/lazy-loading/)
 - (LOW PRIO) Change fixed header implementation to [https://pqina.nl/blog/applying-styles-based-on-the-user-scroll-position-with-smart-css/](https://pqina.nl/blog/applying-styles-based-on-the-user-scroll-position-with-smart-css/) maybe?
-- (LOW PRIO) v0.11.0 of polytype breaks Storybook, we use 1 version below
 
 ## Possible libraries/workflows
 
@@ -490,4 +489,4 @@ There is no automatic upgrade path available as this is a boilerplate, however i
 
 ## Copyright and license
 
-Code copyright 2020 Yulian Alexeyev. Code released under [the MIT license](LICENSE).
+Code copyright 2021 Yulian Alexeyev. Code released under [the MIT license](LICENSE).
