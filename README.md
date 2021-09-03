@@ -20,9 +20,9 @@ The focus of this workflow is performance:
 
 If you don't like a feature, you can disable it and write another one.
 
-[1] However, there are some JavaScript components included, that are written for our projects and are handy tools, but here again, you are free to not use them.
+1. However, there are some JavaScript components included, that are written for our projects and are handy tools, but here again, you are free to not use them.
 If you don't want to use them, remove them from `src/project/Site.ts`.
-[2] Bootstrap has it's own Javascript, this has been turned on by default. You can disable it in `src/index.ts`.
+2. Bootstrap has it's own Javascript, this has been turned on by default. You can disable it in `src/index.ts`.
 
 ## Table of contents
 
@@ -280,12 +280,12 @@ There you can find most of the standard components that are included in the libr
 
 Before creating a build, you should update the following files/settings:
 
-- 1: Update config. See table below and docs on [config files](#config-files).
-- 2: Supported browsers can be changed under `"browserslist"` key in `package.json`.
-- 3: Add an app icon in `src/favicon.png`. The build will create all possible icons for your app (iOS, Android, Browsers, ...). You should use a high enough resolution, minimum of 256x256px (preferably 1024x1024px).
-- 4: Add an app share image in `src/og-image.png`. This will be the image preview when you share this website/project on social media.
-- 5: Modify `<head>` in `index.html` with the your preferences.
-- 6: Modify `offline.html` with the branding and content of the website.
+1. Update config. See table below and docs on [config files](#config-files).
+2. Supported browsers can be changed under `"browserslist"` key in `package.json`.
+3. Add an app icon in `src/favicon.png`. The build will create all possible icons for your app (iOS, Android, Browsers, ...). You should use a high enough resolution, minimum of 256x256px (preferably 1024x1024px).
+4. Add an app share image in `src/og-image.png`. This will be the image preview when you share this website/project on social media.
+5. Modify `<head>` in `index.html` with the your preferences.
+6. Modify `offline.html` with the branding and content of the website.
 
 | Name                               | Type            | Default             | Description                                                                                                                                                                                                                               |
 | ---------------------------------- | --------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -388,9 +388,9 @@ As Favicon and manifest tags are injected into `index.html` file on build, you w
 
 There is some code to help you create and use push notifications. The code by default is NOT production ready, but it's extensible and can be changed easily. With the default configuration, you can test it locally:
 
-1: Set `pushNotifications.enabled` to `true`, this will automatically register user for push notifications (after the user gives his/her conscent by clicking on a button).
-2: Set `serviceWorkerOnLocalHost` to `true` so the service worker will load the logic.
-3: Start the devserver with `yarn start` and scoll to the "Web Push Notifications" section. There, click on the button "Request notifications". When you click "Allow" in the browser, you can now send a push notification. You'll see it in a few seconds.
+1. Set `pushNotifications.enabled` to `true`, this will automatically register user for push notifications (after the user gives his/her conscent by clicking on a button).
+2. Set `serviceWorkerOnLocalHost` to `true` so the service worker will load the logic.
+3. Start the devserver with `yarn start` and scoll to the "Web Push Notifications" section. There, click on the button "Request notifications". When you click "Allow" in the browser, you can now send a push notification. You'll see it in a few seconds.
 
 #### Using it in production
 
