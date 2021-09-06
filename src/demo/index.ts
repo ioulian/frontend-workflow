@@ -118,3 +118,13 @@ if (demoPushNotification instanceof HTMLElement) {
     })
   })
 }
+// Demo functionality for unsubscribing from push notifications
+const unsubscribePush: HTMLElement = document.querySelector('.demo-unsubscribe-push-notification')
+
+if (unsubscribePush instanceof HTMLElement) {
+  unsubscribePush.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    PushNotificationsManager.unsubscribe()
+  })
+}

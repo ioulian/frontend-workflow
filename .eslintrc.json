@@ -74,6 +74,7 @@
     "__EXPOSE_COMPONENTS__": "readonly",
     "__PUSH_ENABLED__": "readonly",
     "__PUSH_VAPID_KEY_ENDPOINT__": "readonly",
-    "__PUSH_REGISTER_ENDPOINT__": "readonly"
+    "__PUSH_REGISTER_ENDPOINT__": "readonly",
+    "__PUSH_UNREGISTER_ENDPOINT__": "readonly"
   }
 }

@@ -92,4 +92,31 @@ export class PushNotificationsManager {
         return subscription
       })
   }
+
+  /**
+   * Unsubscribes from push notifications
+   */
+  public static unsubscribe(): void {
+    const registration = ServiceWorkerClientHelpers.getRegistration()
+
+    registration.pushManager
+      .getSubscription()
+      .then((subscription) => {
+        // Let server know that user does not want to receive push messages anymore
+        fetch(__PUSH_UNREGISTER_ENDPOINT__, {
+          method: 'post',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify({
+            subscription,
+          }),
+        })
+          .then(null)
+          .catch(null)
+
+        subscription.unsubscribe().then(null).catch(null)
+      })
+      .catch(null)
+  }
 }

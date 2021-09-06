@@ -58,6 +58,7 @@ const defaults = {
     enabled: false,
     vapidKeyEndpoint: '/push-test/vapidPublicKey',
     registerEndpoint: '/push-test/register',
+    unregisterEndpoint: '/push-test/unregister',
   },
   bootstrap: {
     importBundle: true,
@@ -162,6 +163,10 @@ module.exports = {
             res.sendStatus(201)
           })
 
+          server.app.post('/push-test/unregister', (req, res) => {
+            res.sendStatus(200)
+          })
+
           server.app.post('/push-test/sendNotification', bodyParser.json(), (req, res) => {
             const {subscription} = req.body
 
@@ -192,6 +197,7 @@ module.exports = {
       __PUSH_ENABLED__: config.pushNotifications.enabled,
       __PUSH_VAPID_KEY_ENDPOINT__: JSON.stringify(config.pushNotifications.vapidKeyEndpoint),
       __PUSH_REGISTER_ENDPOINT__: JSON.stringify(config.pushNotifications.registerEndpoint),
+      __PUSH_UNREGISTER_ENDPOINT__: JSON.stringify(config.pushNotifications.unregisterEndpoint),
     }),
 
     !isStorybook

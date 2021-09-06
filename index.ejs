@@ -949,6 +949,14 @@
                     <button class="demo-send-push-notification btn btn-primary">
                       Send push notification (received after 5 seconds)
                     </button>
+                    <button class="demo-unsubscribe-push-notification btn btn-primary">
+                      Unsubscribe from push notifications
+                    </button>
+                    <p>
+                      Note: By default we subscribe the user for push notifications when service worker is ready. If
+                      user unsubscribes and navigates to the page, he will be subscribed again. In real world we need to
+                      subscribe the user via an action (button click for example).
+                    </p>
                   </div>
                 </div>
               </div>

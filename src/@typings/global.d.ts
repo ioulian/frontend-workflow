@@ -7,3 +7,4 @@ declare const __EXPOSE_COMPONENTS__: boolean
 declare const __PUSH_ENABLED__: boolean
 declare const __PUSH_VAPID_KEY_ENDPOINT__: string
 declare const __PUSH_REGISTER_ENDPOINT__: string
+declare const __PUSH_UNREGISTER_ENDPOINT__: string
