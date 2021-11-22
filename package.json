@@ -29,7 +29,7 @@
     "url": "git@github.com:ioulian/frontend-workflow.git"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=16.0.0"
   },
   "private": false,
   "sideEffects": [
