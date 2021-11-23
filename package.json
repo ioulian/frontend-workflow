@@ -1,6 +1,6 @@
 {
   "name": "frontend-workflow",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Frontend workflow using Webpack 5",
   "author": "Yulian Alexeyev <yulian@dev-q.be> (https://github.com/ioulian)",
   "keywords": [
