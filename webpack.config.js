@@ -348,6 +348,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
+        type: 'javascript/auto',
         exclude: /-sprite\.svg$/,
         use: [
           {
