@@ -19,8 +19,11 @@ export class FreshContentNotification {
    * @param {Number} timeout Timeout to automatically hide the toaster
    */
   public static show(
+    // eslint-disable-next-line
     content: string = 'New content available, click to refresh',
+    // eslint-disable-next-line
     title: string = 'Content updated',
+    // eslint-disable-next-line
     timeout: number = 5000,
     cb?: Callback
   ): void {

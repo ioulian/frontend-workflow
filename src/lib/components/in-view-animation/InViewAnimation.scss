@@ -1,3 +1,5 @@
+@use 'sass:list';
+
 @import './../../../bootstrap';
 
 $in-view-animation-base-duration: 750ms !default;
@@ -18,7 +20,7 @@ $in-view-animation-base-duration: 750ms !default;
   $transitions: ();
 
   @each $property, $value in $from {
-    $transitions: append($transitions, #{$property + ' ' + $duration}, comma);
+    $transitions: list.append($transitions, #{$property + ' ' + $duration}, comma);
   }
 
   @include fw-create-layer();
@@ -27,8 +29,8 @@ $in-view-animation-base-duration: 750ms !default;
   transition-delay: #{$offset + 'ms'};
   transition-timing-function: $timing-function;
 
-  $selector: nth(&, 1);
-  $child: nth($selector, length($selector));
+  $selector: list.nth(&, 1);
+  $child: list.nth($selector, list.length($selector));
 
   @at-root #{$scroll-animation-context}.js-in-view-animation--init #{$child} {
     @each $property, $value in $from {

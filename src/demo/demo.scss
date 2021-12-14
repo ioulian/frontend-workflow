@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @import './../bootstrap';
 
 .fw-full-size-in-parent {
@@ -45,7 +47,7 @@ img.fw-full-size-in-parent {
 .jumbotron {
   h1,
   h2 {
-    text-shadow: 2px 2px 1px rgba(darken($primary, 50%), 0.5);
+    text-shadow: 2px 2px 1px rgba(color.adjust($primary, $lightness: -50%), 0.5);
     color: $color-white;
   }
 }

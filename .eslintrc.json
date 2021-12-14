@@ -49,6 +49,7 @@
         "import/extensions": "off",
         "import/prefer-default-export": "off",
         "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unsafe-argument": "off",
         "@typescript-eslint/no-inferrable-types": [
           2,
           {

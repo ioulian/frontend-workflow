@@ -5,35 +5,35 @@
 /// @param {Map[String]} $properties - Properties to set
 /// @param {Map[Any]} $values - Values per breakpoint (use 'null' if you don't want to set a specific value for that breakpoint)
 @mixin fw-set-breakpoints($properties, $values) {
-  @if length($values) >= 1 and nth($values, 1) != null {
+  @if length($values) >= 1 and nth($values, 1) {
     @include fw-set-properties($properties, nth($values, 1));
   }
 
-  @if length($values) >= 2 and nth($values, 2) != null {
+  @if length($values) >= 2 and nth($values, 2) {
     @include media-breakpoint-up(sm) {
       @include fw-set-properties($properties, nth($values, 2));
     }
   }
 
-  @if length($values) >= 3 and nth($values, 3) != null {
+  @if length($values) >= 3 and nth($values, 3) {
     @include media-breakpoint-up(md) {
       @include fw-set-properties($properties, nth($values, 3));
     }
   }
 
-  @if length($values) >= 4 and nth($values, 4) != null {
+  @if length($values) >= 4 and nth($values, 4) {
     @include media-breakpoint-up(lg) {
       @include fw-set-properties($properties, nth($values, 4));
     }
   }
 
-  @if length($values) >= 5 and nth($values, 5) != null {
+  @if length($values) >= 5 and nth($values, 5) {
     @include media-breakpoint-up(xl) {
       @include fw-set-properties($properties, nth($values, 5));
     }
   }
 
-  @if length($values) >= 6 and nth($values, 6) != null {
+  @if length($values) >= 6 and nth($values, 6) {
     @include media-breakpoint-up(xxl) {
       @include fw-set-properties($properties, nth($values, 6));
     }

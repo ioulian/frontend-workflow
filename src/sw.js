@@ -66,6 +66,7 @@ registerRoute(
 
 // Other
 registerRoute(
+  // eslint-disable-next-line
   new RegExp('.(json|xml)$'),
   new CacheFirst({
     cacheName: 'cache-others',

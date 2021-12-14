@@ -7,7 +7,7 @@
   background-size: 0% 100%;
   transition: background-size $duration-normal $swift-in;
 
-  @if $text-shadow != null {
+  @if $text-shadow {
     text-shadow: 2px 2px 1px $text-shadow, -2px 2px 1px $text-shadow, 2px -2px 1px $text-shadow,
       -2px -2px 1px $text-shadow;
   }
