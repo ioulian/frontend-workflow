@@ -1,13 +1,13 @@
 // eslint-disable-next-line import/no-unresolved
 import {classes} from 'polytype'
-import {SwiperOptions} from 'swiper'
-import Swiper from 'swiper/swiper-bundle.min'
+import Swiper, {Navigation, SwiperOptions} from 'swiper'
 
 import {Factory} from '../../base/js/Factory'
 
-import 'swiper/swiper-bundle.css'
+import './index.scss'
 
 const defaults: SwiperOptions = {
+  modules: [Navigation],
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',

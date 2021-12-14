@@ -39,30 +39,30 @@
   ],
   "dependencies": {
     "@fancyapps/fancybox": "3.5.7",
-    "@popperjs/core": "2.9.3",
+    "@popperjs/core": "2.11.0",
     "aria-tablist": "1.2.2",
     "bootstrap": "5.1.3",
     "colcade": "0.2.0",
-    "core-js": "3.16.1",
+    "core-js": "3.19.3",
     "element-closest": "3.0.2",
     "element-matches-polyfill": "1.0.0",
     "intersection-observer": "0.12.0",
     "jquery": "3.6.0",
     "onfire.js": "2.0.1",
     "polytype": "0.14.0",
-    "promise-polyfill": "8.2.0",
+    "promise-polyfill": "8.2.1",
     "smoothscroll-polyfill": "0.4.4",
-    "swiper": "6.8.1",
+    "swiper": "7.3.2",
     "throttle-debounce": "3.0.1",
     "urlb64touint8array": "1.0.3",
-    "vanilla-lazyload": "17.4.0",
-    "workbox-cacheable-response": "6.2.2",
-    "workbox-core": "6.2.2",
-    "workbox-expiration": "6.2.2",
-    "workbox-precaching": "6.2.2",
-    "workbox-routing": "6.2.2",
-    "workbox-strategies": "6.2.2",
-    "workbox-window": "6.2.2"
+    "vanilla-lazyload": "17.5.0",
+    "workbox-cacheable-response": "6.4.2",
+    "workbox-core": "6.4.2",
+    "workbox-expiration": "6.4.2",
+    "workbox-precaching": "6.4.2",
+    "workbox-routing": "6.4.2",
+    "workbox-strategies": "6.4.2",
+    "workbox-window": "6.4.2"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=devserver webpack serve",
@@ -86,7 +86,7 @@
     "media": "ts-node scripts/media/index.ts"
   },
   "devDependencies": {
-    "@babel/core": "7.15.0",
+    "@babel/core": "7.16.5",
     "@beyonk/google-fonts-webpack-plugin": "1.7.0",
     "@storybook/addon-a11y": "6.4.0-alpha.25",
     "@storybook/addon-actions": "6.4.0-alpha.25",
@@ -101,8 +101,8 @@
     "@types/throttle-debounce": "2.1.0",
     "@typescript-eslint/eslint-plugin": "4.29.0",
     "@typescript-eslint/parser": "4.29.0",
-    "autoprefixer": "10.3.1",
-    "babel-loader": "8.2.2",
+    "autoprefixer": "10.4.0",
+    "babel-loader": "8.2.3",
     "body-parser": "1.19.0",
     "cosmiconfig": "7.0.0",
     "cross-env": "7.0.3",
@@ -156,8 +156,8 @@
     "webpack-dev-server": "4.6.0",
     "webpack-merge": "5.8.0",
     "webpack-stream": "6.1.2",
-    "workbox-webpack-plugin": "6.2.2",
-    "yargs": "17.1.0"
+    "workbox-webpack-plugin": "6.4.2",
+    "yargs": "17.3.0"
   },
   "browserslist": [
     "defaults"
