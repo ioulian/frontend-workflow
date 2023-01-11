@@ -49,7 +49,8 @@ exports.handler = () => {
 @import './forms/base';
 @import './components/base';
 @import './blocks/base';
-@import './sections/base';`
+@import './sections/base';
+`
   )
 
   // Add to index
