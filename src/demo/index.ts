@@ -12,7 +12,7 @@ const elJSBreakpointOutput = document.getElementById('js-breakpoint-example')
 if (elJSBreakpointOutput instanceof HTMLElement) {
   // When running the code in DEV mode, this will output "null" as css is not loaded when JS is ready
   if (__IS_DEV__) {
-    console.log(JSBreakpoint.getInstance().getBreakpoint())
+    console.log(JSBreakpoint.getInstance().getBreakpoint()) // eslint-disable-line no-console
   }
 
   // That's why we need to wait for css to load
@@ -20,17 +20,19 @@ if (elJSBreakpointOutput instanceof HTMLElement) {
     // And try and get the breakpoint again
     // You won't get this problem when you'll create a production build
     if (__IS_DEV__) {
-      console.log(JSBreakpoint.getInstance().getBreakpoint())
+      console.log(JSBreakpoint.getInstance().getBreakpoint()) // eslint-disable-line no-console
     }
 
     elJSBreakpointOutput.innerHTML = `Current breakpoint: ${JSBreakpoint.getInstance().getBreakpoint()}`
     JSBreakpoint.getInstance().on('changed', ({prevBreakpoint, breakpoint, sizeChange}: ChangeEvent) => {
       if (__IS_DEV__) {
+        /* eslint-disable no-console */
         console.log(
           `Changed to: ${breakpoint} from: ${prevBreakpoint}. Window is getting ${
             sizeChange > 0 ? 'bigger' : 'smaller'
           }`
         )
+        /* eslint-enable no-console */
       }
 
       elJSBreakpointOutput.innerHTML = `Breakpoint changed from "${prevBreakpoint}" to "${breakpoint}". Window is getting ${

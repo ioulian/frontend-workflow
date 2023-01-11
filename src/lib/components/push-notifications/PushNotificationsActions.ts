@@ -52,7 +52,7 @@ export class PushNotificationsActions extends classes(Factory) {
           this.handlePermission()
         })
         .catch((error) => {
-          console.log(error)
+          console.log(error) // eslint-disable-line no-console
         })
         .finally(() => {
           this.el.classList.remove(PushNotificationsActions.requestingClass)
